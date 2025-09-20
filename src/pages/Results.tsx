@@ -27,6 +27,26 @@ import sampleReport from '@/data/sample_report_Aisha.json';
 
 const Results = () => {
   const navigate = useNavigate();
+  
+  const handleDownload = () => {
+    // Navigate to full report for download
+    navigate('/report');
+  };
+  
+  const handleShare = () => {
+    // Share functionality
+    if (navigator.share) {
+      navigator.share({
+        title: 'My Career Assessment Results',
+        text: 'Check out my personalized career recommendations!',
+        url: window.location.origin + '/report'
+      });
+    } else {
+      // Fallback: copy link to clipboard
+      navigator.clipboard.writeText(window.location.origin + '/report');
+      // You could add a toast notification here
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -44,11 +64,11 @@ const Results = () => {
             </div>
             
             <div className="flex gap-2">
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={handleShare}>
                 <Share2 className="w-4 h-4 mr-2" />
                 {uiMicrocopy.results.shareBtn}
               </Button>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={handleDownload}>
                 <Download className="w-4 h-4 mr-2" />
                 {uiMicrocopy.results.downloadPDF}
               </Button>
