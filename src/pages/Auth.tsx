@@ -20,20 +20,33 @@ const Auth = () => {
   const [formData, setFormData] = useState({
     email: 'vikrant@acadspace.org',
     password: '1234',
-    confirmPassword: '',
-    fullName: '',
-    schoolName: '',
-    grade: '',
-    board: ''
+    confirmPassword: '1234',
+    fullName: 'Vikrant Test User',
+    schoolName: 'Demo School',
+    grade: '12',
+    board: 'CBSE'
   });
   const navigate = useNavigate();
 
-  // Check if user is already logged in
+  // Check if user is already logged in and set up default user
   useEffect(() => {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
         navigate('/');
+        return;
+      }
+      
+      // Set up default user for easier testing
+      try {
+        const { data, error } = await supabase.functions.invoke('setup-default-user');
+        if (error) {
+          console.error('Error setting up default user:', error);
+        } else {
+          console.log('Default user setup result:', data);
+        }
+      } catch (error) {
+        console.error('Failed to call setup-default-user function:', error);
       }
     };
     checkUser();
