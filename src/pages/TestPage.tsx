@@ -1,8 +1,8 @@
 /**
  * TestPage Component
  * 
- * Handles both vibematch (personality) and edustats (academic) tests.
- * Shows one question per screen with smooth navigation and progress tracking.
+ * Enhanced test experience with authentication, progress tracking, and proper journey flow.
+ * Handles both vibematch (personality) and edustats (academic) tests with backend integration.
  */
 
 import React, { useState, useEffect } from 'react';
@@ -13,10 +13,13 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import { ProgressBar } from '@/components/ProgressBar';
+import { JourneyTracker } from '@/components/JourneyTracker';
 import { OptionButton } from '@/components/OptionButton';
-import { ArrowLeft, ArrowRight, Save } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Save, Pause, BookOpen } from 'lucide-react';
 import { Question, TestAnswer } from '@/types';
 import { toast } from '@/hooks/use-toast';
+import { useAuth } from '@/components/AuthProvider';
+import { supabase } from '@/integrations/supabase/client';
 import uiMicrocopy from '@/data/ui_microcopy.json';
 import vibeQuestions from '@/data/vibematch_questions.json';
 import eduQuestions from '@/data/edustats_questions.json';
@@ -24,6 +27,15 @@ import eduQuestions from '@/data/edustats_questions.json';
 const TestPage = () => {
   const { testType } = useParams<{ testType: 'vibematch' | 'edustats' }>();
   const navigate = useNavigate();
+  const { user, loading: authLoading } = useAuth();
+  
+  // Redirect to auth if not logged in
+  useEffect(() => {
+    if (!authLoading && !user) {
+      navigate('/auth');
+      return;
+    }
+  }, [user, authLoading, navigate]);
   
   // Load questions based on test type
   const questions: Question[] = testType === 'vibematch' 
@@ -35,25 +47,107 @@ const TestPage = () => {
   const [answers, setAnswers] = useState<TestAnswer[]>([]);
   const [currentAnswer, setCurrentAnswer] = useState<string | string[] | number | { [key: string]: number }>('');
   const [subjectGrades, setSubjectGrades] = useState<{ [key: string]: number }>({});
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
   
   const currentQuestion = questions[currentQuestionIndex];
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
   const hasAnswer = currentAnswer !== '' && currentAnswer !== null;
 
+  // Load or create test session
+  useEffect(() => {
+    const initializeSession = async () => {
+      if (!user || !testType) return;
+
+      try {
+        // Check for existing session
+        const { data: existingSessions, error: fetchError } = await supabase
+          .from('test_sessions')
+          .select('*')
+          .eq('user_id', user.id)
+          .eq('test_type', testType)
+          .eq('status', 'in_progress')
+          .order('created_at', { ascending: false })
+          .limit(1);
+
+        if (fetchError) {
+          console.error('Error fetching session:', fetchError);
+          return;
+        }
+
+        if (existingSessions && existingSessions.length > 0) {
+          // Resume existing session
+          const session = existingSessions[0];
+          setSessionId(session.id);
+          setCurrentQuestionIndex(session.current_question_index || 0);
+          setAnswers((session.answers as TestAnswer[]) || []);
+          
+          toast({
+            title: "Welcome back! 👋",
+            description: "Resuming your test from where you left off.",
+          });
+        } else {
+          // Create new session
+          const { data: newSession, error: createError } = await supabase
+            .from('test_sessions')
+            .insert({
+              user_id: user.id,
+              test_type: testType,
+              status: 'in_progress',
+              current_question_index: 0,
+              answers: []
+            })
+            .select()
+            .single();
+
+          if (createError) {
+            console.error('Error creating session:', createError);
+            return;
+          }
+
+          setSessionId(newSession.id);
+          toast({
+            title: "Test started! 🚀",
+            description: `Beginning your ${testName} assessment.`,
+          });
+        }
+      } catch (error) {
+        console.error('Error initializing session:', error);
+      }
+    };
+
+    initializeSession();
+  }, [user, testType, testName]);
+
   // Auto-save progress
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (answers.length > 0) {
-        // Here you would save to backend/localStorage
-        toast({
-          title: uiMicrocopy.tests.saveProgressToast,
-          duration: 1000
-        });
-      }
-    }, 5000);
+    const saveProgress = async () => {
+      if (!sessionId || !user || saving) return;
 
+      setSaving(true);
+      try {
+        const { error } = await supabase
+          .from('test_sessions')
+          .update({
+            current_question_index: currentQuestionIndex,
+            answers: answers as any,
+            updated_at: new Date().toISOString()
+          })
+          .eq('id', sessionId);
+
+        if (error) {
+          console.error('Error saving progress:', error);
+        }
+      } catch (error) {
+        console.error('Error saving progress:', error);
+      } finally {
+        setSaving(false);
+      }
+    };
+
+    const timer = setTimeout(saveProgress, 2000);
     return () => clearTimeout(timer);
-  }, [answers]);
+  }, [answers, currentQuestionIndex, sessionId, user, saving]);
 
   // Load existing answer for current question
   useEffect(() => {
@@ -116,7 +210,7 @@ const TestPage = () => {
     handleAnswer(newGrades);
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     // Validation for required questions
     if (currentQuestion.required && !hasAnswer) {
       toast({
@@ -127,14 +221,81 @@ const TestPage = () => {
     }
 
     if (isLastQuestion) {
-      // Complete test and navigate to next step
-      if (testType === 'vibematch') {
-        navigate('/test/edustats');
-      } else {
-        navigate('/results');
-      }
+      await completeTest();
     } else {
       setCurrentQuestionIndex(prev => prev + 1);
+    }
+  };
+
+  const completeTest = async () => {
+    if (!sessionId) return;
+
+    try {
+      // Mark session as completed
+      const { error } = await supabase
+        .from('test_sessions')
+        .update({
+          status: 'completed',
+          completed_at: new Date().toISOString(),
+          current_question_index: currentQuestionIndex,
+          answers: answers as any
+        })
+        .eq('id', sessionId);
+
+      if (error) {
+        console.error('Error completing test:', error);
+        return;
+      }
+
+      // Navigate to next step
+      if (testType === 'vibematch') {
+        toast({
+          title: "Personality test complete! ✅",
+          description: "Moving to academic background assessment.",
+        });
+        navigate('/test/edustats');
+      } else {
+        toast({
+          title: "All tests complete! 🎉",
+          description: "Generating your personalized career report...",
+        });
+        
+        // Generate report and navigate to results
+        setTimeout(() => {
+          navigate('/report');
+        }, 2000);
+      }
+    } catch (error) {
+      console.error('Error completing test:', error);
+    }
+  };
+
+  const handlePause = async () => {
+    if (!sessionId) return;
+
+    try {
+      const { error } = await supabase
+        .from('test_sessions')
+        .update({
+          status: 'paused',
+          current_question_index: currentQuestionIndex,
+          answers: answers as any
+        })
+        .eq('id', sessionId);
+
+      if (error) {
+        console.error('Error pausing test:', error);
+        return;
+      }
+
+      toast({
+        title: "Test paused ⏸️",
+        description: "Your progress has been saved. You can resume anytime.",
+      });
+      
+      navigate('/profile');
+    } catch (error) {
+      console.error('Error pausing test:', error);
     }
   };
 
@@ -255,78 +416,142 @@ const TestPage = () => {
         showSteps
       />
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-8 max-w-3xl">
-        <Card className="gradient-card border-0 shadow-xl">
-          <CardContent className="p-8 space-y-6">
-            {/* Question Header */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <Badge variant="secondary">
-                  Question {currentQuestionIndex + 1} of {questions.length}
-                </Badge>
-                
-                {currentQuestion.required ? (
-                  <Badge variant="destructive" className="text-xs">
-                    {uiMicrocopy.tests.requiredLabel}
-                  </Badge>
-                ) : (
-                  <Badge variant="outline" className="text-xs">
-                    {uiMicrocopy.tests.optionalLabel}
-                  </Badge>
-                )}
-              </div>
-
-              <h1 className="text-xl md:text-2xl font-semibold leading-relaxed">
-                {currentQuestion.text}
-              </h1>
+      {/* Auth Protection */}
+      {!user && !authLoading && (
+        <div className="container mx-auto px-4 py-16 text-center max-w-md">
+          <div className="space-y-4">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+              <BookOpen className="w-8 h-8 text-primary" />
             </div>
-
-            {/* Question Input */}
-            <div className="py-4">
-              {renderQuestionInput()}
-            </div>
-
-            {/* Navigation Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-6">
-              <Button
-                variant="outline"
-                onClick={handleBack}
-                className="w-full sm:w-auto"
-              >
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                {uiMicrocopy.tests.backBtn}
-              </Button>
-
-              <div className="flex-1" />
-
-              <Button
-                variant={isLastQuestion ? "success" : "career"}
-                onClick={handleNext}
-                disabled={currentQuestion.required && !hasAnswer}
-                className="w-full sm:w-auto"
-              >
-                {isLastQuestion ? (
-                  <>
-                    <Save className="w-4 h-4 mr-2" />
-                    {uiMicrocopy.tests.completeTestBtn}
-                  </>
-                ) : (
-                  <>
-                    {uiMicrocopy.tests.nextBtn}
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </>
-                )}
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Progress Indicator */}
-        <div className="text-center mt-6 text-sm text-muted-foreground">
-          {Math.round(((currentQuestionIndex + 1) / questions.length) * 100)}% complete
+            <h2 className="text-2xl font-semibold">Sign In Required</h2>
+            <p className="text-muted-foreground">
+              Please sign in to access your personalized career assessment.
+            </p>
+            <Button onClick={() => navigate('/auth')} variant="career" className="w-full">
+              Sign In to Continue
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Test Content - Only show if authenticated */}
+      {user && (
+        <>
+          {/* Main Content */}
+      <div className="container mx-auto px-4 py-8 max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Journey Tracker - Sidebar */}
+          <div className="lg:col-span-1">
+            <JourneyTracker 
+              currentStep={testType || 'vibematch'} 
+              className="sticky top-24"
+            />
+          </div>
+
+          {/* Test Content */}
+          <div className="lg:col-span-3">
+            <Card className="gradient-card border-0 shadow-xl animate-fade-in">
+              <CardContent className="p-8 space-y-6">
+                {/* Question Header */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="secondary" className="text-base px-4 py-2">
+                      Question {currentQuestionIndex + 1} of {questions.length}
+                    </Badge>
+                    
+                    <div className="flex items-center gap-2">
+                      {saving && (
+                        <Badge variant="outline" className="text-xs flex items-center gap-1">
+                          <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                          Saving...
+                        </Badge>
+                      )}
+                      
+                      {currentQuestion.required ? (
+                        <Badge variant="destructive" className="text-xs">
+                          {uiMicrocopy.tests.requiredLabel}
+                        </Badge>
+                      ) : (
+                        <Badge variant="outline" className="text-xs">
+                          {uiMicrocopy.tests.optionalLabel}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+
+                  <h1 className="text-2xl md:text-3xl font-semibold leading-relaxed">
+                    {currentQuestion.text}
+                  </h1>
+                </div>
+
+                {/* Question Input */}
+                <div className="py-6">
+                  {renderQuestionInput()}
+                </div>
+
+                {/* Navigation Buttons */}
+                <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t">
+                  <Button
+                    variant="outline"
+                    onClick={handleBack}
+                    className="w-full sm:w-auto hover-scale"
+                  >
+                    <ArrowLeft className="w-4 h-4 mr-2" />
+                    {uiMicrocopy.tests.backBtn}
+                  </Button>
+
+                  <Button
+                    variant="ghost"
+                    onClick={handlePause}
+                    className="w-full sm:w-auto"
+                  >
+                    <Pause className="w-4 h-4 mr-2" />
+                    Pause & Save
+                  </Button>
+
+                  <div className="flex-1" />
+
+                  <Button
+                    variant={isLastQuestion ? "success" : "career"}
+                    onClick={handleNext}
+                    disabled={currentQuestion.required && !hasAnswer}
+                    className="w-full sm:w-auto min-w-[140px] hover-scale"
+                  >
+                    {isLastQuestion ? (
+                      <>
+                        <Save className="w-4 h-4 mr-2" />
+                        {testType === 'vibematch' ? 'Continue to Next Test' : 'Complete & Generate Report'}
+                      </>
+                    ) : (
+                      <>
+                        {uiMicrocopy.tests.nextBtn}
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Progress Indicator */}
+            <div className="text-center mt-6 space-y-2">
+              <div className="text-sm text-muted-foreground">
+                {Math.round(((currentQuestionIndex + 1) / questions.length) * 100)}% complete
+              </div>
+              <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                <BookOpen className="w-4 h-4" />
+                <span>
+                  {testType === 'vibematch' 
+                    ? 'Discovering your personality and interests...' 
+                    : 'Analyzing your academic background...'
+                  }
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </>
+      )}
     </div>
   );
 };

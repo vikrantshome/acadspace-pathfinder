@@ -14,7 +14,123 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      career_reports: {
+        Row: {
+          edustats_session_id: string | null
+          generated_at: string
+          id: string
+          report_data: Json
+          updated_at: string
+          user_id: string
+          vibematch_session_id: string | null
+        }
+        Insert: {
+          edustats_session_id?: string | null
+          generated_at?: string
+          id?: string
+          report_data: Json
+          updated_at?: string
+          user_id: string
+          vibematch_session_id?: string | null
+        }
+        Update: {
+          edustats_session_id?: string | null
+          generated_at?: string
+          id?: string
+          report_data?: Json
+          updated_at?: string
+          user_id?: string
+          vibematch_session_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "career_reports_edustats_session_id_fkey"
+            columns: ["edustats_session_id"]
+            isOneToOne: false
+            referencedRelation: "test_sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "career_reports_vibematch_session_id_fkey"
+            columns: ["vibematch_session_id"]
+            isOneToOne: false
+            referencedRelation: "test_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          board: string | null
+          created_at: string
+          full_name: string | null
+          grade: number | null
+          id: string
+          school_name: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          board?: string | null
+          created_at?: string
+          full_name?: string | null
+          grade?: number | null
+          id?: string
+          school_name?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          board?: string | null
+          created_at?: string
+          full_name?: string | null
+          grade?: number | null
+          id?: string
+          school_name?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      test_sessions: {
+        Row: {
+          answers: Json | null
+          completed_at: string | null
+          current_question_index: number | null
+          id: string
+          scores: Json | null
+          started_at: string
+          status: string
+          test_type: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          answers?: Json | null
+          completed_at?: string | null
+          current_question_index?: number | null
+          id?: string
+          scores?: Json | null
+          started_at?: string
+          status?: string
+          test_type: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          answers?: Json | null
+          completed_at?: string | null
+          current_question_index?: number | null
+          id?: string
+          scores?: Json | null
+          started_at?: string
+          status?: string
+          test_type?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

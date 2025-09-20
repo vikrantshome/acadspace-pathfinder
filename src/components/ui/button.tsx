@@ -15,11 +15,11 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        hero: "gradient-hero text-white border-0 shadow-primary hover:scale-105 transform transition-all duration-300",
         success: "bg-success text-success-foreground shadow-success hover:bg-success/90",
+        career: "bg-gradient-primary text-white border-0 shadow-md hover:shadow-lg hover:scale-102 transition-all duration-200",
+        hero: "gradient-hero text-white border-0 shadow-primary hover:scale-105 transform transition-all duration-300",
         accent: "gradient-accent text-white border-0 shadow-md hover:scale-105 transform transition-all duration-300",
         glass: "glass border hover:bg-background/90",
-        career: "bg-gradient-primary text-white border-0 shadow-md hover:shadow-lg hover:scale-102 transition-all duration-200",
       },
       size: {
         default: "h-10 px-4 py-2",
