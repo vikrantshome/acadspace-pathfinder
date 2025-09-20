@@ -5,7 +5,7 @@
  * and next steps based on completed assessments.
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -18,15 +18,111 @@ import {
   BookOpen, 
   Target,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Loader2
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/components/AuthProvider';
+import { supabase } from '@/integrations/supabase/client';
 import { CareerCard } from '@/components/CareerCard';
 import uiMicrocopy from '@/data/ui_microcopy.json';
 import sampleReport from '@/data/sample_report_Aisha.json';
 
 const Results = () => {
   const navigate = useNavigate();
+  const { user, loading: authLoading } = useAuth();
+  const [reportData, setReportData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [testsCompleted, setTestsCompleted] = useState({ vibematch: false, edustats: false });
+
+  // Check auth and test completion status
+  useEffect(() => {
+    if (!authLoading && !user) {
+      navigate('/auth');
+      return;
+    }
+
+    if (user) {
+      checkTestCompletion();
+    }
+  }, [user, authLoading, navigate]);
+
+  const checkTestCompletion = async () => {
+    try {
+      // Check completed test sessions
+      const { data: sessions, error } = await supabase
+        .from('test_sessions')
+        .select('test_type, status')
+        .eq('user_id', user.id)
+        .eq('status', 'completed');
+
+      if (error) {
+        console.error('Error fetching test sessions:', error);
+        return;
+      }
+
+      const vibematchComplete = sessions?.some(s => s.test_type === 'vibematch');
+      const edustatsComplete = sessions?.some(s => s.test_type === 'edustats');
+      
+      setTestsCompleted({ 
+        vibematch: vibematchComplete || false, 
+        edustats: edustatsComplete || false 
+      });
+
+      // If both tests completed, generate/fetch report
+      if (vibematchComplete && edustatsComplete) {
+        await generateOrFetchReport();
+      }
+    } catch (error) {
+      console.error('Error checking test completion:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const generateOrFetchReport = async () => {
+    try {
+      // Check if report already exists
+      const { data: existingReport, error: reportError } = await supabase
+        .from('career_reports')
+        .select('*')
+        .eq('user_id', user.id)
+        .single();
+
+      if (reportError && reportError.code !== 'PGRST116') {
+        console.error('Error fetching existing report:', reportError);
+        return;
+      }
+
+      if (existingReport) {
+        setReportData(existingReport.report_data);
+      } else {
+        // Generate new report using sample data structure
+        // In a real implementation, you'd process the actual test answers
+        const generatedReport = {
+          ...sampleReport,
+          studentName: user.email.split('@')[0], // Use email username as fallback
+          generated_at: new Date().toISOString()
+        };
+
+        // Save generated report
+        const { error: insertError } = await supabase
+          .from('career_reports')
+          .insert({
+            user_id: user.id,
+            report_data: generatedReport
+          });
+
+        if (insertError) {
+          console.error('Error saving report:', insertError);
+        } else {
+          setReportData(generatedReport);
+        }
+      }
+    } catch (error) {
+      console.error('Error generating report:', error);
+    }
+  };
   
   const handleDownload = () => {
     // Navigate to full report for download
@@ -40,6 +136,76 @@ const Results = () => {
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
+
+  
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <Loader2 className="w-8 h-8 animate-spin mx-auto" />
+          <p className="text-muted-foreground">Loading your results...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show incomplete tests message
+  if (!testsCompleted.vibematch || !testsCompleted.edustats) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="container mx-auto px-4 py-16 text-center max-w-md">
+          <div className="space-y-6">
+            <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+              <BookOpen className="w-8 h-8 text-primary" />
+            </div>
+            <h2 className="text-2xl font-semibold">Complete Your Assessment</h2>
+            <p className="text-muted-foreground">
+              You need to complete both tests to see your career recommendations.
+            </p>
+            
+            <div className="space-y-3">
+              <div className="flex items-center justify-between p-3 border rounded-lg">
+                <span>Personality & Interests Test</span>
+                {testsCompleted.vibematch ? (
+                  <CheckCircle2 className="w-5 h-5 text-success" />
+                ) : (
+                  <Badge variant="outline">Pending</Badge>
+                )}
+              </div>
+              <div className="flex items-center justify-between p-3 border rounded-lg">
+                <span>Academic Background Test</span>
+                {testsCompleted.edustats ? (
+                  <CheckCircle2 className="w-5 h-5 text-success" />
+                ) : (
+                  <Badge variant="outline">Pending</Badge>
+                )}
+              </div>
+            </div>
+
+            <Button 
+              onClick={() => navigate(testsCompleted.vibematch ? '/test/edustats' : '/test/vibematch')} 
+              className="w-full"
+            >
+              Continue Assessment
+            </Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show results if no report data available
+  if (!reportData) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <p className="text-muted-foreground">Unable to load report data</p>
+          <Button onClick={() => navigate('/')}>Go Home</Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -81,14 +247,14 @@ const Results = () => {
               <div>
                 <CardTitle className="text-xl">Career Profile Summary</CardTitle>
                 <p className="text-muted-foreground">
-                  {sampleReport.studentName} • Grade {sampleReport.grade} • {sampleReport.board}
+                  {reportData.studentName} • Grade {reportData.grade} • {reportData.board}
                 </p>
               </div>
             </div>
           </CardHeader>
           <CardContent>
             <p className="text-foreground leading-relaxed">
-              {sampleReport.summaryParagraph}
+              {reportData.summaryParagraph}
             </p>
           </CardContent>
         </Card>
@@ -103,7 +269,7 @@ const Results = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {Object.entries(sampleReport.vibe_scores).map(([key, value]) => {
+              {Object.entries(reportData?.vibe_scores || {}).map(([key, value]) => {
                 const labels = {
                   R: 'Realistic',
                   I: 'Investigative', 
@@ -117,9 +283,9 @@ const Results = () => {
                   <div key={key} className="space-y-2">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">{labels[key as keyof typeof labels]}</span>
-                      <Badge variant="secondary">{value}%</Badge>
+                      <Badge variant="secondary">{value as number}%</Badge>
                     </div>
-                    <Progress value={value} className="h-2" />
+                    <Progress value={value as number} className="h-2" />
                   </div>
                 );
               })}
@@ -134,7 +300,7 @@ const Results = () => {
             {uiMicrocopy.results.top5Heading}
           </h2>
 
-          {sampleReport.top5_buckets.map((bucket, index) => (
+          {(reportData?.top5_buckets || []).map((bucket: any, index: number) => (
             <Card key={index} className="border-l-4 border-primary">
               <CardHeader>
                 <div className="flex items-center justify-between">
