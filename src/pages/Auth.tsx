@@ -18,8 +18,8 @@ const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: 'vikrant@acadspace.org',
+    password: '1234',
     confirmPassword: '',
     fullName: '',
     schoolName: '',
