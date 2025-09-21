@@ -28,25 +28,13 @@ const Auth = () => {
   });
   const navigate = useNavigate();
 
-  // Check if user is already logged in and set up default user
+  // Check if user is already logged in
   useEffect(() => {
     const checkUser = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
         navigate('/');
         return;
-      }
-      
-      // Set up default user for easier testing
-      try {
-        const { data, error } = await supabase.functions.invoke('setup-default-user');
-        if (error) {
-          console.error('Error setting up default user:', error);
-        } else {
-          console.log('Default user setup result:', data);
-        }
-      } catch (error) {
-        console.error('Failed to call setup-default-user function:', error);
       }
     };
     checkUser();
@@ -77,11 +65,10 @@ const Auth = () => {
 
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signUp({
+      const { data, error } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
         options: {
-          emailRedirectTo: `${window.location.origin}/`,
           data: {
             full_name: formData.fullName,
             school_name: formData.schoolName,
@@ -98,10 +85,19 @@ const Auth = () => {
           variant: "destructive"
         });
       } else {
-        toast({
-          title: "Welcome to Naviksha AI! 🎉",
-          description: "Please check your email to verify your account and complete the setup."
-        });
+        // If user is immediately confirmed (no email verification), redirect
+        if (data.user && !data.user.email_confirmed_at) {
+          toast({
+            title: "Account created! 🎉",
+            description: "Welcome to Naviksha AI! You can now start your career assessment."
+          });
+        } else {
+          toast({
+            title: "Welcome to Naviksha AI! 🎉",
+            description: "Your account has been created successfully!"
+          });
+          navigate('/');
+        }
       }
     } catch (error) {
       toast({
