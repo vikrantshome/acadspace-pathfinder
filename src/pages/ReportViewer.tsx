@@ -26,19 +26,19 @@ import {
   MapPin,
   Loader2
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '@/components/AuthProvider';
-import { supabase } from '@/integrations/supabase/client';
+import { apiService } from '@/lib/api';
 
 const ReportViewer = () => {
   const navigate = useNavigate();
+  const { reportId } = useParams<{ reportId?: string }>();
   const { user, loading: authLoading } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
   const [reportData, setReportData] = useState<any>(null);
-  const [userProfile, setUserProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
-  // Check auth and fetch user data
+  // Check auth and fetch report data
   useEffect(() => {
     if (!authLoading && !user) {
       navigate('/auth');
@@ -46,41 +46,32 @@ const ReportViewer = () => {
     }
 
     if (user) {
-      fetchUserData();
+      fetchReportData();
     }
-  }, [user, authLoading, navigate]);
+  }, [user, authLoading, navigate, reportId]);
 
-  const fetchUserData = async () => {
+  const fetchReportData = async () => {
     try {
       setLoading(true);
 
-      // Fetch user profile
-      const { data: profile, error: profileError } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('user_id', user.id)
-        .maybeSingle();
-
-      if (profileError) {
-        console.error('Error fetching profile:', profileError);
+      if (reportId) {
+        // Fetch specific report by ID
+        const report = await apiService.getReport(reportId);
+        setReportData(report);
       } else {
-        setUserProfile(profile);
-      }
-
-      // Fetch career report
-      const { data: report, error: reportError } = await supabase
-        .from('career_reports')
-        .select('*')
-        .eq('user_id', user.id)
-        .maybeSingle();
-
-      if (reportError) {
-        console.error('Error fetching report:', reportError);
-      } else if (report) {
-        setReportData(report.report_data);
+        // Load demo report for now
+        const demoReport = await apiService.getDemoReport();
+        setReportData(demoReport);
       }
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error('Error fetching report data:', error);
+      // Fallback to demo report
+      try {
+        const demoReport = await apiService.getDemoReport();
+        setReportData(demoReport);
+      } catch (demoError) {
+        console.error('Error fetching demo report:', demoError);
+      }
     } finally {
       setLoading(false);
     }
@@ -141,12 +132,12 @@ const ReportViewer = () => {
 
   // Use dynamic data
   const displayData = {
-    studentName: userProfile?.full_name || reportData?.studentName || user?.email?.split('@')[0] || 'Student',
-    schoolName: userProfile?.school_name || 'Your School',
-    grade: userProfile?.grade || reportData?.grade || 11,
-    board: userProfile?.board || reportData?.board || 'CBSE',
-    vibe_scores: reportData?.vibe_scores || {},
-    top5_buckets: reportData?.top5_buckets || [],
+    studentName: reportData?.studentName || user?.name || user?.email?.split('@')[0] || 'Student',
+    schoolName: 'Your School',
+    grade: reportData?.grade || 11,
+    board: reportData?.board || 'CBSE',
+    vibe_scores: reportData?.vibeScores || reportData?.vibe_scores || {},
+    top5_buckets: reportData?.top5Buckets || reportData?.top5_buckets || [],
     summaryParagraph: reportData?.summaryParagraph || 'Your personalized career analysis is being generated based on your assessment responses.'
   };
 

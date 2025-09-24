@@ -19,10 +19,8 @@ import { ArrowLeft, ArrowRight, Save, Pause, BookOpen } from 'lucide-react';
 import { Question, TestAnswer } from '@/types';
 import { toast } from '@/hooks/use-toast';
 import { useAuth } from '@/components/AuthProvider';
-import { supabase } from '@/integrations/supabase/client';
+import { apiService } from '@/lib/api';
 import uiMicrocopy from '@/data/ui_microcopy.json';
-import vibeQuestions from '@/data/vibematch_questions.json';
-import eduQuestions from '@/data/edustats_questions.json';
 
 const TestPage = () => {
   const { testType } = useParams<{ testType: 'vibematch' | 'edustats' }>();
@@ -37,107 +35,98 @@ const TestPage = () => {
     }
   }, [user, authLoading, navigate]);
   
-  // Load questions based on test type
-  const questions: Question[] = testType === 'vibematch' 
-    ? (vibeQuestions as Question[]) 
-    : (eduQuestions as Question[]);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [loading, setLoading] = useState(true);
   const testName = testType === 'vibematch' ? 'Personality & Interests' : 'Academic Background';
   
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<TestAnswer[]>([]);
   const [currentAnswer, setCurrentAnswer] = useState<string | string[] | number | { [key: string]: number }>('');
   const [subjectGrades, setSubjectGrades] = useState<{ [key: string]: number }>({});
-  const [sessionId, setSessionId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+
+  // Load test questions from backend
+  useEffect(() => {
+    const loadTest = async () => {
+      if (!testType) return;
+      
+      try {
+        const testData = await apiService.getTest(testType);
+        setQuestions(testData.questions || []);
+      } catch (error) {
+        console.error('Error loading test:', error);
+        toast({
+          title: "Error loading test",
+          description: "Failed to load test questions. Please try again.",
+          variant: "destructive"
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadTest();
+  }, [testType]);
   
   const currentQuestion = questions[currentQuestionIndex];
   const isLastQuestion = currentQuestionIndex === questions.length - 1;
   const hasAnswer = currentAnswer !== '' && currentAnswer !== null;
 
-  // Load or create test session
+  // Load or resume test progress
   useEffect(() => {
-    const initializeSession = async () => {
+    const loadProgress = async () => {
       if (!user || !testType) return;
 
       try {
-        // Check for existing session
-        const { data: existingSessions, error: fetchError } = await supabase
-          .from('test_sessions')
-          .select('*')
-          .eq('user_id', user.id)
-          .eq('test_type', testType)
-          .eq('status', 'in_progress')
-          .order('started_at', { ascending: false })
-          .limit(1);
-
-        if (fetchError) {
-          console.error('Error fetching session:', fetchError);
-          return;
-        }
-
-        if (existingSessions && existingSessions.length > 0) {
-          // Resume existing session
-          const session = existingSessions[0];
-          setSessionId(session.id);
-          setCurrentQuestionIndex(session.current_question_index || 0);
-          setAnswers((session.answers as unknown as TestAnswer[]) || []);
+        const progress = await apiService.getProgress(user.id, testType);
+        if (progress) {
+          setCurrentQuestionIndex(progress.currentQuestionIndex || 0);
+          
+          // Convert progress answers to TestAnswer format
+          const progressAnswers = Object.entries(progress.answers || {}).map(([questionId, answer]) => ({
+            questionId,
+            answer: answer as string | string[] | number | { [key: string]: number },
+            timestamp: new Date()
+          }));
+          setAnswers(progressAnswers);
           
           toast({
             title: "Welcome back! 👋",
             description: "Resuming your test from where you left off.",
           });
         } else {
-          // Create new session
-          const { data: newSession, error: createError } = await supabase
-            .from('test_sessions')
-            .insert({
-              user_id: user.id,
-              test_type: testType,
-              status: 'in_progress',
-              current_question_index: 0,
-              answers: []
-            })
-            .select()
-            .single();
-
-          if (createError) {
-            console.error('Error creating session:', createError);
-            return;
-          }
-
-          setSessionId(newSession.id);
           toast({
             title: "Test started! 🚀",
             description: `Beginning your ${testName} assessment.`,
           });
         }
       } catch (error) {
-        console.error('Error initializing session:', error);
+        console.error('Error loading progress:', error);
       }
     };
 
-    initializeSession();
-  }, [user, testType, testName]);
+    if (questions.length > 0) {
+      loadProgress();
+    }
+  }, [user, testType, testName, questions.length]);
 
   // Auto-save progress
   useEffect(() => {
     const saveProgress = async () => {
-      if (!sessionId || !user || saving) return;
+      if (!user || !testType || saving || answers.length === 0) return;
 
       setSaving(true);
       try {
-        const { error } = await supabase
-          .from('test_sessions')
-          .update({
-            current_question_index: currentQuestionIndex,
-            answers: answers as any,
-            updated_at: new Date().toISOString()
-          })
-          .eq('id', sessionId);
+        // Convert TestAnswer array to object format for backend
+        const answersObject = answers.reduce((acc, answer) => {
+          acc[answer.questionId] = answer.answer;
+          return acc;
+        }, {} as Record<string, any>);
 
-        if (error) {
-          console.error('Error saving progress:', error);
-        }
+        await apiService.saveProgress(testType, {
+          currentQuestionIndex,
+          answers: answersObject,
+        });
       } catch (error) {
         console.error('Error saving progress:', error);
       } finally {
@@ -147,7 +136,7 @@ const TestPage = () => {
 
     const timer = setTimeout(saveProgress, 2000);
     return () => clearTimeout(timer);
-  }, [answers, currentQuestionIndex, sessionId, user, saving]);
+  }, [answers, currentQuestionIndex, user, testType, saving]);
 
   // Load existing answer for current question
   useEffect(() => {
@@ -228,43 +217,90 @@ const TestPage = () => {
   };
 
   const completeTest = async () => {
-    // Navigate to next step
-    if (testType === 'vibematch') {
+    if (!user) return;
+
+    try {
+      if (testType === 'vibematch') {
+        toast({
+          title: "Personality test complete! ✅",
+          description: "Moving to academic background assessment.",
+        });
+        navigate('/test/edustats');
+      } else {
+        toast({
+          title: "All tests complete! 🎉",
+          description: "Generating your personalized career report...",
+        });
+        
+        // Submit combined test results to backend
+        const answersObject = answers.reduce((acc, answer) => {
+          acc[answer.questionId] = answer.answer;
+          return acc;
+        }, {} as Record<string, any>);
+
+        const submission = {
+          userName: user.name,
+          grade: parseInt(answersObject.e_01) || 11,
+          board: answersObject.e_02 || 'CBSE',
+          answers: answersObject,
+          subjectScores: extractSubjectScores(answersObject),
+          extracurriculars: extractExtracurriculars(answersObject),
+          parentCareers: extractParentCareers(answersObject),
+        };
+
+        const result = await apiService.submitTest('combined', submission);
+        
+        if (result.reportId) {
+          navigate(`/report/${result.reportId}`);
+        } else {
+          navigate('/report');
+        }
+      }
+    } catch (error) {
+      console.error('Error completing test:', error);
       toast({
-        title: "Personality test complete! ✅",
-        description: "Moving to academic background assessment.",
+        title: "Error completing test",
+        description: "Failed to generate report. Please try again.",
+        variant: "destructive"
       });
-      navigate('/test/edustats');
-    } else {
-      toast({
-        title: "All tests complete! 🎉",
-        description: "Generating your personalized career report...",
-      });
-      
-      // Generate report and navigate to results
-      setTimeout(() => {
-        navigate('/report');
-      }, 2000);
     }
   };
 
+  // Helper functions to extract data from answers
+  const extractSubjectScores = (answers: Record<string, any>) => {
+    const scores: Record<string, number> = {};
+    if (answers.e_04) {
+      Object.entries(answers.e_04).forEach(([subject, score]) => {
+        if (typeof score === 'number') {
+          scores[subject] = score;
+        }
+      });
+    }
+    return scores;
+  };
+
+  const extractExtracurriculars = (answers: Record<string, any>) => {
+    return answers.e_06 || [];
+  };
+
+  const extractParentCareers = (answers: Record<string, any>) => {
+    return answers.e_07 || [];
+  };
+
   const handlePause = async () => {
-    if (!sessionId) return;
+    if (!user || !testType) return;
 
     try {
-      const { error } = await supabase
-        .from('test_sessions')
-        .update({
-          status: 'paused',
-          current_question_index: currentQuestionIndex,
-          answers: answers as any
-        })
-        .eq('id', sessionId);
+      // Save current progress
+      const answersObject = answers.reduce((acc, answer) => {
+        acc[answer.questionId] = answer.answer;
+        return acc;
+      }, {} as Record<string, any>);
 
-      if (error) {
-        console.error('Error pausing test:', error);
-        return;
-      }
+      await apiService.saveProgress(testType, {
+        currentQuestionIndex,
+        answers: answersObject,
+      });
 
       toast({
         title: "Test paused ⏸️",
@@ -383,6 +419,21 @@ const TestPage = () => {
         return null;
     }
   };
+
+  // Show loading state
+  if (loading || questions.length === 0) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-4">
+          <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto animate-pulse">
+            <BookOpen className="w-8 h-8 text-primary" />
+          </div>
+          <h2 className="text-xl font-semibold">Loading questions...</h2>
+          <p className="text-muted-foreground">Please wait while we prepare your assessment.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background">

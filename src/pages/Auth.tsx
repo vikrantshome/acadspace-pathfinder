@@ -11,17 +11,18 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import { Mail, Lock, User, GraduationCap, School, AlertCircle, Loader2 } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/components/AuthProvider';
 import { toast } from '@/hooks/use-toast';
 
 const Auth = () => {
+  const { user, signIn, signUp } = useAuth();
   const [isSignUp, setIsSignUp] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    email: 'vikrant@acadspace.org',
-    password: '1234',
-    confirmPassword: '1234',
-    fullName: 'Vikrant Test User',
+    email: 'test@example.com',
+    password: '123456',
+    confirmPassword: '123456',
+    fullName: 'Test User',
     schoolName: 'Demo School',
     grade: '12',
     board: 'CBSE'
@@ -30,15 +31,10 @@ const Auth = () => {
 
   // Check if user is already logged in
   useEffect(() => {
-    const checkUser = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        navigate('/');
-        return;
-      }
-    };
-    checkUser();
-  }, [navigate]);
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -65,46 +61,10 @@ const Auth = () => {
 
     setLoading(true);
     try {
-      const { data, error } = await supabase.auth.signUp({
-        email: formData.email,
-        password: formData.password,
-        options: {
-          data: {
-            full_name: formData.fullName,
-            school_name: formData.schoolName,
-            grade: parseInt(formData.grade) || null,
-            board: formData.board
-          }
-        }
-      });
-
-      if (error) {
-        toast({
-          title: "Sign up failed",
-          description: error.message,
-          variant: "destructive"
-        });
-      } else {
-        // If user is immediately confirmed (no email verification), redirect
-        if (data.user && !data.user.email_confirmed_at) {
-          toast({
-            title: "Account created! 🎉",
-            description: "Welcome to Naviksha AI! You can now start your career assessment."
-          });
-        } else {
-          toast({
-            title: "Welcome to Naviksha AI! 🎉",
-            description: "Your account has been created successfully!"
-          });
-          navigate('/');
-        }
-      }
-    } catch (error) {
-      toast({
-        title: "An error occurred",
-        description: "Please try again later",
-        variant: "destructive"
-      });
+      await signUp(formData.email, formData.password, formData.fullName);
+      navigate('/');
+    } catch (error: any) {
+      // Error handling is done in AuthProvider
     } finally {
       setLoading(false);
     }
@@ -113,30 +73,10 @@ const Auth = () => {
   const handleSignIn = async () => {
     setLoading(true);
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: formData.email,
-        password: formData.password
-      });
-
-      if (error) {
-        toast({
-          title: "Sign in failed",
-          description: error.message,
-          variant: "destructive"
-        });
-      } else {
-        toast({
-          title: "Welcome back! 👋",
-          description: "Successfully signed in to Naviksha AI"
-        });
-        navigate('/');
-      }
-    } catch (error) {
-      toast({
-        title: "An error occurred",
-        description: "Please try again later",
-        variant: "destructive"
-      });
+      await signIn(formData.email, formData.password);
+      navigate('/');
+    } catch (error: any) {
+      // Error handling is done in AuthProvider
     } finally {
       setLoading(false);
     }

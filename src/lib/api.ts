@@ -1,7 +1,9 @@
 // Backend API Integration
 // This file provides all API functions to interact with the Spring Boot backend
 
-const API_BASE_URL = 'http://localhost:4000/api';
+import { API_CONFIG } from './config';
+
+const API_BASE_URL = API_CONFIG.BASE_URL;
 
 interface User {
   id: string;

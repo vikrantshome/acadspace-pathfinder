@@ -1,11 +1,12 @@
 /**
  * AuthProvider - Global authentication state management
  * Handles user session, authentication state, and profile management
+ * Updated to use Spring Boot backend instead of Supabase
  */
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { User, Session } from '@supabase/supabase-js';
-import { supabase } from '@/integrations/supabase/client';
+import { apiService, type User } from '@/lib/api';
+import { toast } from 'sonner';
 
 interface Profile {
   id: string;
@@ -20,9 +21,10 @@ interface Profile {
 
 interface AuthContextType {
   user: User | null;
-  session: Session | null;
   profile: Profile | null;
   loading: boolean;
+  signIn: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string, name: string) => Promise<void>;
   signOut: () => Promise<void>;
   updateProfile: (updates: Partial<Profile>) => Promise<void>;
 }
@@ -43,98 +45,71 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [session, setSession] = useState<Session | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch user profile
-  const fetchProfile = async (userId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from('profiles')
-        .select('*')
-        .eq('user_id', userId)
-        .single();
-
-      if (error) {
-        console.error('Error fetching profile:', error);
-        return;
+  // Initialize auth state
+  useEffect(() => {
+    const initAuth = async () => {
+      if (apiService.isAuthenticated()) {
+        try {
+          const userData = apiService.getCurrentUserFromStorage();
+          setUser(userData);
+        } catch (error) {
+          console.error('Error loading user data:', error);
+          apiService.logout();
+        }
       }
+      setLoading(false);
+    };
 
-      setProfile(data);
-    } catch (error) {
-      console.error('Error fetching profile:', error);
+    initAuth();
+  }, []);
+
+  const signIn = async (email: string, password: string) => {
+    try {
+      const response = await apiService.login(email, password);
+      setUser(response.user);
+      toast.success('Logged in successfully');
+    } catch (error: any) {
+      toast.error(error.message || 'Login failed');
+      throw error;
     }
   };
 
-  // Initialize auth state
-  useEffect(() => {
-    // Set up auth state listener
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
-        
-        if (session?.user) {
-          // Defer profile fetching to prevent auth state change issues
-          setTimeout(() => {
-            fetchProfile(session.user.id);
-          }, 0);
-        } else {
-          setProfile(null);
-        }
-        
-        setLoading(false);
-      }
-    );
-
-    // Check for existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        setTimeout(() => {
-          fetchProfile(session.user.id);
-        }, 0);
-      }
-      
-      setLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
+  const signUp = async (email: string, password: string, name: string) => {
+    try {
+      const response = await apiService.register(email, password, name);
+      setUser(response.user);
+      toast.success('Account created successfully');
+    } catch (error: any) {
+      toast.error(error.message || 'Registration failed');
+      throw error;
+    }
+  };
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error('Error signing out:', error);
+    try {
+      apiService.logout();
+      setUser(null);
+      toast.success('Logged out successfully');
+    } catch (error: any) {
+      toast.error('Error signing out');
       throw error;
     }
   };
 
   const updateProfile = async (updates: Partial<Profile>) => {
-    if (!user) return;
-
-    const { error } = await supabase
-      .from('profiles')
-      .update(updates)
-      .eq('user_id', user.id);
-
-    if (error) {
-      console.error('Error updating profile:', error);
-      throw error;
-    }
-
-    // Refresh profile data
-    await fetchProfile(user.id);
+    // TODO: Implement profile updates with Spring Boot backend
+    console.log('Profile update not yet implemented:', updates);
   };
 
   const value = {
     user,
-    session,
     profile,
     loading,
+    signIn,
+    signUp,
     signOut,
     updateProfile
   };
