@@ -1,0 +1,25 @@
+package com.naviksha.model;
+
+import lombok.Data;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import java.util.List;
+import java.util.Map;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class StudentReport {
+    private String studentName;
+    private Integer grade;
+    private String board;
+    private Map<String, Integer> vibeScores;
+    private Map<String, Integer> eduStats;
+    private List<String> extracurriculars;
+    private List<String> parents;
+    private List<CareerBucket> top5Buckets;
+    private String summaryParagraph;
+}

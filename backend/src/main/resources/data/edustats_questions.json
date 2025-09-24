@@ -1,0 +1,23 @@
+[
+  {
+    "id": "e_01",
+    "text": "Which grade are you currently in?",
+    "type": "single",
+    "required": true,
+    "options": ["6","7","8","9","10","11","12"]
+  },
+  {
+    "id": "e_02",
+    "text": "Which education board do you follow?",
+    "type": "single",
+    "required": true,
+    "options": ["CBSE","ICSE","State Board","Others"]
+  },
+  {
+    "id": "e_03",
+    "text": "Please select the academic subjects you study now (tick all that apply).",
+    "type": "multi",
+    "required": true,
+    "options": ["Mathematics","Physics","Chemistry","Biology","Computer Science","English"]
+  }
+]

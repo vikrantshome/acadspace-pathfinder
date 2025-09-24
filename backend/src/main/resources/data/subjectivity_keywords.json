@@ -1,0 +1,9 @@
+{
+  "creative": ["design","draw","paint","sketch","video","film","creative","logo","poster","story","write","compose","music","sing","produce"],
+  "hands_on": ["build","fix","assemble","tool","machine","workshop","hand","manual","wiring","engine","robot","craft","construct"],
+  "entrepreneurial": ["start","business","sell","market","found","startup","venture","pitch","invest","scale"],
+  "research": ["research","experiment","study","lab","analyze","test","hypothesis","survey","data","experiment"],
+  "service": ["help","volunteer","ngo","community","care","teach","support","clinic","social"],
+  "tech_keywords": ["code","program","algorithm","script","app","software","website","backend","frontend","database","ai","ml","robot"],
+  "design_keywords": ["ux","ui","typography","prototype","wireframe","usability","interaction"]
+}

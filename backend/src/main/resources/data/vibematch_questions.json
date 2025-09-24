@@ -1,0 +1,44 @@
+[
+  {
+    "id": "v_01",
+    "text": "I enjoy building or fixing things with my hands (like gadgets, models, or DIY projects).",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"R": 1}
+  },
+  {
+    "id": "v_02",
+    "text": "I like following clear rules and procedures to finish a task (e.g., lab steps, recipes).",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"C": 1}
+  },
+  {
+    "id": "v_03",
+    "text": "I enjoy solving puzzles and researching to find answers (like science or detective work).",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"I": 1}
+  },
+  {
+    "id": "v_04",
+    "text": "I like helping people and working together to solve their problems.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"S": 1}
+  },
+  {
+    "id": "v_05",
+    "text": "I enjoy creating things that look or feel beautiful — drawing, music, design, or making videos.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"A": 1}
+  },
+  {
+    "id": "v_06",
+    "text": "I enjoy leading group projects, persuading people, or starting a small business idea.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"E": 1}
+  }
+]
