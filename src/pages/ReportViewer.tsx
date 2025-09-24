@@ -154,34 +154,34 @@ const ReportViewer = () => {
     <div className="min-h-screen bg-background">
       {/* Header - Cover Page Style */}
       <div className="bg-gradient-hero text-white">
-        <div className="container mx-auto px-4 py-12">
-          <div className="text-center space-y-6">
-            <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto">
-              <GraduationCap className="w-10 h-10 text-primary" />
+        <div className="container mx-auto px-4 py-8 md:py-12">
+          <div className="text-center space-y-4 md:space-y-6">
+            <div className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full flex items-center justify-center mx-auto">
+              <GraduationCap className="w-8 h-8 md:w-10 md:h-10 text-primary" />
             </div>
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-2">
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 px-2">
                 Your Dreams to Reality Handbook
               </h1>
-              <div className="text-xl md:text-2xl font-semibold opacity-90">
+              <div className="text-lg md:text-xl lg:text-2xl font-semibold opacity-90">
                 Naviksha AI
               </div>
             </div>
             <div className="space-y-2">
-              <h2 className="text-2xl font-semibold">{displayData.studentName}</h2>
-              <p className="text-lg opacity-80">{displayData.schoolName}</p>
-              <div className="flex items-center justify-center gap-4 text-sm opacity-70">
+              <h2 className="text-xl md:text-2xl font-semibold px-2">{displayData.studentName}</h2>
+              <p className="text-base md:text-lg opacity-80 px-2">{displayData.schoolName}</p>
+              <div className="flex items-center justify-center gap-2 md:gap-4 text-xs md:text-sm opacity-70">
                 <span>Grade {displayData.grade}</span>
                 <span>•</span>
                 <span>{displayData.board} Board</span>
               </div>
             </div>
-            <div className="flex justify-center gap-4 pt-4">
-              <Button variant="secondary" onClick={handleDownload} className="flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 pt-4 px-4">
+              <Button variant="secondary" onClick={handleDownload} className="flex items-center gap-2 w-full sm:w-auto">
                 <Download className="w-4 h-4" />
                 Download PDF
               </Button>
-              <Button variant="outline" onClick={handleShare} className="flex items-center gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20">
+              <Button variant="outline" onClick={handleShare} className="flex items-center gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20 w-full sm:w-auto">
                 <Share2 className="w-4 h-4" />
                 Share Report
               </Button>
@@ -191,38 +191,38 @@ const ReportViewer = () => {
       </div>
 
       {/* Congratulations Section */}
-      <div className="bg-gradient-card py-12">
+      <div className="bg-gradient-card py-8 md:py-12">
         <div className="container mx-auto px-4 max-w-4xl">
           <Card className="border-0 shadow-xl">
-            <CardContent className="p-8 text-center space-y-6">
-              <div className="w-16 h-16 bg-success rounded-full flex items-center justify-center mx-auto">
-                <Award className="w-8 h-8 text-success-foreground" />
+            <CardContent className="p-4 md:p-6 lg:p-8 text-center space-y-4 md:space-y-6">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-success rounded-full flex items-center justify-center mx-auto">
+                <Award className="w-6 h-6 md:w-8 md:h-8 text-success-foreground" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-success mb-2">Congratulations!</h2>
-                <p className="text-lg text-muted-foreground">
+                <h2 className="text-2xl md:text-3xl font-bold text-success mb-2">Congratulations!</h2>
+                <p className="text-base md:text-lg text-muted-foreground px-2">
                   You've achieved the first significant point on your Career Success Journey.
                 </p>
               </div>
-              <div className="bg-primary/10 rounded-lg p-6">
-                <h3 className="text-xl font-semibold mb-4 text-primary">
+              <div className="bg-primary/10 rounded-lg p-4 md:p-6">
+                <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 text-primary">
                   Your Journey Map with Naviksha AI Started!
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 text-sm">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-success" />
+                    <CheckCircle2 className="w-4 h-4 text-success flex-shrink-0" />
                     <span>✓ Completed Comprehensive Assessments</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-success" />
+                    <CheckCircle2 className="w-4 h-4 text-success flex-shrink-0" />
                     <span>✓ Generated Personalized Career Report</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Target className="w-4 h-4 text-primary" />
+                    <Target className="w-4 h-4 text-primary flex-shrink-0" />
                     <span>→ Explore Career Recommendations</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-primary" />
+                    <BookOpen className="w-4 h-4 text-primary flex-shrink-0" />
                     <span>→ Access Career Development Resources</span>
                   </div>
                 </div>
@@ -232,47 +232,48 @@ const ReportViewer = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
+      <div className="container mx-auto px-4 py-6 md:py-8 max-w-6xl">
         {/* Navigation Tabs */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
           {[
             { id: 'overview', label: 'Overview', icon: Target },
-            { id: 'personality', label: 'Personality Profile', icon: TrendingUp },
-            { id: 'careers', label: 'Career Recommendations', icon: Briefcase },
+            { id: 'personality', label: 'Personality', icon: TrendingUp },
+            { id: 'careers', label: 'Careers', icon: Briefcase },
             { id: 'next-steps', label: 'Next Steps', icon: ArrowRight }
           ].map(tab => (
             <Button
               key={tab.id}
               variant={activeTab === tab.id ? 'default' : 'outline'}
               onClick={() => setActiveTab(tab.id)}
-              className="flex items-center gap-2"
+              className="flex items-center gap-2 text-xs md:text-sm px-2 md:px-4 py-1 md:py-2"
             >
-              <tab.icon className="w-4 h-4" />
-              {tab.label}
+              <tab.icon className="w-3 h-3 md:w-4 md:h-4" />
+              <span className="hidden sm:inline">{tab.label}</span>
+              <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
             </Button>
           ))}
         </div>
 
         {/* Overview Tab */}
         {activeTab === 'overview' && (
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             {/* Summary Card */}
             <Card className="gradient-card border-0 shadow-lg">
-              <CardHeader>
+              <CardHeader className="pb-3 md:pb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                    <Star className="w-6 h-6 text-primary-foreground" />
+                  <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                    <Star className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
                   </div>
-                  <div>
-                    <CardTitle className="text-xl">Career Profile Summary</CardTitle>
-                    <p className="text-muted-foreground">
+                  <div className="min-w-0">
+                    <CardTitle className="text-lg md:text-xl">Career Profile Summary</CardTitle>
+                    <p className="text-sm md:text-base text-muted-foreground">
                       AI-Powered Career Analysis Results
                     </p>
                   </div>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-foreground leading-relaxed text-lg">
+                <p className="text-sm md:text-base lg:text-lg text-foreground leading-relaxed">
                   {displayData.summaryParagraph}
                 </p>
               </CardContent>
@@ -281,13 +282,13 @@ const ReportViewer = () => {
             {/* Assessment Overview */}
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Lightbulb className="w-5 h-5" />
+                <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
+                  <Lightbulb className="w-4 h-4 md:w-5 md:h-5" />
                   Assessment Overview
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                   <div className="text-center space-y-2">
                     <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
                       <Users className="w-6 h-6 text-primary" />

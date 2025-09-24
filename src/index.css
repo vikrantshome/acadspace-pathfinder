@@ -313,4 +313,73 @@ All colors MUST be HSL. Inspired by academic success and career growth.
       transform: translateY(-10px);
     }
   }
+
+  /* Fade in animation for page loads */
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  @keyframes fade-in {
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  /* Responsive hover scale effect */
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Reduce scale on mobile for better touch experience */
+  @media (max-width: 768px) {
+    .hover-scale:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Ensure text doesn't get too small on mobile */
+    .text-gradient {
+      -webkit-text-size-adjust: 100%;
+    }
+    
+    /* Adjust floating animation for mobile */
+    .float {
+      animation: float-mobile 4s ease-in-out infinite;
+    }
+    
+    @keyframes float-mobile {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+  }
+
+  /* Responsive transitions */
+  .transition-colors {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+  }
+
+  /* Mobile-first shadow utilities */
+  .shadow-sm {
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .shadow-md {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .shadow-lg {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
 }

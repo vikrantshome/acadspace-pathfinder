@@ -414,20 +414,20 @@ const TestPage = () => {
 
       {/* Test Content - Only show if authenticated */}
       {user && (
-      <div className="container mx-auto px-4 py-8 max-w-6xl">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-          {/* Journey Tracker - Sidebar */}
-          <div className="lg:col-span-1">
+      <div className="container mx-auto px-4 py-4 md:py-8 max-w-6xl">
+        <div className="flex flex-col xl:grid xl:grid-cols-4 gap-4 md:gap-8">
+          {/* Journey Tracker - Mobile: top, Desktop: sidebar */}
+          <div className="xl:col-span-1 order-2 xl:order-1">
             <JourneyTracker 
               currentStep={testType || 'vibematch'} 
-              className="sticky top-24"
+              className="xl:sticky xl:top-24"
             />
           </div>
 
           {/* Test Content */}
-          <div className="lg:col-span-3">
+          <div className="xl:col-span-3 order-1 xl:order-2">
             <Card className="gradient-card border-0 shadow-xl animate-fade-in">
-              <CardContent className="p-8 space-y-6">
+              <CardContent className="p-4 md:p-6 lg:p-8 space-y-4 md:space-y-6">
                 {/* Question Header */}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -455,7 +455,7 @@ const TestPage = () => {
                     </div>
                   </div>
 
-                  <h1 className="text-2xl md:text-3xl font-semibold leading-relaxed">
+                  <h1 className="text-lg md:text-2xl lg:text-3xl font-semibold leading-relaxed">
                     {currentQuestion.text}
                   </h1>
                 </div>
@@ -466,32 +466,32 @@ const TestPage = () => {
                 </div>
 
                 {/* Navigation Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 pt-6 border-t">
-                  <Button
-                    variant="outline"
-                    onClick={handleBack}
-                    className="w-full sm:w-auto hover-scale"
-                  >
-                    <ArrowLeft className="w-4 h-4 mr-2" />
-                    {uiMicrocopy.tests.backBtn}
-                  </Button>
+                <div className="flex flex-col sm:flex-row gap-3 pt-4 md:pt-6 border-t">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:flex-1">
+                    <Button
+                      variant="outline"
+                      onClick={handleBack}
+                      className="w-full sm:w-auto hover-scale"
+                    >
+                      <ArrowLeft className="w-4 h-4 mr-2" />
+                      {uiMicrocopy.tests.backBtn}
+                    </Button>
 
-                  <Button
-                    variant="ghost"
-                    onClick={handlePause}
-                    className="w-full sm:w-auto"
-                  >
-                    <Pause className="w-4 h-4 mr-2" />
-                    Pause & Save
-                  </Button>
-
-                  <div className="flex-1" />
+                    <Button
+                      variant="ghost"
+                      onClick={handlePause}
+                      className="w-full sm:w-auto"
+                    >
+                      <Pause className="w-4 h-4 mr-2" />
+                      Pause & Save
+                    </Button>
+                  </div>
 
                   <Button
                     variant={isLastQuestion ? "success" : "career"}
                     onClick={handleNext}
                     disabled={currentQuestion.required && !hasAnswer}
-                    className="w-full sm:w-auto min-w-[140px] hover-scale"
+                    className="w-full sm:w-auto sm:min-w-[140px] hover-scale order-first sm:order-last"
                   >
                     {isLastQuestion ? (
                       <>

@@ -156,13 +156,13 @@ const Auth = () => {
       <div className="w-full max-w-md space-y-6 animate-fade-in">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="w-16 h-16 bg-white rounded-2xl shadow-lg mx-auto flex items-center justify-center mb-4">
-            <GraduationCap className="w-8 h-8 text-primary" />
+          <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl shadow-lg mx-auto flex items-center justify-center mb-3 md:mb-4">
+            <GraduationCap className="w-6 h-6 md:w-8 md:h-8 text-primary" />
           </div>
-          <h1 className="text-3xl font-bold text-white">
+          <h1 className="text-2xl md:text-3xl font-bold text-white">
             {isSignUp ? 'Join Naviksha AI' : 'Welcome Back'}
           </h1>
-          <p className="text-white/80">
+          <p className="text-sm md:text-base text-white/80 px-2">
             {isSignUp 
               ? 'Navigate Your Future with AI-Powered Career Guidance' 
               : 'Continue your career discovery journey'
@@ -172,13 +172,13 @@ const Auth = () => {
 
         {/* Auth Card */}
         <Card className="glass border-0 shadow-2xl">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-xl text-center">
+          <CardHeader className="space-y-1 pb-4">
+            <CardTitle className="text-lg md:text-xl text-center">
               {isSignUp ? 'Create Account' : 'Sign In'}
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <CardContent className="px-4 md:px-6">
+            <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
               {/* Email */}
               <div className="space-y-2">
                 <Label htmlFor="email" className="flex items-center gap-2">
@@ -299,7 +299,7 @@ const Auth = () => {
               {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full h-12 text-base font-semibold transition-smooth"
+                className="w-full h-11 md:h-12 text-sm md:text-base font-semibold transition-smooth mt-4 md:mt-6"
                 disabled={loading}
               >
                 {loading ? (
@@ -316,16 +316,16 @@ const Auth = () => {
             </form>
 
             {/* Toggle Mode */}
-            <div className="mt-6">
+            <div className="mt-4 md:mt-6">
               <Separator />
-              <div className="text-center mt-4">
-                <p className="text-sm text-muted-foreground">
+              <div className="text-center mt-3 md:mt-4">
+                <p className="text-xs md:text-sm text-muted-foreground">
                   {isSignUp ? 'Already have an account?' : "Don't have an account?"}
                 </p>
                 <Button
                   variant="link"
                   onClick={() => setIsSignUp(!isSignUp)}
-                  className="text-primary font-semibold"
+                  className="text-primary font-semibold text-sm md:text-base"
                 >
                   {isSignUp ? 'Sign In' : 'Create Account'}
                 </Button>
@@ -335,8 +335,8 @@ const Auth = () => {
         </Card>
 
         {/* Privacy Note */}
-        <div className="text-center">
-          <p className="text-white/60 text-xs">
+        <div className="text-center px-2">
+          <p className="text-white/60 text-xs leading-relaxed">
             By creating an account, you agree to our privacy practices. 
             Your data is secure and never shared with third parties.
           </p>

@@ -115,9 +115,9 @@ const Index = () => {
 
         <div className="container mx-auto px-4 py-8 max-w-6xl">
           {/* Quick Actions */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Quick Actions</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="mb-6 md:mb-8">
+            <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Quick Actions</h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
               <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/profile')}>
                 <CardContent className="p-6 text-center">
                   <User className="w-8 h-8 mx-auto mb-3 text-primary" />
@@ -155,9 +155,9 @@ const Index = () => {
           </div>
 
           {/* Assessment Progress */}
-          <div className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Assessment Progress</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mb-6 md:mb-8">
+            <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Assessment Progress</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
               <Card>
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
@@ -215,8 +215,8 @@ const Index = () => {
 
           {/* Results Section */}
           {(testProgress.vibematch === 'completed' && testProgress.edustats === 'completed') && (
-            <div className="mb-8">
-              <h2 className="text-xl font-semibold mb-4">Your Results</h2>
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Your Results</h2>
               <Card className="gradient-card border-0 shadow-lg">
                 <CardContent className="p-6">
                   <div className="flex items-center gap-4 mb-4">
@@ -226,13 +226,13 @@ const Index = () => {
                       <p className="text-muted-foreground">Your personalized career report is ready</p>
                     </div>
                   </div>
-                  <div className="flex gap-3">
-                    <Button onClick={() => navigate('/results')} className="group">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button onClick={() => navigate('/results')} className="group w-full sm:w-auto">
                       View Results
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                     {hasReport && (
-                      <Button variant="outline" onClick={() => navigate('/report')}>
+                      <Button variant="outline" onClick={() => navigate('/report')} className="w-full sm:w-auto">
                         <Download className="w-4 h-4 mr-2" />
                         Full Report
                       </Button>
@@ -356,12 +356,12 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
                   <Card key={index} className="gradient-card border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-                    <CardContent className="p-6 text-center space-y-4">
+                    <CardContent className="p-4 md:p-6 text-center space-y-3 md:space-y-4">
                       <div className="w-16 h-16 rounded-full gradient-primary flex items-center justify-center mx-auto">
                         <Icon className="w-8 h-8 text-white" />
                       </div>

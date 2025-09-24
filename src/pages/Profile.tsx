@@ -95,16 +95,16 @@ const Profile = () => {
 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
         <Tabs defaultValue="overview" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="tests">Test History</TabsTrigger>
-            <TabsTrigger value="careers">Career Matches</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
+            <TabsTrigger value="overview" className="text-xs md:text-sm">Overview</TabsTrigger>
+            <TabsTrigger value="tests" className="text-xs md:text-sm">Tests</TabsTrigger>
+            <TabsTrigger value="careers" className="text-xs md:text-sm">Careers</TabsTrigger>
+            <TabsTrigger value="settings" className="text-xs md:text-sm">Settings</TabsTrigger>
           </TabsList>
 
           {/* Overview Tab */}
-          <TabsContent value="overview" className="space-y-6">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <TabsContent value="overview" className="space-y-4 md:space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {/* Profile Stats */}
               <Card>
                 <CardHeader className="pb-3">
@@ -193,10 +193,10 @@ const Profile = () => {
             {/* RIASEC Profile Summary */}
             <Card>
               <CardHeader>
-                <CardTitle>Your Personality Profile</CardTitle>
+                <CardTitle className="text-lg md:text-xl">Your Personality Profile</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                   {Object.entries(sampleReport.vibe_scores).map(([key, value]) => {
                     const labels = {
                       R: 'Realistic',
