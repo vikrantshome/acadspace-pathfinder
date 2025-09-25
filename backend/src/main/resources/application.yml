@@ -97,8 +97,7 @@ spring:
   
   data:
     mongodb:
-      uri: ${MONGO_URI:mongodb://localhost:27017/naviksha_dev}
-  
+     uri: ${MONGO_URI:mongodb+srv://naviksha:naviksha@cluster0.si3upnh.mongodb.net/naviksha?retryWrites=true&w=majority}
   # Enable debug logging in development
 logging:
   level:
@@ -119,7 +118,7 @@ spring:
   
   data:
     mongodb:
-      uri: ${MONGO_URI:mongodb://localhost:27017/naviksha_test}
+     uri: ${MONGO_URI:mongodb+srv://naviksha:naviksha@cluster0.si3upnh.mongodb.net/naviksha?retryWrites=true&w=majority}
 
 # Test JWT with very short expiration
 jwt:
