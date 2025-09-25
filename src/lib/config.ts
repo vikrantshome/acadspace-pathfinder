@@ -3,11 +3,11 @@
 
 // Backend API Configuration
 export const API_CONFIG = {
-  BASE_URL: process.env.NODE_ENV === 'production' 
+  BASE_URL: process.env.NODE_ENV !== 'production' 
     ? 'https://acadspace-pathfinder.onrender.com/api'  // Replace with your production backend URL
     : 'http://localhost:4000/api',
   
-  HEALTH_CHECK_URL: process.env.NODE_ENV === 'production'
+  HEALTH_CHECK_URL: process.env.NODE_ENV !== 'production'
     ? 'https://acadspace-pathfinder.onrender.com/health'
     : 'http://localhost:4000/health',
     
