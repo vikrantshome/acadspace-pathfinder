@@ -4,6 +4,7 @@
 import { API_CONFIG } from './config';
 
 const API_BASE_URL = API_CONFIG.BASE_URL;
+const API_HEALTH_CHECK_URL = API_CONFIG.HEALTH_CHECK_URL;
 
 interface User {
   id: string;
@@ -197,7 +198,7 @@ class ApiService {
 
   // Health check
   async healthCheck(): Promise<any> {
-    const response = await fetch('http://localhost:4000/health');
+    const response = await fetch(`${API_HEALTH_CHECK_URL}`);
     return this.handleResponse<any>(response);
   }
 }
