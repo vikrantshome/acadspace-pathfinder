@@ -30,8 +30,8 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/components/AuthProvider';
-import { supabase } from '@/integrations/supabase/client';
 import uiMicrocopy from '@/data/ui_microcopy.json';
+import { apiService } from '@/lib/api';
 
 const Index = () => {
   const navigate = useNavigate();
@@ -39,41 +39,39 @@ const Index = () => {
   const [testProgress, setTestProgress] = useState({ vibematch: null, edustats: null });
   const [hasReport, setHasReport] = useState(false);
 
-  useEffect(() => {
-    if (user) {
-      fetchUserProgress();
-    }
-  }, [user]);
-
-  const fetchUserProgress = async () => {
+useEffect(() => {
+  if (!user) return;
+  (async () => {
     try {
-      // Check test sessions
-      const { data: sessions } = await supabase
-        .from('test_sessions')
-        .select('test_type, status')
-        .eq('user_id', user.id);
-
-      const vibematchSession = sessions?.find(s => s.test_type === 'vibematch');
-      const edustatsSession = sessions?.find(s => s.test_type === 'edustats');
+      // 1) Load progress for each assessment
+      const vibematch = await apiService.getProgress(user.id, 'vibematch');
+      const edustats  = await apiService.getProgress(user.id, 'edustats');
 
       setTestProgress({
-        vibematch: vibematchSession?.status || null,
-        edustats: edustatsSession?.status || null
+        vibematch: vibematch?.status ?? inferStatus(vibematch),
+        edustats: edustats?.status ?? inferStatus(edustats),
       });
 
-      // Check if report exists
-      const { data: report } = await supabase
-        .from('career_reports')
-        .select('id')
-        .eq('user_id', user.id)
-        .single();
-
-      setHasReport(!!report);
-    } catch (error) {
-      console.error('Error fetching user progress:', error);
+      // 2) Load latest report (demo fallback for now)
+      try {
+        const report = await apiService.getDemoReport();
+        setHasReport(!!report);
+      } catch (err) {
+        console.error('Failed to load demo report', err);
+        setHasReport(false);
+      }
+    } catch (e) {
+      console.error('Dashboard fetch error : '+e);
     }
-  };
+  })();
+}, [user]);
 
+
+function inferStatus(p?: { currentQuestionIndex?: number; answers?: any }) {
+  if (!p) return null;
+  // simple heuristic if your backend doesn't return a 'status' string
+  return 'in_progress'; // or compute based on currentQuestionIndex/questions length
+}
   const getTestStatus = (testType: 'vibematch' | 'edustats') => {
     const status = testProgress[testType];
     if (status === 'completed') return { label: 'Completed', variant: 'default' as const, icon: CheckCircle2 };

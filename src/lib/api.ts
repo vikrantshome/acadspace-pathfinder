@@ -52,12 +52,51 @@ class ApiService {
   }
 
   private async handleResponse<T>(response: Response): Promise<T> {
+    // Non-2xx → build useful error message
     if (!response.ok) {
-      const errorData = await response.json().catch(() => ({ message: 'Network error' }));
-      throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+      const raw = await response.text().catch(() => null);
+      let msg = `HTTP ${response.status}`;
+      if (raw) {
+        try {
+          const parsed = JSON.parse(raw);
+          msg = parsed?.message || parsed?.error || raw;
+        } catch {
+          msg = raw;
+        }
+      }
+      throw new Error(msg);
     }
-    return response.json();
+
+    // 204 No Content → return null as T
+    if (response.status === 204) {
+      // @ts-expect-error allow null for no-content
+      return null as T;
+    }
+
+    // If body is empty or not JSON, handle gracefully
+    const contentType = response.headers.get('content-type') || '';
+    const raw = await response.text().catch(() => '');
+    if (!raw) {
+      // empty body but OK status
+      // @ts-expect-error allow null/empty for no-body success
+      return null as T;
+    }
+
+    if (!contentType.includes('application/json')) {
+      // return raw text if you ever need it; otherwise null
+      // @ts-expect-error relaxing type for non-JSON responses
+      return raw as unknown as T;
+    }
+
+    try {
+      return JSON.parse(raw) as T;
+    } catch {
+      // Body said JSON but was empty/invalid
+      // @ts-expect-error relax type
+      return null as T;
+    }
   }
+
 
   // Authentication
   async register(email: string, password: string, name: string): Promise<AuthResponse> {
@@ -68,7 +107,7 @@ class ApiService {
     });
 
     const data = await this.handleResponse<AuthResponse>(response);
-    
+
     if (data.token) {
       this.token = data.token;
       localStorage.setItem('auth_token', data.token);
@@ -86,7 +125,7 @@ class ApiService {
     });
 
     const data = await this.handleResponse<AuthResponse>(response);
-    
+
     if (data.token) {
       this.token = data.token;
       localStorage.setItem('auth_token', data.token);
@@ -162,10 +201,10 @@ class ApiService {
   }
 
   async getProgress(userId: string, testId?: string): Promise<any> {
-    const url = testId 
+    const url = testId
       ? `${API_BASE_URL}/progress/${userId}?testId=${testId}`
       : `${API_BASE_URL}/progress/${userId}`;
-    
+
     const response = await fetch(url, {
       headers: this.getHeaders(),
     });
@@ -201,11 +240,11 @@ class ApiService {
       const response = await fetch(`${API_BASE_URL}/reports/user/${userId}`, {
         headers: this.getHeaders(),
       });
-      
+
       if (response.status === 404) {
         return []; // No reports found
       }
-      
+
       return this.handleResponse<any[]>(response);
     } catch (error: any) {
       if (error.message?.includes('404')) {
