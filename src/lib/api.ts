@@ -11,6 +11,11 @@ interface User {
   email: string;
   name: string;
   roles: string[];
+  // Profile fields
+  fullName?: string;
+  schoolName?: string;
+  grade?: number;
+  board?: string;
 }
 
 interface AuthResponse {
@@ -69,7 +74,6 @@ class ApiService {
 
     // 204 No Content → return null as T
     if (response.status === 204) {
-      // @ts-expect-error allow null for no-content
       return null as T;
     }
 
@@ -78,13 +82,11 @@ class ApiService {
     const raw = await response.text().catch(() => '');
     if (!raw) {
       // empty body but OK status
-      // @ts-expect-error allow null/empty for no-body success
       return null as T;
     }
 
     if (!contentType.includes('application/json')) {
       // return raw text if you ever need it; otherwise null
-      // @ts-expect-error relaxing type for non-JSON responses
       return raw as unknown as T;
     }
 
@@ -92,7 +94,6 @@ class ApiService {
       return JSON.parse(raw) as T;
     } catch {
       // Body said JSON but was empty/invalid
-      // @ts-expect-error relax type
       return null as T;
     }
   }
@@ -252,6 +253,18 @@ class ApiService {
       }
       throw error;
     }
+  }
+
+  // Profile management
+  async updateProfile(updates: Partial<User>): Promise<User> {
+    const response = await fetch(`${API_BASE_URL}/auth/profile`, {
+      method: 'PUT',
+      headers: this.getHeaders(),
+      body: JSON.stringify(updates),
+    });
+
+    const data = await this.handleResponse<AuthResponse>(response);
+    return data.user;
   }
 
   // Health check

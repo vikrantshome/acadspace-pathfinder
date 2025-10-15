@@ -35,6 +35,12 @@ public class User {
     @Builder.Default
     private boolean active = true;
     
+    // Profile fields
+    private String fullName;
+    private String schoolName;
+    private Integer grade;
+    private String board;
+    
     @CreatedDate
     private LocalDateTime createdAt;
     

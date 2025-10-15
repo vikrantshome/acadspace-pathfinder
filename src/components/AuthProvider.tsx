@@ -8,25 +8,14 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { apiService, type User } from '@/lib/api';
 import { toast } from 'sonner';
 
-interface Profile {
-  id: string;
-  user_id: string;
-  full_name: string | null;
-  school_name: string | null;
-  grade: number | null;
-  board: string | null;
-  created_at: string;
-  updated_at: string;
-}
-
 interface AuthContextType {
   user: User | null;
-  profile: Profile | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, name: string) => Promise<void>;
   signOut: () => Promise<void>;
-  updateProfile: (updates: Partial<Profile>) => Promise<void>;
+  updateProfile: (updates: Partial<User>) => Promise<void>;
+  refreshProfile: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -45,7 +34,6 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
 
   // Initialize auth state
@@ -106,19 +94,36 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
-  const updateProfile = async (updates: Partial<Profile>) => {
-    // TODO: Implement profile updates with Spring Boot backend
-    console.log('Profile update not yet implemented:', updates);
+  const updateProfile = async (updates: Partial<User>) => {
+    try {
+      const updatedUser = await apiService.updateProfile(updates);
+      setUser(updatedUser);
+      localStorage.setItem('user_data', JSON.stringify(updatedUser));
+      toast.success('Profile updated successfully');
+    } catch (error: any) {
+      toast.error(error.message || 'Failed to update profile');
+      throw error;
+    }
+  };
+
+  const refreshProfile = async () => {
+    try {
+      const userData = await apiService.getCurrentUser();
+      setUser(userData);
+      localStorage.setItem('user_data', JSON.stringify(userData));
+    } catch (error: any) {
+      console.error('Error refreshing profile:', error);
+    }
   };
 
   const value = {
     user,
-    profile,
     loading,
     signIn,
     signUp,
     signOut,
-    updateProfile
+    updateProfile,
+    refreshProfile
   };
 
   return (

@@ -27,20 +27,24 @@ import {
   Star
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '@/components/AuthProvider';
+import ProfileEditor from '@/components/ProfileEditor';
 import uiMicrocopy from '@/data/ui_microcopy.json';
 import sampleReport from '@/data/sample_report_Aisha.json';
 
 const Profile = () => {
   const navigate = useNavigate();
+  const { user } = useAuth();
 
-  // Mock user data - in real app this would come from authentication/database
+  // Use real user data from authentication
   const userData = {
-    name: sampleReport.studentName,
-    email: "aisha@example.com",
-    grade: sampleReport.grade,
-    board: sampleReport.board,
-    joinedDate: "2024-09-01",
-    testsCompleted: 2,
+    name: user?.fullName || user?.name || "User",
+    email: user?.email || "",
+    grade: user?.grade || null,
+    board: user?.board || null,
+    schoolName: user?.schoolName || null,
+    joinedDate: "2024-09-01", // This could be added to User model if needed
+    testsCompleted: 2, // This would come from test data
     totalTests: 3
   };
 
@@ -80,15 +84,12 @@ const Profile = () => {
                   {userData.name}'s Profile
                 </h1>
                 <p className="text-muted-foreground">
-                  Grade {userData.grade} • {userData.board} Board
+                  {userData.grade ? `Grade ${userData.grade}` : 'Grade not set'} • {userData.board || 'Board not set'}
                 </p>
               </div>
             </div>
             
-            <Button variant="outline" size="sm">
-              <Edit2 className="w-4 h-4 mr-2" />
-              Edit Profile
-            </Button>
+            <ProfileEditor />
           </div>
         </div>
       </div>
@@ -142,8 +143,14 @@ const Profile = () => {
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <GraduationCap className="w-4 h-4 text-muted-foreground" />
-                    <span>Grade {userData.grade}, {userData.board}</span>
+                    <span>{userData.grade ? `Grade ${userData.grade}` : 'Grade not set'}, {userData.board || 'Board not set'}</span>
                   </div>
+                  {userData.schoolName && (
+                    <div className="flex items-center gap-2 text-sm">
+                      <GraduationCap className="w-4 h-4 text-muted-foreground" />
+                      <span>{userData.schoolName}</span>
+                    </div>
+                  )}
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="w-4 h-4 text-muted-foreground" />
                     <span>Joined {new Date(userData.joinedDate).toLocaleDateString()}</span>

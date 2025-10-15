@@ -17,6 +17,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
+import java.util.Map;
 
 /**
  * Authentication Controller
@@ -80,7 +81,7 @@ public class AuthController {
             log.info("Login attempt for email: {}", request.getEmail());
             
             // Authenticate user
-            Authentication authentication = authenticationManager.authenticate(
+            authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
             );
             
@@ -126,6 +127,55 @@ public class AuthController {
             log.error("Error getting current user", e);
             return ResponseEntity.badRequest()
                 .body(new AuthResponse("", null, "Error retrieving user profile"));
+        }
+    }
+
+    @PutMapping("/profile")
+    @Operation(summary = "Update user profile", description = "Update user profile information")
+    public ResponseEntity<?> updateProfile(
+            @RequestBody Map<String, Object> updates,
+            Authentication authentication) {
+        try {
+            log.info("Profile update request received. Authentication: {}", authentication);
+            log.info("Authentication name: {}", authentication != null ? authentication.getName() : "null");
+            
+            if (authentication == null || !authentication.isAuthenticated()) {
+                log.warn("Authentication is null or not authenticated");
+                return ResponseEntity.status(401)
+                    .body(new AuthResponse("", null, "Authentication required"));
+            }
+            
+            String email = authentication.getName();
+            User user = userService.findByEmail(email);
+            
+            if (user == null) {
+                return ResponseEntity.badRequest()
+                    .body(new AuthResponse("", null, "User not found"));
+            }
+            
+            // Update profile fields
+            if (updates.containsKey("fullName")) {
+                user.setFullName((String) updates.get("fullName"));
+            }
+            if (updates.containsKey("schoolName")) {
+                user.setSchoolName((String) updates.get("schoolName"));
+            }
+            if (updates.containsKey("grade")) {
+                user.setGrade((Integer) updates.get("grade"));
+            }
+            if (updates.containsKey("board")) {
+                user.setBoard((String) updates.get("board"));
+            }
+            
+            User updatedUser = userService.save(user);
+            
+            log.info("Profile updated for user: {}", email);
+            return ResponseEntity.ok(new AuthResponse("", updatedUser, "Profile updated successfully"));
+            
+        } catch (Exception e) {
+            log.error("Error updating profile for user: {}", authentication.getName(), e);
+            return ResponseEntity.badRequest()
+                .body(new AuthResponse("", null, "Error updating profile: " + e.getMessage()));
         }
     }
 }

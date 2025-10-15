@@ -90,6 +90,7 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authz -> authz
                 // Public endpoints
+                .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Allow CORS preflight
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/reports/demo/**").permitAll()
                 .requestMatchers("/health").permitAll()
