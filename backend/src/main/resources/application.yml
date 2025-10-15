@@ -52,7 +52,7 @@ server:
 
 # JWT Configuration
 jwt:
-  secret: ${JWT_SECRET:naviksha-super-secret-key-change-in-production}
+  secret: ${JWT_SECRET:naviksha-super-secret-key-change-in-production-this-is-a-very-long-secret-key-for-jwt-hs512-algorithm-requirement}
   expiration: 86400000  # 24 hours in milliseconds
 
 # Admin Configuration

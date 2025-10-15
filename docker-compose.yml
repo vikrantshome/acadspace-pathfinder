@@ -57,7 +57,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: prod
       MONGO_URI: mongodb://admin:password@mongo:27017/naviksha?authSource=admin
-      JWT_SECRET: ${JWT_SECRET:-your-super-secret-jwt-key-change-in-production}
+      JWT_SECRET: ${JWT_SECRET:-naviksha-super-secret-key-change-in-production-this-is-a-very-long-secret-key-for-jwt-hs512-algorithm-requirement}
       ADMIN_SECRET: ${ADMIN_SECRET:-admin-secret-123}
       PORT: 4000
     ports:
