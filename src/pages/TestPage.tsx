@@ -122,7 +122,7 @@ const TestPage = () => {
     }
   }, [user?.id, testType, testName, questions.length]);
 
-  // Auto-save progress
+  // Auto-save progress when moving to next question
   useEffect(() => {
     const saveProgress = async () => {
       if (!user?.id || !testType || saving || answers.length === 0) return;
@@ -144,9 +144,12 @@ const TestPage = () => {
       }
     };
 
-    const timer = setTimeout(saveProgress, 2000);
-    return () => clearTimeout(timer);
-  }, [answers, currentQuestionIndex, user?.id, testType, saving]);
+    // Save when question index changes (user moves to next question)
+    if (answers.length > 0) {
+      const timer = setTimeout(saveProgress, 1000); // Small delay to avoid rapid saves
+      return () => clearTimeout(timer);
+    }
+  }, [currentQuestionIndex, user?.id, testType, saving]);
 
   // Load existing answer for current question (safe)
   useEffect(() => {
@@ -304,8 +307,9 @@ const TestPage = () => {
   };
 
   const handlePause = async () => {
-    if (!user?.id || !testType) return;
+    if (!user?.id || !testType || saving) return;
 
+    setSaving(true);
     try {
       // Save current progress
       const answersObject = answers.reduce<Record<string, any>>((acc, answer) => {
@@ -326,6 +330,13 @@ const TestPage = () => {
       navigate('/profile');
     } catch (error) {
       console.error('Error pausing test:', error);
+      toast({
+        title: 'Error saving progress',
+        description: 'Failed to save your progress. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -487,13 +498,6 @@ const TestPage = () => {
                       </Badge>
 
                       <div className="flex items-center gap-2">
-                        {saving && (
-                          <Badge variant="outline" className="text-xs flex items-center gap-1">
-                            <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                            Saving...
-                          </Badge>
-                        )}
-
                         {q?.required ? (
                           <Badge variant="destructive" className="text-xs">
                             {uiMicrocopy.tests.requiredLabel}

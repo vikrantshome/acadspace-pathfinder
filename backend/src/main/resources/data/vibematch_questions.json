@@ -40,5 +40,68 @@
     "type": "likert",
     "required": true,
     "riasec_map": {"E": 1}
+  },
+  {
+    "id": "v_07",
+    "text": "I prefer tasks that are routine and predictable rather than changing all the time.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"C": 1}
+  },
+  {
+    "id": "v_08",
+    "text": "I like working outdoors or with physical objects (gardening, sports coaching, craftwork).",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"R": 1}
+  },
+  {
+    "id": "v_09",
+    "text": "I enjoy understanding how things work: maps, charts, experiments, or coding logic.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"I": 1}
+  },
+  {
+    "id": "v_10",
+    "text": "I enjoy storytelling, acting, or working on presentations and media projects.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"A": 1}
+  },
+  {
+    "id": "v_11",
+    "text": "I like organizing work, making checklists, and ensuring deadlines are met.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"C": 1}
+  },
+  {
+    "id": "v_12",
+    "text": "I get energy from teaching others, volunteering, or helping friends solve problems.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"S": 1}
+  },
+  {
+    "id": "v_13",
+    "text": "I like taking calculated risks to try new things, such as launching small ventures or competitions.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"E": 1}
+  },
+  {
+    "id": "v_14",
+    "text": "I prefer activities where I can experiment, analyze results, and test my ideas.",
+    "type": "likert",
+    "required": true,
+    "riasec_map": {"I": 1}
+  },
+  {
+    "id": "v_15",
+    "text": "In 2–3 sentences, tell us one project or activity you enjoyed the most and why.",
+    "type": "subjective",
+    "required": false,
+    "riasec_map": {}
   }
 ]

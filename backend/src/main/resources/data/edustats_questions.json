@@ -18,6 +18,88 @@
     "text": "Please select the academic subjects you study now (tick all that apply).",
     "type": "multi",
     "required": true,
-    "options": ["Mathematics","Physics","Chemistry","Biology","Computer Science","English"]
+    "options": ["Mathematics","Physics","Chemistry","Biology","Computer Science","English","Hindi / Regional Language","History","Geography","Economics","Accountancy","Business Studies","Art / Design","Physical Education","Vocational / ITI"]
+  },
+  {
+    "id": "e_04",
+    "text": "Enter your most recent percentage/grade for each subject you selected.",
+    "type": "numeric-grid",
+    "required": true,
+    "instruction": "Enter 0–100 as a percentage. Leave blank if not applicable."
+  },
+  {
+    "id": "e_05",
+    "text": "How do you usually rank in your class?",
+    "type": "single",
+    "required": true,
+    "options": ["Top 1","Top 5","Top 10","Top 30%","Around average","Below average"]
+  },
+  {
+    "id": "e_06",
+    "text": "What extracurricular activities do you take part in? (choose all that apply)",
+    "type": "multi",
+    "required": false,
+    "options": ["Sports","Music / Singing","Dance","Theatre / Drama","Debate / MUN","Robotics / Coding","Painting / Art","Community Service","Entrepreneurship Club","Internships","None of the above"]
+  },
+  {
+    "id": "e_07",
+    "text": "What careers are your parents or close family members in? (choose all that apply or type 'Other')",
+    "type": "multi",
+    "required": false,
+    "options": ["IT / Software","Finance / Banking","Medicine / Healthcare","Business / Trade","Government / Bureaucracy","Education","Creative Arts","Skilled Trade","Agriculture","Other (text)"]
+  },
+  {
+    "id": "e_08",
+    "text": "Are there any careers considered 'good' / 'bad' / 'taboo' in your family or community? (choose all that apply and explain briefly)",
+    "type": "multi+text",
+    "required": false,
+    "options": ["Highly encouraged","Accepted","Not preferred","Taboo"]
+  },
+  {
+    "id": "e_09",
+    "text": "Would you consider vocational or skill-based training (like coding bootcamps, hospitality, or craftsmanship) as a good path?",
+    "type": "single",
+    "required": true,
+    "options": ["Yes, definitely","Maybe","No"]
+  },
+  {
+    "id": "e_10",
+    "text": "Do you want to study abroad one day?",
+    "type": "single",
+    "required": true,
+    "options": ["Yes","Maybe","No"]
+  },
+  {
+    "id": "e_11",
+    "text": "Which of these work styles do you prefer?",
+    "type": "single",
+    "required": false,
+    "options": ["Office / Lab work","Field work / On-site","Remote / Flexible","Hybrid","Depends on role"]
+  },
+  {
+    "id": "e_12",
+    "text": "In 2–3 sentences, what subjects do you enjoy most and why?",
+    "type": "subjective",
+    "required": false
+  },
+  {
+    "id": "e_13",
+    "text": "Is there any job you would absolutely NOT want? Why?",
+    "type": "subjective",
+    "required": false
+  },
+  {
+    "id": "e_14",
+    "text": "Are you comfortable with long study routes (like 5–7 years for medicine/architecture)?",
+    "type": "single",
+    "required": true,
+    "options": ["Yes","No","Maybe"]
+  },
+  {
+    "id": "e_15",
+    "text": "If money or parental support was not a constraint, what would you choose?",
+    "type": "single",
+    "required": false,
+    "options": ["Engineering","Medicine","Design / Art","Business / Finance","Law","Computer Science / AI","Start-up / Entrepreneurship","Other (text)"]
   }
 ]
