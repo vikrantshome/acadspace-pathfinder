@@ -22,4 +22,11 @@ public class StudentReport {
     private List<String> parents;
     private List<CareerBucket> top5Buckets;
     private String summaryParagraph;
+    
+    // AI Enhancement Fields
+    private Boolean aiEnhanced;
+    private String enhancedSummary;
+    private List<String> skillRecommendations;
+    private String careerTrajectoryInsights;
+    private Map<String, Object> detailedCareerInsights;
 }

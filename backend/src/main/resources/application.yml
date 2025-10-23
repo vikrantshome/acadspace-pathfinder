@@ -59,11 +59,19 @@ jwt:
 admin:
   secret: ${ADMIN_SECRET:}  # Optional admin secret for initial access
 
+# AI Service Configuration
+ai:
+  service:
+    url: ${AI_SERVICE_URL:http://ai-report-service:8000}
+    timeout: ${AI_SERVICE_TIMEOUT:30000}  # 30 seconds
+    enabled: ${AI_SERVICE_ENABLED:true}
+
 # Logging Configuration
 logging:
   level:
-    com.naviksha: INFO
-    org.springframework.security: WARN
+    com.naviksha: DEBUG
+    com.naviksha.security: DEBUG
+    org.springframework.security: DEBUG
     org.springframework.data.mongodb: WARN
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

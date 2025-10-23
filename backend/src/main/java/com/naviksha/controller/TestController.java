@@ -118,14 +118,8 @@ public class TestController {
             // Save report to database
             Report savedReport = reportService.saveReport(report, user.getId());
             
-            // Clear user's progress for this test
-            if ("combined".equals(testId)) {
-                // For combined submission, clear both test progress
-                progressService.resetProgress(user.getId(), "vibematch");
-                progressService.resetProgress(user.getId(), "edustats");
-            } else {
-                progressService.resetProgress(user.getId(), testId);
-            }
+            // Note: Progress is kept for user retake capability and completion tracking
+            // Progress is only cleared when user explicitly starts a new test
             
             log.info("Test submitted successfully. Report ID: {}", savedReport.getId());
             

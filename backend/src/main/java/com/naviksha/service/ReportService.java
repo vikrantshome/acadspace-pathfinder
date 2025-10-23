@@ -5,6 +5,7 @@ import com.naviksha.model.StudentReport;
 import com.naviksha.repository.ReportRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,5 +24,9 @@ public class ReportService {
     
     public Report getReport(String reportId) {
         return reportRepository.findById(reportId).orElse(null);
+    }
+    
+    public List<Report> getUserReports(String userId) {
+        return reportRepository.findByUserIdOrderByCreatedAtDesc(userId);
     }
 }

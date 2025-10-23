@@ -33,6 +33,9 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 public class ScoringService {
+    
+    @Autowired
+    private AIServiceClient aiServiceClient;
 
     @Autowired
     private CareerService careerService;
@@ -87,7 +90,7 @@ public class ScoringService {
         List<CareerBucket> topBuckets = groupIntoBuckets(careerMatches);
         
         // Build final report
-        return StudentReport.builder()
+        StudentReport report = StudentReport.builder()
             .studentName(submission.getUserName())
             .grade(submission.getGrade())
             .board(submission.getBoard())
@@ -98,6 +101,17 @@ public class ScoringService {
             .top5Buckets(topBuckets.subList(0, Math.min(5, topBuckets.size())))
             .summaryParagraph(generateSummaryParagraph(submission, topBuckets))
             .build();
+        
+        // Enhance report with AI service
+        try {
+            log.info("Enhancing report with AI service for student: {}", submission.getUserName());
+            StudentReport enhancedReport = aiServiceClient.enhanceReport(report);
+            log.info("Successfully enhanced report with AI service");
+            return enhancedReport;
+        } catch (Exception e) {
+            log.error("Failed to enhance report with AI service, returning original report: {}", e.getMessage());
+            return report;
+        }
     }
 
     /**

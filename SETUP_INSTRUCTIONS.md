@@ -247,4 +247,124 @@ If all checked ✅, you're ready to go! 🎉
 
 ---
 
+## 🤖 AI Microservice Setup (NEW!)
+
+The platform now includes an AI-powered report generation service that enhances career reports with personalized insights.
+
+### AI Service Quick Start
+
+#### Option A: Docker (Recommended)
+The AI service is automatically included when you run:
+```bash
+docker-compose up --build
+```
+
+#### Option B: Manual Setup
+```bash
+# 1. Navigate to AI service directory
+cd ai-report-service
+
+# 2. Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# 3. Install dependencies
+pip install -r requirements.txt
+
+# 4. Set up environment variables
+cp env.example .env
+# Edit .env with your API keys (see below)
+
+# 5. Start the AI service
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+### AI Service Configuration
+
+Create a `.env` file in the `ai-report-service` directory:
+
+```env
+# AI Service Configuration
+AI_SERVICE_URL=http://ai-report-service:8000
+AI_MODEL_API_KEY=your-api-key-here
+AI_MODEL_PROVIDER=groq  # or 'openai'
+AI_MODEL_NAME=llama3-8b-8192  # or 'gpt-3.5-turbo'
+PORT=8000
+HOST=0.0.0.0
+```
+
+#### AI Provider Options
+
+**Groq (Recommended - Cost Effective):**
+```env
+AI_MODEL_PROVIDER=groq
+AI_MODEL_NAME=llama3-8b-8192
+AI_MODEL_API_KEY=your-groq-api-key
+```
+
+**OpenAI:**
+```env
+AI_MODEL_PROVIDER=openai
+AI_MODEL_NAME=gpt-3.5-turbo
+AI_MODEL_API_KEY=your-openai-api-key
+```
+
+### Test AI Service Integration
+
+1. **Check AI Service Health:**
+```bash
+curl http://localhost:8000/health
+# Expected: {"status":"healthy","service":"ai-report-service"}
+```
+
+2. **Test Complete Flow with AI:**
+```bash
+# Login and get token
+curl -X POST http://localhost:4000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email": "demo@naviksha.ai", "password": "demo123"}'
+
+# Submit assessment (replace YOUR_TOKEN with actual token)
+curl -X POST http://localhost:4000/api/tests/combined/submit \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -d '{
+    "userName": "Test User",
+    "grade": 11,
+    "board": "CBSE",
+    "answers": {"v_01": 4, "v_02": 5, "v_03": 3, "v_04": 4, "v_05": 5},
+    "subjectScores": {"Mathematics": 85, "Physics": 80, "Chemistry": 75},
+    "extracurriculars": ["Coding", "Robotics"],
+    "parentCareers": ["IT / Software"]
+  }'
+```
+
+### AI Service Troubleshooting
+
+#### "AI service not responding"
+- Check if API key is correctly set in `.env` file
+- Verify AI service is running: `curl http://localhost:8000/health`
+- Check Docker logs: `docker-compose logs ai-report-service`
+
+#### "Backend can't connect to AI service"
+- Ensure AI service is running first
+- Check Docker network connectivity
+- Verify `AI_SERVICE_URL` in backend configuration
+
+#### "No AI enhancements in reports"
+- Check if AI service is enabled in backend configuration
+- Verify API key is valid and has sufficient credits
+- Check backend logs for AI service errors
+
+### AI Service Features
+
+The AI service provides:
+- **Personalized Career Summaries**: AI-generated insights based on personality and academic profile
+- **Skill Recommendations**: Targeted skill development suggestions
+- **Career Trajectory Insights**: Long-term career path guidance
+- **Detailed Explanations**: In-depth analysis of career matches
+- **Study Path Recommendations**: Academic roadmap for chosen careers
+
+---
+
 **Happy Career Exploring! 🚀**

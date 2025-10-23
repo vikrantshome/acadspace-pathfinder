@@ -1,5 +1,6 @@
 package com.naviksha.config;
 
+import com.naviksha.security.AdminSecretAuthenticationFilter;
 import com.naviksha.security.JwtAuthenticationEntryPoint;
 import com.naviksha.security.JwtAuthenticationFilter;
 import com.naviksha.service.UserDetailsServiceImpl;
@@ -50,6 +51,7 @@ public class SecurityConfig {
     private final UserDetailsServiceImpl userDetailsService;
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final AdminSecretAuthenticationFilter adminSecretAuthenticationFilter;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -109,6 +111,7 @@ public class SecurityConfig {
             );
 
         http.authenticationProvider(authenticationProvider());
+        http.addFilterBefore(adminSecretAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

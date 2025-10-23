@@ -272,6 +272,14 @@ class ApiService {
     const response = await fetch(`${API_HEALTH_CHECK_URL}`);
     return this.handleResponse<any>(response);
   }
+
+  // AI Service health check - through Java backend
+  async aiServiceHealthCheck(): Promise<any> {
+    const response = await fetch(`${API_BASE_URL}/ai-service/health`, {
+      headers: this.getHeaders(),
+    });
+    return this.handleResponse<any>(response);
+  }
 }
 
 export const apiService = new ApiService();

@@ -531,7 +531,8 @@ backend/src/main/java/com/naviksha/
 └── security/
     ├── JwtTokenProvider.java         # JWT token generation/validation
     ├── JwtAuthenticationFilter.java  # JWT filter for requests
-    └── JwtAuthenticationEntryPoint.java  # 401 handler
+    ├── JwtAuthenticationEntryPoint.java  # 401 handler
+    └── AdminSecretAuthenticationFilter.java  # Admin secret header authentication
 
 backend/src/main/resources/
 ├── application.yml                   # Spring Boot configuration
@@ -965,6 +966,14 @@ Get demo report (no authentication required).
 #### Admin
 
 All admin endpoints require `X-Admin-Secret` header or `ROLE_ADMIN`.
+
+**Admin Secret Authentication:**
+- Environment variable: `ADMIN_SECRET=<your_admin_secret>`  (configured in docker-compose.yml and .env.example)
+- Header: `X-Admin-Secret: <your_admin_secret>`
+- Allows admin operations without requiring user accounts with ROLE_ADMIN
+- Implemented via `AdminSecretAuthenticationFilter` in Spring Security chain
+- Configuration: `docker-compose.yml` uses `${ADMIN_SECRET:-<your_admin_secret>}` with fallback
+- Template: `.env.example` contains `ADMIN_SECRET for local development
 
 ##### POST /admin/seed
 
@@ -1836,6 +1845,8 @@ k6 run backend/k6-tests/load-test.js
 - Token expiration (24 hours for dev, 1 hour for prod)
 - Role-based access control (ROLE_USER, ROLE_ADMIN)
 - Protected endpoints with JWT filter
+- Admin secret authentication (X-Admin-Secret header)
+- AdminSecretAuthenticationFilter for admin operations
 
 ⚠️ **Recommendations**:
 - Implement refresh tokens

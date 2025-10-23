@@ -29,6 +29,9 @@ import {
 import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '@/components/AuthProvider';
 import { apiService } from '@/lib/api';
+import { AIFallbackNotice } from '@/components/AIFallbackNotice';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 const ReportViewer = () => {
   const navigate = useNavigate();
@@ -55,9 +58,33 @@ const ReportViewer = () => {
       setLoading(true);
 
       if (reportId) {
-        // Fetch specific report by ID
+        // Fetch specific report by ID from Java backend
         const report = await apiService.getReport(reportId);
+        console.log('Using report from database:', {
+          reportId: reportId,
+          aiEnhanced: report?.aiEnhanced,
+          hasEnhancedSummary: !!report?.enhancedSummary,
+          hasSkillRecommendations: !!report?.skillRecommendations
+        });
         setReportData(report);
+      } else if (user?.id) {
+        // Fetch user's latest report from Java backend
+        const reports = await apiService.getUserReports(user.id);
+        
+        if (reports && reports.length > 0) {
+          const latestReport = reports[0];
+          console.log('Using latest report from database:', {
+            reportId: latestReport.id,
+            aiEnhanced: latestReport.reportData?.aiEnhanced,
+            hasEnhancedSummary: !!latestReport.reportData?.enhancedSummary,
+            hasSkillRecommendations: !!latestReport.reportData?.skillRecommendations
+          });
+          setReportData(latestReport.reportData);
+        } else {
+          // Load demo report for now
+          const demoReport = await apiService.getDemoReport();
+          setReportData(demoReport);
+        }
       } else {
         // Load demo report for now
         const demoReport = await apiService.getDemoReport();
@@ -86,9 +113,277 @@ const ReportViewer = () => {
     C: { name: 'Conventional', description: 'Organized, detail-oriented, systematic' }
   };
 
-  const handleDownload = () => {
-    // TODO: Implement PDF generation
-    console.log('Downloading report...');
+  const handleDownload = async () => {
+    try {
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      let yPosition = 15;
+
+      // Helper function to add text with word wrap
+      const addText = (text: string, fontSize: number = 9, isBold: boolean = false, color: string = '#000000') => {
+        pdf.setFontSize(fontSize);
+        pdf.setFont('helvetica', isBold ? 'bold' : 'normal');
+        pdf.setTextColor(color);
+        
+        const lines = pdf.splitTextToSize(text, pageWidth - 30);
+        lines.forEach((line: string) => {
+          if (yPosition > pageHeight - 15) {
+            pdf.addPage();
+            yPosition = 15;
+          }
+          pdf.text(line, 15, yPosition);
+          yPosition += fontSize * 0.35;
+        });
+        yPosition += 1;
+      };
+
+      // Helper function for centered lines
+      const addCenteredLine = (isDark: boolean = false) => {
+        const space = isDark ? 6 : 5;
+        yPosition += space;
+        pdf.setDrawColor(isDark ? 0 : 200, isDark ? 0 : 200, isDark ? 0 : 200);
+        pdf.setLineWidth(isDark ? 0.5 : 0.2);
+        pdf.line(15, yPosition, pageWidth - 15, yPosition);
+        yPosition += space;
+      };
+
+      // Cover Page with Student Info
+      pdf.setFillColor(37, 99, 235);
+      pdf.rect(0, 0, pageWidth, 50, 'F');
+      
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFontSize(20);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text('Your Dreams to Reality Handbook', pageWidth / 2, 25, { align: 'center' });
+      
+      pdf.setFontSize(14);
+      pdf.text('Naviksha AI', pageWidth / 2, 35, { align: 'center' });
+      
+      pdf.setTextColor(0, 0, 0);
+      yPosition = 60;
+
+      // Student Information (no line before since it's right after banner)
+      addText('Student Information', 12, true, '#2563eb');
+      yPosition += 3;
+      addText(`Name: ${displayData.studentName}`, 10, true);
+      addText(`School: ${displayData.schoolName}`, 9);
+      addText(`Grade: ${displayData.grade} • Board: ${displayData.board}`, 9);
+      addText(`Report Generated: ${new Date().toLocaleDateString()}`, 8);
+
+      // Summary
+      addCenteredLine(true);
+      addText('Career Profile Summary', 12, true, '#2563eb');
+      yPosition += 2;
+      addText(displayData.enhancedSummary || displayData.summaryParagraph, 9);
+
+      // RIASEC Personality Profile
+      addCenteredLine(true);
+      addText('RIASEC Personality & Interest Profile', 12, true, '#2563eb');
+      yPosition += 2;
+      Object.entries(displayData.vibeScores || {}).forEach(([key, value], index) => {
+        const info = riasecLabels[key as keyof typeof riasecLabels];
+        const score = Number(value) || 0;
+        addText(`${info?.name || key}: ${score}%`, 9, true);
+        addText(info?.description || '', 8);
+        
+        if (index < Object.entries(displayData.vibeScores || {}).length - 1) {
+          addCenteredLine(false);
+        }
+      });
+
+      // Career Recommendations
+      addCenteredLine(true);
+      addText('Top 5 Career Recommendations', 12, true, '#2563eb');
+      yPosition += 2;
+      (displayData.top5_buckets || []).forEach((bucket, index) => {
+        addText(`${index + 1}. ${bucket.bucketName} (${bucket.bucketScore}% Match)`, 10, true);
+        
+        (bucket.topCareers || []).slice(0, 3).forEach((career, careerIndex) => {
+          addText(`   ${career.careerName} - ${career.matchScore}% Match`, 9, true);
+          addText(`   Confidence: ${career.confidence}`, 8);
+          
+          if (career.topReasons && career.topReasons.length > 0) {
+            addText('   Top Reasons:', 8, true);
+            career.topReasons.forEach((reason: string) => {
+              addText(`   • ${reason}`, 8);
+            });
+          }
+          
+          if (career.studyPath) {
+            addText(`   Study Path: ${career.studyPath}`, 8);
+          }
+          
+          if (career.first3Steps && career.first3Steps.length > 0) {
+            addText('   First 3 Steps:', 8, true);
+            career.first3Steps.forEach((step: string, stepIndex: number) => {
+              addText(`   ${stepIndex + 1}. ${step}`, 8);
+            });
+          }
+          yPosition += 2;
+          
+          if (careerIndex < (bucket.topCareers || []).slice(0, 3).length - 1) {
+            addCenteredLine(false);
+          }
+        });
+        
+        if (index < (displayData.top5_buckets || []).length - 1) {
+          addCenteredLine(false);
+        }
+      });
+
+      // AI Skills Recommendations
+      if (displayData.skillRecommendations && displayData.skillRecommendations.length > 0) {
+        addCenteredLine(true);
+        addText('AI-Recommended Skills to Develop', 12, true, '#2563eb');
+        yPosition += 2;
+        displayData.skillRecommendations.forEach((skill: string, index: number) => {
+          addText(`${index + 1}. ${skill}`, 9);
+          
+          if (index < displayData.skillRecommendations.length - 1) {
+            addCenteredLine(false);
+          }
+        });
+      }
+
+      // AI Career Trajectory
+      if (displayData.careerTrajectoryInsights) {
+        addCenteredLine(true);
+        addText('Career Trajectory Insights', 12, true, '#2563eb');
+        yPosition += 2;
+        addText(displayData.careerTrajectoryInsights, 9);
+      }
+
+      // AI Detailed Insights
+      if (displayData.detailedCareerInsights) {
+        addCenteredLine(true);
+        addText('Detailed Career Explanations', 12, true, '#2563eb');
+        yPosition += 2;
+        
+        if (displayData.detailedCareerInsights.explanations) {
+          const explanations = Object.entries(displayData.detailedCareerInsights.explanations);
+          explanations.forEach(([career, explanation], index) => {
+            addText(career, 9, true);
+            addText(String(explanation), 8);
+            yPosition += 2;
+            
+            if (index < explanations.length - 1) {
+              addCenteredLine(false);
+            }
+          });
+        }
+
+        if (displayData.detailedCareerInsights.studyPaths) {
+          addCenteredLine(true);
+          addText('Personalized Study Paths', 12, true, '#2563eb');
+          yPosition += 2;
+          const studyPaths = Object.entries(displayData.detailedCareerInsights.studyPaths);
+          studyPaths.forEach(([career, path], index) => {
+            addText(career, 9, true);
+            if (Array.isArray(path)) {
+              path.forEach((step: string, stepIndex: number) => {
+                addText(`${stepIndex + 1}. ${step}`, 8);
+              });
+            } else {
+              addText(String(path), 8);
+            }
+            yPosition += 2;
+            
+            if (index < studyPaths.length - 1) {
+              addCenteredLine(false);
+            }
+          });
+        }
+      }
+
+      // Next Steps
+      addCenteredLine(true);
+      addText('Recommended Next Steps', 12, true, '#2563eb');
+      yPosition += 2;
+      const nextSteps = [
+        {
+          title: "Explore Career Details",
+          description: "Research your top 3-5 career recommendations in depth. Understand daily responsibilities, growth opportunities, and industry trends.",
+          timeline: "This week"
+        },
+        {
+          title: "Educational Pathway Planning", 
+          description: "Research educational requirements, courses, and institutions that align with your career choices. Plan your subject selection for upcoming grades.",
+          timeline: "Next 2 weeks"
+        },
+        {
+          title: "Professional Networking",
+          description: "Connect with professionals in your areas of interest through LinkedIn, career events, or through family connections. Conduct informational interviews.",
+          timeline: "This month"
+        },
+        {
+          title: "Gain Experience",
+          description: "Look for internships, job shadowing opportunities, or volunteer work in your fields of interest. Consider joining relevant clubs or competitions.",
+          timeline: "Next 3 months"
+        },
+        {
+          title: "Skill Development",
+          description: "Identify and develop key skills relevant to your top career choices. Take online courses, attend workshops, or start personal projects.",
+          timeline: "Ongoing"
+        }
+      ];
+
+      nextSteps.forEach((step, index) => {
+        addText(`${index + 1}. ${step.title} (${step.timeline})`, 9, true);
+        addText(step.description, 8);
+        yPosition += 2;
+        
+        if (index < nextSteps.length - 1) {
+          addCenteredLine(false);
+        }
+      });
+
+      // Footer
+      const totalPages = pdf.getNumberOfPages();
+      for (let i = 1; i <= totalPages; i++) {
+        pdf.setPage(i);
+        pdf.setFontSize(7);
+        pdf.setTextColor(128, 128, 128);
+        pdf.text(`Page ${i} of ${totalPages}`, pageWidth - 25, pageHeight - 8);
+        pdf.text('Generated by Naviksha AI', 15, pageHeight - 8);
+      }
+
+      // Download the PDF
+      const studentName = displayData.studentName || 'Student';
+      const cleanName = studentName.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
+      const dateStr = new Date().toISOString().split('T')[0];
+      const fileName = `Career_Report_${cleanName}_${dateStr}.pdf`;
+      
+      console.log('Generating PDF with filename:', fileName);
+      
+      // Use blob method directly for reliable filename setting
+      const pdfBlob = pdf.output('blob');
+      const url = URL.createObjectURL(pdfBlob);
+      
+      // Create download link with proper filename
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      link.style.display = 'none';
+      
+      // Set additional attributes to ensure filename is respected
+      link.setAttribute('download', fileName);
+      link.setAttribute('type', 'application/pdf');
+      
+      // Add to DOM, click, and remove
+      document.body.appendChild(link);
+      
+      // Force click with a small delay to ensure proper setup
+      setTimeout(() => {
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }, 50);
+
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      alert('Failed to generate PDF. Please try again.');
+    }
   };
 
   const handleShare = () => {
@@ -130,15 +425,32 @@ const ReportViewer = () => {
     );
   }
 
+  // Debug: Log the reportData to see what we're getting
+  console.log('ReportViewer - reportData:', {
+    hasReportData: !!reportData,
+    aiEnhanced: reportData?.aiEnhanced,
+    hasEnhancedSummary: !!reportData?.enhancedSummary,
+    hasSkillRecommendations: !!reportData?.skillRecommendations,
+    hasCareerTrajectoryInsights: !!reportData?.careerTrajectoryInsights,
+    hasDetailedCareerInsights: !!reportData?.detailedCareerInsights,
+    fullReportData: reportData
+  });
+
   // Use dynamic data
   const displayData = {
     studentName: reportData?.studentName || user?.name || user?.email?.split('@')[0] || 'Student',
     schoolName: 'Your School',
     grade: reportData?.grade || 11,
     board: reportData?.board || 'CBSE',
-    vibe_scores: reportData?.vibeScores || reportData?.vibe_scores || {},
+    vibeScores: reportData?.vibeScores || reportData?.vibe_scores || {},
     top5_buckets: reportData?.top5Buckets || reportData?.top5_buckets || [],
-    summaryParagraph: reportData?.summaryParagraph || 'Your personalized career analysis is being generated based on your assessment responses.'
+    summaryParagraph: reportData?.summaryParagraph || 'Your personalized career analysis is being generated based on your assessment responses.',
+    // AI Enhancement fields
+    aiEnhanced: reportData?.aiEnhanced || false,
+    enhancedSummary: reportData?.enhancedSummary || null,
+    skillRecommendations: reportData?.skillRecommendations || [],
+    careerTrajectoryInsights: reportData?.careerTrajectoryInsights || null,
+    detailedCareerInsights: reportData?.detailedCareerInsights || null
   };
 
   return (
@@ -224,12 +536,22 @@ const ReportViewer = () => {
       </div>
 
       <div className="container mx-auto px-4 py-6 md:py-8 max-w-6xl">
+        {/* AI Fallback Notice */}
+        {displayData && !displayData.aiEnhanced && (
+          <AIFallbackNotice className="mb-6" />
+        )}
+
         {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
           {[
             { id: 'overview', label: 'Overview', icon: Target },
             { id: 'personality', label: 'Personality', icon: TrendingUp },
             { id: 'careers', label: 'Careers', icon: Briefcase },
+            ...(displayData.aiEnhanced ? [
+              { id: 'ai-skills', label: 'AI Skills', icon: Lightbulb },
+              { id: 'ai-trajectory', label: 'AI Trajectory', icon: TrendingUp },
+              { id: 'ai-insights', label: 'AI Insights', icon: Star }
+            ] : []),
             { id: 'next-steps', label: 'Next Steps', icon: ArrowRight }
           ].map(tab => (
             <Button
@@ -255,8 +577,15 @@ const ReportViewer = () => {
                   <div className="w-10 h-10 md:w-12 md:h-12 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
                     <Star className="w-5 h-5 md:w-6 md:h-6 text-primary-foreground" />
                   </div>
-                  <div className="min-w-0">
-                    <CardTitle className="text-lg md:text-xl">Career Profile Summary</CardTitle>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-2">
+                      <CardTitle className="text-lg md:text-xl">Career Profile Summary</CardTitle>
+                      {displayData.aiEnhanced && (
+                        <Badge variant="default" className="bg-green-600">
+                          🤖 AI Enhanced
+                        </Badge>
+                      )}
+                    </div>
                     <p className="text-sm md:text-base text-muted-foreground">
                       AI-Powered Career Analysis Results
                     </p>
@@ -265,7 +594,7 @@ const ReportViewer = () => {
               </CardHeader>
               <CardContent>
                 <p className="text-sm md:text-base lg:text-lg text-foreground leading-relaxed">
-                  {displayData.summaryParagraph}
+                  {displayData.enhancedSummary || displayData.summaryParagraph}
                 </p>
               </CardContent>
             </Card>
@@ -327,7 +656,7 @@ const ReportViewer = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-6">
-                {Object.entries(displayData.vibe_scores || {}).map(([key, value]) => {
+                {Object.entries(displayData.vibeScores || {}).map(([key, value]) => {
                   const info = riasecLabels[key as keyof typeof riasecLabels];
                   const score = Number(value) || 0;
                   return (
@@ -421,6 +750,132 @@ const ReportViewer = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        )}
+
+        {/* AI Skill Recommendations Tab */}
+        {activeTab === 'ai-skills' && displayData.skillRecommendations && displayData.skillRecommendations.length > 0 && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-5 h-5" />
+                AI-Recommended Skills to Develop
+                <Badge variant="default" className="bg-blue-600">
+                  🤖 AI Powered
+                </Badge>
+              </CardTitle>
+              <p className="text-muted-foreground">
+                Personalized skill development recommendations based on your profile
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4">
+                {displayData.skillRecommendations.map((skill, index) => (
+                  <div key={index} className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg">
+                    <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-bold flex-shrink-0">
+                      {index + 1}
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-foreground leading-relaxed">{skill}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* AI Career Trajectory Tab */}
+        {activeTab === 'ai-trajectory' && displayData.careerTrajectoryInsights && (
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="w-5 h-5" />
+                Career Trajectory Insights
+                <Badge variant="default" className="bg-purple-600">
+                  🤖 AI Powered
+                </Badge>
+              </CardTitle>
+              <p className="text-muted-foreground">
+                Long-term career path analysis and recommendations
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="prose prose-sm max-w-none">
+                <p className="text-foreground leading-relaxed whitespace-pre-line">
+                  {displayData.careerTrajectoryInsights}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* AI Detailed Insights Tab */}
+        {activeTab === 'ai-insights' && displayData.detailedCareerInsights && (
+          <div className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Lightbulb className="w-5 h-5" />
+                  Detailed Career Explanations
+                  <Badge variant="default" className="bg-orange-600">
+                    🤖 AI Powered
+                  </Badge>
+                </CardTitle>
+                <p className="text-muted-foreground">
+                  In-depth analysis of why each career recommendation fits your profile
+                </p>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {displayData.detailedCareerInsights.explanations && 
+                   Object.entries(displayData.detailedCareerInsights.explanations).map(([career, explanation]) => (
+                    <div key={career} className="p-4 border rounded-lg">
+                      <h4 className="font-semibold text-lg mb-2">{career}</h4>
+                      <p className="text-muted-foreground leading-relaxed">{String(explanation)}</p>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {displayData.detailedCareerInsights.studyPaths && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <BookOpen className="w-5 h-5" />
+                    Personalized Study Paths
+                    <Badge variant="default" className="bg-green-600">
+                      🤖 AI Powered
+                    </Badge>
+                  </CardTitle>
+                  <p className="text-muted-foreground">
+                    Customized educational roadmap for your career goals
+                  </p>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    {Object.entries(displayData.detailedCareerInsights.studyPaths).map(([career, path]) => (
+                      <div key={career} className="p-4 border rounded-lg">
+                        <h4 className="font-semibold text-lg mb-2">{career}</h4>
+                        <div className="space-y-2">
+                          {Array.isArray(path) ? path.map((step, index) => (
+                            <div key={index} className="flex items-start gap-2">
+                              <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-xs font-bold flex-shrink-0 mt-0.5">
+                                {index + 1}
+                              </div>
+                              <p className="text-muted-foreground">{String(step)}</p>
+                            </div>
+                          )) : (
+                            <p className="text-muted-foreground">{String(path)}</p>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </div>
         )}
 

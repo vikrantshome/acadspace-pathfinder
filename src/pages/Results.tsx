@@ -28,6 +28,7 @@ import { CareerCard } from '@/components/CareerCard';
 import uiMicrocopy from '@/data/ui_microcopy.json';
 import sampleReport from '@/data/sample_report_Aisha.json';
 import { toast } from '@/hooks/use-toast';
+import { AIFallbackNotice } from '@/components/AIFallbackNotice';
 
 const Results = () => {
   const navigate = useNavigate();
@@ -80,13 +81,18 @@ const Results = () => {
 
   const fetchReport = async () => {
     try {
-      // Try to fetch existing report from backend
-      // Note: Backend should have generated this when test was submitted
+      // Fetch user's reports from Java backend
       const reports = await apiService.getUserReports(user.id);
       
       if (reports && reports.length > 0) {
         // Get the most recent report
         const latestReport = reports[0];
+        console.log('Using report from database:', {
+          reportId: latestReport.id,
+          aiEnhanced: latestReport.reportData?.aiEnhanced,
+          hasEnhancedSummary: !!latestReport.reportData?.enhancedSummary,
+          hasSkillRecommendations: !!latestReport.reportData?.skillRecommendations
+        });
         setReportData(latestReport.reportData);
       } else {
         // If no report exists, show sample data as fallback
@@ -213,6 +219,11 @@ const Results = () => {
       </div>
 
       <div className="container mx-auto px-4 py-8 max-w-6xl">
+        {/* AI Fallback Notice */}
+        {reportData && !reportData.aiEnhanced && (
+          <AIFallbackNotice className="mb-6" />
+        )}
+
         {/* Summary Card */}
         <Card className="mb-8 gradient-card border-0 shadow-lg">
           <CardHeader>
@@ -220,8 +231,15 @@ const Results = () => {
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                 <Star className="w-6 h-6 text-primary-foreground" />
               </div>
-              <div>
-                <CardTitle className="text-xl">Career Profile Summary</CardTitle>
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <CardTitle className="text-xl">Career Profile Summary</CardTitle>
+                  {reportData.aiEnhanced && (
+                    <Badge variant="default" className="bg-green-600">
+                      🤖 AI Enhanced
+                    </Badge>
+                  )}
+                </div>
                 <p className="text-muted-foreground">
                   {reportData.studentName} • Grade {reportData.grade} • {reportData.board}
                 </p>
@@ -230,7 +248,7 @@ const Results = () => {
           </CardHeader>
           <CardContent>
             <p className="text-foreground leading-relaxed">
-              {reportData.summaryParagraph}
+              {reportData.enhancedSummary || reportData.summaryParagraph}
             </p>
           </CardContent>
         </Card>
@@ -245,7 +263,7 @@ const Results = () => {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {Object.entries(reportData?.vibe_scores || {}).map(([key, value]) => {
+              {Object.entries(reportData?.vibeScores || {}).map(([key, value]) => {
                 const labels = {
                   R: 'Realistic',
                   I: 'Investigative', 
@@ -309,6 +327,53 @@ const Results = () => {
             </Card>
           ))}
         </div>
+
+        {/* AI Skill Recommendations */}
+        {reportData.skillRecommendations && reportData.skillRecommendations.length > 0 && (
+          <Card className="mt-8">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Target className="w-5 h-5" />
+                AI-Recommended Skills to Develop
+                <Badge variant="default" className="bg-blue-600">
+                  🤖 AI Powered
+                </Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-3">
+                {reportData.skillRecommendations.map((skill, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 bg-muted/50 rounded-lg">
+                    <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-bold">
+                      {index + 1}
+                    </div>
+                    <p className="text-foreground">{skill}</p>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* AI Career Trajectory Insights */}
+        {reportData.careerTrajectoryInsights && (
+          <Card className="mt-8">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TrendingUp className="w-5 h-5" />
+                Career Trajectory Insights
+                <Badge variant="default" className="bg-purple-600">
+                  🤖 AI Powered
+                </Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-foreground leading-relaxed">
+                {reportData.careerTrajectoryInsights}
+              </p>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Next Steps */}
         <Card className="mt-8">

@@ -211,6 +211,7 @@ function inferStatus(p?: { currentQuestionIndex?: number; answers?: any }) {
             </div>
           </div>
 
+
           {/* Results Section */}
           {(testProgress.vibematch === 'completed' && testProgress.edustats === 'completed') && (
             <div className="mb-6 md:mb-8">

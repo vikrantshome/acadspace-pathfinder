@@ -5,7 +5,7 @@
  * and allows users to manage their account settings.
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -31,10 +31,44 @@ import { useAuth } from '@/components/AuthProvider';
 import ProfileEditor from '@/components/ProfileEditor';
 import uiMicrocopy from '@/data/ui_microcopy.json';
 import sampleReport from '@/data/sample_report_Aisha.json';
+import { apiService } from '@/lib/api';
 
 const Profile = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const [reportData, setReportData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchReportData = async () => {
+      try {
+        setLoading(true);
+        
+        if (user?.id) {
+          // Fetch user's reports from Java backend
+          const reports = await apiService.getUserReports(user.id);
+          
+          if (reports && reports.length > 0) {
+            // Get the most recent report
+            const latestReport = reports[0];
+            setReportData(latestReport.reportData);
+            return;
+          }
+        }
+        
+        // Fallback to demo report
+        const demoReport = await apiService.getDemoReport();
+        setReportData(demoReport);
+      } catch (error) {
+        console.error('Failed to fetch report data:', error);
+        setReportData(sampleReport);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchReportData();
+  }, [user]);
 
   // Use real user data from authentication
   const userData = {
@@ -200,11 +234,18 @@ const Profile = () => {
             {/* RIASEC Profile Summary */}
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg md:text-xl">Your Personality Profile</CardTitle>
+                <div className="flex items-center gap-2">
+                  <CardTitle className="text-lg md:text-xl">Your Personality Profile</CardTitle>
+                  {reportData?.aiEnhanced && (
+                    <Badge variant="default" className="bg-green-600">
+                      🤖 AI Enhanced
+                    </Badge>
+                  )}
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                  {Object.entries(sampleReport.vibe_scores).map(([key, value]) => {
+                  {Object.entries((reportData?.vibeScores || sampleReport.vibeScores)).map(([key, value]) => {
                     const labels = {
                       R: 'Realistic',
                       I: 'Investigative', 
@@ -280,14 +321,21 @@ const Profile = () => {
           <TabsContent value="careers" className="space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Star className="w-5 h-5" />
-                  Top Career Recommendations
-                </CardTitle>
+                <div className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2">
+                    <Star className="w-5 h-5" />
+                    Top Career Recommendations
+                  </CardTitle>
+                  {reportData?.aiEnhanced && (
+                    <Badge variant="default" className="bg-green-600">
+                      🤖 AI Enhanced
+                    </Badge>
+                  )}
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  {sampleReport.top5_buckets.slice(0, 3).map((bucket, index) => (
+                  {(reportData?.top5_buckets || sampleReport.top5_buckets).slice(0, 3).map((bucket, index) => (
                     <div key={index} className="p-4 border rounded-lg">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-semibold">{bucket.bucketName}</h4>
@@ -316,6 +364,53 @@ const Profile = () => {
                 </div>
               </CardContent>
             </Card>
+
+            {/* AI Skill Recommendations */}
+            {reportData?.skillRecommendations && reportData.skillRecommendations.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Target className="w-5 h-5" />
+                    AI-Recommended Skills to Develop
+                    <Badge variant="default" className="bg-blue-600">
+                      🤖 AI Powered
+                    </Badge>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid gap-3">
+                    {reportData.skillRecommendations.map((skill, index) => (
+                      <div key={index} className="flex items-start gap-3 p-3 bg-muted/50 rounded-lg">
+                        <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center text-primary-foreground text-sm font-bold">
+                          {index + 1}
+                        </div>
+                        <p className="text-foreground">{skill}</p>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+
+            {/* AI Career Trajectory Insights */}
+            {reportData?.careerTrajectoryInsights && (
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <TrendingUp className="w-5 h-5" />
+                    Career Trajectory Insights
+                    <Badge variant="default" className="bg-purple-600">
+                      🤖 AI Powered
+                    </Badge>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-foreground leading-relaxed">
+                    {reportData.careerTrajectoryInsights}
+                  </p>
+                </CardContent>
+              </Card>
+            )}
           </TabsContent>
 
           {/* Settings Tab */}
