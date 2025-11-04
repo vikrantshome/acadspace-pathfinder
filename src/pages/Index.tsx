@@ -35,7 +35,7 @@ import { apiService } from '@/lib/api';
 
 const Index = () => {
   const navigate = useNavigate();
-  const { user, profile, signOut } = useAuth();
+  const { user, signOut } = useAuth();
   const [testProgress, setTestProgress] = useState({ vibematch: null, edustats: null });
   const [hasReport, setHasReport] = useState(false);
 
@@ -100,7 +100,7 @@ function inferStatus(p?: { currentQuestionIndex?: number; answers?: any }) {
           <div className="container mx-auto px-4 py-6">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold">Welcome back, {profile?.full_name || user.email}!</h1>
+                <h1 className="text-2xl font-bold">Welcome back, {user?.fullName || user?.name || user.email}!</h1>
                 <p className="text-muted-foreground">Continue your career discovery journey</p>
               </div>
               <Button variant="ghost" onClick={signOut} className="flex items-center gap-2">

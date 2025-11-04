@@ -245,7 +245,7 @@ const Profile = () => {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                  {Object.entries((reportData?.vibeScores || sampleReport.vibeScores)).map(([key, value]) => {
+                  {Object.entries((reportData?.vibe_scores || sampleReport.vibe_scores)).map(([key, value]) => {
                     const labels = {
                       R: 'Realistic',
                       I: 'Investigative', 
@@ -259,9 +259,9 @@ const Profile = () => {
                       <div key={key} className="space-y-2">
                         <div className="flex justify-between items-center">
                           <span className="font-medium">{labels[key as keyof typeof labels]}</span>
-                          <Badge variant="secondary">{value}%</Badge>
+                          <Badge variant="secondary">{value as number}%</Badge>
                         </div>
-                        <Progress value={value} className="h-2" />
+                        <Progress value={value as number} className="h-2" />
                       </div>
                     );
                   })}
