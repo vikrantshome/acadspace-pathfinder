@@ -26,7 +26,8 @@ public class StudentReport {
     // AI Enhancement Fields
     private Boolean aiEnhanced;
     private String enhancedSummary;
-    private List<String> skillRecommendations;
+    private List<String> skillRecommendations; // Focused skill names
+    private List<Map<String, String>> detailedSkillRecommendations; // For grade < 8: [{skill_name, explanation}]
     private String careerTrajectoryInsights;
     private Map<String, Object> detailedCareerInsights;
 }

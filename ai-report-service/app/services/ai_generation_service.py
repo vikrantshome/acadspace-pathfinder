@@ -31,7 +31,21 @@ class AIGenerationService:
         Returns:
             Dictionary containing enhanced report data
         """
-        # Generate AI-enhanced report using structured outputs
+        # For students below 8th standard, focus on skills instead of careers
+        if profile.grade < 8:
+            # For grade < 8: return both focused skills (names) and detailed skills (with explanations)
+            focused_skills = self.generate_skill_recommendations(profile, career_matches)  # Simple skill names
+            detailed_skills = self.generate_detailed_skill_recommendations(profile, career_matches)  # Detailed explanations
+            
+            return {
+                "career_insights": self._get_minimal_career_insights(),  # Minimal/empty for grade < 8
+                "summary": self.generate_personalized_summary(profile, career_matches, top_buckets),
+                "skills": focused_skills,  # Simple skill names
+                "detailed_skills": detailed_skills,  # Detailed skill explanations
+                "trajectory": self.generate_skill_development_trajectory(profile, career_matches)
+            }
+        
+        # Generate AI-enhanced report using structured outputs for grade >= 8
         return {
             "career_insights": self.enhance_career_insights(career_matches, profile),
             "summary": self.generate_personalized_summary(profile, career_matches, top_buckets),
@@ -133,6 +147,44 @@ class AIGenerationService:
         if not career_matches:
             return f"{profile.name} — complete the assessment to get personalized career recommendations."
         
+        # For students below 8th standard, focus on skills in summary
+        if profile.grade < 8:
+            if self.ai_client:
+                try:
+                    profile_data = {
+                        'name': profile.name,
+                        'grade': profile.grade,
+                        'riasec_scores': profile.riasec_scores,
+                        'subject_scores': profile.subject_scores,
+                        'extracurriculars': profile.extracurriculars,
+                        'parent_careers': profile.parent_careers
+                    }
+                    
+                    # Extract skills-related data from career matches (without naming careers)
+                    career_matches_data = []
+                    for career in career_matches[:3]:  # Top 3 careers
+                        career_matches_data.append({
+                            'primary_subjects': career.primary_subjects,
+                            'riasec_profile': career.riasec_profile,
+                            'bucket': career.bucket
+                        })
+                    
+                    return self.ai_client.generate_skill_focused_summary(profile_data, career_matches_data)
+                    
+                except Exception as e:
+                    print(f"Error generating AI skill-focused summary: {e}")
+                    # Fallback to skill-focused summary
+            
+            # Fallback to skill-focused summary
+            top_career = career_matches[0]
+            primary_subjects = top_career.primary_subjects[:2] if top_career.primary_subjects else ['relevant subjects']
+            
+            return f"{profile.name} — you have great potential! Based on your interests and strengths, " \
+                   f"we recommend focusing on building foundational skills in {', '.join(primary_subjects)}. " \
+                   f"These skills will help you explore different areas and discover what you enjoy most. " \
+                   f"Keep learning and building your skills through projects and activities you find interesting."
+        
+        # Standard summary for grade >= 8
         if self.ai_client:
             try:
                 profile_data = {
@@ -234,6 +286,83 @@ class AIGenerationService:
         
         return skills[:5]  # Return top 5 skills
     
+    def generate_detailed_skill_recommendations(
+        self, 
+        profile: StudentProfile, 
+        career_matches: List[CareerMatch]
+    ) -> List[str]:
+        """
+        Generate detailed skill development recommendations for students below 8th standard
+        
+        Args:
+            profile: Student profile data
+            career_matches: List of career matches (used to extract skills, not shown to student)
+            
+        Returns:
+            List of detailed skill recommendations
+        """
+        if not career_matches:
+            return ["Complete the assessment to get skill recommendations."]
+        
+        if self.ai_client:
+            try:
+                profile_data = {
+                    'name': profile.name,
+                    'grade': profile.grade,
+                    'riasec_scores': profile.riasec_scores,
+                    'subject_scores': profile.subject_scores,
+                    'extracurriculars': profile.extracurriculars,
+                    'parent_careers': profile.parent_careers
+                }
+                
+                # Extract top 3-5 career matches to derive skills from
+                career_matches_data = []
+                for career in career_matches[:5]:  # Top 5 careers to extract skills from
+                    career_matches_data.append({
+                        'primary_subjects': career.primary_subjects,
+                        'riasec_profile': career.riasec_profile,
+                        'bucket': career.bucket,
+                        'first3_steps': career.first3_steps,
+                        'top_reasons': career.top_reasons
+                    })
+                
+                return self.ai_client.generate_detailed_skill_recommendations(profile_data, career_matches_data)
+                
+            except Exception as e:
+                print(f"Error generating AI detailed skill recommendations: {e}")
+                # Fallback to basic recommendations
+        
+        # Fallback to skill extraction from career matches
+        skills = []
+        
+        # Extract skills from top career matches
+        for career in career_matches[:5]:  # Top 5 careers
+            # Extract subject-related skills
+            for subject in career.primary_subjects:
+                skill_name = f"Build strong foundations in {subject}"
+                if skill_name not in skills:
+                    skills.append(skill_name)
+            
+            # Extract skills from first steps
+            for step in career.first3_steps[:2]:  # First 2 steps
+                if step and step not in skills:
+                    skills.append(step)
+        
+        return skills[:8]  # Return top 8 skills for grade < 8
+    
+    def _get_minimal_career_insights(self) -> EnhancedCareerInsights:
+        """
+        Return minimal/empty career insights for students below 8th standard
+        
+        Returns:
+            Minimal EnhancedCareerInsights
+        """
+        return EnhancedCareerInsights(
+            detailed_explanations={},
+            personalized_study_paths={},
+            confidence_explanations={}
+        )
+    
     def generate_career_trajectory(
         self, 
         profile: StudentProfile, 
@@ -251,6 +380,10 @@ class AIGenerationService:
         """
         if not career_matches:
             return "Complete the assessment to get career trajectory insights."
+        
+        # For students below 8th standard, use skill development trajectory
+        if profile.grade < 8:
+            return self.generate_skill_development_trajectory(profile, career_matches)
         
         if self.ai_client:
             try:
@@ -283,4 +416,59 @@ class AIGenerationService:
         return f"Your path to {top_career.career_name} could start with building a strong foundation " \
                f"in {', '.join(top_career.primary_subjects)} during {profile.grade}th grade, " \
                f"followed by pursuing relevant higher education and gaining practical experience."
+    
+    def generate_skill_development_trajectory(
+        self, 
+        profile: StudentProfile, 
+        career_matches: List[CareerMatch]
+    ) -> str:
+        """
+        Generate skill development trajectory insights for students below 8th standard
+        
+        Args:
+            profile: Student profile data
+            career_matches: List of career matches
+            
+        Returns:
+            Skill development trajectory insights string
+        """
+        if not career_matches:
+            return "Complete the assessment to get skill development insights."
+        
+        if self.ai_client:
+            try:
+                profile_data = {
+                    'name': profile.name,
+                    'grade': profile.grade,
+                    'riasec_scores': profile.riasec_scores,
+                    'subject_scores': profile.subject_scores,
+                    'extracurriculars': profile.extracurriculars,
+                    'parent_careers': profile.parent_careers
+                }
+                
+                # Extract skill-related data from career matches (without naming careers)
+                career_matches_data = []
+                for career in career_matches[:3]:  # Top 3 careers
+                    career_matches_data.append({
+                        'primary_subjects': career.primary_subjects,
+                        'riasec_profile': career.riasec_profile,
+                        'bucket': career.bucket,
+                        'first3_steps': career.first3_steps
+                    })
+                
+                return self.ai_client.generate_skill_development_trajectory(profile_data, career_matches_data)
+                
+            except Exception as e:
+                print(f"Error generating AI skill development trajectory: {e}")
+                # Fallback to basic trajectory
+        
+        # Fallback to basic skill development trajectory
+        top_career = career_matches[0]
+        primary_subjects = top_career.primary_subjects[:2] if top_career.primary_subjects else ['relevant subjects']
+        
+        return f"Your skill development journey can start now! Focus on building strong foundations " \
+               f"in {', '.join(primary_subjects)} during your current studies. " \
+               f"Engage in hands-on projects and activities that interest you. " \
+               f"As you progress, continue exploring different areas and building practical skills " \
+               f"through projects, experiments, and real-world experiences."
     

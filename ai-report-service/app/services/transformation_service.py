@@ -118,18 +118,82 @@ class TransformationService:
             # Start with original Java data structure
             enhanced_response = original_java_data.copy()
             
+            # Extract career insights safely (handles both EnhancedCareerInsights object and dict)
+            career_insights = ai_response.get("career_insights", {})
+            
+            # Handle EnhancedCareerInsights object or dict
+            if hasattr(career_insights, 'detailed_explanations'):
+                # It's an EnhancedCareerInsights object
+                explanations = career_insights.detailed_explanations if career_insights.detailed_explanations else {}
+                study_paths = career_insights.personalized_study_paths if career_insights.personalized_study_paths else {}
+                confidence_explanations = career_insights.confidence_explanations if career_insights.confidence_explanations else {}
+            elif isinstance(career_insights, dict):
+                # It's a dict
+                explanations = career_insights.get("detailed_explanations", {})
+                study_paths = career_insights.get("personalized_study_paths", {})
+                confidence_explanations = career_insights.get("confidence_explanations", {})
+            else:
+                # Fallback to empty dicts
+                explanations = {}
+                study_paths = {}
+                confidence_explanations = {}
+            
+            # Ensure all values are dicts (not None)
+            if explanations is None:
+                explanations = {}
+            if study_paths is None:
+                study_paths = {}
+            if confidence_explanations is None:
+                confidence_explanations = {}
+            
+            # Determine if this is grade < 8 (detailed skills) or grade >= 8 (simple skills)
+            grade = original_java_data.get("grade", 11)
+            is_grade_below_8 = grade < 8
+            
+            # Get skills from AI response
+            focused_skills = ai_response.get("skills", []) or []  # Simple skill names
+            detailed_skills = ai_response.get("detailed_skills", []) or []  # Detailed skill objects
+            
             # Add AI enhancements
             enhanced_response.update({
                 "aiEnhanced": True,
                 "enhancedSummary": ai_response.get("summary", ""),
-                "skillRecommendations": ai_response.get("skills", []),
                 "careerTrajectoryInsights": ai_response.get("trajectory", ""),
                 "detailedCareerInsights": {
-                    "explanations": ai_response.get("career_insights", {}).detailed_explanations if hasattr(ai_response.get("career_insights", {}), 'detailed_explanations') else {},
-                    "studyPaths": ai_response.get("career_insights", {}).personalized_study_paths if hasattr(ai_response.get("career_insights", {}), 'personalized_study_paths') else {},
-                    "confidenceExplanations": ai_response.get("career_insights", {}).confidence_explanations if hasattr(ai_response.get("career_insights", {}), 'confidence_explanations') else {}
+                    "explanations": explanations,
+                    "studyPaths": study_paths,
+                    "confidenceExplanations": confidence_explanations
                 }
             })
+            
+            # Handle skills based on grade
+            if is_grade_below_8:
+                # For grade < 8: return both focused skills (names) and detailed skills (with explanations)
+                # Convert detailed skills dict to list of strings for JSON compatibility
+                detailed_skills_list = []
+                for skill_item in detailed_skills:
+                    if isinstance(skill_item, dict):
+                        detailed_skills_list.append({
+                            "skill_name": skill_item.get("skill_name", ""),
+                            "explanation": skill_item.get("explanation", "")
+                        })
+                    else:
+                        # Fallback: if it's a string, try to parse it
+                        detailed_skills_list.append({
+                            "skill_name": "Skill",
+                            "explanation": str(skill_item)
+                        })
+                
+                enhanced_response.update({
+                    "skillRecommendations": focused_skills if focused_skills else [],  # Focused skill names
+                    "detailedSkillRecommendations": detailed_skills_list  # Detailed skill objects
+                })
+            else:
+                # For grade >= 8: simple skill names go to skillRecommendations
+                enhanced_response.update({
+                    "skillRecommendations": focused_skills if focused_skills else [],  # Simple skill names
+                    "detailedSkillRecommendations": []  # Empty for grade >= 8
+                })
             
             # Replace original summary with AI-enhanced summary
             if ai_response.get("summary"):

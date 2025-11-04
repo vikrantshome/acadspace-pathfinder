@@ -154,6 +154,7 @@ public class AIServiceClient {
                 .aiEnhanced((Boolean) aiResponse.get("aiEnhanced"))
                 .enhancedSummary((String) aiResponse.get("enhancedSummary"))
                 .skillRecommendations((List<String>) aiResponse.get("skillRecommendations"))
+                .detailedSkillRecommendations((List<Map<String, String>>) aiResponse.get("detailedSkillRecommendations"))
                 .careerTrajectoryInsights((String) aiResponse.get("careerTrajectoryInsights"))
                 .detailedCareerInsights((Map<String, Object>) aiResponse.get("detailedCareerInsights"))
                 .build();

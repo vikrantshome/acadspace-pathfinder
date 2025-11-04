@@ -85,7 +85,8 @@ export interface StudentReport {
   // AI Enhancement fields
   aiEnhanced?: boolean;
   enhancedSummary?: string;
-  skillRecommendations?: string[];
+  skillRecommendations?: string[]; // Focused skill names
+  detailedSkillRecommendations?: Array<{skill_name?: string; skillName?: string; explanation?: string}>; // For grade < 8: [{skill_name, explanation}]
   careerTrajectoryInsights?: string;
   detailedCareerInsights?: {
     career_name: string;
