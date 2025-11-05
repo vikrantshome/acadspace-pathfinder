@@ -1,0 +1,150 @@
+# render.yaml - blueprint for Acadspace Pathfinder (mono-repo)
+# GitHub repo: vikrantshome/acadspace-pathfinder
+# 
+# IMPORTANT: 
+# - DO NOT commit secrets to Git. Set all secret values in Render Dashboard after importing this blueprint.
+# - After deployment, update service URLs (AI_SERVICE_URL, PDF_SERVICE_URL, VITE_BACKEND_URL) with actual Render URLs.
+# - MongoDB: This blueprint assumes you'll use MongoDB Atlas. Set MONGO_URI in backend service env vars with your Atlas connection string.
+#
+# Deployment Order:
+# 1. Deploy AI and PDF services first (note their URLs)
+# 2. Deploy backend (set AI_SERVICE_URL and PDF_SERVICE_URL using URLs from step 1)
+# 3. Deploy frontend (set VITE_BACKEND_URL using backend URL)
+
+services:
+  # Backend Service - Spring Boot Java application
+  - type: web
+    name: naviksha-backend
+    repo: https://github.com/vikrantshome/acadspace-pathfinder
+    branch: main
+    env: docker
+    dockerfilePath: backend/Dockerfile
+    path: backend
+    plan: starter
+    region: oregon
+    buildCommand: ""
+    startCommand: ""
+    port: 4000
+    envVars:
+      # Server Configuration
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: PORT
+        value: "4000"
+      
+      # MongoDB Configuration (MongoDB Atlas)
+      - key: MONGO_URI
+        value: ${MONGO_URI}  # Set your MongoDB Atlas connection string in Render Dashboard (secret)
+      
+      # Security Configuration
+      - key: JWT_SECRET
+        value: ${JWT_SECRET}  # Set strong random secret in Render Dashboard (secret)
+      - key: ADMIN_SECRET
+        value: ${ADMIN_SECRET}  # Set admin secret in Render Dashboard (secret)
+      
+      # External Service URLs (update after deploying AI and PDF services)
+      - key: AI_SERVICE_URL
+        value: ${AI_SERVICE_URL}  # Set to AI service URL after deployment (e.g., https://ai-report-service.onrender.com)
+      - key: PDF_SERVICE_URL
+        value: ${PDF_SERVICE_URL}  # Set to PDF service URL after deployment (e.g., https://pdf-service.onrender.com)
+      
+      # AI Service Configuration
+      - key: AI_SERVICE_TIMEOUT
+        value: "300000"  # 5 minutes (300 seconds)
+      - key: AI_SERVICE_ENABLED
+        value: "true"
+      
+      # PDF Service Configuration
+      - key: PDF_SERVICE_TIMEOUT
+        value: "60000"  # 60 seconds
+      - key: PDF_SERVICE_ENABLED
+        value: "true"
+      
+      # Email Configuration
+      - key: EMAIL_ENABLED
+        value: "true"
+      - key: EMAIL_FROM
+        value: ${EMAIL_FROM}  # Set email address in Render Dashboard
+      - key: EMAIL_FROM_NAME
+        value: "Naviksha AI"
+      - key: MAIL_HOST
+        value: ${MAIL_HOST}  # e.g., smtp.gmail.com
+      - key: MAIL_PORT
+        value: ${MAIL_PORT}  # e.g., 587
+      - key: MAIL_USERNAME
+        value: ${MAIL_USERNAME}  # Set email username in Render Dashboard (secret)
+      - key: MAIL_PASSWORD
+        value: ${MAIL_PASSWORD}  # Set email app password in Render Dashboard (secret)
+
+  # AI Report Service - Python FastAPI application
+  - type: web
+    name: ai-report-service
+    repo: https://github.com/vikrantshome/acadspace-pathfinder
+    branch: main
+    env: docker
+    dockerfilePath: ai-report-service/Dockerfile
+    path: ai-report-service
+    plan: starter
+    region: oregon
+    port: 8000
+    envVars:
+      # Server Configuration
+      - key: PORT
+        value: "8000"
+      - key: HOST
+        value: "0.0.0.0"
+      
+      # AI Provider Configuration (OpenAI as default)
+      - key: AI_MODEL_PROVIDER
+        value: "openai"
+      - key: AI_MODEL_NAME
+        value: ${AI_MODEL_NAME}  # Set OpenAI model name (e.g., gpt-4o-mini, gpt-3.5-turbo, gpt-4o) in Render Dashboard
+      - key: OPENAI_API_KEY
+        value: ${OPENAI_API_KEY}  # Set OpenAI API key in Render Dashboard (secret)
+      
+      # Optional: Groq API Key (for backup/fallback)
+      - key: GROQ_API_KEY
+        value: ${GROQ_API_KEY}  # Optional: Set Groq API key if using Groq as backup (secret)
+
+  # PDF Service - Node.js Express application
+  - type: web
+    name: pdf-service
+    repo: https://github.com/vikrantshome/acadspace-pathfinder
+    branch: main
+    env: docker
+    dockerfilePath: pdf-service/Dockerfile
+    path: pdf-service
+    plan: starter
+    region: oregon
+    port: 5100
+    envVars:
+      - key: PORT
+        value: "5100"
+
+  # Frontend - Vite React Static Site
+  - type: static
+    name: naviksha-frontend
+    repo: https://github.com/vikrantshome/acadspace-pathfinder
+    branch: main
+    path: .
+    buildCommand: npm install && npm run build
+    publishPath: dist
+    envVars:
+      # Backend API URL (update after backend deployment)
+      - key: VITE_BACKEND_URL
+        value: ${VITE_BACKEND_URL}  # Set to backend URL after deployment (e.g., https://naviksha-backend.onrender.com)
+
+# Notes:
+# - MongoDB: This blueprint does NOT include a managed MongoDB database.
+#   You are using MongoDB Atlas. Set MONGO_URI in backend service with your Atlas connection string.
+# - All services are configured for Oregon region.
+# - After importing this blueprint:
+#   1. Fill in all secret values (marked as "secret" in comments) in Render Dashboard
+#   2. Deploy AI and PDF services first
+#   3. Update AI_SERVICE_URL and PDF_SERVICE_URL in backend service with actual URLs
+#   4. Deploy backend service
+#   5. Update VITE_BACKEND_URL in frontend service with backend URL
+#   6. Deploy frontend service
+# - For custom domains: Add them in each service's Settings → Custom Domains after deployment
+# - Render will automatically provision Let's Encrypt SSL certificates for custom domains
+
