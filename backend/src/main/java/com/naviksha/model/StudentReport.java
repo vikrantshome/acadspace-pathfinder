@@ -30,4 +30,5 @@ public class StudentReport {
     private List<Map<String, String>> detailedSkillRecommendations; // For grade < 8: [{skill_name, explanation}]
     private String careerTrajectoryInsights;
     private Map<String, Object> detailedCareerInsights;
+    private List<Map<String, String>> actionPlan; // Action plan items: [{title, desc, timeline}]
 }

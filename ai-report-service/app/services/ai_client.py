@@ -3,6 +3,7 @@ import json
 import time
 import logging
 from typing import Dict, List, Optional, Type, TypeVar, Union
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from openai import OpenAI, RateLimitError
 from groq import Groq
 from dotenv import load_dotenv
@@ -11,7 +12,8 @@ from ..models.structured_outputs import (
     CareerExplanation, StudyPathRecommendation, SkillRecommendation,
     CareerTrajectory, PersonalizedSummary, ConfidenceExplanation,
     CareerInsights, StructuredReportOutput, SimpleListOutput,
-    KeyValueOutput, MultiKeyValueOutput, OutputType
+    KeyValueOutput, MultiKeyValueOutput, OutputType,
+    ActionPlan, ActionPlanItem
 )
 
 T = TypeVar('T', bound=BaseModel)
@@ -44,13 +46,82 @@ class AIClient:
         else:
             raise ValueError(f"Unsupported AI provider: {self.provider}. Supported providers: openai, groq")
     
-    def generate_content(self, prompt: str, max_tokens: int = 500) -> str:
+    def _get_career_counselor_system_prompt(self, profile_data: Dict = None) -> str:
+        """
+        Generate the global system prompt for career counseling based on grade and name
+        
+        Args:
+            profile_data: Optional student profile data for grade and name context
+            
+        Returns:
+            System prompt string
+        """
+        grade = profile_data.get('grade', 0) if profile_data else 0
+        name = profile_data.get('name', 'Student') if profile_data else None
+        
+        # Grade-adaptive tone guidance
+        if grade < 8:
+            tone_guidance = """- Simple, warm, and exploratory. Short sentences. Focus on curiosity, not decisions. Avoid jargon."""
+            grade_context = f"Grade Level: {grade} (Primary/Middle School)"
+        elif grade <= 10:
+            tone_guidance = """- Clear, engaging, and supportive. Balance encouragement with realism. Use relatable examples."""
+            grade_context = f"Grade Level: {grade} (High School - Early Stage)"
+        else:
+            tone_guidance = """- Mature, direct, and insightful. Empathetic toward academic pressure. Deliver actionable advice."""
+            grade_context = f"Grade Level: {grade} (High School - Advanced Stage)"""
+        
+        name_context = f"\nStudent Name: {name}" if name else ""
+        
+        system_prompt = f"""You are an **expert career counselor for Indian students**.  
+Understand the Indian educational context (CBSE, ICSE, State Boards, competitive exams).
+
+{grade_context}{name_context}
+
+CORE PRINCIPLES:
+
+1. **PERSONALIZATION**
+   - Address the student by name.
+   - Always cite actual data (e.g., "Your 62% Artistic score shows…" not "You seem creative").
+   - Avoid generic language.
+
+2. **EMPATHY & EMOTION**
+   - Show care, understanding, and motivation.
+   - Recognize academic pressure.
+   - Celebrate strengths and reassure during uncertainties.
+
+3. **TONE & STYLE**
+   {tone_guidance}
+   - Conversational yet professional.
+   - Blend short impactful sentences with clear explanations.
+   - Always explain the *why* behind each insight.
+   - Use vivid, relatable examples and phrasing.
+
+4. **DEPTH & CONTEXT**
+   - Link the student's grade, subjects, and scores to their future.
+   - Explain *what*, *why*, and *how* of every recommendation.
+   - Reference Indian education realities (boards, entrance exams, etc.).
+
+5. **SPECIFICITY**
+   - Use real numbers, subject names, and activities.
+   - Provide actionable steps — not vague encouragement.
+
+6. **MENTOR APPROACH**
+   - Write as a caring mentor who knows them personally.
+   - Show excitement about their growth and potential.
+   - Balance realism with optimism.
+
+**Goal:** Every message should make the student feel understood, supported, and motivated about their future."""
+        
+        return system_prompt
+    
+    def generate_content(self, prompt: str, max_tokens: int = 500, profile_data: Dict = None) -> str:
         """
         Generate content using AI model with retry logic for rate limits
         
         Args:
             prompt: The prompt to send to the AI model
             max_tokens: Maximum tokens to generate
+            profile_data: Optional student profile data for system prompt context
             
         Returns:
             Generated content string
@@ -60,8 +131,18 @@ class AIClient:
         
         for attempt in range(max_retries):
             try:
+                # Log API request
+                logger.info(f"[{self.provider.upper()}] API Call - generate_content")
+                logger.info(f"  Model: {self.model_name}")
+                logger.info(f"  Max Tokens: {max_tokens}, Temperature: 0.7")
+                logger.info(f"  Prompt Preview: {prompt[:200]}..." if len(prompt) > 200 else f"  Prompt: {prompt}")
+                if attempt > 0:
+                    logger.info(f"  Retry Attempt: {attempt + 1}/{max_retries}")
+                
+                system_prompt = self._get_career_counselor_system_prompt(profile_data)
+                
                 messages = [
-                    {"role": "system", "content": "You are an expert career counselor and educational advisor. Provide detailed, personalized, and actionable career guidance based on student profiles and career assessment data."},
+                    {"role": "system", "content": system_prompt},
                     {"role": "user", "content": prompt}
                 ]
                 
@@ -72,7 +153,17 @@ class AIClient:
                     max_tokens=max_tokens,
                     temperature=0.7
                 )
-                return response.choices[0].message.content.strip()
+                
+                # Log the full response
+                response_content = response.choices[0].message.content.strip()
+                logger.info(f"[{self.provider.upper()}] API Response - generate_content")
+                logger.info(f"  Model: {self.model_name}")
+                logger.info(f"  Finish Reason: {response.choices[0].finish_reason}")
+                if hasattr(response, 'usage'):
+                    logger.info(f"  Token Usage - Prompt: {response.usage.prompt_tokens}, Completion: {response.usage.completion_tokens}, Total: {response.usage.total_tokens}")
+                logger.info(f"  Response Content: {response_content[:500]}..." if len(response_content) > 500 else f"  Response Content: {response_content}")
+                
+                return response_content
                 
             except RateLimitError as e:
                 if attempt < max_retries - 1:
@@ -110,7 +201,8 @@ class AIClient:
         prompt: str, 
         response_model: Type[T], 
         max_tokens: int = 1000,
-        temperature: float = 0.7
+        temperature: float = 0.7,
+        profile_data: Dict = None
     ) -> T:
         """
         Generate structured content using AI model with Pydantic validation and retry logic
@@ -120,6 +212,7 @@ class AIClient:
             response_model: Pydantic model class for structured output
             max_tokens: Maximum tokens to generate
             temperature: Temperature for response generation
+            profile_data: Optional student profile data for system prompt context
             
         Returns:
             Parsed Pydantic model instance
@@ -129,21 +222,25 @@ class AIClient:
         
         for attempt in range(max_retries):
             try:
-                system_prompt = f"""You are an expert career counselor and educational advisor. 
-                Provide detailed, personalized, and actionable career guidance based on student profiles and career assessment data.
-                
-                IMPORTANT: You must respond with valid JSON that matches the required schema exactly.
-                Do not include any text outside the JSON response.
-                Ensure all required fields are present and properly formatted."""
+                system_prompt = self._get_career_counselor_system_prompt(profile_data)
                 
                 messages = [
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": prompt}
                 ]
                 
+                # Log API request
+                logger.info(f"[{self.provider.upper()}] API Call - generate_structured_content")
+                logger.info(f"  Model: {self.model_name}")
+                logger.info(f"  Response Model: {response_model.__name__}")
+                logger.info(f"  Max Tokens: {max_tokens}, Temperature: {temperature}")
+                logger.info(f"  Prompt Preview: {prompt[:200]}..." if len(prompt) > 200 else f"  Prompt: {prompt}")
+                if attempt > 0:
+                    logger.info(f"  Retry Attempt: {attempt + 1}/{max_retries}")
+                
                 if self.provider == "openai":
-                    # OpenAI supports structured output with response_format
-                    response = self.client.chat.completions.create(
+                    # OpenAI Structured Outputs using parse() method
+                    completion = self.client.chat.completions.parse(
                         model=self.model_name,
                         messages=messages,
                         max_tokens=max_tokens,
@@ -151,13 +248,49 @@ class AIClient:
                         response_format=response_model
                     )
                     
-                    # Parse the structured response
-                    if hasattr(response.choices[0].message, 'parsed') and response.choices[0].message.parsed:
-                        return response.choices[0].message.parsed
+                    # Log the full response
+                    logger.info(f"[{self.provider.upper()}] API Response - generate_structured_content")
+                    logger.info(f"  Model: {self.model_name}")
+                    logger.info(f"  Response Model: {response_model.__name__}")
+                    logger.info(f"  Finish Reason: {completion.choices[0].finish_reason}")
+                    if hasattr(completion, 'usage'):
+                        logger.info(f"  Token Usage - Prompt: {completion.usage.prompt_tokens}, Completion: {completion.usage.completion_tokens}, Total: {completion.usage.total_tokens}")
+                    
+                    message = completion.choices[0].message
+                    
+                    # Log the parsed content if available
+                    if hasattr(message, 'parsed') and message.parsed:
+                        parsed_json = message.parsed.model_dump_json() if hasattr(message.parsed, 'model_dump_json') else str(message.parsed)
+                        logger.info(f"  Parsed Response: {parsed_json[:1000]}..." if len(parsed_json) > 1000 else f"  Parsed Response: {parsed_json}")
+                    elif hasattr(message, 'content') and message.content:
+                        logger.info(f"  Response Content: {message.content[:1000]}..." if len(message.content) > 1000 else f"  Response Content: {message.content}")
+                    
+                    # Handle refusals - when the model refuses to fulfill the request
+                    if hasattr(message, 'refusal') and message.refusal:
+                        logger.warning(f"OpenAI model refused the request: {message.refusal}")
+                        return self._get_fallback_structured_content(response_model, prompt)
+                    
+                    # Handle incomplete responses - when max_tokens is reached
+                    if completion.choices[0].finish_reason == "length":
+                        logger.warning("OpenAI response was incomplete due to token limit")
+                        return self._get_fallback_structured_content(response_model, prompt)
+                    
+                    # Handle content filter - when content was filtered
+                    if completion.choices[0].finish_reason == "content_filter":
+                        logger.warning("OpenAI response was filtered due to content policy")
+                        return self._get_fallback_structured_content(response_model, prompt)
+                    
+                    # Access the parsed structured output
+                    if hasattr(message, 'parsed') and message.parsed:
+                        return message.parsed
                     else:
-                        # Fallback to JSON parsing if parsed attribute not available
-                        content = response.choices[0].message.content.strip()
-                        return response_model.model_validate_json(content)
+                        # Fallback to JSON parsing if parsed attribute not available (shouldn't happen with parse())
+                        logger.warning("Parsed attribute not available, falling back to JSON parsing")
+                        if hasattr(message, 'content') and message.content:
+                            content = message.content.strip()
+                            return response_model.model_validate_json(content)
+                        else:
+                            raise ValueError("No parsed content available from OpenAI response")
                         
                 elif self.provider == "groq":
                     # Groq uses JSON mode for structured output
@@ -172,8 +305,14 @@ class AIClient:
                     # Parse JSON response into Pydantic model
                     content = response.choices[0].message.content.strip()
                     
-                    # Log the actual response for debugging
-                    logger.debug(f"Groq JSON response for {response_model.__name__}: {content[:200]}...")
+                    # Log the full response
+                    logger.info(f"[{self.provider.upper()}] API Response - generate_structured_content")
+                    logger.info(f"  Model: {self.model_name}")
+                    logger.info(f"  Response Model: {response_model.__name__}")
+                    logger.info(f"  Finish Reason: {response.choices[0].finish_reason}")
+                    if hasattr(response, 'usage'):
+                        logger.info(f"  Token Usage - Prompt: {response.usage.prompt_tokens}, Completion: {response.usage.completion_tokens}, Total: {response.usage.total_tokens}")
+                    logger.info(f"  Response Content: {content[:1000]}..." if len(content) > 1000 else f"  Response Content: {content}")
                     
                     # Try to parse and validate
                     try:
@@ -382,7 +521,8 @@ class AIClient:
             structured_skills = self.generate_structured_skill_recommendations(profile_data, career_matches)
             
             # For grade < 8, generate detailed skill descriptions
-            skill_recommendations = []
+            # Prepare all skill data upfront
+            skills_to_process = []
             for skill in structured_skills:
                 # Skip if skill name is generic (Skill 1, Skill 2, etc.)
                 if skill.skill_name.lower().startswith('skill') and skill.skill_name.lower().replace('skill', '').strip().isdigit():
@@ -395,31 +535,49 @@ class AIClient:
                     ]
                     skill.skill_name = skill_names[skill_index % len(skill_names)]
                 
-                # Generate detailed explanation for each skill
+                skills_to_process.append({
+                    'skill_name': skill.skill_name,
+                    'skill_data': {
+                        'category': skill.category,
+                        'importance_level': skill.importance_level,
+                        'development_method': skill.development_method,
+                        'timeline': skill.timeline
+                    }
+                })
+            
+            # Define helper function to generate detailed explanation for a single skill
+            def generate_skill_explanation(skill_info):
+                skill_name = skill_info['skill_name']
+                skill_data = skill_info['skill_data']
+                
                 try:
                     skill_explanation = self.generate_detailed_skill_explanation(
-                        skill.skill_name, 
+                        skill_name, 
                         profile_data, 
-                        {
-                            'category': skill.category,
-                            'importance_level': skill.importance_level,
-                            'development_method': skill.development_method,
-                            'timeline': skill.timeline
-                        }
+                        skill_data
                     )
                     
-                    # Store as dict with skill_name and explanation (separate for PDF display)
-                    skill_recommendations.append({
-                        "skill_name": skill.skill_name,
+                    return {
+                        "skill_name": skill_name,
                         "explanation": skill_explanation.strip()
-                    })
+                    }
                 except Exception as e:
-                    logger.error(f"Error generating detailed explanation for {skill.skill_name}: {e}")
+                    logger.error(f"Error generating detailed explanation for {skill_name}: {e}")
                     # Fallback to basic format with skill name and explanation
-                    skill_recommendations.append({
-                        "skill_name": skill.skill_name,
-                        "explanation": f"{skill.development_method} (Timeline: {skill.timeline})"
-                    })
+                    return {
+                        "skill_name": skill_name,
+                        "explanation": f"{skill_data.get('development_method', 'Practice regularly')} (Timeline: {skill_data.get('timeline', '6-12 months')})"
+                    }
+            
+            # Generate detailed explanations for all skills in parallel
+            skill_recommendations = []
+            with ThreadPoolExecutor(max_workers=8) as executor:
+                future_results = [executor.submit(generate_skill_explanation, skill_info) for skill_info in skills_to_process[:8]]
+                
+                # Compile results from all futures
+                for future in as_completed(future_results):
+                    result = future.result()
+                    skill_recommendations.append(result)
             
             return skill_recommendations[:8]  # Return top 8 detailed skills
             
@@ -448,44 +606,37 @@ class AIClient:
         try:
             grade = profile_data.get('grade', 0)
             
-            prompt = f"""
-            Generate a detailed, age-appropriate explanation for developing the skill: {skill_name}
+            prompt = f"""Create a short, age-appropriate explanation for the skill: {skill_name}
+
+STUDENT PROFILE:
+- Grade: {grade}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+- Extracurriculars: {profile_data.get('extracurriculars', [])}
+- RIASEC Scores: {profile_data.get('riasec_scores', {})}
+
+SKILL DETAILS:
+- Category: {skill_data.get('category', 'General')}
+- Importance Level: {skill_data.get('importance_level', 'Medium')}
+- Development Method: {skill_data.get('development_method', 'Practice regularly')}
+- Timeline: {skill_data.get('timeline', '6–12 months')}
+
+GUIDELINES:
+- Simple, fun, and motivating tone.
+- Never mention careers or job names.
+- Focus on *exploration and usefulness*.
+- Use this format:
+
+"{skill_name} helps you [simple explanation, 1–2 sentences].  
+This skill helps you [why it's useful].
+
+• [Fun or hands-on activity]  
+• [Practice suggestion]  
+• [Team or creative method]
+
+[1–2 line conclusion – encouraging and positive]"
+"""
             
-            Student Profile:
-            - Grade: {grade}
-            - Subject Scores: {profile_data.get('subject_scores', {})}
-            - Extracurriculars: {profile_data.get('extracurriculars', [])}
-            - RIASEC Scores: {profile_data.get('riasec_scores', {})}
-            
-            Skill Information:
-            - Category: {skill_data.get('category', 'General')}
-            - Importance Level: {skill_data.get('importance_level', 'Medium')}
-            - Development Method: {skill_data.get('development_method', 'Practice regularly')}
-            - Timeline: {skill_data.get('timeline', '6-12 months')}
-            
-            IMPORTANT GUIDELINES FOR GRADE < 8:
-            1. Use age-appropriate language (simple, encouraging, not technical jargon)
-            2. DO NOT mention specific careers or career names
-            3. Focus on why this skill is useful for exploring different areas
-            4. Provide practical, hands-on development methods
-            5. Make it exciting and engaging for young students
-            6. MUST be SHORT: 10 lines maximum total
-            7. Include 2-3 bullet points for key development methods
-            8. Use encouraging language like "This skill helps you explore..." instead of "This skill is needed for [career]"
-            9. Be concise and direct - no long explanations
-            
-            Format:
-            "{skill_name} is about [simple explanation in 1-2 sentences]. This skill helps you [why it's useful in 1 sentence].
-            
-            • [Development method 1 - practical and age-appropriate]
-            • [Development method 2 - fun and engaging]
-            • [Development method 3 - hands-on activity]
-            
-            [1-2 short concluding sentences - keep it brief!]"
-    
-            """
-            
-            return self.generate_content(prompt, max_tokens=200)
+            return self.generate_content(prompt, max_tokens=200, profile_data=profile_data)
             
         except Exception as e:
             print(f"Error generating detailed skill explanation: {e}")
@@ -570,48 +721,26 @@ class AIClient:
             # Get unique values
             primary_subjects = list(set(primary_subjects))[:3]
             
-            prompt = f"""
-            Generate an encouraging skill development trajectory for a student in grade {grade}.
+            prompt = f"""Generate a short, engaging **skill development trajectory** for a grade {grade} student.
+
+PROFILE:
+- Grade: {grade}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+- Extracurriculars: {profile_data.get('extracurriculars', [])}
+- RIASEC Scores: {profile_data.get('riasec_scores', {})}
+
+INTEREST AREAS:
+- Key Subjects: {', '.join(primary_subjects) or 'Various subjects'}
+- Personality Traits: {', '.join(riasec_profiles) or 'Various interests'}
+
+FORMAT (3–4 sentences max):
+1. Immediate focus — what to start exploring now.  
+2. Medium-term growth — next-level challenges or projects.  
+3. Long-term vision — how ongoing learning supports broader discovery.
+
+Use simple, motivational tone. Avoid career references."""
             
-            Student Profile:
-            - Grade: {grade}
-            - Subject Scores: {profile_data.get('subject_scores', {})}
-            - Extracurriculars: {profile_data.get('extracurriculars', [])}
-            - RIASEC Scores: {profile_data.get('riasec_scores', {})}
-            
-            Areas of Interest (based on assessment):
-            - Key Subjects: {', '.join(primary_subjects) if primary_subjects else 'Various subjects'}
-            - Personality Traits: {', '.join(riasec_profiles) if riasec_profiles else 'Various interests'}
-            
-            IMPORTANT GUIDELINES FOR GRADE < 8:
-            1. Use age-appropriate, encouraging language
-            2. DO NOT mention specific careers or career names
-            3. Focus on skill-building and exploration
-            4. Provide immediate, medium-term, and long-term skill development steps
-            5. Make it exciting and engaging
-            6. Emphasize exploration and discovery
-            7. Use language like "Your skill development journey" instead of "Your career path"
-            8. MUST be CONCISE: 12-15 lines maximum total
-            9. Less verbose, more on-point and actionable
-            10. Use short paragraphs (1-2 sentences each)
-            
-            Format (12-15 lines max):
-            "Your skill development journey can start now! 
-            
-            • [Immediate step 1]
-            • [Immediate step 2]
-            
-            [1-2 sentences about immediate focus]
-            
-            • [Medium-term goal 1]
-            • [Medium-term goal 2]
-            
-            [1-2 sentences about medium-term goals]
-            
-            [1-2 sentences about long-term pathway]"
-            """
-            
-            return self.generate_content(prompt, max_tokens=250)
+            return self.generate_content(prompt, max_tokens=250, profile_data=profile_data)
             
         except Exception as e:
             print(f"Error generating skill development trajectory: {e}")
@@ -677,39 +806,26 @@ class AIClient:
             }
             top_trait_descriptions = [trait_names.get(trait[0], trait[0]) for trait in top_traits if trait[1] > 20]
             
-            prompt = f"""
-            Generate an encouraging, skill-focused summary for {name}, a student in grade {grade}.
+            prompt = f"""Generate a short, encouraging skill-focused summary for {name}, a grade {grade} student.
+
+PROFILE:
+- Name: {name}
+- Grade: {grade}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+- Extracurriculars: {profile_data.get('extracurriculars', [])}
+- Top Traits: {', '.join(top_trait_descriptions) or 'various interests'}
+
+INTERESTS:
+- Key Subjects: {', '.join(primary_subjects) or 'Various subjects'}
+- Personality Traits: {', '.join(riasec_profiles) or 'Various interests'}
+
+Keep it **3–4 lines maximum**:
+"{name}, you have incredible potential! Your [strength] shows how ready you are to explore and grow.  
+Keep building skills like [skill1] and [skill2] through fun projects and teamwork.  
+Every step you take builds confidence — keep learning and enjoying the journey!"
+"""
             
-            Student Profile:
-            - Name: {name}
-            - Grade: {grade}
-            - Subject Scores: {profile_data.get('subject_scores', {})}
-            - Extracurriculars: {profile_data.get('extracurriculars', [])}
-            - Top Personality Traits: {', '.join(top_trait_descriptions) if top_trait_descriptions else 'various interests'}
-            
-            Areas of Interest (based on assessment, but DO NOT mention careers):
-            - Key Subjects: {', '.join(primary_subjects) if primary_subjects else 'Various subjects'}
-            - Personality Traits: {', '.join(riasec_profiles) if riasec_profiles else 'Various interests'}
-            
-            IMPORTANT GUIDELINES FOR GRADE < 8:
-            1. Use age-appropriate, encouraging language
-            2. DO NOT mention specific careers, career names, or job titles
-            3. Focus on skill development and exploration
-            4. Highlight their strengths and interests
-            5. Provide encouraging, actionable advice
-            6. Use language like "skills that help you explore" instead of "skills for [career]"
-            7. Make it exciting and engaging for young students
-            8. MUST be VERY SHORT: 3-4 lines maximum total
-            9. Be concise and direct - one short paragraph only
-            10. Focus on key strengths and skill-building encouragement
-            
-            Format (3-4 lines max):
-            "{name} — you have amazing potential! Your [strength] shows you're ready to explore and grow. 
-            Focus on building foundational skills like [skill1] and [skill2] through hands-on projects and activities. 
-            Keep exploring and learning — every skill you build opens new possibilities!"
-            """
-            
-            return self.generate_content(prompt, max_tokens=150)
+            return self.generate_content(prompt, max_tokens=150, profile_data=profile_data)
             
         except Exception as e:
             print(f"Error generating skill-focused summary: {e}")
@@ -749,58 +865,38 @@ class AIClient:
         top_reasons = career_data.get('top_reasons', [])
         reasons_text = "\n".join([f"- {reason}" for reason in top_reasons[:5]]) if top_reasons else "Strong overall alignment"
         
-        prompt = f"""
-        You are an expert career counselor analyzing why {career_name} is a strong career match for this student.
+        prompt = f"""You are an expert career counselor explaining why {career_name} is a strong match for this student.
+
+CAREER DATA
+- Match Score: {career_data.get('match_score', 0)}%
+- Required RIASEC Profile: {career_data.get('riasec_profile', 'N/A')}
+- Key Subjects: {', '.join(career_data.get('primary_subjects', [])) or 'N/A'}
+
+TOP MATCH REASONS:
+{reasons_text}
+
+TASK:
+Provide a **concise career explanation** focused solely on {career_name} itself. DO NOT repeat student details, RIASEC scores, or subject scores.
+
+Requirements:
+1. Focus ONLY on the career - what it involves, why it's interesting, what makes it a good fit
+2. Maximum 4-5 single sentence bullet points
+3. Be concise and direct - no verbose explanations
+4. Do not mention specific student data or scores
+5. Focus on career characteristics, opportunities, and fit
+
+Format the explanation as 3-4 bullet points, each a single sentence explaining an aspect of why {career_name} is a good match.
+
+Respond strictly in JSON with this schema:
+{{
+  "career_name": "{career_name}",
+  "explanation": "3-4 single sentence bullet points explaining the career match (no student data, no RIASEC scores, just career focus)",
+  "key_alignment_factors": ["Factor 1", "Factor 2", "Factor 3"],
+  "potential_challenges": ["Challenge 1", "Challenge 2"],
+  "confidence_level": "High" | "Medium" | "Low"
+}}"""
         
-        STUDENT PROFILE:
-        Name: {profile_data.get('name', 'Student')}
-        Grade: {profile_data.get('grade', 'N/A')}
-        
-        PERSONALITY PROFILE (RIASEC Scores):
-        {riasec_text}
-        
-        ACADEMIC PERFORMANCE (Subject Scores):
-        {subject_text}
-        
-        EXTRACURRICULAR ACTIVITIES:
-        {', '.join(profile_data.get('extracurriculars', [])) if profile_data.get('extracurriculars') else 'None listed'}
-        
-        PARENT/PARENTAL CAREER BACKGROUND:
-        {', '.join(profile_data.get('parent_careers', [])) if profile_data.get('parent_careers') else 'None listed'}
-        
-        CAREER MATCH DATA:
-        Match Score: {career_data.get('match_score', 0)}%
-        Required RIASEC Profile: {career_data.get('riasec_profile', 'N/A')}
-        Key Subjects: {', '.join(career_data.get('primary_subjects', [])) if career_data.get('primary_subjects') else 'N/A'}
-        
-        TOP REASONS FOR THIS MATCH:
-        {reasons_text}
-        
-        TASK:
-        Write a DETAILED, PERSONALIZED explanation (2-3 sentences minimum) that:
-        1. Specifically mentions the student's actual RIASEC scores and how they align with {career_name}
-        2. References their actual subject performance and how it relates to this career
-        3. Mentions specific extracurricular activities if relevant
-        4. Explains why the {career_data.get('match_score', 0)}% match score is justified
-        5. Connects the top reasons listed above to the student's actual profile
-        
-        DO NOT use generic phrases like "This career aligns well with your profile" or "based on your interests and academic performance."
-        Instead, provide SPECIFIC details like "Your 48% Investigative score indicates..." or "Your strong performance in Mathematics (88%) demonstrates..."
-        
-        
-        IMPORTANT: You must respond with a JSON object with EXACTLY these fields:
-        {{
-            "career_name": "{career_name}",
-            "explanation": "Your detailed explanation here (use bullets + short paragraphs, 3-4 sentences total, personalized with specific data)",
-            "key_alignment_factors": ["Factor 1", "Factor 2", "Factor 3"],
-            "potential_challenges": ["Challenge 1", "Challenge 2"],
-            "confidence_level": "High" or "Medium" or "Low"
-        }}
-        
-        The explanation field must be formatted with bullets and short paragraphs for readability.
-        """
-        
-        return self.generate_structured_content(prompt, CareerExplanation, max_tokens=600)
+        return self.generate_structured_content(prompt, CareerExplanation, max_tokens=300, profile_data=profile_data)
     
     def generate_structured_study_path(
         self, 
@@ -809,27 +905,27 @@ class AIClient:
         career_data: Dict
     ) -> StudyPathRecommendation:
         """Generate structured study path recommendation"""
-        prompt = f"""
-        Generate a personalized, structured study path for a student interested in {career_name}.
+        prompt = f"""Generate a structured, personalized **study path** for a student interested in {career_name}.
+
+STUDENT PROFILE:
+- Grade: {profile_data.get('grade', 'N/A')}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+- Extracurriculars: {profile_data.get('extracurriculars', [])}
+
+CAREER REQUIREMENTS:
+- Core Subjects: {career_data.get('primary_subjects', [])}
+- General Study Path: {career_data.get('study_path', [])}
+- Initial Steps: {career_data.get('first3_steps', [])}
+
+Provide a structured plan with:
+1. **Immediate Steps (current grade)** — 2–3 short, practical actions.
+2. **Medium-Term Goals (1–2 years)** — study milestones or certifications.
+3. **Long-Term Path (college & beyond)** — educational trajectory.
+4. **Priority Subjects** — highlight top 2–3.
+
+Be specific, motivational, and realistic."""
         
-        Student Profile:
-        - Grade: {profile_data.get('grade', 'N/A')}
-        - Current Subject Scores: {profile_data.get('subject_scores', {})}
-        - Extracurriculars: {profile_data.get('extracurriculars', [])}
-        
-        Career Requirements:
-        - Primary Subjects: {career_data.get('primary_subjects', [])}
-        - Study Path: {career_data.get('study_path', [])}
-        - First 3 Steps: {career_data.get('first3_steps', [])}
-        
-        Provide a structured study path with:
-        1. 2-3 immediate steps for current grade level
-        2. 2-3 medium-term goals (1-2 years)
-        3. 2-3 long-term educational path recommendations
-        4. Priority subjects to focus on
-        """
-        
-        return self.generate_structured_content(prompt, StudyPathRecommendation, max_tokens=500)
+        return self.generate_structured_content(prompt, StudyPathRecommendation, max_tokens=500, profile_data=profile_data)
     
     def generate_structured_skill_recommendations(
         self, 
@@ -859,83 +955,59 @@ class AIClient:
             
             primary_subjects = list(set(primary_subjects))[:5]
             
-            prompt = f"""
-            Generate 8 specific, structured skill development recommendations for a student in grade {grade}.
-            
-            Student Profile:
-            - Grade: {grade}
-            - Subject Scores: {profile_data.get('subject_scores', {})}
-            - Extracurriculars: {profile_data.get('extracurriculars', [])}
-            - RIASEC Scores: {profile_data.get('riasec_scores', {})}
-            
-            Areas of Interest (based on assessment, but DO NOT mention careers):
-            - Key Subjects: {', '.join(primary_subjects) if primary_subjects else 'Various subjects'}
-            - Personality Traits: {', '.join(riasec_profiles) if riasec_profiles else 'Various interests'}
-            
-            IMPORTANT GUIDELINES FOR GRADE < 8:
-            1. DO NOT mention specific careers, career names, or job titles
-            2. Focus on foundational skills that help explore different areas
-            3. Use age-appropriate language
-            4. Make skills exciting and engaging
-            5. Focus on skills that are appropriate for their current grade level
-            6. Provide practical, hands-on development methods
-            7. Use ACTUAL skill names (not "Skill 1", "Skill 2") - e.g., "Problem Solving", "Creative Thinking", "Communication Skills"
-            
-            For each skill recommendation, provide:
-            1. Skill name (ACTUAL skill name like "Problem Solving", "Communication Skills", "Mathematical Reasoning" - NOT "Skill 1")
-            2. Category (Technical, Soft Skills, or Academic)
-            3. Importance level (High, Medium, or Low)
-            4. Development method (age-appropriate, practical, as a descriptive text)
-            5. Timeline for development (appropriate for grade {grade})
-            
-            Focus on skills that are:
-            - Foundational and exploratory
-            - Appropriate for grade {grade}
-            - Actionable through hands-on activities
-            - Helpful for exploring different areas of interest
-            
-            IMPORTANT: Each skill must have a REAL name like:
-            - "Problem Solving Skills"
-            - "Communication and Presentation"
-            - "Creative Thinking"
-            - "Mathematical Reasoning"
-            - "Teamwork and Collaboration"
-            - "Critical Analysis"
-            - "Digital Literacy"
-            - "Research and Investigation"
-            
-            Generate 8 skills with ACTUAL skill names (not generic "Skill 1", "Skill 2").
-            """
+            prompt = f"""Generate 8 **specific skill recommendations** for a student in grade {grade}.
+
+STUDENT PROFILE:
+- Grade: {grade}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+- Extracurriculars: {profile_data.get('extracurriculars', [])}
+- RIASEC Scores: {profile_data.get('riasec_scores', {})}
+
+INTEREST AREAS:
+- Key Subjects: {', '.join(primary_subjects) or 'Various subjects'}
+- Personality Traits: {', '.join(riasec_profiles) or 'Various interests'}
+
+GUIDELINES:
+1. Do NOT mention careers or job titles.
+2. Use **simple, encouraging language**.
+3. Keep it short — **10 lines max total**.
+4. Make it fun, actionable, and curiosity-driven.
+5. Each skill includes:
+   - Skill Name
+   - Category (Technical | Soft Skills | Academic)
+   - Importance Level (Critical | High | Medium | Low)
+   - Development Method (2–3 concise bullet-style suggestions)
+   - Timeline (e.g., 3–6 months, 6–12 months)
+
+Ensure every skill feels attainable and exciting for the student."""
         else:
             # Standard prompt for grade >= 8
             top_careers = [career.get('career_name', '') for career in career_matches[:3]]
             
-            prompt = f"""
-            Generate 5 specific, structured skill development recommendations for this student.
-            
-            Student Profile:
-            - Grade: {grade}
-            - Subject Scores: {profile_data.get('subject_scores', {})}
-            - Extracurriculars: {profile_data.get('extracurriculars', [])}
-            
-            Top Career Interests: {', '.join(top_careers)}
-            
-            For each skill recommendation, provide:
-            1. Skill name
-            2. Category (Technical, Soft Skills, or Academic)
-            3. Importance level (Critical, High, Medium, or Low)
-            4. Development method
-            5. Timeline for development
-            
-            Focus on skills that are:
-            - Relevant to their career interests
-            - Appropriate for their current grade level
-            - Actionable and specific
-            """
+            prompt = f"""Generate 5 specific, actionable skill recommendations for this student.
+
+STUDENT PROFILE:
+- Grade: {grade}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+- Extracurriculars: {profile_data.get('extracurriculars', [])}
+
+Top Career Interests: {', '.join(top_careers)}
+
+Each skill should include:
+- Skill Name
+- Category (Technical | Soft Skills | Academic)
+- Importance Level (Critical | High | Medium | Low)
+- Development Method (specific actions)
+- Timeline (time to develop)
+
+Focus on:
+- Career relevance
+- Realistic for current grade
+- Concrete and measurable outcomes"""
         
         # Use SimpleListOutput for multiple skills, then convert
         max_tokens = 800 if grade < 8 else 600
-        response = self.generate_structured_content(prompt, SimpleListOutput, max_tokens=max_tokens)
+        response = self.generate_structured_content(prompt, SimpleListOutput, max_tokens=max_tokens, profile_data=profile_data)
         
         # Convert to individual skill recommendations
         num_skills = 8 if grade < 8 else 5
@@ -1001,31 +1073,37 @@ class AIClient:
             for bucket in top_buckets_data[:3]:
                 buckets_info += f"- {bucket.get('bucket_name', 'N/A')} ({bucket.get('bucket_score', 0)}% match)\n"
         
-        prompt = f"""
-        Write a comprehensive, structured personalized summary for this student.
+        prompt = f"""Write a **concise personalized summary** for this student (3-4 sentences maximum total).
+
+PROFILE:
+- Name: {profile_data.get('name', 'Student')}
+- Grade: {grade}
+- RIASEC Scores: {profile_data.get('riasec_scores', {})}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+- Extracurriculars: {profile_data.get('extracurriculars', [])}
+- Parent Careers: {profile_data.get('parent_careers', [])}
+
+TOP CAREER MATCH:
+- {top_career.get('career_name', 'N/A')} ({top_career.get('match_score', 0)}%)
+- Bucket: {top_career.get('bucket', 'N/A')}
+{buckets_info}
+
+STRUCTURE (3-4 sentences max total):
+1. Personality and strength insights (1 sentence).
+2. Explanation of top career fit (1 sentence).
+3. Actionable next steps (1 sentence).
+4. Motivational closing (1 sentence, optional).
+
+IMPORTANT: 
+- Keep each section to 1 sentence maximum
+- Total summary must be 3-4 sentences maximum
+- Be concise and direct - no verbose explanations
+- Focus on key insights only
+
+Respond in structured JSON:  
+`PersonalizedSummary` model."""
         
-        Student Profile:
-        - Name: {profile_data.get('name', 'Student')}
-        - Grade: {grade}
-        - RIASEC Scores: {profile_data.get('riasec_scores', {})}
-        - Subject Scores: {profile_data.get('subject_scores', {})}
-        - Extracurriculars: {profile_data.get('extracurriculars', [])}
-        - Parent Careers: {profile_data.get('parent_careers', [])}
-        
-        Top Career Matches:
-        - {top_career.get('career_name', 'N/A')} ({top_career.get('match_score', 0)}% match)
-        - Bucket: {top_career.get('bucket', 'N/A')}
-        {buckets_info}
-        
-        Provide a structured summary with:
-        1. Personality and strengths analysis
-        2. Explanation of top career fit
-        3. Actionable advice for development
-        4. Top 3-5 skills to develop
-        5. Motivational message
-        """
-        
-        return self.generate_structured_content(prompt, PersonalizedSummary, max_tokens=600)
+        return self.generate_structured_content(prompt, PersonalizedSummary, max_tokens=300, profile_data=profile_data)
     
     def generate_structured_confidence_explanation(
         self, 
@@ -1034,22 +1112,78 @@ class AIClient:
         profile_data: Dict
     ) -> ConfidenceExplanation:
         """Generate structured confidence explanation"""
-        prompt = f"""
-        Explain the confidence level ({match_score}%) for recommending {career_name} to this student.
+        prompt = f"""Explain the confidence level ({match_score}%) for recommending {career_name} to this student.
+
+PROFILE:
+- RIASEC Scores: {profile_data.get('riasec_scores', {})}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+- Extracurriculars: {profile_data.get('extracurriculars', [])}
+
+Include:
+1. Top 3 contributing factors.
+2. Strong alignment areas.
+3. Mismatch or improvement opportunities.
+4. Overall confidence assessment (High | Medium | Low).
+
+Respond strictly as structured JSON (`ConfidenceExplanation`)."""
         
-        Student Profile:
-        - RIASEC Scores: {profile_data.get('riasec_scores', {})}
-        - Subject Scores: {profile_data.get('subject_scores', {})}
-        - Extracurriculars: {profile_data.get('extracurriculars', [])}
+        return self.generate_structured_content(prompt, ConfidenceExplanation, max_tokens=300, profile_data=profile_data)
+    
+    def generate_structured_action_plan(
+        self,
+        profile_data: Dict,
+        career_matches: List[Dict],
+        top_buckets_data: List[Dict] = None
+    ) -> ActionPlan:
+        """Generate structured action plan with exactly 5 items"""
+        grade = profile_data.get('grade', 0)
+        is_grade_below_8 = grade < 8
         
-        Provide a structured confidence analysis with:
-        1. Top 3 primary factors contributing to this score
-        2. Areas where student shows strong alignment
-        3. Areas that could improve the match
-        4. Overall confidence assessment
-        """
+        if is_grade_below_8:
+            # For grade < 8: Focus on skills and exploration
+            prompt = f"""Generate exactly 5 action plan items for a grade {grade} student.
+
+PROFILE:
+- Name: {profile_data.get('name', 'Student')}
+- Grade: {grade}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+- Extracurriculars: {profile_data.get('extracurriculars', [])}
+
+Focus on: skill-building, exploration, and foundational learning.
+
+Each item must have:
+- title: Short action title (4-6 words)
+- description: What to do (1-2 sentences max)
+- timeline: When to do it (e.g., "This week", "This month", "Ongoing")
+
+Respond as structured JSON with exactly 5 items."""
+        else:
+            # For grade >= 8: Focus on career exploration
+            top_career = career_matches[0] if career_matches else None
+            buckets_info = ""
+            if top_buckets_data:
+                buckets_info = "\nTop Career Buckets:\n"
+                for bucket in top_buckets_data[:3]:
+                    buckets_info += f"- {bucket.get('bucket_name', 'N/A')}\n"
+            
+            prompt = f"""Generate exactly 5 action plan items for a grade {grade} student.
+
+PROFILE:
+- Name: {profile_data.get('name', 'Student')}
+- Grade: {grade}
+- Top Career: {top_career.get('career_name', 'N/A') if top_career else 'N/A'}
+{buckets_info}
+
+Focus on: career research, educational planning, skill development, and networking.
+
+Each item must have:
+- title: Short action title (4-6 words)
+- description: What to do (1-2 sentences max)
+- timeline: When to do it (e.g., "This week", "Next 2 weeks", "This month", "Ongoing")
+
+Respond as structured JSON with exactly 5 items."""
         
-        return self.generate_structured_content(prompt, ConfidenceExplanation, max_tokens=300)
+        return self.generate_structured_content(prompt, ActionPlan, max_tokens=400, profile_data=profile_data)
     
     def _get_fallback_content(self, prompt: str) -> str:
         """Get fallback content when AI generation fails"""
@@ -1153,6 +1287,39 @@ class AIClient:
                 return SimpleListOutput(
                     items=["Focus on core subjects", "Build practical skills", "Gain experience"]
                 )
+            elif response_model == ActionPlan:
+                # Default to grade >= 8 fallback (grade 11)
+                grade = 11
+                # Try to extract grade from prompt if available
+                if "grade" in prompt.lower():
+                    try:
+                        import re
+                        grade_match = re.search(r'grade\s+(\d+)', prompt.lower())
+                        if grade_match:
+                            grade = int(grade_match.group(1))
+                    except:
+                        pass
+                
+                if grade < 8:
+                    return ActionPlan(
+                        items=[
+                            ActionPlanItem(title="Build Foundational Skills", description="Focus on developing core skills in subjects you enjoy. Practice regularly through fun activities, games, and hands-on projects.", timeline="Ongoing"),
+                            ActionPlanItem(title="Explore Different Areas", description="Try different activities and hobbies to discover what interests you most. Join clubs, participate in school activities, and explore new subjects.", timeline="This month"),
+                            ActionPlanItem(title="Practice Through Projects", description="Engage in hands-on projects that interest you. Build things, create art, solve puzzles, or work on collaborative projects with friends.", timeline="Next 2 weeks"),
+                            ActionPlanItem(title="Develop Communication Skills", description="Practice expressing your ideas through writing, speaking, and presentations. Join debate clubs, writing groups, or drama activities.", timeline="This month"),
+                            ActionPlanItem(title="Keep Learning and Growing", description="Continue building your skills through practice and exploration. Every small step counts toward your growth and discovery.", timeline="Ongoing")
+                        ]
+                    )
+                else:
+                    return ActionPlan(
+                        items=[
+                            ActionPlanItem(title="Explore Career Details", description="Research your top 3-5 career recommendations in depth. Understand daily responsibilities, growth opportunities, and industry trends.", timeline="This week"),
+                            ActionPlanItem(title="Educational Pathway Planning", description="Research educational requirements, courses, and institutions that align with your career choices. Plan your subject selection for upcoming grades.", timeline="Next 2 weeks"),
+                            ActionPlanItem(title="Professional Networking", description="Connect with professionals in your areas of interest through LinkedIn, career events, or through family connections. Conduct informational interviews.", timeline="This month"),
+                            ActionPlanItem(title="Gain Experience", description="Look for internships, job shadowing opportunities, or volunteer work in your fields of interest. Consider joining relevant clubs or competitions.", timeline="Next 3 months"),
+                            ActionPlanItem(title="Skill Development", description="Identify and develop key skills relevant to your top career choices. Take online courses, attend workshops, or start personal projects.", timeline="Ongoing")
+                        ]
+                    )
             else:
                 # Generic fallback - try to create with minimal required fields
                 return response_model()

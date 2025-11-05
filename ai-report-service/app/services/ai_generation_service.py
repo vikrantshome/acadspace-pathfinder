@@ -1,4 +1,5 @@
 from typing import Dict, List
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from ..models import StudentProfile, CareerMatch, CareerBucket, EnhancedCareerInsights
 from .ai_client import AIClient
 
@@ -33,25 +34,41 @@ class AIGenerationService:
         """
         # For students below 8th standard, focus on skills instead of careers
         if profile.grade < 8:
-            # For grade < 8: return both focused skills (names) and detailed skills (with explanations)
-            focused_skills = self.generate_skill_recommendations(profile, career_matches)  # Simple skill names
-            detailed_skills = self.generate_detailed_skill_recommendations(profile, career_matches)  # Detailed explanations
-            
-            return {
-                "career_insights": self._get_minimal_career_insights(),  # Minimal/empty for grade < 8
-                "summary": self.generate_personalized_summary(profile, career_matches, top_buckets),
-                "skills": focused_skills,  # Simple skill names
-                "detailed_skills": detailed_skills,  # Detailed skill explanations
-                "trajectory": self.generate_skill_development_trajectory(profile, career_matches)
-            }
+            # Run all AI calls in parallel for grade < 8
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                future_focused_skills = executor.submit(self.generate_skill_recommendations, profile, career_matches)
+                future_detailed_skills = executor.submit(self.generate_detailed_skill_recommendations, profile, career_matches)
+                future_summary = executor.submit(self.generate_personalized_summary, profile, career_matches, top_buckets)
+                future_trajectory = executor.submit(self.generate_skill_development_trajectory, profile, career_matches)
+                future_action_plan = executor.submit(self.generate_action_plan, profile, career_matches, top_buckets)
+                
+                # Wait for all futures to complete and compile results
+                return {
+                    "career_insights": self._get_minimal_career_insights(),  # Minimal/empty for grade < 8
+                    "summary": future_summary.result(),
+                    "skills": future_focused_skills.result(),  # Simple skill names
+                    "detailed_skills": future_detailed_skills.result(),  # Detailed skill explanations
+                    "trajectory": future_trajectory.result(),
+                    "actionPlan": future_action_plan.result()
+                }
         
         # Generate AI-enhanced report using structured outputs for grade >= 8
-        return {
-            "career_insights": self.enhance_career_insights(career_matches, profile),
-            "summary": self.generate_personalized_summary(profile, career_matches, top_buckets),
-            "skills": self.generate_skill_recommendations(profile, career_matches),
-            "trajectory": self.generate_career_trajectory(profile, career_matches)
-        }
+        # Run all AI calls in parallel
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            future_career_insights = executor.submit(self.enhance_career_insights, career_matches, profile)
+            future_summary = executor.submit(self.generate_personalized_summary, profile, career_matches, top_buckets)
+            future_skills = executor.submit(self.generate_skill_recommendations, profile, career_matches)
+            future_trajectory = executor.submit(self.generate_career_trajectory, profile, career_matches)
+            future_action_plan = executor.submit(self.generate_action_plan, profile, career_matches, top_buckets)
+            
+            # Wait for all futures to complete and compile results
+            return {
+                "career_insights": future_career_insights.result(),
+                "summary": future_summary.result(),
+                "skills": future_skills.result(),
+                "trajectory": future_trajectory.result(),
+                "actionPlan": future_action_plan.result()
+            }
     
     def enhance_career_insights(self, career_matches: List[CareerMatch], profile: StudentProfile = None) -> EnhancedCareerInsights:
         """
@@ -68,51 +85,10 @@ class AIGenerationService:
         personalized_study_paths = {}
         confidence_explanations = {}
         
-        for career in career_matches[:5]:  # Top 5 careers
-            career_name = career.career_name
-            
-            if self.ai_client and profile:
-                # Use AI to generate content
-                try:
-                    profile_data = {
-                        'name': profile.name,
-                        'grade': profile.grade,
-                        'riasec_scores': profile.riasec_scores,
-                        'subject_scores': profile.subject_scores,
-                        'extracurriculars': profile.extracurriculars,
-                        'parent_careers': profile.parent_careers
-                    }
-                    
-                    career_data = {
-                        'match_score': career.match_score,
-                        'riasec_profile': career.riasec_profile,
-                        'primary_subjects': career.primary_subjects,
-                        'top_reasons': career.top_reasons,
-                        'study_path': career.study_path,
-                        'first3_steps': career.first3_steps
-                    }
-                    
-                    # Generate AI content
-                    detailed_explanations[career_name] = self.ai_client.generate_career_explanation(
-                        career_name, profile_data, career_data
-                    )
-                    
-                    personalized_study_paths[career_name] = self.ai_client.generate_study_path(
-                        career_name, profile_data, career_data
-                    )
-                    
-                    confidence_explanations[career_name] = self.ai_client.generate_confidence_explanation(
-                        career_name, career.match_score, profile_data
-                    )
-                    
-                except Exception as e:
-                    print(f"Error generating AI content for {career_name}: {e}")
-                    # Fallback to placeholder content
-                    detailed_explanations[career_name] = f"Based on your profile, {career_name} is a strong match due to your analytical skills and relevant background."
-                    personalized_study_paths[career_name] = career.first3_steps[:3]
-                    confidence_explanations[career_name] = f"High confidence ({career.match_score}%) due to strong alignment in your profile."
-            else:
-                # Fallback to placeholder content
+        if not self.ai_client or not profile:
+            # Fallback to placeholder content for all careers
+            for career in career_matches[:5]:  # Top 5 careers
+                career_name = career.career_name
                 detailed_explanations[career_name] = f"Based on your profile, {career_name} is a strong match due to your analytical skills and relevant background."
                 personalized_study_paths[career_name] = [
                     f"Focus on {career.primary_subjects[0] if career.primary_subjects else 'relevant subjects'} in your current studies",
@@ -120,6 +96,85 @@ class AIGenerationService:
                     f"Consider {career.study_path[0] if career.study_path else 'higher education'} for advanced learning"
                 ]
                 confidence_explanations[career_name] = f"High confidence ({career.match_score}%) due to strong alignment in your profile."
+            return EnhancedCareerInsights(
+                detailed_explanations=detailed_explanations,
+                personalized_study_paths=personalized_study_paths,
+                confidence_explanations=confidence_explanations
+            )
+        
+        # Prepare profile and career data
+        profile_data = {
+            'name': profile.name,
+            'grade': profile.grade,
+            'riasec_scores': profile.riasec_scores,
+            'subject_scores': profile.subject_scores,
+            'extracurriculars': profile.extracurriculars,
+            'parent_careers': profile.parent_careers
+        }
+        
+        # Prepare all career data upfront
+        career_data_list = []
+        for career in career_matches[:5]:  # Top 5 careers
+            career_data_list.append({
+                'career_name': career.career_name,
+                'career_data': {
+                    'match_score': career.match_score,
+                    'riasec_profile': career.riasec_profile,
+                    'primary_subjects': career.primary_subjects,
+                    'top_reasons': career.top_reasons,
+                    'study_path': career.study_path,
+                    'first3_steps': career.first3_steps
+                }
+            })
+        
+        # Define helper function to generate AI content for a single career
+        def generate_career_ai_content(career_info):
+            career_name = career_info['career_name']
+            career_data = career_info['career_data']
+            
+            try:
+                # Generate all 3 AI calls in parallel for this career
+                with ThreadPoolExecutor(max_workers=3) as executor:
+                    future_explanation = executor.submit(
+                        self.ai_client.generate_career_explanation,
+                        career_name, profile_data, career_data
+                    )
+                    future_study_path = executor.submit(
+                        self.ai_client.generate_study_path,
+                        career_name, profile_data, career_data
+                    )
+                    future_confidence = executor.submit(
+                        self.ai_client.generate_confidence_explanation,
+                        career_name, career_data['match_score'], profile_data
+                    )
+                    
+                    return {
+                        'career_name': career_name,
+                        'explanation': future_explanation.result(),
+                        'study_path': future_study_path.result(),
+                        'confidence': future_confidence.result()
+                    }
+            except Exception as e:
+                print(f"Error generating AI content for {career_name}: {e}")
+                # Fallback to placeholder content
+                return {
+                    'career_name': career_name,
+                    'explanation': f"Based on your profile, {career_name} is a strong match due to your analytical skills and relevant background.",
+                    'study_path': career_data['first3_steps'][:3] if career_data.get('first3_steps') else [],
+                    'confidence': f"High confidence ({career_data['match_score']}%) due to strong alignment in your profile."
+                }
+        
+        # Generate AI content for all careers in parallel
+        with ThreadPoolExecutor(max_workers=5) as executor:
+            future_results = [executor.submit(generate_career_ai_content, career_info) for career_info in career_data_list]
+            
+            # Compile results from all futures
+            for future in as_completed(future_results):
+                result = future.result()
+                career_name = result['career_name']
+                detailed_explanations[career_name] = result['explanation']
+                personalized_study_paths[career_name] = result['study_path']
+                confidence_explanations[career_name] = result['confidence']
         
         return EnhancedCareerInsights(
             detailed_explanations=detailed_explanations,
@@ -471,4 +526,85 @@ class AIGenerationService:
                f"Engage in hands-on projects and activities that interest you. " \
                f"As you progress, continue exploring different areas and building practical skills " \
                f"through projects, experiments, and real-world experiences."
+    
+    def generate_action_plan(
+        self,
+        profile: StudentProfile,
+        career_matches: List[CareerMatch],
+        top_buckets: List[CareerBucket] = None
+    ) -> List[Dict]:
+        """
+        Generate action plan with exactly 5 items
+        
+        Args:
+            profile: Student profile data
+            career_matches: List of career matches
+            top_buckets: List of career buckets (optional)
+            
+        Returns:
+            List of dicts with title, desc, timeline
+        """
+        if self.ai_client:
+            try:
+                profile_data = {
+                    'name': profile.name,
+                    'grade': profile.grade,
+                    'riasec_scores': profile.riasec_scores,
+                    'subject_scores': profile.subject_scores,
+                    'extracurriculars': profile.extracurriculars,
+                    'parent_careers': profile.parent_careers
+                }
+                
+                career_matches_data = []
+                for career in career_matches[:3]:  # Top 3 careers
+                    career_matches_data.append({
+                        'career_name': career.career_name,
+                        'match_score': career.match_score,
+                        'bucket': career.bucket
+                    })
+                
+                top_buckets_data = []
+                if top_buckets:
+                    for bucket in top_buckets[:3]:  # Top 3 buckets
+                        top_buckets_data.append({
+                            'bucket_name': bucket.bucket_name,
+                            'bucket_score': bucket.bucket_score
+                        })
+                
+                structured_action_plan = self.ai_client.generate_structured_action_plan(
+                    profile_data, career_matches_data, top_buckets_data
+                )
+                
+                # Convert to list of dicts with title, desc, timeline
+                return [
+                    {
+                        'title': item.title,
+                        'desc': item.description,
+                        'timeline': item.timeline
+                    }
+                    for item in structured_action_plan.items
+                ]
+                
+            except Exception as e:
+                print(f"Error generating AI action plan: {e}")
+                # Fallback to basic action plan
+        
+        # Fallback to basic action plan
+        grade = profile.grade
+        if grade < 8:
+            return [
+                {'title': 'Build Foundational Skills', 'desc': 'Focus on developing core skills in subjects you enjoy. Practice regularly through fun activities, games, and hands-on projects.', 'timeline': 'Ongoing'},
+                {'title': 'Explore Different Areas', 'desc': 'Try different activities and hobbies to discover what interests you most. Join clubs, participate in school activities, and explore new subjects.', 'timeline': 'This month'},
+                {'title': 'Practice Through Projects', 'desc': 'Engage in hands-on projects that interest you. Build things, create art, solve puzzles, or work on collaborative projects with friends.', 'timeline': 'Next 2 weeks'},
+                {'title': 'Develop Communication Skills', 'desc': 'Practice expressing your ideas through writing, speaking, and presentations. Join debate clubs, writing groups, or drama activities.', 'timeline': 'This month'},
+                {'title': 'Keep Learning and Growing', 'desc': 'Continue building your skills through practice and exploration. Every small step counts toward your growth and discovery.', 'timeline': 'Ongoing'}
+            ]
+        else:
+            return [
+                {'title': 'Explore Career Details', 'desc': 'Research your top 3-5 career recommendations in depth. Understand daily responsibilities, growth opportunities, and industry trends.', 'timeline': 'This week'},
+                {'title': 'Educational Pathway Planning', 'desc': 'Research educational requirements, courses, and institutions that align with your career choices. Plan your subject selection for upcoming grades.', 'timeline': 'Next 2 weeks'},
+                {'title': 'Professional Networking', 'desc': 'Connect with professionals in your areas of interest through LinkedIn, career events, or through family connections. Conduct informational interviews.', 'timeline': 'This month'},
+                {'title': 'Gain Experience', 'desc': 'Look for internships, job shadowing opportunities, or volunteer work in your fields of interest. Consider joining relevant clubs or competitions.', 'timeline': 'Next 3 months'},
+                {'title': 'Skill Development', 'desc': 'Identify and develop key skills relevant to your top career choices. Take online courses, attend workshops, or start personal projects.', 'timeline': 'Ongoing'}
+            ]
     

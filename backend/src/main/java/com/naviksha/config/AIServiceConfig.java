@@ -22,9 +22,9 @@ public class AIServiceConfig {
     
     /**
      * Request timeout in milliseconds
-     * Default: 30000 (30 seconds)
+     * Default: 300000 (300 seconds / 5 minutes) - AI generation can take time for multiple careers
      */
-    private int timeout = 30000;
+    private int timeout = 300000;
     
     /**
      * Whether AI service is enabled

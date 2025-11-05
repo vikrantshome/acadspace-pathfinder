@@ -199,6 +199,11 @@ class TransformationService:
             if ai_response.get("summary"):
                 enhanced_response["summaryParagraph"] = ai_response["summary"]
             
+            # Add action plan
+            action_plan = ai_response.get("actionPlan", None)
+            if action_plan:
+                enhanced_response["actionPlan"] = action_plan
+            
             return enhanced_response
             
         except Exception as e:

@@ -23,6 +23,7 @@ export interface ReportData {
     explanations?: Record<string, string>;
     studyPaths?: Record<string, string | string[]>;
   };
+  actionPlan?: Array<{title: string; desc: string; timeline: string; color?: string}>;
 }
 
 export interface CareerBucket {
@@ -277,30 +278,45 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
   const grade = reportData.grade || 11;
   const isGradeBelow8 = grade < 8;
   
+  // Card dimensions with increased padding
+  const cardPadding = 20; // Increased padding from card border
+  const cardX = 15;
+  const cardWidth = pageWidth - 30;
+  const textX = cardX + cardPadding;
+  const textWidth = cardWidth - (cardPadding * 2);
+  
   // Calculate summary text height dynamically
   pdf.setFontSize(11); // 9 * 1.2
   pdf.setFont('helvetica', 'normal');
   const summaryText = reportData.enhancedSummary || reportData.summaryParagraph || 'Your personalized career analysis is being generated based on your assessment responses.';
-  const summaryLines = pdf.splitTextToSize(summaryText, pageWidth - 50);
-  const summaryHeight = Math.max(45, summaryLines.length * 4 + 25); // Dynamic height based on content
+  const summaryLines = pdf.splitTextToSize(summaryText, textWidth);
   
-  drawCard(15, yPos, pageWidth - 30, summaryHeight, COLORS.lightBg);
+  // Calculate title height
+  const summaryTitle = isGradeBelow8 ? 'Skill Development Profile Summary' : 'Career Profile Summary';
+  pdf.setFontSize(17); // 14 * 1.2
+  const titleLines = pdf.splitTextToSize(summaryTitle, textWidth - 25); // Account for icon circle
+  const titleHeight = titleLines.length * 6;
   
-  drawIconCircle(25, yPos + 10, 6, COLORS.info);
+  // Calculate total card height with proper padding
+  const iconRadius = 6;
+  const iconY = yPos + cardPadding;
+  const titleY = iconY + iconRadius + 3;
+  const contentY = titleY + titleHeight + 8; // Increased spacing between title and content
+  const contentHeight = summaryLines.length * 4.5;
+  const summaryHeight = Math.max(60, contentY + contentHeight + cardPadding - yPos); // Dynamic height with proper padding
+  
+  drawCard(cardX, yPos, cardWidth, summaryHeight, COLORS.lightBg);
+  
+  drawIconCircle(textX, iconY, iconRadius, COLORS.info);
   pdf.setFontSize(17); // 14 * 1.2
   pdf.setFont('helvetica', 'bold');
   setColor(COLORS.info);
-  
-  // Wrap title if too long for grade < 8
-  const summaryTitle = isGradeBelow8 ? 'Skill Development Profile Summary' : 'Career Profile Summary';
-  pdf.setFontSize(17); // 14 * 1.2
-  const titleLines = pdf.splitTextToSize(summaryTitle, pageWidth - 50);
-  pdf.text(titleLines, 37, yPos + 12);
+  pdf.text(titleLines, textX + 15, titleY);
 
   pdf.setFontSize(11); // 9 * 1.2
   pdf.setFont('helvetica', 'normal');
   setColor(COLORS.darkText);
-  pdf.text(summaryLines, 20, yPos + 22);
+  pdf.text(summaryLines, textX, contentY);
 
   yPos += summaryHeight + 10;
 
@@ -320,7 +336,7 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
   // RIASEC Cards
   const vibeScores = reportData.vibeScores || reportData.vibe_scores || {};
   const entries = Object.entries(vibeScores);
-  const cardWidth = (pageWidth - 40) / 2 - 5;
+  const riasecCardWidth = (pageWidth - 40) / 2 - 5;
   const cardHeight = 35;
 
   entries.forEach(([key, value], index) => {
@@ -595,12 +611,32 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
   // ============ SKILLS & TRAJECTORY ============
   // For grade < 8: Show focused skills first, then detailed skills
   // For grade >= 8: Show simple skill names
-  const focusedSkills = reportData.skillRecommendations || [];
+  const focusedSkillsRaw = reportData.skillRecommendations || [];
   const detailedSkills = reportData.detailedSkillRecommendations || [];
+  
+  // For grade >= 8: Parse skillRecommendations - it might be a single string with multiple skills
+  let focusedSkills: string[] = [];
+  if (!isGradeBelow8 && focusedSkillsRaw && Array.isArray(focusedSkillsRaw) && focusedSkillsRaw.length > 0) {
+    // Check if first element is a string containing multiple skills
+    if (focusedSkillsRaw[0] && typeof focusedSkillsRaw[0] === 'string' && focusedSkillsRaw[0].includes('\n\n')) {
+      // Split by double newline to get individual skills
+      focusedSkills = focusedSkillsRaw[0].split(/\n\n+/).filter((s: string) => s.trim());
+    } else {
+      // Already an array of individual skills
+      focusedSkills = focusedSkillsRaw as string[];
+    }
+  } else {
+    focusedSkills = focusedSkillsRaw as string[];
+  }
   
   // Show focused skills section (for grade < 8) or simple skills (for grade >= 8)
   if (focusedSkills.length > 0 || (isGradeBelow8 && detailedSkills.length > 0)) {
-    if (yPos > pageHeight - 40 || !isGradeBelow8) {
+    // For grade >= 8, always start on a new page
+    if (!isGradeBelow8) {
+      pdf.addPage();
+      yPos = 25;
+      drawCornerDecor();
+    } else if (yPos > pageHeight - 40) {
       pdf.addPage();
       yPos = 25;
       drawCornerDecor();
@@ -611,7 +647,7 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
     pdf.setFontSize(22); // 18 * 1.2 (larger for grade < 8)
     pdf.setFont('helvetica', 'bold');
     setColor(isGradeBelow8 ? COLORS.primary : COLORS.purple);
-    pdf.text(isGradeBelow8 ? 'Recommended Skills to Develop' : 'AI-Recommended Skills to Develop', 15, yPos);
+    pdf.text('Skills to Develop', 15, yPos);
     
     pdf.setFontSize(10); // 8 * 1.2
     pdf.setFont('helvetica', 'normal');
@@ -622,7 +658,7 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
     
     yPos += 18;
 
-    // For grade < 8: Show focused skills first (simple names)
+    // For grade < 8: Show focused skills first (parse and format like grade >= 8)
     if (isGradeBelow8 && focusedSkills.length > 0) {
       pdf.setFontSize(16); // 13 * 1.2
       pdf.setFont('helvetica', 'bold');
@@ -631,22 +667,118 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
       yPos += 10;
 
       focusedSkills.forEach((skill: string, index: number) => {
-        checkSpace(20);
+        if (!skill || typeof skill !== 'string') return;
+        checkSpace(50);
         
-        const cardY = yPos;
-        drawCard(20, cardY, pageWidth - 40, 15, '#ffffff');
+        const cardStartY = yPos;
         
-        // Colored indicator dot
-        setColor([COLORS.primary, COLORS.success, COLORS.warning, COLORS.purple, COLORS.teal][index % 5], false);
-        pdf.circle(26, cardY + 6, 1.5, 'F');
+        // Parse skill string to extract name and details
+        const lines = skill.split('\n').filter((line: string) => line.trim());
+        const skillNameRaw = lines[0] ? lines[0].replace(/^\d+\.\s*/, '').trim() : '';
+        const skillName = `${index + 1}. ${skillNameRaw}`;
         
-        // Skill name
-        pdf.setFontSize(11); // 9 * 1.2
+        // Parse details (Category, Importance Level, Development Method, Timeline)
+        const details: Record<string, string> = {};
+        for (let i = 1; i < lines.length; i++) {
+          const line = lines[i].trim();
+          // Match format: - **Category**: Technical or - **Importance Level**: Critical
+          const match = line.match(/^-\s*\*\*([^*]+)\*\*:\s*(.+)$/);
+          if (match) {
+            const key = match[1].trim();
+            const value = match[2].trim();
+            details[key] = value;
+          } else {
+            // Try alternative format without leading hyphen
+            const altMatch = line.match(/^\*\*([^*]+)\*\*:\s*(.+)$/);
+            if (altMatch) {
+              const key = altMatch[1].trim();
+              const value = altMatch[2].trim();
+              details[key] = value;
+            }
+          }
+        }
+        
+        // Card dimensions with increased padding (same as detailed career explanations)
+        const cardPadding = 10; // Increased padding from card border
+        const cardX = 20;
+        const cardWidth = pageWidth - 40;
+        const textX = cardX + cardPadding;
+        const textWidth = cardWidth - (cardPadding * 2);
+        
+        // Calculate title height (skill name)
+        pdf.setFontSize(12); // 10 * 1.2 (skill name)
         pdf.setFont('helvetica', 'bold');
         setColor(COLORS.darkText);
-        pdf.text(skill, 40, cardY + 8);
+        const titleLines = pdf.splitTextToSize(skillName, textWidth);
+        const titleHeight = titleLines.length * 4.5;
         
-        yPos += 18;
+        // Build formatted content with line breaks
+        const contentLines: string[] = [];
+        if (details['Category']) {
+          contentLines.push(`Category: ${details['Category']}\n`);
+        }
+        if (details['Importance Level']) {
+          contentLines.push(`Importance Level: ${details['Importance Level']}\n`);
+        }
+        if (details['Development Method']) {
+          contentLines.push(`How to Develop: ${details['Development Method']}\n`);
+        }
+        if (details['Timeline']) {
+          contentLines.push(`Timeline: ${details['Timeline']}\n`);
+        }
+        
+        // If no details parsed, show simple skill name
+        if (contentLines.length === 0) {
+          contentLines.push(skillNameRaw);
+        }
+        
+        // Calculate content height - split by newlines first, then by width
+        pdf.setFontSize(8); // 7 * 1.2
+        pdf.setFont('helvetica', 'normal');
+        setColor(COLORS.mediumText);
+        let contentHeight = 0;
+        const formattedContent = contentLines.join(''); // Join with empty string since each line already has \n
+        if (formattedContent) {
+          // Split by newlines first to preserve intentional line breaks
+          const linesByNewline = formattedContent.split('\n').filter((line: string) => line.trim());
+          let totalLines = 0;
+          linesByNewline.forEach((line: string) => {
+            const wrappedLines = pdf.splitTextToSize(line, textWidth);
+            totalLines += wrappedLines.length;
+          });
+          contentHeight = totalLines * 3.5;
+        }
+        
+        // Calculate total card height with proper padding (same as detailed career explanations)
+        const titleY = cardStartY + cardPadding;
+        const contentY = titleY + titleHeight + 8; // Increased spacing between title and content
+        const cardHeight = Math.max(50, contentY + contentHeight + cardPadding - cardStartY);
+        
+        drawCard(cardX, cardStartY, cardWidth, cardHeight, '#ffffff');
+        
+        // Draw text
+        pdf.setFontSize(12); // 10 * 1.2
+        pdf.setFont('helvetica', 'bold');
+        setColor(COLORS.darkText);
+        pdf.text(titleLines, textX, titleY);
+        
+        // Render content with proper newlines
+        if (formattedContent) {
+          pdf.setFontSize(8); // 7 * 1.2
+          pdf.setFont('helvetica', 'normal');
+          setColor(COLORS.mediumText);
+          
+          // Split by newlines first to preserve intentional line breaks
+          const linesByNewline = formattedContent.split('\n').filter((line: string) => line.trim());
+          let currentY = contentY;
+          linesByNewline.forEach((line: string) => {
+            const wrappedLines = pdf.splitTextToSize(line, textWidth);
+            pdf.text(wrappedLines, textX, currentY);
+            currentY += wrappedLines.length * 3.5;
+          });
+        }
+        
+        yPos += cardHeight + 8; // Spacing between cards
       });
       
       yPos += 10;
@@ -661,64 +793,248 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
       yPos += 10;
 
       detailedSkills.forEach((skillItem: any, index: number) => {
-        const skillName = typeof skillItem === 'object' ? (skillItem.skill_name || skillItem.skillName || '') : '';
+        let skillName = typeof skillItem === 'object' ? (skillItem.skill_name || skillItem.skillName || '') : '';
         const explanation = typeof skillItem === 'object' ? (skillItem.explanation || '') : String(skillItem);
         
-        if (!skillName && !explanation) return;
+        // If skillName is "Skill Name" (placeholder), extract from explanation
+        if (skillName === 'Skill Name' || !skillName || skillName.trim() === '') {
+          // Try to extract skill name from explanation (first sentence or first line)
+          const explText = String(explanation || '').trim();
+          if (explText) {
+            // Pattern: "Skill Name helps you..." or "**Skill Name** helps you..."
+            const matchBold = explText.match(/^\*\*([^*]+)\*\*/);
+            if (matchBold) {
+              skillName = matchBold[1].trim();
+            } else {
+              // Pattern: First word or phrase before "helps" or first sentence
+              const matchHelps = explText.match(/^([^.!?\n]+?)(?:\s+helps|\s+helps you|\.|!|\?)/);
+              if (matchHelps) {
+                skillName = matchHelps[1].trim();
+              } else {
+                // Take first line or first sentence
+                const firstLine = explText.split('\n')[0].split(/[.!?]/)[0].trim();
+                if (firstLine && firstLine.length < 50) {
+                  skillName = firstLine;
+                }
+              }
+            }
+          }
+        }
         
-        checkSpace(30);
+        if (!skillName || typeof skillName !== 'string' || skillName.trim() === '' || (!explanation && !skillName)) return;
+        
+        checkSpace(40);
         
         const cardStartY = yPos;
         
-        // Calculate title height (same as career explanations)
+        // Card dimensions with increased padding
+        const cardPadding = 10; // Increased padding from card border
+        const cardX = 20;
+        const cardWidth = pageWidth - 40;
+        const textX = cardX + cardPadding;
+        const textWidth = cardWidth - (cardPadding * 2);
+        
+        // Calculate title height
         pdf.setFontSize(12); // 10 * 1.2
         pdf.setFont('helvetica', 'bold');
         setColor(COLORS.darkText);
-        const titleLines = pdf.splitTextToSize(skillName, pageWidth - 60);
-        const titleHeight = titleLines.length * 4;
+        const titleLines = pdf.splitTextToSize(skillName, textWidth);
+        const titleHeight = titleLines.length * 5;
         
-        // Calculate explanation height (same as career explanations)
+        // Calculate explanation height
         pdf.setFontSize(10); // 8 * 1.2
         pdf.setFont('helvetica', 'normal');
         setColor(COLORS.mediumText);
-        const explLines = pdf.splitTextToSize(String(explanation || ''), pageWidth - 60);
-        const explHeight = explLines.length * 3.5;
+        const explLines = pdf.splitTextToSize(String(explanation || ''), textWidth);
+        const explHeight = explLines.length * 4;
         
-        const cardHeight = titleHeight + explHeight + 12;
-        drawCard(20, cardStartY, pageWidth - 40, cardHeight, '#ffffff');
+        // Calculate total card height with proper padding
+        const titleY = cardStartY + cardPadding;
+        const contentY = titleY + titleHeight + 8; // Increased spacing between title and content
+        const cardHeight = Math.max(50, contentY + explHeight + cardPadding - cardStartY);
         
-        // Redraw text on top (same as career explanations)
+        drawCard(cardX, cardStartY, cardWidth, cardHeight, '#ffffff');
+        
+        // Redraw text on top
         pdf.setFontSize(12); // 10 * 1.2
         pdf.setFont('helvetica', 'bold');
         setColor(COLORS.darkText);
-        pdf.text(titleLines, 28, cardStartY + 8);
+        pdf.text(titleLines, textX, titleY);
         
         pdf.setFontSize(10); // 8 * 1.2
         pdf.setFont('helvetica', 'normal');
         setColor(COLORS.mediumText);
-        pdf.text(explLines, 28, cardStartY + 8 + titleHeight + 2);
+        pdf.text(explLines, textX, contentY);
         
         yPos += cardHeight + 8;
       });
     } else if (!isGradeBelow8 && focusedSkills.length > 0) {
-      // For grade >= 8: Show simple skill names
+      // For grade >= 8: Parse and show formatted skill cards
       focusedSkills.forEach((skill: string, index: number) => {
-        checkSpace(20);
+        if (!skill || typeof skill !== 'string') return;
         
-        const cardY = yPos;
-        drawCard(20, cardY, pageWidth - 40, 15, '#ffffff');
+        // Check if we need a new page
+        checkSpace(35);
         
-        // Colored indicator dot
-        setColor([COLORS.primary, COLORS.success, COLORS.warning, COLORS.purple, COLORS.teal][index % 5], false);
-        pdf.circle(26, cardY + 6, 1.5, 'F');
+        const cardStartY = yPos;
         
-        // Skill name
-        pdf.setFontSize(11); // 9 * 1.2
-        pdf.setFont('helvetica', 'normal');
+        // Parse skill string to extract name and details
+        const lines = skill.split('\n').filter((line: string) => line.trim());
+        // Handle format: "Skill Name: Logical Thinking" or "1. Logical Thinking" or just "Logical Thinking"
+        let skillNameRaw = '';
+        if (lines[0]) {
+          const firstLine = lines[0].trim();
+          // Check for "Skill Name: " prefix
+          if (firstLine.startsWith('Skill Name:')) {
+            skillNameRaw = firstLine.replace(/^Skill Name:\s*/, '').trim();
+          } else {
+            // Remove numbering if present
+            skillNameRaw = firstLine.replace(/^\d+\.\s*/, '').trim();
+          }
+        }
+        const skillName = `${index + 1}. ${skillNameRaw}`;
+        
+        // Parse details (Category, Importance Level, Development Method, Timeline)
+        const details: Record<string, string> = {};
+        let currentKey = '';
+        let currentValue = '';
+        
+        for (let i = 1; i < lines.length; i++) {
+          const line = lines[i].trim();
+          
+          // Match format: "Category: Academic" or "Importance Level: Critical" (no markdown)
+          const simpleMatch = line.match(/^(Category|Importance Level|Timeline):\s*(.+)$/);
+          if (simpleMatch) {
+            // Save previous key-value if exists
+            if (currentKey && currentValue) {
+              details[currentKey] = currentValue.trim();
+            }
+            currentKey = simpleMatch[1].trim();
+            currentValue = simpleMatch[2].trim();
+          }
+          // Match format: "Development Method:" followed by content (may have newlines and bullets)
+          else if (line.startsWith('Development Method:')) {
+            // Save previous key-value if exists
+            if (currentKey && currentValue) {
+              details[currentKey] = currentValue.trim();
+            }
+            currentKey = 'Development Method';
+            currentValue = line.replace(/^Development Method:\s*/, '').trim();
+          }
+          // Match markdown format: - **Category**: Technical or - **Importance Level**: Critical
+          else {
+            const match = line.match(/^-\s*\*\*([^*]+)\*\*:\s*(.+)$/);
+            if (match) {
+              // Save previous key-value if exists
+              if (currentKey && currentValue) {
+                details[currentKey] = currentValue.trim();
+              }
+              currentKey = match[1].trim();
+              currentValue = match[2].trim();
+            } else {
+              // Try alternative format without leading hyphen
+              const altMatch = line.match(/^\*\*([^*]+)\*\*:\s*(.+)$/);
+              if (altMatch) {
+                // Save previous key-value if exists
+                if (currentKey && currentValue) {
+                  details[currentKey] = currentValue.trim();
+                }
+                currentKey = altMatch[1].trim();
+                currentValue = altMatch[2].trim();
+              } else if (currentKey === 'Development Method') {
+                // Continue building Development Method value (may have bullets or newlines)
+                currentValue += '\n' + line;
+              }
+            }
+          }
+        }
+        
+        // Save last key-value
+        if (currentKey && currentValue) {
+          details[currentKey] = currentValue.trim();
+        }
+        
+        // Card dimensions with increased padding (same as detailed career explanations)
+        const cardPadding = 10; // Increased padding from card border
+        const cardX = 20;
+        const cardWidth = pageWidth - 40;
+        const textX = cardX + cardPadding;
+        const textWidth = cardWidth - (cardPadding * 2);
+        
+        // Calculate title height (skill name)
+        pdf.setFontSize(12); // 10 * 1.2 (skill name)
+        pdf.setFont('helvetica', 'bold');
         setColor(COLORS.darkText);
-        pdf.text(`${index + 1}. ${skill}`, 40, cardY + 8);
+        const titleLines = pdf.splitTextToSize(skillName, textWidth);
+        const titleHeight = titleLines.length * 4.5;
         
-        yPos += 18;
+        // Build formatted content with line breaks
+        const contentLines: string[] = [];
+        if (details['Category']) {
+          contentLines.push(`Category: ${details['Category']}\n`);
+        }
+        if (details['Importance Level']) {
+          contentLines.push(`Importance Level: ${details['Importance Level']}\n`);
+        }
+        if (details['Development Method']) {
+          contentLines.push(`How to Develop: ${details['Development Method']}\n`);
+        }
+        if (details['Timeline']) {
+          contentLines.push(`Timeline: ${details['Timeline']}\n`);
+        }
+        
+        // If no details parsed, show simple skill name
+        if (contentLines.length === 0) {
+          contentLines.push(skillNameRaw);
+        }
+        
+        // Calculate content height - split by newlines first, then by width
+        pdf.setFontSize(8); // 7 * 1.2
+        pdf.setFont('helvetica', 'normal');
+        setColor(COLORS.mediumText);
+        let contentHeight = 0;
+        const formattedContent = contentLines.join(''); // Join with empty string since each line already has \n
+        if (formattedContent) {
+          // Split by newlines first to preserve intentional line breaks
+          const linesByNewline = formattedContent.split('\n').filter((line: string) => line.trim());
+          let totalLines = 0;
+          linesByNewline.forEach((line: string) => {
+            const wrappedLines = pdf.splitTextToSize(line, textWidth);
+            totalLines += wrappedLines.length;
+          });
+          contentHeight = totalLines * 3.5;
+        }
+        
+        // Calculate total card height with proper padding (same as detailed career explanations)
+        const titleY = cardStartY + cardPadding;
+        const contentY = titleY + titleHeight + 8; // Increased spacing between title and content
+        const cardHeight = Math.max(50, contentY + contentHeight + cardPadding - cardStartY);
+        
+        drawCard(cardX, cardStartY, cardWidth, cardHeight, '#ffffff');
+        
+        // Draw text
+        pdf.setFontSize(12); // 10 * 1.2
+        pdf.setFont('helvetica', 'bold');
+        setColor(COLORS.darkText);
+        pdf.text(titleLines, textX, titleY);
+        
+        // Render content with proper newlines
+        if (formattedContent) {
+          pdf.setFontSize(8); // 7 * 1.2
+          pdf.setFont('helvetica', 'normal');
+          setColor(COLORS.mediumText);
+          
+          // Split by newlines first to preserve intentional line breaks
+          const linesByNewline = formattedContent.split('\n').filter((line: string) => line.trim());
+          let currentY = contentY;
+          linesByNewline.forEach((line: string) => {
+            const wrappedLines = pdf.splitTextToSize(line, textWidth);
+            pdf.text(wrappedLines, textX, currentY);
+            currentY += wrappedLines.length * 3.5;
+          });
+        }
+        
+        yPos += cardHeight + 8; // Spacing between cards
       });
     }
     
@@ -771,35 +1087,48 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
       
       const explanations = Object.entries(reportData.detailedCareerInsights.explanations);
       explanations.forEach(([career, explanation], index) => {
-        checkSpace(30);
+        checkSpace(40);
         
         const cardStartY = yPos;
         
+        // Card dimensions with increased padding
+        const cardPadding = 20; // Increased padding from card border
+        const cardX = 20;
+        const cardWidth = pageWidth - 40;
+        const textX = cardX + cardPadding;
+        const textWidth = cardWidth - (cardPadding * 2);
+        
+        // Calculate title height
         pdf.setFontSize(12); // 10 * 1.2
         pdf.setFont('helvetica', 'bold');
         setColor(COLORS.darkText);
-        const titleLines = pdf.splitTextToSize(career, pageWidth - 60);
-        const titleHeight = titleLines.length * 4;
+        const titleLines = pdf.splitTextToSize(career, textWidth);
+        const titleHeight = titleLines.length * 5;
         
+        // Calculate explanation height
         pdf.setFontSize(10); // 8 * 1.2
         pdf.setFont('helvetica', 'normal');
         setColor(COLORS.mediumText);
-        const explLines = pdf.splitTextToSize(String(explanation), pageWidth - 60);
-        const explHeight = explLines.length * 3.5;
+        const explLines = pdf.splitTextToSize(String(explanation), textWidth);
+        const explHeight = explLines.length * 4;
         
-        const cardHeight = titleHeight + explHeight + 12;
-        drawCard(20, cardStartY, pageWidth - 40, cardHeight, '#ffffff');
+        // Calculate total card height with proper padding
+        const titleY = cardStartY + cardPadding;
+        const contentY = titleY + titleHeight + 8; // Increased spacing between title and content
+        const cardHeight = Math.max(50, contentY + explHeight + cardPadding - cardStartY);
+        
+        drawCard(cardX, cardStartY, cardWidth, cardHeight, '#ffffff');
         
         // Redraw text on top
         pdf.setFontSize(12); // 10 * 1.2
         pdf.setFont('helvetica', 'bold');
         setColor(COLORS.darkText);
-        pdf.text(titleLines, 28, cardStartY + 8);
+        pdf.text(titleLines, textX, titleY);
         
         pdf.setFontSize(10); // 8 * 1.2
         pdf.setFont('helvetica', 'normal');
         setColor(COLORS.mediumText);
-        pdf.text(explLines, 28, cardStartY + 8 + titleHeight + 2);
+        pdf.text(explLines, textX, contentY);
         
         yPos += cardHeight + 8;
       });
@@ -818,34 +1147,54 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
       
       const studyPaths = Object.entries(reportData.detailedCareerInsights.studyPaths);
       studyPaths.forEach(([career, path], index) => {
-        checkSpace(40);
+        checkSpace(50);
         
         const cardStartY = yPos;
         
+        // Card dimensions with increased padding
+        const cardPadding = 20; // Increased padding from card border
+        const cardX = 20;
+        const cardWidth = pageWidth - 40;
+        const textX = cardX + cardPadding;
+        const textWidth = cardWidth - (cardPadding * 2);
+        
+        // Calculate title height
         pdf.setFontSize(12); // 10 * 1.2
         pdf.setFont('helvetica', 'bold');
         setColor(COLORS.darkText);
-        const titleLines = pdf.splitTextToSize(career, pageWidth - 60);
-        const titleHeight = titleLines.length * 4;
+        const titleLines = pdf.splitTextToSize(career, textWidth);
+        const titleHeight = titleLines.length * 5;
         
+        // Calculate path height
         let pathHeight = 0;
+        pdf.setFontSize(10); // 8 * 1.2
+        pdf.setFont('helvetica', 'normal');
         if (Array.isArray(path)) {
-          pathHeight = path.length * 4;
+          path.forEach((step: string) => {
+            if (step && typeof step === 'string') {
+              const stepLines = pdf.splitTextToSize(`${step}`, textWidth - 15); // Account for numbering
+              pathHeight += stepLines.length * 4.5;
+            }
+          });
         } else {
-          const pathLines = pdf.splitTextToSize(String(path), pageWidth - 60);
-          pathHeight = pathLines.length * 3.5;
+          const pathLines = pdf.splitTextToSize(String(path), textWidth);
+          pathHeight = pathLines.length * 4;
         }
         
-        const cardHeight = titleHeight + pathHeight + 15;
-        drawCard(20, cardStartY, pageWidth - 40, cardHeight, '#ffffff');
+        // Calculate total card height with proper padding
+        const titleY = cardStartY + cardPadding;
+        const contentY = titleY + titleHeight + 8; // Increased spacing between title and content
+        const cardHeight = Math.max(50, contentY + pathHeight + cardPadding - cardStartY);
+        
+        drawCard(cardX, cardStartY, cardWidth, cardHeight, '#ffffff');
         
         // Redraw text on top
         pdf.setFontSize(12); // 10 * 1.2
         pdf.setFont('helvetica', 'bold');
         setColor(COLORS.darkText);
-        pdf.text(titleLines, 28, cardStartY + 8);
+        pdf.text(titleLines, textX, titleY);
         
-        let textY = cardStartY + 8 + titleHeight + 4;
+        let textY = contentY;
         
         pdf.setFontSize(10); // 8 * 1.2
         pdf.setFont('helvetica', 'normal');
@@ -853,12 +1202,15 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
         
         if (Array.isArray(path)) {
           path.forEach((step: string, stepIndex: number) => {
-            pdf.text(`${stepIndex + 1}. ${step}`, 30, textY);
-            textY += 4;
+            if (step && typeof step === 'string') {
+              const stepLines = pdf.splitTextToSize(`${stepIndex + 1}. ${step}`, textWidth);
+              pdf.text(stepLines, textX, textY);
+              textY += stepLines.length * 4.5;
+            }
           });
         } else {
-          const pathLines = pdf.splitTextToSize(String(path), pageWidth - 60);
-          pdf.text(pathLines, 28, textY);
+          const pathLines = pdf.splitTextToSize(String(path), textWidth);
+          pdf.text(pathLines, textX, textY);
         }
         
         yPos += cardHeight + 8;
@@ -885,7 +1237,9 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
 
   yPos += 18;
 
-  const nextSteps = isGradeBelow8 ? [
+  // Use AI-generated action plan if available, otherwise fallback to hardcoded
+  const actionPlan = reportData.actionPlan || [];
+  const nextSteps = actionPlan.length > 0 ? actionPlan : (isGradeBelow8 ? [
     { title: "Build Foundational Skills", desc: "Focus on developing core skills in subjects you enjoy. Practice regularly through fun activities, games, and hands-on projects.", timeline: "Ongoing", color: COLORS.info },
     { title: "Explore Different Areas", desc: "Try different activities and hobbies to discover what interests you most. Join clubs, participate in school activities, and explore new subjects.", timeline: "This month", color: COLORS.success },
     { title: "Practice Through Projects", desc: "Engage in hands-on projects that interest you. Build things, create art, solve puzzles, or work on collaborative projects with friends.", timeline: "Next 2 weeks", color: COLORS.warning },
@@ -897,7 +1251,15 @@ export function generateReportPDF(reportData: ReportData): jsPDF {
     { title: "Professional Networking", desc: "Connect with professionals in your areas of interest through LinkedIn, career events, or through family connections. Conduct informational interviews.", timeline: "This month", color: COLORS.warning },
     { title: "Gain Experience", desc: "Look for internships, job shadowing opportunities, or volunteer work in your fields of interest. Consider joining relevant clubs or competitions.", timeline: "Next 3 months", color: COLORS.purple },
     { title: "Skill Development", desc: "Identify and develop key skills relevant to your top career choices. Take online courses, attend workshops, or start personal projects.", timeline: "Ongoing", color: COLORS.teal }
-  ];
+  ]);
+  
+  // Assign colors based on index if not already assigned
+  const colorPalette = [COLORS.info, COLORS.success, COLORS.warning, COLORS.purple, COLORS.teal];
+  nextSteps.forEach((step, index) => {
+    if (!step.color) {
+      step.color = colorPalette[index % colorPalette.length];
+    }
+  });
 
   nextSteps.forEach((step, index) => {
     checkSpace(40);

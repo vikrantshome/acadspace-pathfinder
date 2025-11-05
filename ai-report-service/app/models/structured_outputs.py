@@ -81,6 +81,16 @@ class MultiKeyValueOutput(BaseModel):
     """Multiple key-value pairs output"""
     pairs: List[KeyValueOutput] = Field(description="List of key-value pairs")
 
+class ActionPlanItem(BaseModel):
+    """Single action plan item"""
+    title: str = Field(description="Title of the action item")
+    description: str = Field(description="Description of what to do")
+    timeline: str = Field(description="Timeline for the action (e.g., 'This week', 'Next 2 weeks', 'This month', 'Ongoing')")
+
+class ActionPlan(BaseModel):
+    """Action plan with exactly 5 items"""
+    items: List[ActionPlanItem] = Field(description="List of exactly 5 action plan items", min_length=5, max_length=5)
+
 # Enum for output types to make the system more flexible
 class OutputType(str, Enum):
     CAREER_EXPLANATION = "career_explanation"
@@ -93,4 +103,5 @@ class OutputType(str, Enum):
     SIMPLE_LIST = "simple_list"
     KEY_VALUE = "key_value"
     MULTI_KEY_VALUE = "multi_key_value"
+    ACTION_PLAN = "action_plan"
 

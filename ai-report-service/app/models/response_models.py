@@ -13,3 +13,4 @@ class ReportGenerationResponse(BaseModel):
     personalized_summary: str
     skill_recommendations: List[str]
     career_trajectory_insights: str
+    action_plan: List[Dict] = None

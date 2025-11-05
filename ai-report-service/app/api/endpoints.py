@@ -132,7 +132,8 @@ async def generate_report(request: ReportGenerationRequest) -> ReportGenerationR
             enhanced_career_insights=result["career_insights"],
             personalized_summary=result["summary"],
             skill_recommendations=result["skills"],
-            career_trajectory_insights=result["trajectory"]
+            career_trajectory_insights=result["trajectory"],
+            action_plan=result.get("actionPlan", None)
         )
         
         logger.info(f"Successfully generated AI report for {profile.name}")

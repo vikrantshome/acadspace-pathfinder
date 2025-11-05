@@ -27,3 +27,14 @@ dist-ssr
 backend/target/
 ai-report-service/.env
 .env
+ai-report-service/app/models/__pycache__/__init__.cpython-311.pyc
+ai-report-service/app/models/__pycache__/career_bucket.cpython-311.pyc
+ai-report-service/app/models/__pycache__/career_match.cpython-311.pyc
+ai-report-service/app/models/__pycache__/request_models.cpython-311.pyc
+ai-report-service/app/models/__pycache__/response_models.cpython-311.pyc
+ai-report-service/app/models/__pycache__/structured_outputs.cpython-311.pyc
+ai-report-service/app/models/__pycache__/student_profile.cpython-311.pyc
+.gitignore
+ai-report-service/app/services/__pycache__/__init__.cpython-311.pyc
+ai-report-service/app/services/__pycache__/ai_client.cpython-311.pyc
+ai-report-service/app/__pycache__/__init__.cpython-311.pyc
