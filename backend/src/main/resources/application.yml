@@ -78,14 +78,14 @@ admin:
 # AI Service Configuration
 ai:
   service:
-    url: ${AI_SERVICE_URL:http://ai-report-service:8000}
+    url: "${AI_SERVICE_URL:http://ai-report-service:8000}"
     timeout: ${AI_SERVICE_TIMEOUT:300000}  # 300 seconds (5 minutes) - AI generation can take time for multiple careers
     enabled: ${AI_SERVICE_ENABLED:true}
 
 # PDF Service Configuration
 pdf:
   service:
-    url: ${PDF_SERVICE_URL:http://pdf-service:5100}
+    url: "${PDF_SERVICE_URL:http://pdf-service:5100}"
     timeout: ${PDF_SERVICE_TIMEOUT:60000}  # 60 seconds
     enabled: ${PDF_SERVICE_ENABLED:true}
 

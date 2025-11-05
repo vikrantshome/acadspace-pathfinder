@@ -74,10 +74,27 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOriginPattern("*"); // Allow all origins for development
+        
+        // Get allowed origins from environment variable or use defaults
+        String allowedOrigins = System.getenv("CORS_ALLOWED_ORIGINS");
+        if (allowedOrigins != null && !allowedOrigins.isEmpty()) {
+            // Split by comma and add each origin
+            String[] origins = allowedOrigins.split(",");
+            for (String origin : origins) {
+                configuration.addAllowedOrigin(origin.trim());
+            }
+        } else {
+            // Default: Allow common origins for development and production
+            configuration.addAllowedOrigin("http://localhost:5173");
+            configuration.addAllowedOrigin("http://localhost:3000");
+            configuration.addAllowedOrigin("https://naviksha-frontend.onrender.com");
+            configuration.addAllowedOrigin("https://acadspace-pathfinder.onrender.com");
+        }
+        
         configuration.addAllowedMethod("*"); // Allow all HTTP methods
         configuration.addAllowedHeader("*"); // Allow all headers
-        configuration.setAllowCredentials(true);
+        configuration.setAllowCredentials(true); // Allow credentials (cookies, auth headers)
+        configuration.setMaxAge(3600L); // Cache preflight for 1 hour
         
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
