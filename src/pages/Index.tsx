@@ -67,10 +67,13 @@ useEffect(() => {
 }, [user]);
 
 
-function inferStatus(p?: { currentQuestionIndex?: number; answers?: any }) {
+function inferStatus(p?: { currentQuestionIndex?: number; answers?: any; completed?: boolean }) {
   if (!p) return null;
-  // simple heuristic if your backend doesn't return a 'status' string
-  return 'in_progress'; // or compute based on currentQuestionIndex/questions length
+  // Check if test is completed
+  if (p.completed === true) return 'completed';
+  // If progress exists but not completed, it's in progress
+  if (p.answers && Object.keys(p.answers).length > 0) return 'in_progress';
+  return null;
 }
   const getTestStatus = (testType: 'vibematch' | 'edustats') => {
     const status = testProgress[testType];

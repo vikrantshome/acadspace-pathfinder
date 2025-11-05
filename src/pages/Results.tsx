@@ -19,7 +19,8 @@ import {
   Target,
   ArrowRight,
   CheckCircle2,
-  Loader2
+  Loader2,
+  Home
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/components/AuthProvider';
@@ -192,7 +193,19 @@ const Results = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <div className="border-b bg-muted/30">
+      <div className="border-b bg-muted/30 relative">
+        {/* Home Button - Top Left */}
+        <div className="absolute top-4 left-4 md:top-6 md:left-6 z-10">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => navigate('/')}
+            className="bg-background/80 backdrop-blur-sm"
+          >
+            <Home className="w-4 h-4 mr-2" />
+            <span className="hidden sm:inline">Home</span>
+          </Button>
+        </div>
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>

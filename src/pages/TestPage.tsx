@@ -15,7 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import { ProgressBar } from '@/components/ProgressBar';
 import { JourneyTracker } from '@/components/JourneyTracker';
 import { OptionButton } from '@/components/OptionButton';
-import { ArrowLeft, ArrowRight, Save, Pause, BookOpen } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Save, Pause, BookOpen, Loader2 } from 'lucide-react';
 import { Question, TestAnswer } from '@/types';
 import { toast } from '@/hooks/use-toast';
 import { useAuth } from '@/components/AuthProvider';
@@ -43,6 +43,7 @@ const TestPage = () => {
   const [currentAnswer, setCurrentAnswer] = useState<string | string[] | number | { [key: string]: number }>('');
   const [subjectGrades, setSubjectGrades] = useState<Record<string, number>>({});
   const [saving, setSaving] = useState(false);
+  const [generatingReport, setGeneratingReport] = useState(false);
 
   // Load test questions from backend
   useEffect(() => {
@@ -280,10 +281,8 @@ const TestPage = () => {
         });
         navigate('/test/edustats');
       } else {
-        toast({
-          title: 'All tests complete! 🎉',
-          description: 'Generating your personalized career report...',
-        });
+        // Set generating report state
+        setGeneratingReport(true);
 
         // Get vibematch answers from database
         const vibematchProgress = await apiService.getProgress(user.id, 'vibematch');
@@ -294,6 +293,7 @@ const TestPage = () => {
 
         // Check if vibematch test was completed
         if (!vibematchProgress || !vibematchProgress.completed) {
+          setGeneratingReport(false);
           toast({
             title: 'Error: Personality test not completed',
             description: 'Please complete the personality test first before generating your report.',
@@ -319,26 +319,53 @@ const TestPage = () => {
           parentCareers: extractParentCareers(edustatsAnswers),
         };
 
-        const result = await apiService.submitTest('combined', submission);
+        try {
+          const result = await apiService.submitTest('combined', submission);
 
-        // Store the AI-enhanced report data in localStorage for immediate use
-        if (result?.report) {
-          localStorage.setItem('latestReport', JSON.stringify(result.report));
-          console.log('AI-enhanced report stored:', {
-            aiEnhanced: result.report.aiEnhanced,
-            hasEnhancedSummary: !!result.report.enhancedSummary,
-            hasSkillRecommendations: !!result.report.skillRecommendations
-          });
-        }
+          // Ensure both tests are marked as completed after report generation
+          try {
+            // Mark vibematch as completed (if not already)
+            if (!vibematchProgress.completed) {
+              await apiService.saveProgress('vibematch', {
+                currentQuestionIndex: vibematchProgress.currentQuestionIndex || 0,
+                answers: vibematchProgress.answers || {},
+                completed: true,
+              });
+            }
+            // Mark edustats as completed (already done, but ensure it's set)
+            await apiService.saveProgress('edustats', {
+              currentQuestionIndex: questions.length - 1,
+              answers: edustatsAnswers,
+              completed: true,
+            });
+          } catch (progressError) {
+            console.error('Error updating test completion status:', progressError);
+            // Don't fail the whole flow if progress update fails
+          }
 
-        if (result?.reportId) {
-          navigate(`/report/${result.reportId}`);
-        } else {
-          navigate('/report');
+          // Store the AI-enhanced report data in localStorage for immediate use
+          if (result?.report) {
+            localStorage.setItem('latestReport', JSON.stringify(result.report));
+            console.log('AI-enhanced report stored:', {
+              aiEnhanced: result.report.aiEnhanced,
+              hasEnhancedSummary: !!result.report.enhancedSummary,
+              hasSkillRecommendations: !!result.report.skillRecommendations
+            });
+          }
+
+          if (result?.reportId) {
+            navigate(`/report/${result.reportId}`);
+          } else {
+            navigate('/report');
+          }
+        } catch (error) {
+          setGeneratingReport(false);
+          throw error; // Re-throw to be caught by outer catch
         }
       }
     } catch (error) {
       console.error('Error completing test:', error);
+      setGeneratingReport(false);
       toast({
         title: 'Error completing test',
         description: 'Failed to generate report. Please try again.',
@@ -346,6 +373,39 @@ const TestPage = () => {
       });
     }
   };
+
+  // Show loading page when generating report
+  if (generatingReport) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center space-y-6 max-w-md px-4">
+          <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+            <Loader2 className="w-10 h-10 text-primary animate-spin" />
+          </div>
+          <div className="space-y-2">
+            <h2 className="text-2xl md:text-3xl font-bold">Generating Your Report</h2>
+            <p className="text-muted-foreground text-lg">
+              Please wait while we create your personalized career report...
+            </p>
+          </div>
+          <div className="space-y-2 pt-4">
+            <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              <span>Analyzing your responses</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+              <span>Calculating career matches</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+              <span>Generating AI insights</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   // Helper functions to extract data from answers
   const extractSubjectScores = (answers: Record<string, any>) => {
