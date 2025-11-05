@@ -22,11 +22,11 @@ RUN apt-get update && \
 # Copy jar from build stage
 COPY --from=build /app/target/*.jar /app/app.jar
 
-# Do NOT hardcode secrets here; pass them at runtime or in Render env
-ENV SERVER_PORT=4000
+# Expose port (Render will provide PORT env var dynamically)
+# Spring Boot will bind to 0.0.0.0:${PORT} from application.yml
 EXPOSE 4000
 
 HEALTHCHECK --interval=30s --timeout=3s \
-  CMD curl -f http://localhost:${SERVER_PORT}/health || exit 1
+  CMD curl -f http://localhost:${PORT:-4000}/health || exit 1
 
 ENTRYPOINT ["java","-jar","/app/app.jar"]

@@ -59,6 +59,7 @@ spring:
 # Server Configuration
 server:
   port: ${PORT:4000}
+  address: ${SERVER_ADDRESS:0.0.0.0}  # Bind to all interfaces for Render/docker
   servlet:
     context-path: /
   error:
