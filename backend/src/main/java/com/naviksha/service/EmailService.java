@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import java.util.Map;
 
@@ -35,6 +34,7 @@ public class EmailService {
     
     /**
      * Send career report PDF via email
+     * Non-blocking: Email failures are logged but don't throw exceptions to avoid blocking report generation
      * 
      * @param studentReport The generated student report
      * @param recipientEmail The email address to send the report to
@@ -48,13 +48,6 @@ public class EmailService {
         
         try {
             log.info("Sending career report email to: {} for student: {}", recipientEmail, studentName);
-            
-            // Log report enhancement status for debugging
-            log.info("Report enhancement status - AI Enhanced: {}, Has Enhanced Summary: {}, Has Skills: {}, Has Trajectory: {}", 
-                studentReport.getAiEnhanced(),
-                studentReport.getEnhancedSummary() != null && !studentReport.getEnhancedSummary().isEmpty(),
-                studentReport.getSkillRecommendations() != null && !studentReport.getSkillRecommendations().isEmpty(),
-                studentReport.getCareerTrajectoryInsights() != null && !studentReport.getCareerTrajectoryInsights().isEmpty());
             
             // Generate PDF using Node.js service (same logic as frontend)
             byte[] pdfBytes = pdfServiceClient.generatePDF(studentReport);
@@ -85,17 +78,34 @@ public class EmailService {
             ByteArrayResource pdfResource = new ByteArrayResource(pdfBytes);
             helper.addAttachment("Career_Report_" + studentName.replaceAll("\\s+", "_") + ".pdf", pdfResource);
             
-            // Send email
+            // Send email (will timeout quickly if connection fails - 5-15 seconds)
             mailSender.send(message);
             
             log.info("Successfully sent career report email to: {} for student: {}", recipientEmail, studentName);
             
-        } catch (MessagingException e) {
-            log.error("Failed to send email to: {} for student: {}", recipientEmail, studentName, e);
-            throw new RuntimeException("Failed to send email: " + e.getMessage(), e);
+        } catch (jakarta.mail.MessagingException e) {
+            // Check if it's a connection error - fail fast and log
+            String errorMsg = e.getMessage() != null ? e.getMessage().toLowerCase() : "";
+            if (errorMsg.contains("couldn't connect") || errorMsg.contains("connection") || 
+                errorMsg.contains("timeout") || errorMsg.contains("unreachable")) {
+                log.warn("Email connection failed (skipping email) for {} - {}: {}", 
+                    recipientEmail, studentName, e.getMessage());
+            } else {
+                log.error("Email sending failed for {} - {}: {}", recipientEmail, studentName, e.getMessage(), e);
+            }
+            // Don't throw - email is non-blocking, report generation continues
+            
         } catch (Exception e) {
-            log.error("Unexpected error sending email to: {} for student: {}", recipientEmail, studentName, e);
-            throw new RuntimeException("Unexpected error sending email: " + e.getMessage(), e);
+            // Catch all other exceptions (including timeout exceptions)
+            String errorMsg = e.getMessage() != null ? e.getMessage().toLowerCase() : "";
+            if (errorMsg.contains("timeout") || errorMsg.contains("connection")) {
+                log.warn("Email timeout/connection error (skipping email) for {} - {}: {}", 
+                    recipientEmail, studentName, e.getMessage());
+            } else {
+                log.error("Unexpected error sending email to {} - {}: {}", 
+                    recipientEmail, studentName, e.getMessage(), e);
+            }
+            // Don't throw - email is non-blocking, report generation continues
         }
     }
     
@@ -136,12 +146,26 @@ public class EmailService {
             
             log.info("Successfully sent notification email to: {}", recipientEmail);
             
-        } catch (MessagingException e) {
-            log.error("Failed to send notification email to: {}", recipientEmail, e);
-            throw new RuntimeException("Failed to send notification email: " + e.getMessage(), e);
+        } catch (jakarta.mail.MessagingException e) {
+            // Check if it's a connection error - fail fast and log
+            String errorMsg = e.getMessage() != null ? e.getMessage().toLowerCase() : "";
+            if (errorMsg.contains("couldn't connect") || errorMsg.contains("connection") || 
+                errorMsg.contains("timeout") || errorMsg.contains("unreachable")) {
+                log.warn("Email connection failed (skipping email) for {}: {}", recipientEmail, e.getMessage());
+            } else {
+                log.error("Email sending failed for {}: {}", recipientEmail, e.getMessage(), e);
+            }
+            // Don't throw - email is non-blocking
+            
         } catch (Exception e) {
-            log.error("Unexpected error sending notification email to: {}", recipientEmail, e);
-            throw new RuntimeException("Unexpected error sending notification email: " + e.getMessage(), e);
+            // Catch all other exceptions (including timeout exceptions)
+            String errorMsg = e.getMessage() != null ? e.getMessage().toLowerCase() : "";
+            if (errorMsg.contains("timeout") || errorMsg.contains("connection")) {
+                log.warn("Email timeout/connection error (skipping email) for {}: {}", recipientEmail, e.getMessage());
+            } else {
+                log.error("Unexpected error sending email to {}: {}", recipientEmail, e.getMessage(), e);
+            }
+            // Don't throw - email is non-blocking
         }
     }
 }
