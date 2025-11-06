@@ -52,13 +52,13 @@ public class EmailConfig {
             props.put("mail.smtp.ssl.protocols", "TLSv1.2");
         }
         
-        // Connection timeouts (optimized for Gmail and cloud hosting)
-        // Connection: 15 seconds - Gmail responds quickly, fail fast if server is unreachable
-        props.put("mail.smtp.connectiontimeout", "15000"); // 15 seconds
-        // Read/IO: 25 seconds - Allows time for large attachments (PDFs) while avoiding long hangs
-        props.put("mail.smtp.timeout", "25000"); // 25 seconds
-        // Write: 25 seconds - Email with PDF attachment can take time to upload
-        props.put("mail.smtp.writetimeout", "25000"); // 25 seconds
+        // Connection timeouts (aggressive for fast failure - email is non-blocking)
+        // Connection: 5 seconds - Fail fast if server is unreachable (connection errors)
+        props.put("mail.smtp.connectiontimeout", "5000"); // 5 seconds
+        // Read/IO: 10 seconds - Quick timeout for connection issues, still allows PDF upload
+        props.put("mail.smtp.timeout", "10000"); // 10 seconds
+        // Write: 15 seconds - Email with PDF attachment needs slightly more time for upload
+        props.put("mail.smtp.writetimeout", "15000"); // 15 seconds
         
         // Gmail SSL trust settings
         props.put("mail.smtp.ssl.trust", "*"); // Trust all SSL certificates (Gmail uses valid certs)

@@ -125,10 +125,17 @@ class ApiService {
 
     const data = await this.handleResponse<AuthResponse>(response);
 
+    // Check if data is null or missing token
+    if (!data) {
+      throw new Error('Invalid response from server. Please check your backend URL configuration.');
+    }
+
     if (data.token) {
       this.token = data.token;
       localStorage.setItem('auth_token', data.token);
       localStorage.setItem('user_data', JSON.stringify(data.user));
+    } else {
+      throw new Error('Registration failed: No token received from server');
     }
 
     return data;
@@ -143,10 +150,17 @@ class ApiService {
 
     const data = await this.handleResponse<AuthResponse>(response);
 
+    // Check if data is null or missing token
+    if (!data) {
+      throw new Error('Invalid response from server. Please check your backend URL configuration.');
+    }
+
     if (data.token) {
       this.token = data.token;
       localStorage.setItem('auth_token', data.token);
       localStorage.setItem('user_data', JSON.stringify(data.user));
+    } else {
+      throw new Error('Login failed: No token received from server');
     }
 
     return data;

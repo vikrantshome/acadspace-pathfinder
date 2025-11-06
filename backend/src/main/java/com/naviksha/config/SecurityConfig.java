@@ -85,9 +85,16 @@ public class SecurityConfig {
             }
         } else {
             // Default: Allow common origins for development and production
+            // Development origins
             configuration.addAllowedOrigin("http://localhost:5173");
             configuration.addAllowedOrigin("http://localhost:3000");
             configuration.addAllowedOrigin("http://localhost:8080");
+            configuration.addAllowedOrigin("http://localhost:8082");
+            
+            // Production origins
+            configuration.addAllowedOrigin("https://www.naviksha.co.in");
+            configuration.addAllowedOrigin("https://naviksha.co.in");
+            configuration.addAllowedOrigin("http://naviksha.co.in"); // HTTP fallback
             configuration.addAllowedOrigin("https://naviksha-frontend.onrender.com");
             configuration.addAllowedOrigin("https://acadspace-pathfinder.onrender.com");
         }
