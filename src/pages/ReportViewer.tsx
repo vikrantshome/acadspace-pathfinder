@@ -454,30 +454,70 @@ const ReportViewer = () => {
         {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
           {[
-            { id: 'overview', label: isGradeBelow8 ? 'Skill Development Profile Summary' : 'Career Profile Summary', icon: Target },
-            { id: 'personality', label: 'RIASEC Personality Profile', icon: TrendingUp },
+            { 
+              id: 'overview', 
+              label: isGradeBelow8 ? 'Skill Development Profile Summary' : 'Career Profile Summary',
+              labelShort: isGradeBelow8 ? 'Skills' : 'Career',
+              icon: Target 
+            },
+            { 
+              id: 'personality', 
+              label: 'RIASEC Personality Profile',
+              labelShort: 'RIASEC',
+              icon: TrendingUp 
+            },
             ...(!isGradeBelow8 ? [
-              { id: 'careers', label: 'Top Career Recommendations', icon: Briefcase }
+              { 
+                id: 'careers', 
+                label: 'Top Career Recommendations',
+                labelShort: 'Top',
+                icon: Briefcase 
+              }
             ] : []),
             ...(displayData.aiEnhanced ? [
-              { id: 'ai-skills', label: 'Skills to Develop', icon: Lightbulb },
-              { id: 'ai-trajectory', label: isGradeBelow8 ? 'Skill Development Journey' : 'Career Trajectory Insights', icon: TrendingUp },
+              { 
+                id: 'ai-skills', 
+                label: 'Skills to Develop',
+                labelShort: 'Skills',
+                icon: Lightbulb 
+              },
+              { 
+                id: 'ai-trajectory', 
+                label: isGradeBelow8 ? 'Skill Development Journey' : 'Career Trajectory Insights',
+                labelShort: isGradeBelow8 ? 'Journey' : 'Trajectory',
+                icon: TrendingUp 
+              },
               ...(!isGradeBelow8 ? [
-                { id: 'ai-insights-explanations', label: 'Detailed Career Explanations', icon: Star },
-                { id: 'ai-insights-paths', label: 'Personalized Study Paths', icon: BookOpen }
+                { 
+                  id: 'ai-insights-explanations', 
+                  label: 'Detailed Career Explanations',
+                  labelShort: 'Detailed',
+                  icon: Star 
+                },
+                { 
+                  id: 'ai-insights-paths', 
+                  label: 'Personalized Study Paths',
+                  labelShort: 'Paths',
+                  icon: BookOpen 
+                }
               ] : [])
             ] : []),
-            { id: 'next-steps', label: 'Your Action Plan', icon: ArrowRight }
+            { 
+              id: 'next-steps', 
+              label: 'Your Action Plan',
+              labelShort: 'Action',
+              icon: ArrowRight 
+            }
           ].map(tab => (
             <Button
               key={tab.id}
               variant={activeTab === tab.id ? 'default' : 'outline'}
               onClick={() => setActiveTab(tab.id)}
-              className="flex items-center gap-2 text-xs md:text-sm px-2 md:px-4 py-1 md:py-2"
+              className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm px-2 md:px-4 py-1.5 md:py-2 whitespace-nowrap"
             >
-              <tab.icon className="w-3 h-3 md:w-4 md:h-4" />
+              <tab.icon className="w-3.5 h-3.5 md:w-4 md:h-4 flex-shrink-0" />
               <span className="hidden sm:inline">{tab.label}</span>
-              <span className="sm:hidden">{tab.label.split(' ')[0]}</span>
+              <span className="sm:hidden">{tab.labelShort || tab.label}</span>
             </Button>
           ))}
         </div>

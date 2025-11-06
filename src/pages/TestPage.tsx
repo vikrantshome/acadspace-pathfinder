@@ -15,7 +15,7 @@ import { Badge } from '@/components/ui/badge';
 import { ProgressBar } from '@/components/ProgressBar';
 import { JourneyTracker } from '@/components/JourneyTracker';
 import { OptionButton } from '@/components/OptionButton';
-import { ArrowLeft, ArrowRight, Save, Pause, BookOpen, Loader2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Save, Pause, BookOpen, Loader2, Home } from 'lucide-react';
 import { Question, TestAnswer } from '@/types';
 import { toast } from '@/hooks/use-toast';
 import { useAuth } from '@/components/AuthProvider';
@@ -579,9 +579,28 @@ const TestPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      {/* Home Button - Top Left */}
+      <div className="fixed top-4 left-4 md:top-6 md:left-6 z-[60]">
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => navigate('/')}
+          className="bg-background/95 backdrop-blur-sm shadow-md"
+        >
+          <Home className="w-4 h-4 mr-2" />
+          <span className="hidden sm:inline">Home</span>
+        </Button>
+      </div>
+
       {/* Progress Bar */}
-      <ProgressBar current={Math.min(currentQuestionIndex + 1, Math.max(questions.length, 1))} total={questions.length} testName={testName} showSteps />
+      <ProgressBar 
+        current={Math.min(currentQuestionIndex + 1, Math.max(questions.length, 1))} 
+        total={questions.length} 
+        testName={testName} 
+        showSteps 
+        className="pl-20 md:pl-24"
+      />
 
       {/* Auth Protection */}
       {!user && !authLoading && (

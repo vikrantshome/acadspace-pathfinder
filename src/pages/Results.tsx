@@ -148,20 +148,20 @@ const Results = () => {
             </p>
             
             <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 border rounded-lg">
-                <span>Personality & Interests Test</span>
+              <div className="flex items-center justify-between gap-2 p-3 border rounded-lg">
+                <span className="text-wrap break-words flex-1 min-w-0">Personality & Interests Test</span>
                 {testsCompleted.vibematch ? (
-                  <CheckCircle2 className="w-5 h-5 text-success" />
+                  <CheckCircle2 className="w-5 h-5 text-success flex-shrink-0" />
                 ) : (
-                  <Badge variant="outline">Pending</Badge>
+                  <Badge variant="outline" className="flex-shrink-0">Pending</Badge>
                 )}
               </div>
-              <div className="flex items-center justify-between p-3 border rounded-lg">
-                <span>Academic Background Test</span>
+              <div className="flex items-center justify-between gap-2 p-3 border rounded-lg">
+                <span className="text-wrap break-words flex-1 min-w-0">Academic Background Test</span>
                 {testsCompleted.edustats ? (
-                  <CheckCircle2 className="w-5 h-5 text-success" />
+                  <CheckCircle2 className="w-5 h-5 text-success flex-shrink-0" />
                 ) : (
-                  <Badge variant="outline">Pending</Badge>
+                  <Badge variant="outline" className="flex-shrink-0">Pending</Badge>
                 )}
               </div>
             </div>
@@ -207,22 +207,22 @@ const Results = () => {
           </Button>
         </div>
         <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl md:text-3xl font-bold">
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-2xl md:text-3xl font-bold break-words">
                 {uiMicrocopy.results.resultsHeadline}
               </h1>
-              <p className="text-muted-foreground mt-1">
+              <p className="text-muted-foreground mt-1 break-words">
                 Based on your assessment responses
               </p>
             </div>
             
-            <div className="flex gap-2">
-              <Button variant="outline" size="sm" onClick={handleShare}>
+            <div className="flex gap-2 flex-shrink-0">
+              <Button variant="outline" size="sm" onClick={handleShare} className="whitespace-nowrap">
                 <Share2 className="w-4 h-4 mr-2" />
                 {uiMicrocopy.results.shareBtn}
               </Button>
-              <Button variant="outline" size="sm" onClick={handleDownload}>
+              <Button variant="outline" size="sm" onClick={handleDownload} className="whitespace-nowrap">
                 <Download className="w-4 h-4 mr-2" />
                 {uiMicrocopy.results.downloadPDF}
               </Button>
@@ -244,16 +244,16 @@ const Results = () => {
               <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
                 <Star className="w-6 h-6 text-primary-foreground" />
               </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2">
-                  <CardTitle className="text-xl">Career Profile Summary</CardTitle>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <CardTitle className="text-xl break-words">Career Profile Summary</CardTitle>
                   {reportData.aiEnhanced && (
-                    <Badge variant="default" className="bg-green-600">
+                    <Badge variant="default" className="bg-green-600 whitespace-nowrap">
                       🤖 AI Enhanced
                     </Badge>
                   )}
                 </div>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground break-words">
                   {reportData.studentName} • Grade {reportData.grade} • {reportData.board}
                 </p>
               </div>
@@ -269,9 +269,9 @@ const Results = () => {
         {/* RIASEC Scores */}
         <Card className="mb-8">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <TrendingUp className="w-5 h-5" />
-              Personality & Interest Profile
+            <CardTitle className="flex items-center gap-2 flex-wrap">
+              <TrendingUp className="w-5 h-5 flex-shrink-0" />
+              <span className="break-words">Personality & Interest Profile</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -302,22 +302,22 @@ const Results = () => {
 
         {/* Top Career Buckets */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold flex items-center gap-2">
-            <Target className="w-6 h-6" />
-            {uiMicrocopy.results.top5Heading}
+          <h2 className="text-2xl font-bold flex items-center gap-2 flex-wrap">
+            <Target className="w-6 h-6 flex-shrink-0" />
+            <span className="break-words">{uiMicrocopy.results.top5Heading}</span>
           </h2>
 
           {(reportData?.top5_buckets || []).map((bucket: any, index: number) => (
             <Card key={index} className="border-l-4 border-primary">
               <CardHeader>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <CardTitle className="text-xl">{bucket.bucketName}</CardTitle>
-                    <p className="text-muted-foreground">
+                <div className="flex items-center justify-between gap-2">
+                  <div className="min-w-0 flex-1">
+                    <CardTitle className="text-xl break-words">{bucket.bucketName}</CardTitle>
+                    <p className="text-muted-foreground break-words">
                       {uiMicrocopy.results.confidenceLabel}: {bucket.bucketScore}%
                     </p>
                   </div>
-                  <Badge variant="default" className="text-lg px-3 py-1">
+                  <Badge variant="default" className="text-lg px-3 py-1 flex-shrink-0 whitespace-nowrap">
                     #{index + 1}
                   </Badge>
                 </div>
@@ -345,10 +345,10 @@ const Results = () => {
         {reportData.skillRecommendations && reportData.skillRecommendations.length > 0 && (
           <Card className="mt-8">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Target className="w-5 h-5" />
-                AI-Recommended Skills to Develop
-                <Badge variant="default" className="bg-blue-600">
+              <CardTitle className="flex items-center gap-2 flex-wrap">
+                <Target className="w-5 h-5 flex-shrink-0" />
+                <span className="break-words">AI-Recommended Skills to Develop</span>
+                <Badge variant="default" className="bg-blue-600 whitespace-nowrap">
                   🤖 AI Powered
                 </Badge>
               </CardTitle>
@@ -372,10 +372,10 @@ const Results = () => {
         {reportData.careerTrajectoryInsights && (
           <Card className="mt-8">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="w-5 h-5" />
-                Career Trajectory Insights
-                <Badge variant="default" className="bg-purple-600">
+              <CardTitle className="flex items-center gap-2 flex-wrap">
+                <TrendingUp className="w-5 h-5 flex-shrink-0" />
+                <span className="break-words">Career Trajectory Insights</span>
+                <Badge variant="default" className="bg-purple-600 whitespace-nowrap">
                   🤖 AI Powered
                 </Badge>
               </CardTitle>
@@ -391,9 +391,9 @@ const Results = () => {
         {/* Next Steps */}
         <Card className="mt-8">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BookOpen className="w-5 h-5" />
-              Recommended Next Steps
+            <CardTitle className="flex items-center gap-2 flex-wrap">
+              <BookOpen className="w-5 h-5 flex-shrink-0" />
+              <span className="break-words">Recommended Next Steps</span>
             </CardTitle>
           </CardHeader>
           <CardContent>
