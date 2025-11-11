@@ -115,6 +115,25 @@ function inferStatus(p?: { currentQuestionIndex?: number; answers?: any; complet
         </div>
 
         <div className="container mx-auto px-4 py-8 max-w-6xl">
+          {/* Admin Panel - Only for admin users */}
+          {user?.roles?.includes('ADMIN') && (
+            <div className="mb-6 md:mb-8">
+              <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 flex items-center gap-2">
+                <Settings className="w-5 h-5 text-primary" />
+                Admin Panel
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer border-primary/20" onClick={() => navigate('/export-questions')}>
+                  <CardContent className="p-6 text-center">
+                    <Download className="w-8 h-8 mx-auto mb-3 text-primary" />
+                    <h3 className="font-semibold">Export Questions</h3>
+                    <p className="text-sm text-muted-foreground">Download test questions to Excel</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          )}
+
           {/* Quick Actions */}
           <div className="mb-6 md:mb-8">
             <h2 className="text-lg md:text-xl font-semibold mb-3 md:mb-4">Quick Actions</h2>
