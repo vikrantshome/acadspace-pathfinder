@@ -114,10 +114,9 @@ services:
         value: "5100"
 
   # Frontend - Vite React Static Site
-  - type: static_site
+  - type: web
     name: naviksha-frontend
-    repo: https://github.com/vikrantshome/acadspace-pathfinder
-    branch: main
+    env: static
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     routes:
