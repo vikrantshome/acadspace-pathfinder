@@ -121,6 +121,9 @@ services:
     env: static
     buildCommand: npm install && npm run build
     staticPublishPath: dist
+    rewrites:
+      - source: /*
+        destination: /index.html
     envVars:
       # Backend API URL (update after backend deployment)
       - key: VITE_BACKEND_URL
