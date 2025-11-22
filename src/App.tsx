@@ -37,7 +37,7 @@ const App = () => {
               <Route path="/report" element={<ReportViewer />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/export-questions" element={<ExportQuestions />} />
-              <Route path="/ncciallen" element={<NcciAllenPage />} />
+              <Route path="/allen-career-compass" element={<NcciAllenPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
