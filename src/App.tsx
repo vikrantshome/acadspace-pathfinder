@@ -14,7 +14,7 @@ import ReportViewer from "./pages/ReportViewer";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import ExportQuestions from "./pages/ExportQuestions";
-import NcciAllenPage from "@/pages/NcciAllenPage";
+import NcciAllenPage from "@/pages/NcciAllen/pages/Index";
 
 const queryClient = new QueryClient();
 
