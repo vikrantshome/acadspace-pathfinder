@@ -38,3 +38,5 @@ ai-report-service/app/models/__pycache__/student_profile.cpython-311.pyc
 ai-report-service/app/services/__pycache__/__init__.cpython-311.pyc
 ai-report-service/app/services/__pycache__/ai_client.cpython-311.pyc
 ai-report-service/app/__pycache__/__init__.cpython-311.pyc
+.genkit/
+data/
