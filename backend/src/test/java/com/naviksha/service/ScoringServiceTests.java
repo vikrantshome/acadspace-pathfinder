@@ -11,6 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
+
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -36,6 +39,7 @@ import static org.mockito.Mockito.*;
  * - Expected: Design/Creative careers rank highest
  */
 @ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 class ScoringServiceTests {
 
     @Mock
@@ -43,6 +47,9 @@ class ScoringServiceTests {
 
     @Mock
     private SubjectivityAnalysisService subjectivityService;
+
+    @Mock
+    private AIServiceClient aiServiceClient;
 
     @InjectMocks
     private ScoringService scoringService;
@@ -67,6 +74,9 @@ class ScoringServiceTests {
                 .orElse(null);
         });
         when(subjectivityService.analyzeTextAlignment(any(), any())).thenReturn(50.0);
+        
+        // Mock AI service to prevent NullPointerException and return the original report
+        when(aiServiceClient.enhanceReport(any(StudentReport.class))).thenAnswer(invocation -> invocation.getArgument(0));
     }
 
     @Test
