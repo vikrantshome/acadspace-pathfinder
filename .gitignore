@@ -27,6 +27,8 @@ dist-ssr
 backend/target/
 ai-report-service/.env
 .env
+temp/
+pdf-service/server_backup.js
 ai-report-service/app/models/__pycache__/__init__.cpython-311.pyc
 ai-report-service/app/models/__pycache__/career_bucket.cpython-311.pyc
 ai-report-service/app/models/__pycache__/career_match.cpython-311.pyc
