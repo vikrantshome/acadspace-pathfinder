@@ -47,7 +47,7 @@ export default {
           foreground: "hsl(var(--muted-foreground))",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
+          DEFAULT: "#F3F9FF",
           foreground: "hsl(var(--accent-foreground))",
           light: "hsl(var(--accent-light))",
         },
