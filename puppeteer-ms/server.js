@@ -25,7 +25,7 @@ app.get('/health', (req, res) => {
  * Populates a career template HTML with data from a specific career bucket.
  * @param {string} htmlContent - The HTML content of the template.
  * @param {string} bucketName - The name of the career bucket.
- * @param {number} bucketIndex - The index of the bucket (0-based).
+ * @  {number} bucketIndex - The index of the bucket (0-based).
  * @param {Array<object>} careersToRender - An array of career objects to render on this page.
  * @param {object} reportData - The full report data for accessing shared info like skills.
  * @returns {string} - The populated HTML string.
@@ -161,9 +161,9 @@ async function generateReportHTML(templateName, reportData, recommendations) {
  * @param {object} recommendations - The AO recommendations JSON object.
  * @returns {Promise<Buffer>} - A promise that resolves with the generated PDF buffer.
  */
-async function generatePdfPage(templateName, reportData, recommendations) {
+async function generatePdfPage(browser, templateName, reportData, recommendations) {
     console.log(`Generating PDF page for: ${templateName}`);
-    let browser;
+    let page;
     try {
         // 1. Generate HTML content dynamically
         let htmlContent = await generateReportHTML(templateName, reportData, recommendations);
@@ -187,17 +187,8 @@ async function generatePdfPage(templateName, reportData, recommendations) {
         }
         await Promise.all(promises);
 
-        // 3. Launch Puppeteer
-        const options = process.env.NODE_ENV === 'production' ? {
-            args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox'],
-            executablePath: await chromium.executablePath(),
-            headless: chromium.headless,
-        } : {
-            headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
-        };
-        browser = await puppeteer.launch(options);
-        const page = await browser.newPage();
+        // 3. Create a new page
+        page = await browser.newPage();
 
         // 4. Set content and generate PDF
         await page.setContent(htmlContent, { waitUntil: 'networkidle0' });
@@ -209,8 +200,8 @@ async function generatePdfPage(templateName, reportData, recommendations) {
 
         return pdfBuffer;
     } finally {
-        if (browser) {
-            await browser.close();
+        if (page) {
+            await page.close();
         }
         console.log(`Finished generating PDF page for: ${templateName}`);
     }
@@ -225,6 +216,7 @@ app.post('/generate-pdf', async (req, res) => {
         return res.status(400).send({ error: 'Invalid report data provided in the request body.' });
     }
 
+    let browser;
     try {
         // Load recommendations
         const recommendationsPath = path.join(__dirname, 'ao_recommendations.json');
@@ -261,14 +253,25 @@ app.post('/generate-pdf', async (req, res) => {
 
         const templates = ['page1.html', 'page2.html', 'page3.html', 'page4.html', 'page5.html', 'page6.html'];
 
-        // 1. Generate all PDF pages in parallel
+        // 1. Launch the browser once
+        const options = process.env.NODE_ENV === 'production' ? {
+            args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox'],
+            executablePath: await chromium.executablePath(),
+            headless: chromium.headless,
+        } : {
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        };
+        browser = await puppeteer.launch(options);
+
+        // 2. Generate all PDF pages in parallel
         console.log('Generating individual PDF pages in parallel...');
         const pdfBuffers = await Promise.all(
-            templates.map(template => generatePdfPage(template, reportData, recommendations))
+            templates.map(template => generatePdfPage(browser, template, reportData, recommendations))
         );
         console.log('All individual pages generated.');
 
-        // 2. Merge the PDF buffers
+        // 3. Merge the PDF buffers
         console.log('Merging PDF pages...');
         const mergedPdf = await PDFDocument.create();
         for (const pdfBuffer of pdfBuffers) {
@@ -277,17 +280,21 @@ app.post('/generate-pdf', async (req, res) => {
             copiedPages.forEach(page => mergedPdf.addPage(page));
         }
 
-        // 3. Save the merged PDF to a final buffer
+        // 4. Save the merged PDF to a final buffer
         const mergedPdfBytes = await mergedPdf.save();
         console.log('PDFs merged successfully.');
 
-        // 4. Send the final PDF as a response
+        // 5. Send the final PDF as a response
         res.setHeader('Content-Type', 'application/pdf');
         res.send(Buffer.from(mergedPdfBytes));
 
     } catch (error) {
         console.error('Error generating final PDF:', error);
         res.status(500).send({ error: 'Failed to generate final PDF', details: error.message });
+    } finally {
+        if (browser) {
+            await browser.close();
+        }
     }
 });
 
