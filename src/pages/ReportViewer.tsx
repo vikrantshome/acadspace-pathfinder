@@ -31,7 +31,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '@/components/AuthProvider';
 import { apiService } from '@/lib/api';
 import { AIFallbackNotice } from '@/components/AIFallbackNotice';
-import { generatePDFBlob, type ReportData } from '@/lib/pdf-generator';
+import { generatePuppeteerPDF as generatePDFBlob } from '@/lib/puppeteer-pdf-generator';
 
 const ReportViewer = () => {
   const navigate = useNavigate();
@@ -133,7 +133,7 @@ const ReportViewer = () => {
       };
 
       // Generate PDF using shared utility
-      const pdfBlob = generatePDFBlob(reportData);
+            const pdfBlob = await generatePDFBlob(reportData, user?.id || 'test_user');
       
       // Create download link
       const studentName = displayData.studentName || 'Student';

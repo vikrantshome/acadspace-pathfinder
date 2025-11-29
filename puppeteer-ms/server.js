@@ -3,12 +3,17 @@ const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5200;
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+
+// Enable CORS for all routes
+app.use(cors());
+
 
 // Health check endpoint
 app.get('/health', (req, res) => {
@@ -97,8 +102,8 @@ async function generateReportHTML(templateName, reportData, recommendations) {
     const templatePath = path.join(__dirname, 'templates', templateName);
     let htmlContent = await fs.readFile(templatePath, 'utf8');
 
-    if (!reportData || !reportData.reportData) return htmlContent;
     const data = reportData.reportData;
+    const buckets = data.top5Buckets || data.top5_buckets;
 
     // Populate page1.html
     if (templateName === 'page1.html') {
@@ -111,7 +116,7 @@ async function generateReportHTML(templateName, reportData, recommendations) {
     // Populate page2.html
     if (templateName === 'page2.html') {
         htmlContent = htmlContent.replace(/Your profile shows that you enjoy structure[\s\S]*?and preparation pathways\./, data.summaryParagraph || '');
-        htmlContent = htmlContent.replace(/Your RIASEC results show a strong tilt toward[\s\S]*?and analytical exploration\./, data.detailedCareerInsights?.explanations?.[data.top5Buckets?.[0]?.topCareers?.[0]?.careerName] || '');
+        htmlContent = htmlContent.replace(/Your RIASEC results show a strong tilt toward[\s\S]*?and analytical exploration\./, data.detailedCareerInsights?.explanations?.[buckets?.[0]?.topCareers?.[0]?.careerName] || '');
         
         const vibeScores = data.vibeScores || {};
         htmlContent = htmlContent.replace('width:72%;', `width:${vibeScores.R || 0}%;`).replace('<span>72%</span>', `<span>${vibeScores.R || 0}%</span>`);
@@ -124,22 +129,22 @@ async function generateReportHTML(templateName, reportData, recommendations) {
 
     // Populate career pages
     if (templateName === 'page3.html') {
-        const bucket = data.top5Buckets?.[0];
+        const bucket = buckets?.[0];
         const careers = bucket?.topCareers?.slice(0, 2);
         htmlContent = populateCareerPage(htmlContent, bucket?.bucketName, 0, careers, data, recommendations);
     }
     if (templateName === 'page4.html') {
-        const bucket = data.top5Buckets?.[1];
+        const bucket = buckets?.[1];
         const careers = bucket?.topCareers?.slice(0, 2);
         htmlContent = populateCareerPage(htmlContent, bucket?.bucketName, 1, careers, data, recommendations);
     }
     if (templateName === 'page5.html') {
-        const bucket = data.top5Buckets?.[2];
+        const bucket = buckets?.[2];
         const careers = bucket?.topCareers?.slice(0, 2);
         htmlContent = populateCareerPage(htmlContent, bucket?.bucketName, 2, careers, data, recommendations);
     }
     if (templateName === 'page6.html') {
-        const bucket = data.top5Buckets?.[3];
+        const bucket = buckets?.[3];
         const careers = bucket?.topCareers?.slice(0, 2);
         htmlContent = populateCareerPage(htmlContent, bucket?.bucketName, 3, careers, data, recommendations);
     }
@@ -217,18 +222,25 @@ app.post('/generate-pdf', async (req, res) => {
     try {
         // Load recommendations
         const recommendationsPath = path.join(__dirname, 'ao_recommendations.json');
+        console.log('Loading recommendations from:', recommendationsPath);
         const recommendationsData = await fs.readFile(recommendationsPath, 'utf8');
         const recommendations = JSON.parse(recommendationsData);
+        console.log('Recommendations loaded successfully.');
 
         // Load career data from naviksha.careers.json
         const careersPath = path.join(__dirname, 'naviksha.careers.json');
+        console.log('Loading careers from:', careersPath);
         const careersData = await fs.readFile(careersPath, 'utf8');
         const careers = JSON.parse(careersData);
+        console.log('Careers loaded successfully.');
+
+        // Load career data from naviksha.careers.json
         const careersMap = new Map(careers.map(career => [career.careerName, career]));
 
         // Add recommendedSkills and recommendedCourses to the reportData
-        if (reportData.reportData.top5Buckets) {
-            for (const bucket of reportData.reportData.top5Buckets) {
+        const buckets = reportData.reportData.top5Buckets || reportData.reportData.top5_buckets;
+        if (buckets) {
+            for (const bucket of buckets) {
                 if (bucket.topCareers) {
                     for (const career of bucket.topCareers) {
                         const careerData = careersMap.get(career.careerName);
