@@ -73,9 +73,8 @@
         ::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body>
-
-    <div class="page-container px-10 py-10 flex flex-col font-sans text-text-dark">
+<body class="p-0 m-0">
+    <div class="page-container w-[210mm] h-[297mm] overflow-hidden bg-bg-main px-10 py-4 flex flex-col font-sans text-text-dark">
         
         <div class="mb-6">
             <h1 class="text-header-blue text-3xl font-bold mb-1 tracking-tight">Top Career Recommendations</h1>
@@ -178,24 +177,10 @@
                     How should you prepare for this career domain?
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-[1.2fr_1.2fr_1fr] gap-4 p-5">
+                <div class="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-4 p-5">
                     
-                    <div class="bg-white rounded-xl p-4 h-full shadow-sm border border-slate-50">
-                        <h4 class="text-header-blue text-xs font-bold mb-3 uppercase tracking-wide">Recommended Skills:</h4>
-                        <ul class="list-none text-[12px] text-gray-700 leading-snug space-y-1.5">
-                            <li class="flex items-start before:content-['•'] before:text-gray-400 before:mr-2">Skill 1</li>
-                            <li class="flex items-start before:content-['•'] before:text-gray-400 before:mr-2">Skill 2</li>
-                            <li class="flex items-start before:content-['•'] before:text-gray-400 before:mr-2">Skill 3</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="bg-white rounded-xl p-4 h-full shadow-sm border border-slate-50">
-                        <h4 class="text-header-blue text-xs font-bold mb-3 uppercase tracking-wide">Recommended Courses:</h4>
-                        <ul class="list-none text-[12px] text-gray-700 leading-snug space-y-1.5">
-                            <li class="flex items-start before:content-['•'] before:text-gray-400 before:mr-2">Course 1</li>
-                            <li class="flex items-start before:content-['•'] before:text-gray-400 before:mr-2">Course 2</li>
-                            <li class="flex items-start before:content-['•'] before:text-gray-400 before:mr-2">Course 3</li>
-                        </ul>
+                    <div class="bg-white rounded-xl p-4 h-full shadow-sm border border-slate-50 recommendation-content">
+                        <!-- Dynamic recommendation text will be injected here -->
                     </div>
                     
                     <div class="bg-white border border-border-light rounded-xl p-3 text-center flex flex-col items-center justify-center h-full cursor-pointer hover:shadow-md transition-shadow group">
