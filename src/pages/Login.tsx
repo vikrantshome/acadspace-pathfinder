@@ -11,8 +11,9 @@ import { Label } from '@/components/ui/label';
 import { GraduationCap, Loader2 } from 'lucide-react';
 import { useAuth } from '@/components/AuthProvider';
 import { toast } from '@/hooks/use-toast';
+import { apiService } from '@/lib/api';
 
-const SignUp: React.FC = () => {
+const Login: React.FC = () => {
   const { signUp } = useAuth();
   const navigate = useNavigate();
 
@@ -21,51 +22,25 @@ const SignUp: React.FC = () => {
   const [phone, setPhone] = useState('');
   const [activeTab, setActiveTab] = useState<'student' | 'phone'>('phone');
 
-  const handleStudentSignup = async () => {
-    if (!studentId) {
-      return toast({ title: 'Enter Student ID', variant: 'destructive' });
-    }
-    
+  const handleLookup = async () => {
     setLoading(true);
     try {
-      const generatedEmail = `${studentId.replace(/[^a-zA-Z0-9]/g, '')}@naviksha.local`;
-      const generatedPassword = Math.random().toString(36).slice(-12) + 'A1!';
-      
-      await signUp(generatedEmail, generatedPassword, studentId);
-      toast({ title: 'Success', description: 'Account created successfully' });
+      const studentID = activeTab === 'student' ? studentId : '';
+      const mobileNo = activeTab === 'phone' ? phone : '';
+      await apiService.lookup(studentID, mobileNo);
       navigate('/');
-    } catch (err: any) {
-      console.error('signup error', err);
-      toast({ 
-        title: 'Signup failed', 
-        description: err?.message || String(err), 
-        variant: 'destructive' 
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handlePhoneSignup = async () => {
-    if (!phone) {
-      return toast({ title: 'Enter phone', variant: 'destructive' });
-    }
-    
-    setLoading(true);
-    try {
-      const generatedEmail = `${phone.replace(/[^0-9]/g, '')}@naviksha.local`;
-      const generatedPassword = Math.random().toString(36).slice(-12) + 'A1!';
-      
-      await signUp(generatedEmail, generatedPassword, phone);
-      toast({ title: 'Success', description: 'Account created successfully' });
-      navigate('/');
-    } catch (err: any) {
-      console.error('signup error', err);
-      toast({ 
-        title: 'Signup failed', 
-        description: err?.message || String(err), 
-        variant: 'destructive' 
-      });
+    } catch (error: any) {
+      if (error.message.includes('404')) {
+        const studentID = activeTab === 'student' ? studentId : '';
+        const mobileNo = activeTab === 'phone' ? phone : '';
+        navigate(`/auth?studentID=${studentID}&mobileNo=${mobileNo}`);
+      } else {
+        toast({
+          title: 'An error occurred',
+          description: error.message,
+          variant: 'destructive',
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -73,11 +48,7 @@ const SignUp: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (activeTab === 'student') {
-      handleStudentSignup();
-    } else {
-      handlePhoneSignup();
-    }
+    handleLookup();
   };
 
   return (
@@ -152,10 +123,10 @@ const SignUp: React.FC = () => {
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Creating Account...
+                    Looking up...
                   </>
                 ) : (
-                  'Sign Up'
+                  'Continue'
                 )}
               </Button>
             </form>

@@ -168,6 +168,28 @@ class ApiService {
     return data;
   }
 
+  async lookup(studentID: string, mobileNo: string): Promise<AuthResponse> {
+    const response = await fetch(`${API_BASE_URL}/auth/lookup`, {
+      method: 'POST',
+      headers: this.getHeaders(),
+      body: JSON.stringify({ studentID, mobileNo }),
+    });
+
+    const data = await this.handleResponse<AuthResponse>(response);
+
+    if (!data) {
+      throw new Error('Invalid response from server. Please check your backend URL configuration.');
+    }
+
+    if (data.token) {
+      this.token = data.token;
+      localStorage.setItem('auth_token', data.token);
+      localStorage.setItem('user_data', JSON.stringify(data.user));
+    }
+
+    return data;
+  }
+
   /**
    * Persist token and user data after out-of-band verification (eg. OTP)
    */

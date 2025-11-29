@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/components/AuthProvider";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
-import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
 import Onboarding from "./pages/Onboarding";
 import TestPage from "./pages/TestPage";
 import Results from "./pages/Results";
@@ -31,7 +31,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/test/:testType" element={<TestPage />} />
               <Route path="/results" element={<Results />} />

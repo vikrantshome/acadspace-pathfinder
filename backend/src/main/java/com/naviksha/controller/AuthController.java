@@ -178,4 +178,30 @@ public class AuthController {
                 .body(new AuthResponse("", null, "Error updating profile: " + e.getMessage()));
         }
     }
+
+    @PostMapping("/lookup")
+    @Operation(summary = "User lookup", description = "Find user by studentID or mobileNo and return JWT token")
+    public ResponseEntity<?> lookup(@RequestBody com.naviksha.dto.LookupRequest request) {
+        try {
+            log.info("Lookup attempt for studentID: {} or mobileNo: {}", request.getStudentID(), request.getMobileNo());
+            
+            User user = userService.findUserByLookup(request);
+            
+            if (user == null) {
+                return ResponseEntity.status(404)
+                    .body(new AuthResponse("", null, "User not found"));
+            }
+            
+            // Generate JWT token
+            String token = tokenProvider.generateToken(user.getEmail());
+            
+            log.info("User found and logged in successfully: {}", user.getEmail());
+            return ResponseEntity.ok(new AuthResponse(token, user, "Login successful"));
+            
+        } catch (Exception e) {
+            log.error("Lookup error", e);
+            return ResponseEntity.badRequest()
+                .body(new AuthResponse("", null, "Lookup failed: " + e.getMessage()));
+        }
+    }
 }
