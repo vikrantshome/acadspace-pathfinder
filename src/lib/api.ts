@@ -141,7 +141,7 @@ class ApiService {
     return data;
   }
 
-  async login(email: string, password: string): Promise<AuthResponse> {
+  async login(email: string, password: string, storeToken = true): Promise<AuthResponse> {
     const response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: this.getHeaders(),
@@ -150,20 +150,30 @@ class ApiService {
 
     const data = await this.handleResponse<AuthResponse>(response);
 
-    // Check if data is null or missing token
     if (!data) {
       throw new Error('Invalid response from server. Please check your backend URL configuration.');
     }
 
     if (data.token) {
-      this.token = data.token;
-      localStorage.setItem('auth_token', data.token);
-      localStorage.setItem('user_data', JSON.stringify(data.user));
+      if (storeToken) {
+        this.token = data.token;
+        localStorage.setItem('auth_token', data.token);
+        localStorage.setItem('user_data', JSON.stringify(data.user));
+      }
     } else {
       throw new Error('Login failed: No token received from server');
     }
 
     return data;
+  }
+
+  /**
+   * Persist token and user data after out-of-band verification (eg. OTP)
+   */
+  setAuth(token: string, user: User) {
+    this.token = token;
+    localStorage.setItem('auth_token', token);
+    localStorage.setItem('user_data', JSON.stringify(user));
   }
 
   async getCurrentUser(): Promise<User> {
@@ -301,6 +311,29 @@ class ApiService {
   async healthCheck(): Promise<any> {
     const response = await fetch(`${API_HEALTH_CHECK_URL}`);
     return this.handleResponse<any>(response);
+  }
+
+  // OTP helpers
+  // sendOtp accepts either `{ email?: string, phone?: string }` for flexibility
+  async sendOtp(payload: { email?: string; phone?: string }): Promise<{ success: boolean; message: string }> {
+    const response = await fetch(`${API_BASE_URL}/otp/send`, {
+      method: 'POST',
+      headers: this.getHeaders(),
+      body: JSON.stringify(payload),
+    });
+
+    return this.handleResponse<{ success: boolean; message: string }>(response);
+  }
+
+  // verifyOtp accepts `{ email?: string, phone?: string, otp: string }`
+  async verifyOtp(payload: { email?: string; phone?: string; otp: string }): Promise<{ success: boolean; message: string }> {
+    const response = await fetch(`${API_BASE_URL}/otp/verify`, {
+      method: 'POST',
+      headers: this.getHeaders(),
+      body: JSON.stringify(payload),
+    });
+
+    return this.handleResponse<{ success: boolean; message: string }>(response);
   }
 
   // AI Service health check - through Java backend
