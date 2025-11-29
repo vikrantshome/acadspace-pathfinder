@@ -8,6 +8,7 @@ Implement a simple OTP verification system using **Spring Boot** (backend) and *
 
 ## Key Components
 
+
 ### 1. Backend (Spring Boot)
 
 * Two endpoints:
