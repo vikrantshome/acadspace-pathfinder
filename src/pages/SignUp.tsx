@@ -87,7 +87,7 @@ const SignUp: React.FC = () => {
           <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl shadow-lg mx-auto flex items-center justify-center mb-3 md:mb-4">
             <GraduationCap className="w-6 h-6 md:w-8 md:h-8 text-primary" />
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white">Sign Up</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-white">Sign In</h1>
           <p className="text-sm md:text-base text-white/80 px-2">Navigate Your Future with AI-Powered Career Guidance</p>
         </div>
 
@@ -154,7 +154,7 @@ const SignUp: React.FC = () => {
                     Creating Account...
                   </>
                 ) : (
-                  'Sign Up'
+                  'Sign In'
                 )}
               </Button>
             </form>
