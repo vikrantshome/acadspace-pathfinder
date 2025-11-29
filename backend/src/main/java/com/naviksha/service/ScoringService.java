@@ -92,6 +92,7 @@ public class ScoringService {
         // Build final report
         StudentReport report = StudentReport.builder()
             .studentName(submission.getUserName())
+            .schoolName(submission.getSchoolName())
             .grade(submission.getGrade())
             .board(submission.getBoard())
             .vibeScores(riasecScores)

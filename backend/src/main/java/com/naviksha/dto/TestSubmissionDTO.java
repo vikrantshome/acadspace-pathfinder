@@ -20,6 +20,8 @@ public class TestSubmissionDTO {
     @NotBlank(message = "User name is required")
     private String userName;
     
+    private String schoolName;
+    
     @NotNull(message = "Grade is required")
     private Integer grade;
     

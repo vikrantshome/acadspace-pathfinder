@@ -14,6 +14,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class StudentReport {
     private String studentName;
+    private String schoolName;
     private Integer grade;
     private String board;
     private Map<String, Integer> vibeScores;

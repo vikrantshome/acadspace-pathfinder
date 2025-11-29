@@ -311,6 +311,7 @@ const TestPage = () => {
 
         const submission = {
           userName: user.name,
+          schoolName: user.schoolName,
           grade: parseInt(edustatsAnswers.e_01) || 11,
           board: edustatsAnswers.e_02 || 'CBSE',
           answers: combinedAnswers,
