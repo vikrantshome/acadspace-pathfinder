@@ -49,6 +49,9 @@ RUN apt-get update && apt-get install -yq \
 # Set the working directory
 WORKDIR /usr/src/app
 
+# Set NODE_ENV to production
+ENV NODE_ENV=production
+
 # Copy package.json and package-lock.json
 COPY puppeteer-ms/package.json puppeteer-ms/package-lock.json ./
 

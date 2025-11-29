@@ -1,5 +1,6 @@
 const express = require('express');
-const puppeteer = require('puppeteer');
+const puppeteer = process.env.NODE_ENV === 'production' ? require('puppeteer-core') : require('puppeteer');
+const chromium = require('@sparticuz/chromium');
 const fs = require('fs').promises;
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
@@ -187,10 +188,15 @@ async function generatePdfPage(templateName, reportData, recommendations) {
         await Promise.all(promises);
 
         // 3. Launch Puppeteer
-        browser = await puppeteer.launch({
+        const options = process.env.NODE_ENV === 'production' ? {
+            args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox'],
+            executablePath: await chromium.executablePath(),
+            headless: chromium.headless,
+        } : {
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
-        });
+        };
+        browser = await puppeteer.launch(options);
         const page = await browser.newPage();
 
         // 4. Set content and generate PDF
