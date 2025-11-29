@@ -26,6 +26,7 @@ interface AuthResponse {
 
 interface TestSubmission {
   userName: string;
+  schoolName?: string;
   grade: number;
   board: string;
   answers: Record<string, any>;
