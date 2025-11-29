@@ -56,7 +56,7 @@ const HowItWorksSection = () => {
                   4
                 </div>
                 <p className="text-muted-foreground">
-                  Explore courses aligned to your chosen path.
+                  Explore Allen Online Courses for your Chosen Path
                 </p>
               </div>
             </CardContent>

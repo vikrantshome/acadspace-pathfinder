@@ -6,8 +6,8 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-bold text-foreground mb-4">Quick Links</h3>
             <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-              <a href="https://allen.in/about-us" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">About ALLEN</a>
-              <a href="https://allen.in/ultimate-program-live-courses" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Allen Online Courses</a>
+              <a href="https://allen.in/" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">About ALLEN</a>
+              <a href="https://allen.in/classes-6-10" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">ALLEN Online Courses</a>
               <a href="https://allen.in/news" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">News</a>
               <a href="https://allen.in/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Privacy Policy</a>
             </div>
@@ -22,14 +22,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-8 mb-6 opacity-40 grayscale">
-          {/* <div className="text-xl font-bold text-foreground">ALLEN</div> */}
+        {/* <div className="flex flex-wrap items-center justify-center gap-8 mb-6 opacity-40 grayscale">
+          <div className="text-xl font-bold text-foreground">ALLEN</div>
           <div className="text-xl font-bold text-foreground">ALLEN Online</div>
           <div className="text-xl font-bold text-foreground">Naviksha</div>
-        </div>
+        </div> */}
 
         <p className="text-sm text-muted-foreground text-center">
-          © 2024 ALLEN Digital. All rights reserved.
+          © 2025 Allen Online. All rights reserved.
         </p>
       </div>
     </footer>

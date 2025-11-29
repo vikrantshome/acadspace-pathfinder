@@ -9,7 +9,7 @@ const ProcessSection = () => {
           Discover what you're made for.
         </h2>
         <p className="text-lg text-center text-muted-foreground mb-16 max-w-4xl mx-auto">
-          The Career Compass Test helps you explore your interests, strengths, and learning preferences through a professionally curated, AI-enabled assessment. Get instant insights into careers aligned with your natural strengths.
+          The Career Compass Test brought to you by Allen Online helps you explore your interests, strengths, and learning preferences through a professionally curated, AI-enabled assessment. Get instant insights into careers aligned with your natural strengths.
         </p>
 
         <div className="grid md:grid-cols-3 gap-8 mb-12">

@@ -54,7 +54,7 @@ spring:
           starttls:
             enable: true
           ssl:
-            trust: ${MAIL_HOST:smtp.gmail.com}
+            trust: smtp.gmail.com
 
 # Server Configuration
 server:
