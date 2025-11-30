@@ -40,11 +40,11 @@ const Login: React.FC = () => {
         if (value.length === 0) {
             return '';
         }
-        if (!/^\d+$/.test(value)) {
-            return 'Student ID must contain only digits';
+        if (!/^[a-zA-Z0-9]+$/.test(value)) {
+            return 'Student ID must contain only letters and numbers';
         }
         if (value.length !== 6) {
-            return 'Student ID must be exactly 6 digits';
+            return 'Student ID must be exactly 6 characters';
         }
         return '';
     };
@@ -110,20 +110,20 @@ const Login: React.FC = () => {
                         <CardTitle className="text-lg md:text-xl text-center">Sign In</CardTitle>
 
                         <div className="flex justify-center mt-3">
-                            <div className="inline-flex bg-white/5 rounded-full p-1 gap-1">
+                            <div className="inline-flex bg-white/5 rounded-full p-1 gap-1 flex-nowrap">
                                 <button
                                     type="button"
                                     onClick={() => setActiveTab('phone')}
-                                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all border-2 ${activeTab === 'phone' ? 'bg-white text-black border-primary' : 'bg-transparent text-black border-white/20 hover:bg-white/10 hover:border-white/40'}`}
+                                    className={`px-3 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all border-2 whitespace-nowrap ${activeTab === 'phone' ? 'bg-white text-black border-primary' : 'bg-transparent text-black border-white/20 hover:bg-white/10 hover:border-white/40'}`}
                                 >
-                                    Login using contact
+                                    Login using phone number
                                 </button>
                                 <button
                                     type="button"
                                     onClick={() => setActiveTab('student')}
-                                    className={`px-5 py-2 rounded-full text-sm font-medium transition-all border-2 ${activeTab === 'student' ? 'bg-white text-black border-primary' : 'bg-transparent text-black border-white/20 hover:bg-white/10 hover:border-white/40'}`}
+                                    className={`px-3 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-medium transition-all border-2 whitespace-nowrap ${activeTab === 'student' ? 'bg-white text-black border-primary' : 'bg-transparent text-black border-white/20 hover:bg-white/10 hover:border-white/40'}`}
                                 >
-                                    Login using 6-digit code
+                                    Login using 6-char code
                                 </button>
                             </div>
                         </div>
@@ -155,11 +155,11 @@ const Login: React.FC = () => {
 
                             {activeTab === 'student' && (
                                 <div className="space-y-2">
-                                    <Label htmlFor="studentId">Student ID (6-digit code)</Label>
+                                    <Label htmlFor="studentId">Student ID (6-character code)</Label>
                                     <Input
                                         id="studentId"
                                         type="text"
-                                        placeholder="Enter your 6-digit student ID"
+                                        placeholder="Enter your 6-character student ID"
                                         value={studentId}
                                         onChange={(e) => {
                                             const value = e.target.value;
