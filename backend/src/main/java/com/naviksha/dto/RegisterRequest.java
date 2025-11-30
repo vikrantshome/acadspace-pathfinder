@@ -24,4 +24,5 @@ public class RegisterRequest {
     private Integer grade;
     private String board;
     private String mobileNo;
+    private String studentID;
 }

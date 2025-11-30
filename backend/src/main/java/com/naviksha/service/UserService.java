@@ -16,6 +16,11 @@ public class UserService {
     private final SequenceService sequenceService;
     
     public User createUser(RegisterRequest request) {
+        String studentID = request.getStudentID();
+        if (studentID == null || studentID.isEmpty()) {
+            studentID = sequenceService.getNextStudentID();
+        }
+
         User user = User.builder()
             .email(request.getEmail())
             .password(passwordEncoder.encode(request.getPassword()))
@@ -25,7 +30,7 @@ public class UserService {
             .grade(request.getGrade())
             .board(request.getBoard())
             .mobileNo(request.getMobileNo())
-            .studentID(sequenceService.getNextStudentID())
+            .studentID(studentID)
             .build();
         
         return userRepository.save(user);
