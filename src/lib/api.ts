@@ -108,7 +108,8 @@ class ApiService {
     fullName?: string,
     schoolName?: string, 
     grade?: number, 
-    board?: string
+    board?: string,
+    mobileNo?: string
   ): Promise<AuthResponse> {
     const response = await fetch(`${API_BASE_URL}/auth/register`, {
       method: 'POST',
@@ -120,7 +121,8 @@ class ApiService {
         fullName,
         schoolName,
         grade,
-        board
+        board,
+        mobileNo
       }),
     });
 

@@ -14,7 +14,7 @@ import { toast } from '@/hooks/use-toast';
 import { apiService } from '@/lib/api';
 
 const Login: React.FC = () => {
-  const { signUp } = useAuth();
+  const { lookup } = useAuth();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -27,13 +27,13 @@ const Login: React.FC = () => {
     try {
       const studentID = activeTab === 'student' ? studentId : '';
       const mobileNo = activeTab === 'phone' ? phone : '';
-      await apiService.lookup(studentID, mobileNo);
+      await lookup(studentID, mobileNo);
       navigate('/');
     } catch (error: any) {
-      if (error.message.includes('404')) {
+      if (error.message.includes('User not found')) {
         const studentID = activeTab === 'student' ? studentId : '';
         const mobileNo = activeTab === 'phone' ? phone : '';
-        navigate(`/auth?studentID=${studentID}&mobileNo=${mobileNo}`);
+        navigate(`/register?studentID=${studentID}&mobileNo=${mobileNo}`);
       } else {
         toast({
           title: 'An error occurred',
@@ -143,4 +143,4 @@ const Login: React.FC = () => {
   );
 };
 
-export default SignUp;
+export default Login;

@@ -30,7 +30,9 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              <Route path="/auth" element={<Auth />} />
+              {/* <Route path="/auth" element={<Auth />} /> */}
+              <Route path="/register" element={<Auth />} />
+              <Route path="/auth" element={<Login />} />
               <Route path="/login" element={<Login />} />
               <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/test/:testType" element={<TestPage />} />

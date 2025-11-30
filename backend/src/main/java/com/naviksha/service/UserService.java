@@ -13,6 +13,7 @@ public class UserService {
     
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final SequenceService sequenceService;
     
     public User createUser(RegisterRequest request) {
         User user = User.builder()
@@ -23,6 +24,8 @@ public class UserService {
             .schoolName(request.getSchoolName())
             .grade(request.getGrade())
             .board(request.getBoard())
+            .mobileNo(request.getMobileNo())
+            .studentID(sequenceService.getNextStudentID())
             .build();
         
         return userRepository.save(user);

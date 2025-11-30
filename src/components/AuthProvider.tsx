@@ -12,6 +12,7 @@ interface AuthContextType {
   user: User | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
+  lookup: (studentID: string, mobileNo: string) => Promise<void>;
   signUp: (
     email: string, 
     password: string, 
@@ -19,7 +20,8 @@ interface AuthContextType {
     fullName?: string,
     schoolName?: string, 
     grade?: number, 
-    board?: string
+    board?: string,
+    mobileNo?: string
   ) => Promise<void>;
   signOut: () => Promise<void>;
   updateProfile: (updates: Partial<User>) => Promise<void>;
@@ -73,6 +75,17 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     }
   };
 
+  const lookup = async (studentID: string, mobileNo: string) => {
+    try {
+      const response = await apiService.lookup(studentID, mobileNo);
+      setUser(response.user);
+      toast.success('Logged in successfully');
+    } catch (error: any) {
+      toast.error(error.message || 'Login failed');
+      throw error;
+    }
+  };
+
   const signUp = async (
     email: string, 
     password: string, 
@@ -80,7 +93,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     fullName?: string,
     schoolName?: string, 
     grade?: number, 
-    board?: string
+    board?: string,
+    mobileNo?: string
   ) => {
     try {
       const response = await apiService.register(
@@ -90,7 +104,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         fullName,
         schoolName, 
         grade, 
-        board
+        board,
+        mobileNo
       );
       setUser(response.user);
       toast.success('Account created successfully');
@@ -144,6 +159,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     user,
     loading,
     signIn,
+    lookup,
     signUp,
     signOut,
     updateProfile,
