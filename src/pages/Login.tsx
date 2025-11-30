@@ -63,7 +63,7 @@ const Login: React.FC = () => {
         </div>
 
         <Card className="glass border-0 shadow-2xl">
-<<<<<<< HEAD:src/pages/Login.tsx
+
           <CardHeader className="space-y-1 pb-4">
             <CardTitle className="text-lg md:text-xl text-center">Sign In</CardTitle>
 
