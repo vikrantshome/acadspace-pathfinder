@@ -11,7 +11,7 @@ import { toast } from 'sonner';
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  signIn: (email: string, password: string) => Promise<void>;
+  signIn: (username: string, password: string) => Promise<void>;
   lookup: (studentID: string, mobileNo: string) => Promise<void>;
   signUp: (
     email: string, 
@@ -64,9 +64,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     initAuth();
   }, []);
 
-  const signIn = async (email: string, password: string) => {
+  const signIn = async (username: string, password: string) => {
     try {
-      const response = await apiService.login(email, password);
+      const response = await apiService.login(username, password);
       setUser(response.user);
       toast.success('Logged in successfully');
     } catch (error: any) {

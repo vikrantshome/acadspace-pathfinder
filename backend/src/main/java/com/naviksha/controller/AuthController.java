@@ -52,17 +52,8 @@ public class AuthController {
         try {
             log.info("Registration attempt for email: {}", request.getEmail());
             
-            // Check if user already exists
-            if (userService.existsByEmail(request.getEmail())) {
-                return ResponseEntity.badRequest()
-                    .body(new AuthResponse("", null, "Email already registered"));
-            }
-            
-            // Create new user
-            User user = userService.createUser(request);
-            
             // Generate JWT token
-            String token = tokenProvider.generateToken(user.getEmail());
+            String token = tokenProvider.generateToken(user.getId());
             
             log.info("User registered successfully: {}", user.getEmail());
             return ResponseEntity.ok(new AuthResponse(token, user, "User registered successfully"));
@@ -78,32 +69,27 @@ public class AuthController {
     @Operation(summary = "User login", description = "Authenticate user and return JWT token")
     public ResponseEntity<?> login(@Valid @RequestBody AuthRequest request) {
         try {
-            log.info("Login attempt for email: {}", request.getEmail());
+            log.info("Login attempt for username: {}", request.getUsername());
             
             // Authenticate user
-            authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+            Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
             );
             
             // Get user details
-            User user = userService.findByEmail(request.getEmail());
-            if (user == null) {
-                return ResponseEntity.badRequest()
-                    .body(new AuthResponse("", null, "User not found"));
-            }
-            
+            String email = authentication.getName();
             // Generate JWT token
-            String token = tokenProvider.generateToken(user.getEmail());
+            String token = tokenProvider.generateToken(user.getId());
             
             log.info("User logged in successfully: {}", user.getEmail());
             return ResponseEntity.ok(new AuthResponse(token, user, "Login successful"));
             
         } catch (AuthenticationException e) {
-            log.warn("Login failed for email: {}", request.getEmail());
+            log.warn("Login failed for username: {}", request.getUsername());
             return ResponseEntity.badRequest()
-                .body(new AuthResponse("", null, "Email or password looks incorrect. Try again."));
+                .body(new AuthResponse("", null, "Username or password looks incorrect. Try again."));
         } catch (Exception e) {
-            log.error("Login error for email: {}", request.getEmail(), e);
+            log.error("Login error for username: {}", request.getUsername(), e);
             return ResponseEntity.badRequest()
                 .body(new AuthResponse("", null, "Login failed: " + e.getMessage()));
         }
@@ -113,8 +99,8 @@ public class AuthController {
     @Operation(summary = "Get current user", description = "Get current authenticated user profile")
     public ResponseEntity<?> getCurrentUser(Authentication authentication) {
         try {
-            String email = authentication.getName();
-            User user = userService.findByEmail(email);
+            String userId = authentication.getName();
+            User user = userService.findById(userId);
             
             if (user == null) {
                 return ResponseEntity.badRequest()
@@ -193,7 +179,7 @@ public class AuthController {
             }
             
             // Generate JWT token
-            String token = tokenProvider.generateToken(user.getEmail());
+            String token = tokenProvider.generateToken(user.getId());
             
             log.info("User found and logged in successfully: {}", user.getEmail());
             return ResponseEntity.ok(new AuthResponse(token, user, "Login successful"));

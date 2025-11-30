@@ -20,12 +20,14 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private final UserRepository userRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findByStudentID(username)
+                .or(() -> userRepository.findByMobileNo(username))
+                .or(() -> userRepository.findByEmail(username))
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
 
         return new org.springframework.security.core.userdetails.User(
-                user.getEmail(),
+                user.getId(),
                 user.getPassword(),
                 user.isActive(),
                 true,
@@ -39,5 +41,20 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return roles.stream()
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
+    }
+
+    public UserDetails loadUserById(String id) throws UsernameNotFoundException {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with id: " + id));
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getId(),
+                user.getPassword(),
+                user.isActive(),
+                true,
+                true,
+                true,
+                mapRolesToAuthorities(user.getRoles())
+        );
     }
 }
