@@ -144,11 +144,11 @@ class ApiService {
     return data;
   }
 
-  async login(email: string, password: string, storeToken = true): Promise<AuthResponse> {
+  async login(username: string, password: string, storeToken = true): Promise<AuthResponse> {
     const response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: this.getHeaders(),
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
     });
 
     const data = await this.handleResponse<AuthResponse>(response);

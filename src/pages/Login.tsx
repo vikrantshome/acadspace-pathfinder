@@ -190,6 +190,19 @@ const Login: React.FC = () => {
                                 )}
                             </Button>
                         </form>
+
+                        <div className="mt-4 text-center">
+                            <p className="text-sm text-muted-foreground">
+                                Don't have an account?{' '}
+                                <Button
+                                    variant="link"
+                                    onClick={() => navigate('/register')}
+                                    className="p-0 text-primary font-semibold"
+                                >
+                                    Create Account
+                                </Button>
+                            </p>
+                        </div>
                     </CardContent>
                 </Card>
 
