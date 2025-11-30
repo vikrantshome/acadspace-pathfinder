@@ -21,6 +21,7 @@ public class Report {
     
     private String userId;
     private StudentReport reportData;
+    private String reportLink;
     
     @CreatedDate
     private LocalDateTime createdAt;

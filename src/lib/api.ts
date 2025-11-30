@@ -16,6 +16,8 @@ interface User {
   schoolName?: string;
   grade?: number;
   board?: string;
+  mobileNo?: string;
+  studentID?: string;
 }
 
 interface AuthResponse {
@@ -316,8 +318,16 @@ class ApiService {
       if (error.message?.includes('404')) {
         return [];
       }
-      throw error;
+    return this.handleResponse<any[]>(response);
     }
+  }
+
+  async generateReportLink(userId: string): Promise<{ reportLink: string }> {
+    const response = await fetch(`${API_BASE_URL}/reports/generate/${userId}`, {
+      headers: this.getHeaders(),
+    });
+
+    return this.handleResponse<{ reportLink: string }>(response);
   }
 
   // Profile management
