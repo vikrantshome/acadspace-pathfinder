@@ -13,6 +13,7 @@ public class UserService {
     
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final SequenceService sequenceService;
     
     public User createUser(RegisterRequest request) {
         User user = User.builder()
@@ -23,6 +24,8 @@ public class UserService {
             .schoolName(request.getSchoolName())
             .grade(request.getGrade())
             .board(request.getBoard())
+            .mobileNo(request.getMobileNo())
+            .studentID(sequenceService.getNextStudentID())
             .build();
         
         return userRepository.save(user);
@@ -31,6 +34,17 @@ public class UserService {
     public User findByEmail(String email) {
         return userRepository.findByEmail(email).orElse(null);
     }
+    
+    public User findUserByLookup(com.naviksha.dto.LookupRequest request) {
+        if (request.getStudentID() != null && !request.getStudentID().isEmpty()) {
+            return userRepository.findByStudentID(request.getStudentID()).orElse(null);
+        }
+        if (request.getMobileNo() != null && !request.getMobileNo().isEmpty()) {
+            return userRepository.findByMobileNo(request.getMobileNo()).orElse(null);
+        }
+        return null;
+    }
+
     
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);

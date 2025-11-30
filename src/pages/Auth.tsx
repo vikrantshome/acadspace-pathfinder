@@ -10,7 +10,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { Mail, Lock, User, GraduationCap, School, AlertCircle, Loader2 } from 'lucide-react';
+import { Mail, Lock, User, GraduationCap, School, AlertCircle, Loader2, Phone } from 'lucide-react';
 import { useAuth } from '@/components/AuthProvider';
 import { toast } from '@/hooks/use-toast';
 
@@ -25,9 +25,24 @@ const Auth = () => {
     fullName: 'Test User',
     schoolName: 'Demo School',
     grade: '12',
-    board: 'CBSE'
+    board: 'CBSE',
+    mobileNo: ''
   });
   const navigate = useNavigate();
+
+  // Read query parameters for pre-filling signup form
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const mobileNo = params.get('mobileNo');
+
+    if (mobileNo) {
+      setIsSignUp(true); // Automatically switch to signup form
+      setFormData(prev => ({
+        ...prev,
+        mobileNo: mobileNo,
+      }));
+    }
+  }, []);
 
   // Check if user is already logged in
   useEffect(() => {
@@ -69,7 +84,8 @@ const Auth = () => {
         formData.fullName,
         formData.schoolName, 
         gradeNumber, 
-        formData.board
+        formData.board,
+        formData.mobileNo
       );
       navigate('/');
     } catch (error: any) {
@@ -241,6 +257,22 @@ const Auth = () => {
                         className="focus-ring"
                       />
                     </div>
+                  </div>
+
+                  {/* Mobile Number */}
+                  <div className="space-y-2">
+                    <Label htmlFor="mobileNo" className="flex items-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      Mobile Number
+                    </Label>
+                    <Input
+                      id="mobileNo"
+                      type="text"
+                      placeholder="Your mobile number"
+                      value={formData.mobileNo}
+                      onChange={(e) => handleInputChange('mobileNo', e.target.value)}
+                      className="focus-ring"
+                    />
                   </div>
                 </>
               )}

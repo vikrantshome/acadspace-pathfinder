@@ -40,6 +40,8 @@ public class User {
     private String schoolName;
     private Integer grade;
     private String board;
+    private String mobileNo;
+    private String studentID;
     
     @CreatedDate
     private LocalDateTime createdAt;

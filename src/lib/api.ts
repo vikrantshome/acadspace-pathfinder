@@ -108,7 +108,8 @@ class ApiService {
     fullName?: string,
     schoolName?: string, 
     grade?: number, 
-    board?: string
+    board?: string,
+    mobileNo?: string
   ): Promise<AuthResponse> {
     const response = await fetch(`${API_BASE_URL}/auth/register`, {
       method: 'POST',
@@ -120,7 +121,8 @@ class ApiService {
         fullName,
         schoolName,
         grade,
-        board
+        board,
+        mobileNo
       }),
     });
 
@@ -163,6 +165,28 @@ class ApiService {
       }
     } else {
       throw new Error('Login failed: No token received from server');
+    }
+
+    return data;
+  }
+
+  async lookup(studentID: string, mobileNo: string): Promise<AuthResponse> {
+    const response = await fetch(`${API_BASE_URL}/auth/lookup`, {
+      method: 'POST',
+      headers: this.getHeaders(),
+      body: JSON.stringify({ studentID, mobileNo }),
+    });
+
+    const data = await this.handleResponse<AuthResponse>(response);
+
+    if (!data) {
+      throw new Error('Invalid response from server. Please check your backend URL configuration.');
+    }
+
+    if (data.token) {
+      this.token = data.token;
+      localStorage.setItem('auth_token', data.token);
+      localStorage.setItem('user_data', JSON.stringify(data.user));
     }
 
     return data;
