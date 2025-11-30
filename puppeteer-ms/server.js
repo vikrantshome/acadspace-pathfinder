@@ -5,6 +5,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
 const cors = require('cors');
+const { google } = require('googleapis');
 
 const app = express();
 const PORT = process.env.PORT || 5200;
@@ -14,6 +15,94 @@ app.use(express.json());
 
 // Enable CORS for all routes
 app.use(cors());
+
+const CREDENTIALS_PATH = path.join(__dirname, 'client_secret_4133800428-9nlcg87uct83fkpctgk5m8p4ut2h55v2.apps.googleusercontent.com.json');
+const TOKEN_PATH = path.join(__dirname, 'token.json');
+const FOLDER_NAME = 'careerReports';
+
+async function uploadToDrive(pdfBuffer, filename) {
+  try {
+    const credentials = JSON.parse(await fs.readFile(CREDENTIALS_PATH));
+    const token = JSON.parse(await fs.readFile(TOKEN_PATH));
+
+    const { client_secret, client_id } = credentials.web;
+
+    const oAuth2Client = new google.auth.OAuth2(
+      client_id,
+      client_secret,
+      "http://localhost"
+    );
+
+    oAuth2Client.setCredentials(token);
+    const drive = google.drive({ version: "v3", auth: oAuth2Client });
+
+    // 1️⃣ Check if folder exists
+    const folderSearch = await drive.files.list({
+      q: `name='${FOLDER_NAME}' and mimeType='application/vnd.google-apps.folder' and trashed=false`,
+      fields: "files(id, name)",
+    });
+
+    let folderId;
+
+    if (folderSearch.data.files.length > 0) {
+      // folder exists
+      folderId = folderSearch.data.files[0].id;
+      console.log("📁 Existing folder found:", folderId);
+    } else {
+      // create folder
+      const folderMetadata = {
+        name: FOLDER_NAME,
+        mimeType: "application/vnd.google-apps.folder",
+      };
+
+      const folder = await drive.files.create({
+        resource: folderMetadata,
+        fields: "id",
+      });
+
+      folderId = folder.data.id;
+      console.log("📁 Folder created:", folderId);
+    }
+
+    // 2️⃣ Upload file into that folder
+    const fileMetadata = {
+      name: filename,
+      parents: [folderId],
+    };
+
+    const media = {
+      mimeType: "application/pdf",
+      body: require('stream').Readable.from(pdfBuffer),
+    };
+
+    console.log("⬆ Uploading PDF...");
+
+    const response = await drive.files.create({
+      resource: fileMetadata,
+      media,
+      fields: "id, webViewLink",
+    });
+
+    const fileId = response.data.id;
+
+    console.log("✔ Upload complete:", fileId);
+
+    // 3️⃣ Make file public
+    await drive.permissions.create({
+      fileId,
+      requestBody: { role: "reader", type: "anyone" },
+    });
+
+    const publicUrl = `https://drive.google.com/uc?id=${fileId}&export=download`;
+    console.log("🔗 Public URL:", publicUrl);
+
+    return publicUrl;
+  } catch (err) {
+    console.error("❌ Error:", err);
+    throw new Error('Failed to upload PDF to Google Drive');
+  }
+}
+
 
 
 // Health check endpoint
@@ -91,7 +180,7 @@ function populateCareerPage(htmlContent, bucketName, bucketIndex, careersToRende
     htmlContent = htmlContent.replace(
         /<div class="bg-white rounded-xl p-4 h-full shadow-sm border border-slate-50 recommendation-content">[\s\S]*?<\/div>/,
         `<div class="bg-white rounded-xl p-4 h-full shadow-sm border border-slate-50 recommendation-content">
-            <p class="text-[12px] text-gray-700 leading-snug">${recommendationText}</p>
+            <p class="text-[12px] text-gray-700 leading-snug line-clamp-5">${recommendationText}</p>
          </div>`
     );
 
@@ -99,17 +188,17 @@ function populateCareerPage(htmlContent, bucketName, bucketIndex, careersToRende
 }
 
 
-async function generateReportHTML(templateName, reportData, recommendations) {
+async function generateReportHTML(templateName, reportData, recommendations, studentID, studentName) {
     const templatePath = path.join(__dirname, 'templates', templateName);
     let htmlContent = await fs.readFile(templatePath, 'utf8');
 
-    const data = reportData.reportData;
+    const data = reportData;
     const buckets = data.top5Buckets || data.top5_buckets;
 
     // Populate page1.html
     if (templateName === 'page1.html') {
-        htmlContent = htmlContent.replace('Vikrant Rao', data.studentName || 'Student Name');
-        htmlContent = htmlContent.replace('Student ID: <span class="font-bold">564890</span>', `Student ID: <span class="font-bold">${reportData.userId.slice(-6) || 'N/A'}</span>`);
+        htmlContent = htmlContent.replace('Vikrant Rao', studentName || data.studentName || 'Student Name');
+        htmlContent = htmlContent.replace('Student ID: <span class="font-bold">564890</span>', `Student ID: <span class="font-bold">${studentID || data.studentID || 'N/A'}</span>`);
         htmlContent = htmlContent.replace('St. Joseph English School', data.schoolName || 'School Name');
         htmlContent = htmlContent.replace('Grade 10 – CBSE', `Grade ${data.grade || 'N/A'} – ${data.board || 'N/A'}`);
     }
@@ -210,9 +299,9 @@ async function generatePdfPage(browser, templateName, reportData, recommendation
 // Main PDF generation endpoint
 app.post('/generate-pdf', async (req, res) => {
     console.log('Received POST request to generate multi-page PDF...');
-    const reportData = req.body;
+    const { reportData, mobileNo, studentID, studentName } = req.body;
 
-    if (!reportData || !reportData.reportData) {
+    if (!reportData) {
         return res.status(400).send({ error: 'Invalid report data provided in the request body.' });
     }
 
@@ -236,7 +325,7 @@ app.post('/generate-pdf', async (req, res) => {
         const careersMap = new Map(careers.map(career => [career.careerName, career]));
 
         // Add recommendedSkills and recommendedCourses to the reportData
-        const buckets = reportData.reportData.top5Buckets || reportData.reportData.top5_buckets;
+        const buckets = reportData.top5Buckets || reportData.top5_buckets;
         if (buckets) {
             for (const bucket of buckets) {
                 if (bucket.topCareers) {
@@ -267,7 +356,7 @@ app.post('/generate-pdf', async (req, res) => {
         // 2. Generate all PDF pages in parallel
         console.log('Generating individual PDF pages in parallel...');
         const pdfBuffers = await Promise.all(
-            templates.map(template => generatePdfPage(browser, template, reportData, recommendations))
+            templates.map(template => generatePdfPage(browser, template, reportData, recommendations, studentID, mobileNo, studentName))
         );
         console.log('All individual pages generated.');
 
@@ -284,9 +373,17 @@ app.post('/generate-pdf', async (req, res) => {
         const mergedPdfBytes = await mergedPdf.save();
         console.log('PDFs merged successfully.');
 
-        // 5. Send the final PDF as a response
-        res.setHeader('Content-Type', 'application/pdf');
-        res.send(Buffer.from(mergedPdfBytes));
+        // 5. Generate unique filename
+        const date = new Date().toISOString().slice(0, 10);
+        const safeStudentName = (studentName || 'Student').replace(/[^a-zA-Z0-9]/g, '_');
+        const safeStudentID = (studentID || '000000').replace(/[^a-zA-Z0-9]/g, '_');
+        const filename = `Career_Report_${safeStudentName}_${safeStudentID}_${date}.pdf`;
+
+        // 6. Upload to Google Drive
+        const publicUrl = await uploadToDrive(Buffer.from(mergedPdfBytes), filename);
+
+        // 7. Send the public URL as a response
+        res.status(200).send({ reportLink: publicUrl });
 
     } catch (error) {
         console.error('Error generating final PDF:', error);

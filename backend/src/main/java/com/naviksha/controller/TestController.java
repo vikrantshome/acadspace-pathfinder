@@ -88,14 +88,14 @@ public class TestController {
             @Valid @RequestBody TestSubmissionDTO submission,
             Authentication authentication) {
         try {
-            String userEmail = authentication.getName();
-            User user = userService.findByEmail(userEmail);
+            String userId = authentication.getName();
+            User user = userService.findById(userId);
             
             if (user == null) {
                 return ResponseEntity.badRequest().body("User not found");
             }
             
-            log.info("Processing test submission for user: {} test: {}", userEmail, testId);
+            log.info("Processing test submission for user: {} test: {}", user.getEmail(), testId);
             
             // Set user information in submission
             submission.setUserId(user.getId());
@@ -105,7 +105,7 @@ public class TestController {
             if ("combined".equals(testId)) {
                 // For combined submission, we don't need to validate a specific test
                 // The scoring service will process both test results
-                log.info("Processing combined test submission for user: {}", userEmail);
+                log.info("Processing combined test submission for user: {}", user.getEmail());
             } else {
                 // Validate individual test exists
                 Test test = testService.getTestById(testId);
@@ -149,26 +149,25 @@ public class TestController {
 
     @GetMapping("/progress/{userId}")
     @Operation(summary = "Get user progress", 
-               description = "Get saved test progress for user",
+               description = "Get saved test progress for a user",
                security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<?> getUserProgress(
             @PathVariable String userId,
             @RequestParam(required = false) String testId,
             Authentication authentication) {
         try {
-            String userEmail = authentication.getName();
-            User user = userService.findByEmail(userEmail);
+            String authenticatedUserId = authentication.getName();
+            User user = userService.findById(authenticatedUserId);
             
-            // Users can only access their own progress (unless admin)
-            if (user == null || (!user.getId().equals(userId) && !user.getRoles().contains("ROLE_ADMIN"))) {
-                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Access denied");
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not found");
             }
             
             if (testId != null) {
-                TestProgress progress = progressService.getProgress(userId, testId);
+                TestProgress progress = progressService.getProgress(user.getId(), testId);
                 return ResponseEntity.ok(progress);
             } else {
-                List<TestProgress> allProgress = progressService.getAllProgressForUser(userId);
+                List<TestProgress> allProgress = progressService.getAllProgressForUser(user.getId());
                 return ResponseEntity.ok(allProgress);
             }
             
@@ -187,8 +186,8 @@ public class TestController {
             @Valid @RequestBody TestProgress progress,
             Authentication authentication) {
         try {
-            String userEmail = authentication.getName();
-            User user = userService.findByEmail(userEmail);
+            String userId = authentication.getName();
+            User user = userService.findById(userId);
             
             if (user == null) {
                 return ResponseEntity.badRequest().body("User not found");
@@ -219,8 +218,8 @@ public class TestController {
             @RequestParam String testId,
             Authentication authentication) {
         try {
-            String userEmail = authentication.getName();
-            User user = userService.findByEmail(userEmail);
+            String userId = authentication.getName();
+            User user = userService.findById(userId);
             
             if (user == null) {
                 return ResponseEntity.badRequest().body("User not found");
@@ -245,8 +244,8 @@ public class TestController {
                security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<?> cleanupDuplicateProgress(Authentication authentication) {
         try {
-            String userEmail = authentication.getName();
-            User user = userService.findByEmail(userEmail);
+            String userId = authentication.getName();
+            User user = userService.findById(userId);
             
             if (user == null) {
                 return ResponseEntity.badRequest().body("User not found");

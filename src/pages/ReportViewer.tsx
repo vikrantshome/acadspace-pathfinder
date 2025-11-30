@@ -133,30 +133,16 @@ const ReportViewer = () => {
       };
 
       // Generate PDF using shared utility
-            const pdfBlob = await generatePDFBlob(reportData, user?.id || 'test_user');
+      const reportLink = await generatePDFBlob(
+        reportData, 
+        user?.id || 'test_user',
+        user?.mobileNo,
+        user?.studentID,
+        displayData.studentName
+      );
       
-      // Create download link
-      const studentName = displayData.studentName || 'Student';
-      const cleanName = studentName.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_');
-      const dateStr = new Date().toISOString().split('T')[0];
-      const fileName = `Career_Report_${cleanName}_${dateStr}.pdf`;
-      
-      console.log('Generating PDF with filename:', fileName);
-      
-      const url = URL.createObjectURL(pdfBlob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = fileName;
-      link.style.display = 'none';
-      link.setAttribute('download', fileName);
-      link.setAttribute('type', 'application/pdf');
-      
-      document.body.appendChild(link);
-      setTimeout(() => {
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-      }, 50);
+      // Open the link in a new tab
+      window.open(reportLink, '_blank');
 
     } catch (error) {
       console.error('Error generating PDF:', error);
