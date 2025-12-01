@@ -130,7 +130,7 @@ function populateCareerPage(htmlContent, bucketName, bucketIndex, careersToRende
 
     // Dynamically generate career cards
     const careerCardsHtml = careersToRender.map((career, index) => {
-        const studyPathHtml = career.studyPath.map(path => `<div class="bg-pill-bg px-3 py-1.5 rounded-md text-xs font-semibold text-slate-700">${path}</div>`).join('<div class="text-header-blue text-base font-bold">&rarr;</div>');
+        const studyPathHtml = career.studyPath.map(path => `<div class="bg-pill-bg px-3 py-1.5 rounded-md text-xs font-semibold text-slate-700">${path}</div>`).join('<div class="text-header-blue text-base font-bold"> / </div>');
         const choice = ['1st', '2nd', '3rd', '4th', '5th'][index] || `${index + 1}th`;
         
         return `
@@ -209,12 +209,12 @@ async function generateReportHTML(templateName, reportData, recommendations, stu
         htmlContent = htmlContent.replace(/Your RIASEC results show a strong tilt toward[\s\S]*?and analytical exploration\./, data.detailedCareerInsights?.explanations?.[buckets?.[0]?.topCareers?.[0]?.careerName] || '');
         
         const vibeScores = data.vibeScores || {};
-        htmlContent = htmlContent.replace('width:72%;', `width:${vibeScores.R || 0}%;`).replace('<span>72%</span>', `<span>${vibeScores.R || 0}%</span>`);
-        htmlContent = htmlContent.replace('width:56%;', `width:${vibeScores.I || 0}%;`).replace('<span>56%</span>', `<span>${vibeScores.I || 0}%</span>`);
-        htmlContent = htmlContent.replace('width:91%;', `width:${vibeScores.A || 0}%;`).replace('<span>91%</span>', `<span>${vibeScores.A || 0}%</span>`);
-        htmlContent = htmlContent.replace('width:76%;', `width:${vibeScores.S || 0}%;`).replace('<span>76%</span>', `<span>${vibeScores.S || 0}%</span>`);
-        htmlContent = htmlContent.replace('width:62%;', `width:${vibeScores.E || 0}%;`).replace('<span>62%</span>', `<span>${vibeScores.E || 0}%</span>`);
-        htmlContent = htmlContent.replace('width:48%;', `width:${vibeScores.C || 0}%;`).replace('<span>48%</span>', `<span>${vibeScores.C || 0}%</span>`);
+        htmlContent = htmlContent.replace('width: 72%', `width:${vibeScores.R || 0}%;`).replace('<span>72%</span>', `<span>${vibeScores.R || 0}%</span>`);
+        htmlContent = htmlContent.replace('width: 56%', `width:${vibeScores.I || 0}%;`).replace('<span>56%</span>', `<span>${vibeScores.I || 0}%</span>`);
+        htmlContent = htmlContent.replace('width: 91%', `width:${vibeScores.A || 0}%;`).replace('<span>91%</span>', `<span>${vibeScores.A || 0}%</span>`);
+        htmlContent = htmlContent.replace('width: 76%', `width:${vibeScores.S || 0}%;`).replace('<span>76%</span>', `<span>${vibeScores.S || 0}%</span>`);
+        htmlContent = htmlContent.replace('width: 62%', `width:${vibeScores.E || 0}%;`).replace('<span>62%</span>', `<span>${vibeScores.E || 0}%</span>`);
+        htmlContent = htmlContent.replace('width: 48%', `width:${vibeScores.C || 0}%;`).replace('<span>48%</span>', `<span>${vibeScores.C || 0}%</span>`);
     }
 
     // Populate career pages

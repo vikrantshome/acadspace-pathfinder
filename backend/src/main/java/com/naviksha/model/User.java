@@ -25,10 +25,10 @@ public class User {
     
     private String email;
     
-    @Indexed(unique = true)
+    @Indexed(unique = true, sparse = true)
     private String studentID;
     
-    @Indexed(unique = true)
+    @Indexed(unique = true, sparse = true)
     private String mobileNo;
     
     private String password;
@@ -45,8 +45,7 @@ public class User {
     private String schoolName;
     private Integer grade;
     private String board;
-    private String mobileNo;
-    private String studentID;
+    private String city; // Added city field
     
     @CreatedDate
     private LocalDateTime createdAt;

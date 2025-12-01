@@ -138,13 +138,19 @@ public class ScoringService {
         // Process each vibematch answer (Likert scale 1-5)
         for (Map.Entry<String, Object> answer : answers.entrySet()) {
             String questionId = answer.getKey();
-            if (questionId.startsWith("v_") && answer.getValue() instanceof Number) {
+            if (questionId.startsWith("vibematch_q") && answer.getValue() instanceof Number) { // Updated prefix
                 int score = ((Number) answer.getValue()).intValue();
                 
-                // Map question to RIASEC categories based on vibematch_questions.json
-                Map<String, Integer> riasecMap = getQuestionRiasecMapping(questionId);
-                for (Map.Entry<String, Integer> mapping : riasecMap.entrySet()) {
-                    scores.merge(mapping.getKey(), score * mapping.getValue(), Integer::sum);
+                // Extract number from questionId (e.g., "vibematch_q1" -> "1")
+                String qNumStr = questionId.substring(questionId.indexOf("q") + 1);
+                try {
+                    int qNum = Integer.parseInt(qNumStr);
+                    Map<String, Integer> riasecMap = getQuestionRiasecMapping(qNum); // Pass integer
+                    for (Map.Entry<String, Integer> mapping : riasecMap.entrySet()) {
+                        scores.merge(mapping.getKey(), score * mapping.getValue(), Integer::sum);
+                    }
+                } catch (NumberFormatException e) {
+                    log.warn("Invalid question number format in RIASEC answer: {}", questionId);
                 }
             }
         }
@@ -160,18 +166,19 @@ public class ScoringService {
 
     /**
      * Get RIASEC mapping for a specific question based on vibematch_questions.json structure
+     * Updated to take an integer question number
      */
-    private Map<String, Integer> getQuestionRiasecMapping(String questionId) {
+    private Map<String, Integer> getQuestionRiasecMapping(int qNum) { // Changed to int qNum
         Map<String, Integer> mapping = new HashMap<>();
         
         // Based on vibematch_questions.json riasec_map field
-        switch (questionId) {
-            case "v_01", "v_08" -> mapping.put("R", 1);
-            case "v_02", "v_07", "v_11" -> mapping.put("C", 1);
-            case "v_03", "v_09", "v_14" -> mapping.put("I", 1);
-            case "v_04", "v_12" -> mapping.put("S", 1);
-            case "v_05", "v_10" -> mapping.put("A", 1);
-            case "v_06", "v_13" -> mapping.put("E", 1);
+        switch (qNum) { // Changed to qNum
+            case 1, 8 -> mapping.put("R", 1);
+            case 2, 7, 11 -> mapping.put("C", 1);
+            case 3, 9, 14 -> mapping.put("I", 1);
+            case 4, 12 -> mapping.put("S", 1);
+            case 5, 10 -> mapping.put("A", 1);
+            case 6, 13 -> mapping.put("E", 1);
         }
         
         return mapping;

@@ -26,7 +26,8 @@ spring:
   # MongoDB Configuration
   data:
     mongodb:
-      uri: "${MONGO_URI:mongodb+srv://naviksha:naviksha@cluster0.si3upnh.mongodb.net/naviksha?retryWrites=true&w=majority}"
+      # uri: "${MONGO_URI:mongodb+srv://naviksha:naviksha@cluster0.si3upnh.mongodb.net/naviksha?retryWrites=true&w=majority}"
+      uri: "${MONGO_URI:mongodb+srv://ainaviksha_db_user:gHV1FANEjzVAsMBP@naviksha.kwnahck.mongodb.net/naviksha?retryWrites=true&w=majority}"
       auto-index-creation: true
   
   # Jackson JSON Configuration
@@ -192,4 +193,4 @@ server:
     
 puppeteer:
   ms:
-    url: ${PUPPETEER_MS_URL:https://acadspace-pathfinder-j4lz.onrender.com} # Default URL for Puppeteer microservice
+    url: ${PUPPETEER_MS_URL:http://localhost:5200} # Default URL for Puppeteer microservice
