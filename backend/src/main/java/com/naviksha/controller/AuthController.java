@@ -51,6 +51,7 @@ public class AuthController {
     public ResponseEntity<?> register(@Valid @RequestBody RegisterRequest request) {
         try {
             log.info("Registration attempt for email: {}", request.getEmail());
+            User user = userService.createUser(request);
             
             // Generate JWT token
             String token = tokenProvider.generateToken(user.getId());
@@ -62,6 +63,26 @@ public class AuthController {
             log.error("Registration failed for email: {}", request.getEmail(), e);
             return ResponseEntity.badRequest()
                 .body(new AuthResponse("", null, "Registration failed: " + e.getMessage()));
+        }
+    }
+
+    @PostMapping("/upsert-register")
+    @Operation(summary = "Register or Update User", description = "Create a new user account or update an existing one based on email or studentID")
+    public ResponseEntity<?> upsertRegister(@Valid @RequestBody RegisterRequest request) {
+        try {
+            log.info("Upsert registration attempt for email: {}", request.getEmail());
+            User user = userService.createOrUpdateUser(request);
+            
+            // Generate JWT token
+            String token = tokenProvider.generateToken(user.getId());
+            
+            log.info("User upserted successfully: {}", user.getEmail());
+            return ResponseEntity.ok(new AuthResponse(token, user, "User upserted successfully"));
+            
+        } catch (Exception e) {
+            log.error("Upsert registration failed for email: {}", request.getEmail(), e);
+            return ResponseEntity.badRequest()
+                .body(new AuthResponse("", null, "Upsert registration failed: " + e.getMessage()));
         }
     }
 
@@ -77,7 +98,14 @@ public class AuthController {
             );
             
             // Get user details
-            String email = authentication.getName();
+            String userId = authentication.getName();
+            User user = userService.findById(userId);
+
+            if (user == null) {
+                log.warn("User not found after authentication for userId: {}", userId);
+                return ResponseEntity.badRequest()
+                        .body(new AuthResponse("", null, "User not found after authentication."));
+            }
             // Generate JWT token
             String token = tokenProvider.generateToken(user.getId());
             

@@ -22,7 +22,7 @@
       "Project Management"
     ],
     "recommendedCourses": [
-      "Coursera: Introduction to Mechanical Engineering",
+      " Introduction to Mechanical Engineering",
       "edX: Mechanics of Materials I",
       "AutoCAD Certification",
       "SolidWorks Certification"
@@ -52,7 +52,7 @@
       "Geotechnical Engineering"
     ],
     "recommendedCourses": [
-      "Coursera: Fundamentals of Structural Analysis",
+      " Fundamentals of Structural Analysis",
       "edX: Introduction to Civil Engineering",
       "Primavera P6 Certification",
       "STAAD.Pro Certification"
@@ -82,7 +82,7 @@
       "MATLAB"
     ],
     "recommendedCourses": [
-      "Coursera: Introduction to Electronics",
+      " Introduction to Electronics",
       "edX: Circuits and Electronics",
       "PSpice Certification",
       "Siemens PLC Certification"
@@ -112,7 +112,7 @@
       "Embedded Systems"
     ],
     "recommendedCourses": [
-      "Coursera: Introduction to Automotive Engineering",
+      " Introduction to Automotive Engineering",
       "edX: Electric Vehicles",
       "CATIA Certification",
       "Ansys Certification"
@@ -142,7 +142,7 @@
       "Research"
     ],
     "recommendedCourses": [
-      "Coursera: Material Science: 10 Things Every Engineer Should Know",
+      " Material Science: 10 Things Every Engineer Should Know",
       "edX: Introduction to Solid State Chemistry",
       "NPTEL: Materials Science and Engineering"
     ],
@@ -171,7 +171,7 @@
       "Data Visualization"
     ],
     "recommendedCourses": [
-      "Coursera: IBM Data Science Professional Certificate",
+      " IBM Data Science Professional Certificate",
       "edX: Data Science MicroMasters",
       "Kaggle Courses"
     ],
@@ -200,7 +200,7 @@
       "Deep Learning"
     ],
     "recommendedCourses": [
-      "Coursera: Deep Learning Specialization",
+      " Deep Learning Specialization",
       "fast.ai: Practical Deep Learning for Coders",
       "Google AI Education"
     ],
@@ -229,7 +229,7 @@
       "Statistics"
     ],
     "recommendedCourses": [
-      "Coursera: Google Data Analytics Professional Certificate",
+      " Google Data Analytics Professional Certificate",
       "Microsoft Power BI Certification",
       "Tableau Desktop Specialist Certification"
     ],
@@ -258,7 +258,7 @@
       "Communication"
     ],
     "recommendedCourses": [
-      "Coursera: AI For Everyone",
+      " AI For Everyone",
       "edX: The Ethics of AI",
       "IAPP Certified Information Privacy Professional (CIPP)"
     ],
@@ -287,7 +287,7 @@
       "Deep Learning"
     ],
     "recommendedCourses": [
-      "Coursera: Natural Language Processing Specialization",
+      " Natural Language Processing Specialization",
       "Hugging Face Course",
       "fast.ai: A Code-First Introduction to Natural Language Processing"
     ],
@@ -318,7 +318,7 @@
     "recommendedCourses": [
       "freeCodeCamp: Responsive Web Design",
       "The Odin Project",
-      "Coursera: Meta Front-End Developer Professional Certificate"
+      " Meta Front-End Developer Professional Certificate"
     ],
     "_class": "com.naviksha.model.Career"
   },
@@ -345,7 +345,7 @@
       "API Design"
     ],
     "recommendedCourses": [
-      "Coursera: IBM Back-End Development Professional Certificate",
+      " IBM Back-End Development Professional Certificate",
       "The Odin Project: Full Stack JavaScript",
       "freeCodeCamp: Back End Development and APIs"
     ],
@@ -376,7 +376,7 @@
     "recommendedCourses": [
       "The Odin Project: Full Stack Ruby on Rails",
       "Fullstack Open",
-      "Coursera: Meta Full-Stack Engineer Professional Certificate"
+      " Meta Full-Stack Engineer Professional Certificate"
     ],
     "_class": "com.naviksha.model.Career"
   },
@@ -403,8 +403,8 @@
       "UI/UX Design"
     ],
     "recommendedCourses": [
-      "Coursera: Meta iOS Developer Professional Certificate",
-      "Coursera: Meta Android Developer Professional Certificate",
+      " Meta iOS Developer Professional Certificate",
+      " Meta Android Developer Professional Certificate",
       "Udacity: Android Kotlin Developer Nanodegree"
     ],
     "_class": "com.naviksha.model.Career"
@@ -432,7 +432,7 @@
       "Prototyping"
     ],
     "recommendedCourses": [
-      "Coursera: Google UX Design Professional Certificate",
+      " Google UX Design Professional Certificate",
       "Interaction Design Foundation",
       "Nielsen Norman Group UX Certification"
     ],
@@ -461,7 +461,7 @@
       "Branding"
     ],
     "recommendedCourses": [
-      "Coursera: Graphic Design Specialization",
+      " Graphic Design Specialization",
       "Skillshare: Graphic Design Basics: Core Principles for Visual Design",
       "Adobe Certified Professional"
     ],
@@ -490,7 +490,7 @@
       "Compositing"
     ],
     "recommendedCourses": [
-      "Coursera: Animation and VFX",
+      " Animation and VFX",
       "Animation Mentor",
       "Gnomon School of Visual Effects"
     ],
@@ -577,7 +577,7 @@
       "Project Management"
     ],
     "recommendedCourses": [
-      "Coursera: Clinical Trials",
+      " Clinical Trials",
       "ACRP Certified Clinical Research Associate (CCRA)",
       "SOCRA Certified Clinical Research Professional (CCRP)"
     ],
@@ -607,7 +607,7 @@
     ],
     "recommendedCourses": [
       "CA Foundation",
-      "Coursera: Introduction to Financial Accounting",
+      " Introduction to Financial Accounting",
       "Tally ERP 9 Certification"
     ],
     "_class": "com.naviksha.model.Career"
@@ -636,7 +636,7 @@
     ],
     "recommendedCourses": [
       "CFA Program",
-      "Coursera: Financial Markets",
+      " Financial Markets",
       "Wall Street Prep Financial Modeling"
     ],
     "_class": "com.naviksha.model.Career"
@@ -665,7 +665,7 @@
     ],
     "recommendedCourses": [
       "CLAT Preparation",
-      "Coursera: Introduction to English Common Law",
+      " Introduction to English Common Law",
       "Moot Court Competition"
     ],
     "_class": "com.naviksha.model.Career"
@@ -694,7 +694,7 @@
     ],
     "recommendedCourses": [
       "NATA Preparation",
-      "Coursera: Making Architecture",
+      " Making Architecture",
       "Revit Architecture Certification"
     ],
     "_class": "com.naviksha.model.Career"
@@ -781,7 +781,7 @@
     ],
     "recommendedCourses": [
       "B.Ed Program",
-      "Coursera: Learning How to Learn",
+      " Learning How to Learn",
       "TET (Teacher Eligibility Test) Preparation"
     ],
     "_class": "com.naviksha.model.Career"
@@ -810,7 +810,7 @@
     ],
     "recommendedCourses": [
       "LEED Green Associate Certification",
-      "Coursera: Introduction to Sustainability",
+      " Introduction to Sustainability",
       "GRI Standards Certified Training"
     ],
     "_class": "com.naviksha.model.Career"
@@ -867,7 +867,7 @@
       "Communication"
     ],
     "recommendedCourses": [
-      "Coursera: Google Project Management Professional Certificate",
+      " Google Project Management Professional Certificate",
       "Product School Certification",
       "Pragmatic Institute Certification"
     ],
@@ -898,7 +898,7 @@
     "recommendedCourses": [
       "CompTIA Security+",
       "Certified Ethical Hacker (CEH)",
-      "Coursera: IBM Cybersecurity Analyst Professional Certificate"
+      " IBM Cybersecurity Analyst Professional Certificate"
     ],
     "_class": "com.naviksha.model.Career"
   },
@@ -926,7 +926,7 @@
     ],
     "recommendedCourses": [
       "Certified Blockchain Developer (CBDH)",
-      "Coursera: Blockchain Specialization",
+      " Blockchain Specialization",
       "ConsenSys Academy"
     ],
     "_class": "com.naviksha.model.Career"
@@ -956,7 +956,7 @@
     "recommendedCourses": [
       "DGCA Certified Drone Pilot Training",
       "Pix4D Certification",
-      "Coursera: Drones and Autonomous Systems"
+      " Drones and Autonomous Systems"
     ],
     "_class": "com.naviksha.model.Career"
   }
