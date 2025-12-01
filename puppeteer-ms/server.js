@@ -131,7 +131,7 @@ function populateCareerPage(htmlContent, bucketName, bucketIndex, careersToRende
                 </div>
             </div>
             <div class="text-[13px] mb-1 pl-5 text-gray-700 leading-normal">
-                <strong class="text-gray-900">Why This Fits:</strong> ${career.topReasons.join(' ')}
+                <strong class="text-gray-900">Why This Fits:</strong> ${CACHE.careersMap.get(career.careerName).whyFit}
             </div>
             <div class="flex items-center mb-2 pl-5">
                 <div class="font-bold text-[13px] mr-4 text-gray-900">Study Path:</div>
