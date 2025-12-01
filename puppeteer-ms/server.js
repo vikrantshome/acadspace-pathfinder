@@ -20,6 +20,16 @@ const CREDENTIALS_PATH = path.join(__dirname, 'client_secret_4133800428-9nlcg87u
 const TOKEN_PATH = path.join(__dirname, 'token.json');
 const FOLDER_NAME = 'careerReports';
 
+// RIASEC Descriptions
+const RIASEC_DESCRIPTIONS = {
+    "R": "Congratulations! You’ve scored highest in Realistic. You’re someone who learns best by doing and feels most confident when working with real-world objects, tools, or technologies. You enjoy solving practical problems and seeing clear, visible results from your efforts. You thrive in environments that are hands-on, active, and structured—where you can build, operate, repair, explore outdoors, or make systems work better. You excel in action-oriented work that brings ideas to life through physical creation and execution.",
+    "I": "Congratulations! You’ve scored highest in Investigative. You love exploring the “why” and “how” behind everything, using logic, analysis, and curiosity as your strongest tools. You feel energized when researching, experimenting, or diving deep into complex topics. You thrive in environments that challenge your thinking—where you can analyze data, observe patterns, seek truth, and solve hard problems. You’re a natural explorer of ideas who finds purpose in uncovering deeper knowledge and meaning.",
+    "A": "Congratulations! You’ve scored highest in Artistic. You are imaginative, expressive, and full of big ideas, often seeing beauty, emotion, and creativity where others see routine. You prefer freedom over rules and love shaping your thoughts into something original—through visuals, words, sound, movement, or design. You thrive in environments that embrace innovation, personal expression, and new perspectives. You’re meant for work where creativity leads the way and where your unique voice can truly shine.",
+    "S": "Congratulations! You’ve scored highest in Social. You are warm, understanding, and naturally skilled at connecting with others. Helping, teaching, supporting, or guiding people gives you a sense of purpose. You thrive in places where communication, collaboration, and care are valued. You succeed in roles that allow you to build trust, listen deeply, and make a meaningful difference in the lives of individuals or communities. You’re a natural people champion.",
+    "E": "Congratulations! You’ve scored highest in Enterprising. You’re confident, driven, and full of energy to lead, influence, and turn ideas into action. You enjoy taking charge, making decisions, and motivating others toward a common goal. You thrive in dynamic environments that reward initiative, strategy, and ambition. You’re suited to paths where you can persuade, lead, build, and create new opportunities—always moving forward with vision and courage.",
+    "C": "Congratulations! You’ve scored highest in Conventional. You are organized, dependable, and great at transforming chaos into order. You enjoy working with systems, information, numbers, or processes—where accuracy and structure are important. You thrive in environments that are stable, methodical, and well-defined. You excel in tasks that involve planning, coordination, and maintaining smooth operations. You’re the one who keeps everything running efficiently and correctly."
+};
+
 async function uploadToDrive(pdfBuffer, filename) {
   try {
     const credentials = JSON.parse(await fs.readFile(CREDENTIALS_PATH));
@@ -103,6 +113,29 @@ async function uploadToDrive(pdfBuffer, filename) {
   }
 }
 
+
+function getRiasecInsight(vibeScores) {
+    if (!vibeScores || Object.keys(vibeScores).length === 0) {
+        return "No RIASEC scores available to generate insights.";
+    }
+
+    let highestScore = -1;
+    let highestRiasecType = '';
+
+    for (const [riasecType, score] of Object.entries(vibeScores)) {
+        if (score > highestScore) {
+            highestScore = score;
+            highestRiasecType = riasecType;
+        }
+    }
+    
+    // Fallback if for some reason highestRiasecType is still empty
+    if (!highestRiasecType && Object.keys(vibeScores).length > 0) {
+      highestRiasecType = Object.keys(vibeScores)[0]; // Just pick the first one
+    }
+
+    return RIASEC_DESCRIPTIONS[highestRiasecType] || "Unable to generate specific RIASEC insight.";
+}
 
 
 // Health check endpoint
@@ -206,9 +239,9 @@ async function generateReportHTML(templateName, reportData, recommendations, stu
     // Populate page2.html
     if (templateName === 'page2.html') {
         htmlContent = htmlContent.replace(/Your profile shows that you enjoy structure[\s\S]*?and preparation pathways\./, data.summaryParagraph || '');
-        htmlContent = htmlContent.replace(/Your RIASEC results show a strong tilt toward[\s\S]*?and analytical exploration\./, data.detailedCareerInsights?.explanations?.[buckets?.[0]?.topCareers?.[0]?.careerName] || '');
-        
         const vibeScores = data.vibeScores || {};
+        const riasecInsightText = getRiasecInsight(vibeScores);
+        htmlContent = htmlContent.replace(/Your RIASEC results show a strong tilt toward[\s\S]*?and analytical exploration\./, riasecInsightText);
         htmlContent = htmlContent.replace('width: 72%', `width:${vibeScores.R || 0}%;`).replace('<span>72%</span>', `<span>${vibeScores.R || 0}%</span>`);
         htmlContent = htmlContent.replace('width: 56%', `width:${vibeScores.I || 0}%;`).replace('<span>56%</span>', `<span>${vibeScores.I || 0}%</span>`);
         htmlContent = htmlContent.replace('width: 91%', `width:${vibeScores.A || 0}%;`).replace('<span>91%</span>', `<span>${vibeScores.A || 0}%</span>`);
