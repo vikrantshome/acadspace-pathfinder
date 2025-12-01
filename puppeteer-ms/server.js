@@ -250,12 +250,12 @@ async function generateReportHTML(templateName, reportData, recommendations, stu
  * @param {object} recommendations - The AO recommendations JSON object.
  * @returns {Promise<Buffer>} - A promise that resolves with the generated PDF buffer.
  */
-async function generatePdfPage(browser, templateName, reportData, recommendations) {
+async function generatePdfPage(browser, templateName, reportData, recommendations, studentID, mobileNo, studentName) {
     console.log(`Generating PDF page for: ${templateName}`);
     let page;
     try {
         // 1. Generate HTML content dynamically
-        let htmlContent = await generateReportHTML(templateName, reportData, recommendations);
+        let htmlContent = await generateReportHTML(templateName, reportData, recommendations, studentID, studentName);
 
         // 2. Embed images as Base64 data URLs
         const imageSrcRegex = /src="\.\/assets\/([^"]+)"/g;
