@@ -1,0 +1,428 @@
+Unique Code,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,Q13,Q14,Q15,Status
+200001,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine, Business",Skipped,No,Maybe,Office,,Skipped,No,,Success
+200003,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",,Yes definitely,Maybe,Office,,Skipped,No,"Engineering, Medicine, Design/Art",Success
+200005,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance, Medicine, Business",Skipped,Yes definitely,Maybe,,,Skipped,Maybe,Engineering,Success
+200006,7,CBSE,"Math, Physics",Skipped,Work,"Sports, Music",IT/Software,Skipped,No,Yes,Office,Skipped,Skipped,No,,Success
+200008,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,No,,Success
+200009,7,CBSE,"Math, Physics, Chemistry, Biology",,Top30,Sports,IT/Software,Skipped,No,No,,Skipped,Skipped,Maybe,,Success
+200013,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business",,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance, Medicine",Skipped,Maybe,Yes,,Skipped,Skipped,Maybe,,Success
+200014,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics",IT/Software,Skipped,Yes definitely,Yes,,,Skipped,No,,Success
+200015,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business, Art/Design",,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service, Entrepreneurship, Internship","IT/Software, Finance, Medicine",Skipped,Yes definitely,No,,,Skipped,Maybe,,Success
+200017,7,CBSE,Math,,Top5,Sports,IT/Software,Skipped,No,Yes,,,Skipped,No,,Success
+200019,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",,Top30,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance, Medicine, Business",Skipped,Yes definitely,Maybe,,,Skipped,Yes,,Success
+200020,9,CBSE,Math,Skipped,Top10,"Sports, Music",IT/Software,Skipped,Maybe,Maybe,,,Skipped,No,,Success
+200021,9,CBSE,"Math, Physics, Chemistry",,Top10,"Sports, Music, Dance","IT/Software, Finance, Medicine, Business",Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200022,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music, Dance",,Skipped,No,,,Skipped,Skipped,,,Success
+200023,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top1,"Sports, Music, Dance","IT/Software, Finance",Skipped,No,,,Skipped,Skipped,Yes,,Success
+200024,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top10,"Sports, Music, Dance","IT/Software, Finance, Medicine",,Yes definitely,Yes,,,Skipped,No,,Success
+200025,9,CBSE,"Math, Physics, Chemistry",Skipped,Top30,"Sports, Music",IT/Software,Skipped,Yes definitely,Maybe,,,Skipped,Yes,,Success
+200026,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",Skipped,Yes definitely,Maybe,,,Skipped,Maybe,,Success
+200027,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics",,Skipped,Yes definitely,No,,,Skipped,Yes,,Success
+200030,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine",Skipped,Yes definitely,Yes,Field,,Skipped,Yes,,Success
+200031,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top10,"Sports, Music","IT/Software, Finance, Medicine",Skipped,No,Maybe,,,Skipped,Yes,,Success
+200032,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",,Top10,"Sports, Music, Dance, Theatre, Debate",IT/Software,Skipped,Yes definitely,Yes,,,Skipped,No,,Success
+200033,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top10,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Yes definitely,Maybe,,,Skipped,No,,Success
+200035,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",,Work,"Sports, Music, Dance","IT/Software, Finance, Medicine",Skipped,Yes definitely,Maybe,,,Skipped,Maybe,,Success
+200036,9,CBSE,"Math, Physics, Chemistry, Biology",,Top30,"Sports, Music, Dance, Theatre","IT/Software, Finance",Skipped,Maybe,Maybe,Office,,Skipped,Maybe,,Success
+200037,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",,Work,"Sports, Music, Dance","IT/Software, Finance, Medicine",Skipped,Yes definitely,No,,,Skipped,No,,Success
+200038,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance",Skipped,No,Yes,,,Skipped,Yes,,Success
+200039,7,CBSE,"Math, Physics, Chemistry, Biology",,Top1,"Sports, Music","IT/Software, Finance, Medicine, Business",Skipped,Maybe,No,,,Skipped,Yes,,Success
+200040,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top5,Sports,,Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200042,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Avg,"Sports, Music, Dance",,Skipped,Yes definitely,Yes,,,Skipped,Maybe,,Success
+200043,8,CBSE,Math,,Top30,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200044,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top10,Sports,IT/Software,Skipped,Maybe,No,,,Skipped,Yes,,Success
+200045,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine",Skipped,Yes definitely,Yes,Field,Skipped,Skipped,Yes,,Success
+200046,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine",Skipped,Maybe,Maybe,,,Skipped,Maybe,,Success
+200047,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Work,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,Maybe,,Success
+200048,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",,Avg,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",IT/Software,Skipped,Yes definitely,No,,,Skipped,Yes,,Success
+200049,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",,Top10,"Sports, Music, Dance, Theatre, Debate",IT/Software,Skipped,Yes definitely,Yes,,,Skipped,Maybe,,Success
+200050,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top10,,,Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200051,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",,Top5,Sports,,Skipped,Maybe,Yes,,,Skipped,Yes,,Success
+200052,7,CBSE,Math,Skipped,Top1,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Yes definitely,Maybe,,,Skipped,Yes,,Success
+200053,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate",IT/Software,Skipped,Maybe,Maybe,,,Skipped,Yes,,Success
+200054,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Work,,,Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200055,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine, Business",Skipped,No,Maybe,,,Skipped,Yes,,Success
+200056,9,CBSE,"Math, Physics",,Avg,"Sports, Music","IT/Software, Finance, Medicine",Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200057,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business, Art/Design",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics",IT/Software,Skipped,No,Yes,,,Skipped,Maybe,,Success
+200058,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top10,"Sports, Music, Dance, Theatre","IT/Software, Finance",Skipped,Yes definitely,Yes,,Skipped,Skipped,No,,Success
+200059,7,CBSE,"Math, Physics, Chemistry, Biology",,Work,Sports,IT/Software,Skipped,No,Maybe,,,Skipped,Yes,,Success
+200060,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top30,"Sports, Music",,Skipped,Yes definitely,Yes,Office,,Skipped,No,,Success
+200063,7,CBSE,"Math, Physics, Chemistry, Biology",,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics",IT/Software,Skipped,No,No,Office,,Skipped,Yes,,Success
+200064,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Top1,"Sports, Music, Dance",IT/Software,Skipped,Maybe,Yes,,,Skipped,Yes,,Success
+200067,7,CBSE,"Math, Physics",Skipped,,,,Skipped,Yes definitely,,,Skipped,,,,Success
+200069,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top10,,,Skipped,Yes definitely,,,Skipped,,,,Success
+200070,6,CBSE,"Math, Physics",Skipped,,,,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200071,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top5,Sports,,Skipped,Maybe,,Office,Skipped,Skipped,,,Success
+200072,6,CBSE,Math,Skipped,Top1,,,Skipped,No,,Office,Skipped,,,,Success
+200073,6,CBSE,"Math, Physics",Skipped,Top1,,,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200076,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top10,Sports,,Skipped,No,,,Skipped,Skipped,,,Success
+200079,6,CBSE,"Math, Physics, Chemistry",Skipped,Top1,"Sports, Music",,Skipped,Yes definitely,,,Skipped,,,,Success
+200080,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,,,IT/Software,Skipped,Maybe,,,Skipped,Skipped,,,Success
+200081,6,CBSE,"Math, Physics",Skipped,Top1,,"IT/Software, Finance",Skipped,No,Yes,Hybrid,Skipped,Skipped,,,Success
+200082,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music, Dance",,Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200083,6,CBSE,Math,Skipped,Top1,"Sports, Music",,Skipped,No,,,Skipped,Skipped,,,Success
+200084,6,CBSE,"Math, Physics",Skipped,Top5,Sports,,Skipped,No,,,Skipped,Skipped,,,Success
+200085,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music",,Skipped,Maybe,,,Skipped,Skipped,,,Success
+200086,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top1,Sports,IT/Software,Skipped,No,Yes,,Skipped,Skipped,,,Success
+200087,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,,,,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200088,6,CBSE,Math,Skipped,Top1,Sports,,Skipped,Maybe,,,Skipped,Skipped,,,Success
+200089,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top1,,IT/Software,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200090,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top5,Sports,IT/Software,Skipped,Maybe,,,Skipped,Skipped,,,Success
+200091,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top1,,,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200092,6,CBSE,"Math, Physics, Chemistry",Skipped,,"Sports, Music, Dance",,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200093,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top5,"Sports, Music",,Skipped,Yes definitely,Yes,Office,Skipped,Skipped,,,Success
+200094,6,CBSE,"Math, Physics, Chemistry",Skipped,Top10,Sports,IT/Software,Skipped,Maybe,,Office,Skipped,Skipped,,,Success
+200095,6,,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top5,Sports,,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200096,6,CBSE,"Math, Physics, Chemistry",Skipped,Top1,"Sports, Music",,Skipped,Maybe,,,Skipped,,,,Success
+200097,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top10,,IT/Software,Skipped,Yes definitely,Yes,Office,Skipped,,,,Success
+200098,6,CBSE,"Math, Physics",Skipped,Top5,Sports,,Skipped,Yes definitely,Maybe,Office,Skipped,Skipped,,,Success
+200099,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top5,Sports,,Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200100,6,Others,"Math, Physics, Chemistry, Biology",Skipped,Top1,Sports,,Skipped,Maybe,,,Skipped,Skipped,,,Success
+200101,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music",,Skipped,Maybe,No,,Skipped,Skipped,,,Success
+200102,10,CBSE,"Math, Physics",Skipped,,,IT/Software,Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200103,10,CBSE,"Math, Physics, Chemistry",Skipped,Top5,Sports,,Skipped,Maybe,Yes,,Skipped,Skipped,,,Success
+200104,10,CBSE,"Math, Physics",Skipped,,,,Skipped,No,Maybe,,Skipped,,,,Success
+200105,10,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top10,Sports,IT/Software,Skipped,Maybe,Maybe,Office,Skipped,Skipped,,,Success
+200106,10,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music",,Skipped,Yes definitely,Maybe,Office,Skipped,Skipped,,,Success
+200107,10,CBSE,"Math, Physics, Chemistry, Biology",Skipped,,,IT/Software,Skipped,Maybe,Yes,,Skipped,,Yes,,Success
+200108,10,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,,"IT/Software, Finance, Medicine",Skipped,Maybe,,Office,Skipped,,Yes,,Success
+200109,10,CBSE,"Math, Physics",Skipped,Top10,Sports,,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200110,10,ICSE,,Skipped,Top1,,,Skipped,Yes definitely,,,Skipped,,,,Success
+200111,10,CBSE,"Math, Physics, Chemistry, Biology",Skipped,,Sports,,Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200112,10,CBSE,Math,Skipped,,Sports,,Skipped,No,,,Skipped,Skipped,,,Success
+200113,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,,,,Skipped,Maybe,,Office,Skipped,Skipped,,,Success
+200114,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top1,,,Skipped,Yes definitely,,,Skipped,,,,Success
+200115,10,CBSE,Math,Skipped,Top1,,IT/Software,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200116,10,CBSE,"Math, Physics",Skipped,,,,Skipped,Yes definitely,,,Skipped,,,,Success
+200117,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top1,Sports,,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200118,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top5,Sports,,Skipped,No,,,Skipped,Skipped,,,Success
+200119,10,CBSE,Math,Skipped,,,,Skipped,Yes definitely,No,,Skipped,,,,Success
+200120,10,CBSE,Math,Skipped,Top1,,,Skipped,Yes definitely,,,Skipped,,,,Success
+200121,10,Others,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service, Entrepreneurship","IT/Software, Finance",,Yes definitely,Yes,Depends,,Skipped,Yes,,Success
+200121,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top1,"Sports, Music",IT/Software,Skipped,No,,,Skipped,Skipped,,,Success
+200122,10,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Work,,"IT/Software, Finance",Skipped,Maybe,Maybe,Office,Skipped,Skipped,Yes,,Success
+200123,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business, Art/Design",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate, Robotics",IT/Software,Skipped,Yes definitely,No,,,Skipped,No,,Success
+200124,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top30,"Sports, Music, Dance, Theatre","IT/Software, Finance, Medicine, Business",Skipped,Maybe,Yes,,,Skipped,Yes,,Success
+200125,6,ICSE,"Math, Physics, Chemistry, Biology",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics",IT/Software,Skipped,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200126,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",,Top30,"Sports, Music, Dance, Theatre","IT/Software, Finance, Medicine",Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200127,12,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",,Top30,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance, Medicine, Business",Skipped,Maybe,Maybe,,,Skipped,Yes,,Success
+200128,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",,Work,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance, Medicine",Skipped,No,Yes,,,Skipped,No,Engineering,Success
+200129,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Avg,"Sports, Music, Dance","IT/Software, Finance, Medicine, Business, Government",,Maybe,Maybe,Depends,,,Yes,"Engineering, Medicine, Design/Art, Business",Success
+200130,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate",IT/Software,Skipped,Yes definitely,Yes,Field,Skipped,Skipped,Yes,,Success
+200131,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance, Medicine, Business",Skipped,Yes definitely,Yes,,,Skipped,Maybe,,Success
+200132,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",Skipped,Yes definitely,No,,,Skipped,Maybe,Engineering,Success
+200133,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top1,"Sports, Music",,Skipped,Yes definitely,Yes,,Skipped,Skipped,Maybe,,Success
+200134,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top1,Sports,IT/Software,Skipped,No,Yes,Office,Skipped,Skipped,No,,Success
+200135,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top5,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Yes definitely,Yes,Office,,Skipped,No,,Success
+200136,6,CBSE,Math,,Top5,"Sports, Music",IT/Software,Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200137,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Work,"Sports, Music","IT/Software, Finance, Medicine",Skipped,Maybe,No,,,Skipped,Yes,,Success
+200138,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance, Medicine, Business, Government",Skipped,Maybe,Yes,Hybrid,,,Maybe,Engineering,Success
+200139,6,CBSE,"Math, Physics, Chemistry",,Top5,"Sports, Music, Dance","IT/Software, Finance",Skipped,Yes definitely,No,Office,,Skipped,,,Success
+200140,7,ICSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics",IT/Software,Skipped,Maybe,Yes,,Skipped,Skipped,,,Success
+200141,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Top5,"Sports, Music, Dance","IT/Software, Finance, Medicine",Skipped,Yes definitely,Yes,,,Skipped,No,,Success
+200142,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service, Entrepreneurship, Internship",IT/Software,,Maybe,Maybe,Office,,,No,Engineering,Success
+200143,6,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+200144,6,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+200145,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business",Skipped,Top1,"Sports, Music","IT/Software, Finance",Skipped,Maybe,Yes,,Skipped,Skipped,No,,Success
+200146,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Top30,"Sports, Music, Dance",IT/Software,Skipped,Yes definitely,Maybe,,,Skipped,No,,Success
+200147,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top1,"Sports, Music, Dance, Theatre","IT/Software, Finance, Medicine",Skipped,Yes definitely,Yes,Office,,Skipped,Yes,,Success
+200148,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top5,"Sports, Music, Dance",IT/Software,,Yes definitely,Yes,Hybrid,Skipped,Skipped,No,Engineering,Success
+200149,6,CBSE,"Math, Physics, Chemistry",Skipped,Top5,Sports,,Skipped,Maybe,Yes,,Skipped,,Yes,,Success
+200150,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,Sports,,Skipped,Maybe,Yes,Office,Skipped,,,,Success
+200151,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance",,Maybe,Yes,Depends,,Skipped,No,Engineering,Success
+200152,6,CBSE,"Math, Physics, Chemistry",,Top10,Sports,"IT/Software, Finance",Skipped,Yes definitely,Yes,Field,,Skipped,,,Success
+200153,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top5,"Sports, Music",IT/Software,Skipped,Yes definitely,No,,Skipped,Skipped,,,Success
+200154,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top1,Sports,IT/Software,Skipped,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200156,7,CBSE,"Math, Physics, Chemistry",Skipped,Top1,Sports,"IT/Software, Finance",Skipped,Maybe,Yes,Remote,Skipped,Skipped,No,,Success
+200157,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Avg,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200158,11,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top5,"Sports, Music",IT/Software,Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200159,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",Skipped,No,Maybe,,,Skipped,Yes,,Success
+200160,9,CBSE,Math,Skipped,,Sports,IT/Software,Skipped,Maybe,No,,Skipped,Skipped,No,,Success
+200161,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",,Avg,"Sports, Music, Dance","IT/Software, Finance, Medicine, Business",,Maybe,Maybe,Depends,,Skipped,Yes,"Engineering, Medicine",Success
+200162,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance",Skipped,Yes definitely,Maybe,,,Skipped,Yes,,Success
+200163,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Avg,"Sports, Music, Dance",,Skipped,No,Yes,,Skipped,Skipped,Yes,,Success
+200164,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service, Entrepreneurship","IT/Software, Finance",,Maybe,Maybe,Depends,,,Yes,"Engineering, Medicine",Success
+200165,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Avg,"Sports, Music, Dance",IT/Software,Skipped,Yes definitely,No,,Skipped,Skipped,,,Success
+200166,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",IT/Software,,Maybe,Maybe,Hybrid,,Skipped,Yes,,Success
+200167,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",,Maybe,Maybe,Depends,Skipped,,No,,Success
+200169,7,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Maybe,Yes,,,Skipped,No,,Success
+200170,,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance, Medicine",Skipped,Maybe,Maybe,Field,Skipped,,No,"Engineering, Medicine, Design/Art",Success
+200171,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top5,"Sports, Music, Dance, Theatre","IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,No,,Success
+200172,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top10,Sports,IT/Software,Skipped,Maybe,Yes,,Skipped,Skipped,Yes,,Success
+200175,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top10,Sports,IT/Software,Skipped,Yes definitely,No,,Skipped,Skipped,,,Success
+200176,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",,Top30,"Sports, Music","IT/Software, Finance",Skipped,Maybe,Yes,Office,,Skipped,Yes,,Success
+200177,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine",Skipped,No,No,,,Skipped,Maybe,,Success
+200178,10,CBSE,"Math, Physics, Chemistry",Skipped,Top1,Sports,,Skipped,No,No,,Skipped,Skipped,Yes,,Success
+200179,7,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance",Skipped,No,Maybe,Office,Skipped,Skipped,No,,Success
+200180,10,CBSE,"Math, Physics, Chemistry",,Top1,"Sports, Music, Dance, Theatre, Debate",IT/Software,Skipped,Maybe,No,,Skipped,Skipped,Yes,,Success
+200181,11,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance, Medicine, Business, Government, Education",Skipped,Maybe,Yes,,,Skipped,Yes,,Success
+200182,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",,Top1,"Sports, Music, Dance",,Skipped,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200183,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",,Avg,Sports,"IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,,,Success
+200184,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,,"Sports, Music, Dance, Theatre, Debate",IT/Software,,Maybe,Yes,Depends,,,No,"Engineering, Medicine",Success
+200185,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top30,Sports,,Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200186,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",,Avg,"Sports, Music, Dance","IT/Software, Finance, Medicine",Skipped,Yes definitely,Maybe,Office,,Skipped,No,,Success
+200187,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,Maybe,,Success
+200189,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Avg,"Sports, Music, Dance, Theatre","IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,Maybe,,Success
+200190,10,CBSE,"Math, Physics, Chemistry, Biology",,Avg,"Sports, Music",IT/Software,Skipped,Yes definitely,No,,,Skipped,No,,Success
+200191,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top30,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Yes definitely,Maybe,Office,Skipped,Skipped,Yes,,Success
+200192,10,CBSE,"Math, Physics",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate",,Skipped,Yes definitely,Maybe,Office,,Skipped,Yes,,Success
+200193,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,,Sports,,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200194,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200195,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Top30,Sports,,Skipped,Yes definitely,No,,Skipped,,Yes,,Success
+200196,8,CBSE,"Math, Physics, Chemistry",,Top5,"Sports, Music",IT/Software,Skipped,Maybe,Maybe,,,Skipped,,,Success
+200196,8,CBSE,"Math, Physics, Chemistry",Skipped,Top10,"Sports, Music",,Skipped,Yes definitely,Maybe,Office,Skipped,Skipped,,,Success
+200197,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance, Medicine",,Maybe,Yes,Office,,,Maybe,"Engineering, Medicine",Success
+200198,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance, Medicine, Business, Government",Skipped,Yes definitely,No,,,Skipped,No,,Success
+200199,8,CBSE,"Math, Physics",,Top10,"Sports, Music, Dance, Theatre",,Skipped,Maybe,Maybe,,,Skipped,Maybe,,Success
+200201,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top1,,,Skipped,Yes definitely,,,Skipped,Skipped,,,Success
+200202,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top30,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,,,Success
+200203,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top5,Sports,"IT/Software, Finance",Skipped,No,No,,,Skipped,,Engineering,Success
+200204,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top5,Sports,IT/Software,Skipped,Maybe,Yes,,,Skipped,No,,Success
+200205,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,,"Sports, Music",IT/Software,Skipped,Maybe,Maybe,Office,,Skipped,Yes,,Success
+200206,8,CBSE,"Math, Physics, Chemistry",Skipped,Top1,Sports,,Skipped,Maybe,Yes,,Skipped,,,,Success
+200207,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,Sports,"IT/Software, Finance",Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200208,8,CBSE,"Math, Physics, Chemistry",Skipped,Top5,"Sports, Music, Dance, Theatre",IT/Software,Skipped,No,Maybe,Depends,,Skipped,,,Success
+200209,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top30,"Sports, Music",,Skipped,Yes definitely,No,,Skipped,Skipped,,,Success
+200212,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top5,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Yes definitely,No,,Skipped,Skipped,,,Success
+200213,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,,"Sports, Music, Dance, Theatre","IT/Software, Finance",Skipped,Yes definitely,Maybe,,,Skipped,No,,Success
+200214,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business",,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance",Skipped,Yes definitely,Yes,Office,,Skipped,Yes,,Success
+200216,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top30,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine, Business, Government",Skipped,Yes definitely,Yes,,Skipped,Skipped,No,Engineering,Success
+200217,8,CBSE,"Math, Physics",Skipped,Top10,"Sports, Music",IT/Software,Skipped,Yes definitely,,,Skipped,Skipped,No,,Success
+200220,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top5,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Maybe,,,Skipped,Skipped,Yes,,Success
+200221,8,CBSE,"Math, Physics, Chemistry",Skipped,Top5,"Sports, Music",IT/Software,Skipped,Yes definitely,Maybe,,Skipped,Skipped,No,,Success
+200223,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance",Skipped,Maybe,Yes,Office,,Skipped,Maybe,Engineering,Success
+200228,6,CBSE,"Math, Physics, Chemistry",Skipped,Top10,Sports,IT/Software,Skipped,Maybe,Maybe,,,Skipped,Yes,,Success
+200229,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top1,"Sports, Music",IT/Software,Skipped,No,Yes,,Skipped,Skipped,No,,Success
+200232,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate",IT/Software,Skipped,Yes definitely,Maybe,,Skipped,Skipped,Maybe,,Success
+200233,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",,Skipped,Maybe,Yes,,Skipped,Skipped,Yes,,Success
+200238,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",,Avg,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine",Skipped,Maybe,Maybe,,,Skipped,No,,Success
+200239,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top1,Sports,,Skipped,No,Maybe,,Skipped,Skipped,Yes,,Success
+200240,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",,Top10,"Sports, Music, Dance, Theatre","IT/Software, Finance, Medicine, Business",,Yes definitely,Yes,Office,,,No,"Engineering, Medicine, Design/Art",Success
+200241,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine, Business",,Yes definitely,Maybe,Depends,,,Yes,Engineering,Success
+200242,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",,Top10,"Sports, Music, Dance, Theatre",IT/Software,Skipped,Maybe,Yes,,Skipped,Skipped,Yes,,Success
+200243,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top1,"Sports, Music, Dance","IT/Software, Finance",Skipped,Yes definitely,Yes,Office,Skipped,Skipped,Yes,,Success
+200244,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top1,"Sports, Music",,Skipped,No,No,,Skipped,Skipped,,,Success
+200245,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Avg,"Sports, Music, Dance","IT/Software, Finance, Medicine",Skipped,Yes definitely,Maybe,,,Skipped,,,Success
+200246,6,CBSE,"Math, Physics",,Top30,"Sports, Music",,Skipped,No,Yes,,,Skipped,No,Engineering,Success
+200247,6,CBSE,"Math, Physics, Chemistry",Skipped,Top5,"Sports, Music",IT/Software,Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200248,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",IT/Software,,Yes definitely,Yes,Office,,Skipped,Yes,Engineering,Success
+200249,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,,"IT/Software, Finance, Medicine, Business",,Yes definitely,Maybe,Depends,,Skipped,,,Success
+200250,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top10,,,Skipped,Maybe,Maybe,,Skipped,Skipped,,,Success
+200251,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Avg,"Sports, Music","IT/Software, Finance",,Maybe,Yes,Hybrid,,Skipped,Yes,"Engineering, Medicine, Design/Art, Business",Success
+200252,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance",,Maybe,Maybe,Depends,Skipped,Skipped,Maybe,"Engineering, Medicine",Success
+200253,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top5,"Sports, Music",IT/Software,Skipped,Maybe,No,,,Skipped,No,,Success
+200254,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service",,Skipped,Maybe,Maybe,Depends,,,Maybe,"Engineering, Medicine",Success
+200255,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Avg,"Sports, Music",,Skipped,Yes definitely,Yes,Depends,,Skipped,Yes,"Engineering, Medicine",Success
+200257,7,CBSE,"Math, Physics, Chemistry",Skipped,Avg,,,Skipped,Maybe,Maybe,Office,,Skipped,Yes,,Success
+200258,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance, Medicine, Business",Skipped,Maybe,Yes,Field,,,Maybe,"Engineering, Medicine, Design/Art, Business",Success
+200259,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top30,"Sports, Music",,Skipped,Maybe,Yes,Remote,,Skipped,,,Success
+200260,7,CBSE,Math,Skipped,Avg,"Sports, Music, Dance",,Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200261,7,CBSE,"Math, Physics, Chemistry, Biology",,Top30,"Sports, Music, Dance",IT/Software,Skipped,Yes definitely,No,,,Skipped,Maybe,,Success
+200262,7,CBSE,"Math, Physics, Chemistry, Biology",,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",IT/Software,,No,Maybe,Hybrid,,,No,"Engineering, Medicine",Success
+200263,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top1,Sports,,Skipped,Yes definitely,Maybe,,Skipped,Skipped,No,,Success
+200264,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top30,"Sports, Music, Dance, Theatre","IT/Software, Finance, Medicine, Business",Skipped,Maybe,Yes,,,Skipped,Maybe,,Success
+200265,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Avg,"Sports, Music","IT/Software, Finance",,Yes definitely,Yes,,,Skipped,No,,Success
+200266,7,CBSE,"Math, Physics, Chemistry, Biology",,Top5,"Sports, Music, Dance",IT/Software,Skipped,Maybe,Yes,Field,,Skipped,Yes,Engineering,Success
+200267,7,CBSE,"Math, Physics",Skipped,,Sports,"IT/Software, Finance",Skipped,No,Yes,,,Skipped,Yes,,Success
+200268,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top30,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance",Skipped,Yes definitely,Maybe,Office,Skipped,Skipped,Yes,,Success
+200269,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance",Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200270,7,CBSE,"Math, Physics, Chemistry",Skipped,Top1,"Sports, Music, Dance",IT/Software,Skipped,Maybe,No,,Skipped,Skipped,No,Engineering,Success
+200271,7,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top5,"Sports, Music","IT/Software, Finance",Skipped,Yes definitely,Maybe,,Skipped,Skipped,,,Success
+200272,7,CBSE,"Math, Physics, Chemistry",Skipped,Top1,Sports,,Skipped,Yes definitely,Yes,,Skipped,Skipped,,,Success
+200273,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top5,"Sports, Music",IT/Software,Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200274,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top10,"Sports, Music, Dance",IT/Software,,Yes definitely,Yes,Field,Skipped,,Maybe,"Engineering, Medicine, Design/Art",Success
+200275,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Avg,"Sports, Music, Dance, Theatre","IT/Software, Finance",,Yes definitely,Maybe,Field,,Skipped,Yes,Engineering,Success
+200276,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top1,Sports,IT/Software,Skipped,Yes definitely,No,,Skipped,Skipped,No,,Success
+200278,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top1,"Sports, Music, Dance","IT/Software, Finance",,Maybe,Maybe,Office,,,No,"Engineering, Medicine, Design/Art",Success
+200279,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service","IT/Software, Finance, Medicine, Business",Skipped,Maybe,Yes,Depends,Skipped,,Yes,"Engineering, Medicine",Success
+200280,7,CBSE,"Math, Physics",Skipped,,"Sports, Music",IT/Software,Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200281,8,CBSE,"Math, Physics, Chemistry",Skipped,Top1,,"IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,Yes,,Success
+200282,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance, Medicine, Business",,Maybe,Yes,Depends,Skipped,Skipped,Yes,"Engineering, Medicine, Design/Art",Success
+200283,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",Skipped,Maybe,No,Office,Skipped,Skipped,Maybe,,Success
+200284,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,,Sports,IT/Software,Skipped,Maybe,Yes,Office,,Skipped,No,,Success
+200285,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service",,Skipped,,No,Field,Skipped,Skipped,No,"Engineering, Medicine, Design/Art, Business",Success
+200286,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top30,,IT/Software,Skipped,No,Maybe,,,Skipped,No,,Success
+200287,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service",IT/Software,Skipped,Yes definitely,Yes,Office,,,No,"Engineering, Medicine",Success
+200288,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top10,,IT/Software,Skipped,Yes definitely,Maybe,Depends,,Skipped,Yes,"Engineering, Medicine",Success
+200289,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top5,"Sports, Music, Dance",IT/Software,Skipped,Maybe,No,,Skipped,Skipped,Yes,,Success
+200290,8,CBSE,"Math, Physics, Chemistry",Skipped,Top30,,"IT/Software, Finance, Medicine",,Maybe,Yes,Remote,Skipped,Skipped,Yes,,Success
+200291,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance",Skipped,Maybe,Maybe,,,Skipped,Yes,,Success
+200292,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top5,"Sports, Music, Dance, Theatre","IT/Software, Finance, Medicine",Skipped,No,Maybe,Depends,Skipped,Skipped,Yes,Engineering,Success
+200293,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance, Medicine, Business",Skipped,Yes definitely,Maybe,Depends,,Skipped,Yes,,Success
+200294,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Work,Sports,IT/Software,,No,Yes,Field,Skipped,Skipped,Yes,,Success
+200295,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance, Medicine",Skipped,No,Maybe,Office,Skipped,Skipped,Yes,,Success
+200296,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance",,No,No,Depends,Skipped,Skipped,No,Engineering,Success
+200297,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Avg,,IT/Software,Skipped,Maybe,Yes,,,Skipped,Yes,,Success
+200298,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",,No,No,,,Skipped,No,,Success
+200299,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service","IT/Software, Finance, Medicine",Skipped,Maybe,Maybe,Field,,Skipped,Yes,"Engineering, Medicine",Success
+200300,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance",,Maybe,Maybe,Depends,,,Maybe,Engineering,Success
+200301,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top30,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service, Entrepreneurship","IT/Software, Finance",Skipped,Yes definitely,No,,Skipped,Skipped,Yes,Engineering,Success
+200301,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",IT/Software,,Maybe,Yes,Depends,Skipped,Skipped,Maybe,Engineering,Success
+200302,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top30,Sports,IT/Software,Skipped,Maybe,Maybe,Office,,Skipped,,,Success
+200303,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Top5,Sports,"IT/Software, Finance, Medicine, Business, Government",,Maybe,Yes,Hybrid,,Skipped,Yes,Engineering,Success
+200305,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top5,,"IT/Software, Finance, Medicine",,Yes definitely,Maybe,Office,,,Yes,Engineering,Success
+200306,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Avg,,"IT/Software, Finance, Medicine",Skipped,Maybe,Maybe,Office,,,Yes,Engineering,Success
+200307,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics",,Skipped,Yes definitely,Yes,Office,,Skipped,Maybe,Engineering,Success
+200308,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Top5,"Sports, Music",IT/Software,,No,Yes,,,Skipped,No,,Success
+200309,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top1,"Sports, Music","IT/Software, Finance, Medicine",Skipped,Maybe,Maybe,,Skipped,Skipped,Yes,Engineering,Success
+200311,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top30,Sports,IT/Software,,Yes definitely,Maybe,Office,,Skipped,Maybe,,Success
+200312,6,CBSE,"Math, Physics",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate",IT/Software,,Yes definitely,Yes,,,Skipped,No,,Success
+200313,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Avg,"Sports, Music, Dance",IT/Software,,Yes definitely,Yes,Office,,,No,Engineering,Success
+200315,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service, Entrepreneurship","IT/Software, Finance, Medicine",,Maybe,No,Office,,,Yes,Engineering,Success
+200316,8,CBSE,"Math, Physics, Chemistry, Biology",,Top30,"Sports, Music, Dance, Theatre, Debate, Robotics",,Skipped,Yes definitely,Maybe,Office,,Skipped,Yes,,Success
+200317,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top10,Sports,"IT/Software, Finance",Skipped,Yes definitely,Yes,Office,,Skipped,Yes,,Success
+200318,8,CBSE,"Math, Physics",,Top10,"Sports, Music, Dance, Theatre","IT/Software, Finance",,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200319,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service, Entrepreneurship, Internship",IT/Software,,Yes definitely,Yes,Hybrid,Skipped,,Yes,Engineering,Success
+200320,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music, Dance, Theatre","IT/Software, Finance",Skipped,Maybe,Maybe,Office,,Skipped,Yes,,Success
+200321,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Work,"Sports, Music",,,No,No,Depends,Skipped,Skipped,Yes,Engineering,Success
+200322,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art","IT/Software, Finance, Medicine, Business",,Maybe,Yes,Hybrid,,,Yes,"Engineering, Medicine, Design/Art, Business",Success
+200323,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Avg,"Sports, Music","IT/Software, Finance",,Maybe,No,Depends,,Skipped,Yes,Engineering,Success
+200324,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top5,"Sports, Music",IT/Software,Skipped,Yes definitely,Maybe,Field,Skipped,Skipped,,,Success
+200325,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Work,,,,Yes definitely,No,Depends,Skipped,Skipped,,"Engineering, Medicine",Success
+200326,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top10,,"IT/Software, Finance",Skipped,Maybe,Maybe,Office,,Skipped,,,Success
+200327,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top30,"Sports, Music",,Skipped,Maybe,Yes,Depends,,Skipped,Maybe,,Success
+200328,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business, Art/Design",Skipped,Avg,"Sports, Music, Dance",IT/Software,,Maybe,Yes,,,Skipped,No,,Success
+200329,8,CBSE,"Math, Physics, Chemistry",,Top1,Sports,"IT/Software, Finance",Skipped,Yes definitely,Maybe,Office,Skipped,Skipped,,,Success
+200330,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",IT/Software,,Yes definitely,Yes,Hybrid,Skipped,,No,Engineering,Success
+200331,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics",,,Yes definitely,Yes,Office,,,Yes,"Engineering, Medicine",Success
+200332,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top10,"Sports, Music",IT/Software,,Yes definitely,Yes,Depends,Skipped,,Maybe,Engineering,Success
+200333,8,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,,IT/Software,,Maybe,Yes,Depends,,Skipped,Yes,,Success
+200334,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Work,,"IT/Software, Finance, Medicine",,Yes definitely,No,Office,,Skipped,Yes,"Engineering, Medicine",Success
+200335,8,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top1,Sports,"IT/Software, Finance",Skipped,Maybe,Maybe,Depends,Skipped,,No,Engineering,Success
+200336,8,CBSE,"Math, Physics",Skipped,Avg,,,,Yes definitely,Yes,Office,Skipped,Skipped,Yes,Engineering,Success
+200337,8,CBSE,Math,Skipped,Avg,,,Skipped,Yes definitely,Maybe,Office,,Skipped,,,Success
+200338,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance",Skipped,Yes definitely,Yes,Field,Skipped,Skipped,No,,Success
+200339,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top1,Sports,,Skipped,Yes definitely,Yes,Depends,Skipped,,No,"Engineering, Medicine",Success
+200340,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,,"IT/Software, Finance",Skipped,Maybe,Maybe,,,Skipped,Yes,,Success
+200341,9,CBSE,"Math, Physics",Skipped,Top30,Sports,,Skipped,Maybe,Maybe,Field,Skipped,Skipped,Yes,,Success
+200342,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Avg,,IT/Software,,Yes definitely,Maybe,Field,,Skipped,No,,Success
+200343,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top5,,IT/Software,,Maybe,Maybe,Hybrid,Skipped,,Maybe,,Success
+200344,9,CBSE,"Math, Physics",,Top5,,,,Yes definitely,Maybe,Field,,Skipped,Yes,,Success
+200345,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Avg,,IT/Software,Skipped,Yes definitely,Maybe,,Skipped,Skipped,,,Success
+200346,9,CBSE,"Math, Physics",Skipped,Top1,Sports,"IT/Software, Finance",Skipped,Maybe,No,Office,,Skipped,,,Success
+200348,9,CBSE,"Math, Physics",Skipped,Top10,,"IT/Software, Finance",Skipped,Maybe,Yes,Office,,Skipped,Yes,,Success
+200349,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top10,,IT/Software,,Yes definitely,Maybe,Hybrid,,Skipped,Yes,Engineering,Success
+200350,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service",IT/Software,,Maybe,Yes,Hybrid,Skipped,Skipped,Yes,"Engineering, Medicine",Success
+200351,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,,,IT/Software,Skipped,Maybe,Maybe,,Skipped,,,,Success
+200352,9,CBSE,,,Top30,Sports,,Skipped,Yes definitely,Yes,Office,,Skipped,Yes,,Success
+200353,9,CBSE,Math,Skipped,Top10,"Sports, Music",,Skipped,Yes definitely,Yes,,,Skipped,No,,Success
+200354,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top30,"Sports, Music",,Skipped,Yes definitely,Maybe,Office,Skipped,Skipped,No,,Success
+200355,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Work,,"IT/Software, Finance",,Yes definitely,Yes,Hybrid,,Skipped,Yes,Engineering,Success
+200356,9,CBSE,"Math, Physics",Skipped,Top10,Sports,IT/Software,Skipped,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200357,9,CBSE,Math,Skipped,Top1,"Sports, Music",IT/Software,Skipped,Maybe,Yes,,Skipped,Skipped,Yes,,Success
+200358,9,CBSE,"Math, Physics, Chemistry",Skipped,Top30,Sports,IT/Software,Skipped,Maybe,No,,,Skipped,Maybe,,Success
+200359,9,CBSE,Math,Skipped,Avg,"Sports, Music",,Skipped,Yes definitely,No,,,Skipped,Yes,,Success
+200360,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Avg,"Sports, Music","IT/Software, Finance, Medicine",Skipped,Maybe,Yes,Office,,Skipped,,Engineering,Success
+200361,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance, Medicine",,Yes definitely,Yes,Office,,,Maybe,Engineering,Success
+200362,9,CBSE,"Math, Physics",Skipped,Top30,Sports,IT/Software,Skipped,Maybe,No,,Skipped,Skipped,,,Success
+200363,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",,Top10,"Sports, Music, Dance, Theatre, Debate, Robotics",IT/Software,,No,No,,Skipped,Skipped,Yes,Engineering,Success
+200364,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top1,"Sports, Music",IT/Software,,Maybe,Yes,Depends,,,Yes,"Engineering, Medicine",Success
+200365,7,CBSE,"Math, Physics",,Top30,"Sports, Music","IT/Software, Finance",Skipped,Yes definitely,Yes,,,Skipped,Maybe,,Success
+200366,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top5,"Sports, Music, Dance","IT/Software, Finance, Medicine",,Maybe,Yes,Hybrid,,Skipped,Yes,Engineering,Success
+200367,7,CBSE,Math,,Top10,Sports,IT/Software,Skipped,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200368,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",,Maybe,Yes,Office,Skipped,Skipped,Yes,"Engineering, Medicine",Success
+200369,7,CBSE,Math,,Avg,Sports,"IT/Software, Finance, Medicine",,Maybe,Maybe,,Skipped,Skipped,No,,Success
+200370,7,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top10,,,,Yes definitely,Yes,Depends,Skipped,Skipped,Yes,Engineering,Success
+200372,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top30,,IT/Software,,Yes definitely,Maybe,Remote,Skipped,Skipped,Yes,,Success
+200373,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Avg,"Sports, Music","IT/Software, Finance, Medicine",,Maybe,Yes,Office,,Skipped,Yes,Engineering,Success
+200374,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service, Entrepreneurship",IT/Software,,Maybe,Yes,Field,,Skipped,Yes,"Engineering, Medicine",Success
+200375,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top1,Sports,IT/Software,,Yes definitely,No,Depends,Skipped,,No,Engineering,Success
+200376,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top30,Sports,IT/Software,Skipped,Maybe,Yes,Office,Skipped,Skipped,,"Engineering, Medicine",Success
+200377,7,CBSE,"Math, Physics, Chemistry, Biology",,Top10,,IT/Software,Skipped,Maybe,Maybe,,,Skipped,No,,Success
+200379,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",,Avg,,IT/Software,Skipped,No,Yes,Office,,Skipped,Yes,,Success
+200380,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top30,"Sports, Music, Dance, Theatre, Debate",IT/Software,Skipped,Maybe,Maybe,Depends,,,Yes,"Engineering, Medicine",Success
+200381,7,CBSE,"Math, Physics, Chemistry",,Top10,"Sports, Music","IT/Software, Finance",Skipped,Maybe,Yes,Office,Skipped,Skipped,No,Engineering,Success
+200382,6,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",,Skipped,Maybe,Yes,Hybrid,Skipped,Skipped,,Engineering,Success
+200383,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top1,"Sports, Music, Dance","IT/Software, Finance",,Yes definitely,Yes,Hybrid,,,Yes,"Engineering, Medicine",Success
+200384,7,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",,,"Sports, Music, Dance, Theatre, Debate, Robotics",,Skipped,Yes definitely,Yes,Hybrid,,,Maybe,Engineering,Success
+200385,7,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top5,Sports,IT/Software,,Yes definitely,Maybe,Depends,,,Maybe,Engineering,Success
+200386,7,CBSE,"Math, Physics",Skipped,Top10,"Sports, Music","IT/Software, Finance",Skipped,Maybe,Yes,,Skipped,Skipped,Yes,Engineering,Success
+200387,7,CBSE,"Math, Physics, Chemistry",,Top5,Sports,"IT/Software, Finance",Skipped,Maybe,Yes,,Skipped,Skipped,Maybe,,Success
+200388,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top30,Sports,,Skipped,Yes definitely,Maybe,Remote,Skipped,Skipped,,,Success
+200389,9,CBSE,"Math, Physics, Chemistry",Skipped,Top1,,IT/Software,Skipped,Maybe,,Office,Skipped,Skipped,,,Success
+200390,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Avg,"Sports, Music, Dance, Theatre","IT/Software, Finance, Medicine",Skipped,Maybe,No,Field,,Skipped,Maybe,"Engineering, Medicine",Success
+200391,9,CBSE,"Math, Physics",Skipped,Top1,"Sports, Music","IT/Software, Finance, Medicine",,No,Yes,,Skipped,Skipped,Yes,Engineering,Success
+200392,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine",Skipped,Yes definitely,Yes,Office,Skipped,Skipped,Yes,,Success
+200393,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Avg,,,Skipped,Yes definitely,No,,Skipped,Skipped,Yes,,Success
+200394,9,CBSE,Math,,Top5,"Sports, Music, Dance, Theatre","IT/Software, Finance",Skipped,Maybe,Yes,Depends,,Skipped,Yes,,Success
+200395,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance",Skipped,Yes definitely,No,Hybrid,Skipped,Skipped,Yes,,Success
+200396,9,CBSE,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+200397,9,CBSE,"Math, Physics, Chemistry",,Avg,"Sports, Music",IT/Software,Skipped,Yes definitely,No,Office,Skipped,Skipped,,,Success
+200398,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top30,"Sports, Music, Dance, Theatre","IT/Software, Finance",,Yes definitely,Yes,,Skipped,Skipped,Yes,Engineering,Success
+200399,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Avg,,,Skipped,Yes definitely,Yes,Office,,Skipped,Yes,Engineering,Success
+200400,9,CBSE,"Math, Physics, Chemistry",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance, Medicine",Skipped,No,Yes,Field,,Skipped,Yes,"Engineering, Medicine, Design/Art",Success
+200401,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science",Skipped,Top1,Sports,IT/Software,,Yes definitely,No,Depends,,Skipped,,,Success
+200402,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top5,"Sports, Music, Dance, Theatre","IT/Software, Finance",Skipped,Maybe,Yes,Office,Skipped,Skipped,No,Engineering,Success
+200403,9,CBSE,,Skipped,Top5,,"IT/Software, Finance, Medicine",Skipped,Yes definitely,No,Office,Skipped,Skipped,,Engineering,Success
+200404,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top5,"Sports, Music",IT/Software,Skipped,Yes definitely,No,Office,,,No,,Success
+200405,9,CBSE,Math,Skipped,Avg,,IT/Software,Skipped,Yes definitely,No,,,Skipped,Maybe,,Success
+200406,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service, Entrepreneurship",,,Yes definitely,Yes,Depends,,,Yes,"Engineering, Medicine, Design/Art",Success
+200407,9,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Work,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",IT/Software,,No,No,,,Skipped,,,Success
+200408,9,CBSE,"Math, Physics, Chemistry",,Top30,Sports,,,No,Maybe,Field,,Skipped,Yes,"Engineering, Medicine",Success
+200409,9,CBSE,"Math, Physics, Chemistry, Biology",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service","IT/Software, Finance, Medicine, Business",Skipped,No,Maybe,Depends,,,No,"Engineering, Medicine, Design/Art, Business, Law",Success
+200410,10,CBSE,"Math, Physics",Skipped,Top30,Sports,,Skipped,Maybe,Yes,,,Skipped,,Engineering,Success
+200411,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top1,"Sports, Music, Dance","IT/Software, Finance, Medicine",Skipped,Yes definitely,Yes,,,Skipped,No,,Success
+200412,10,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Top1,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service",IT/Software,,Maybe,No,Office,Skipped,,No,"Engineering, Medicine",Success
+200413,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",IT/Software,Skipped,Yes definitely,Yes,Depends,,,Yes,Engineering,Success
+200414,10,CBSE,"Math, Physics, Chemistry, Biology",,Avg,,IT/Software,Skipped,No,Yes,,,Skipped,Yes,,Success
+200415,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Avg,,IT/Software,,Maybe,Yes,Depends,,Skipped,No,,Success
+200416,10,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Avg,Sports,IT/Software,,No,Maybe,Depends,,Skipped,Yes,Engineering,Success
+200417,10,CBSE,"Math, Physics, Chemistry",Skipped,Top10,,,,Maybe,No,Office,,Skipped,Yes,Engineering,Success
+200418,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Avg,Sports,IT/Software,,No,Maybe,Office,,,Maybe,"Engineering, Medicine",Success
+200419,10,CBSE,"Math, Physics, Chemistry, Biology",Skipped,Avg,,"IT/Software, Finance, Medicine",Skipped,Yes definitely,Yes,Office,,Skipped,,,Success
+200420,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Work,"Sports, Music, Dance, Theatre, Debate, Robotics","IT/Software, Finance",,No,Maybe,Depends,Skipped,Skipped,,Engineering,Success
+200421,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance",Skipped,Yes definitely,Maybe,Field,Skipped,Skipped,Yes,Engineering,Success
+200422,10,CBSE,"Math, Physics",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance",Skipped,Maybe,Maybe,Office,Skipped,Skipped,Yes,,Success
+200423,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",Skipped,Avg,"Sports, Music, Dance","IT/Software, Finance, Medicine, Business, Government",,No,Yes,,Skipped,Skipped,No,,Success
+200424,10,CBSE,Math,Skipped,Avg,Sports,,,Maybe,Yes,,Skipped,Skipped,Yes,,Success
+200425,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business",Skipped,Avg,"Sports, Music, Dance, Theatre",IT/Software,,Maybe,Yes,Depends,,Skipped,Yes,Engineering,Success
+200426,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",,Avg,"Sports, Music",IT/Software,Skipped,Maybe,Maybe,Office,,Skipped,Yes,,Success
+200427,10,CBSE,"Math, Physics",Skipped,Top5,Sports,IT/Software,Skipped,Yes definitely,No,Field,Skipped,Skipped,Yes,,Success
+200428,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top30,"Sports, Music, Dance, Theatre","IT/Software, Finance",,Maybe,Yes,,Skipped,Skipped,Yes,,Success
+200429,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate",IT/Software,Skipped,Maybe,Maybe,,Skipped,Skipped,Yes,,Success
+200430,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top10,"Sports, Music, Dance, Theatre","IT/Software, Finance, Medicine, Business, Government",Skipped,Maybe,Yes,,Skipped,Skipped,No,,Success
+200431,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",IT/Software,,Yes definitely,Maybe,Field,Skipped,Skipped,Yes,Engineering,Success
+200432,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top5,"Sports, Music, Dance, Theatre","IT/Software, Finance, Medicine, Business",Skipped,No,Maybe,Depends,Skipped,,Yes,"Engineering, Medicine",Success
+200433,10,CBSE,"Math, Physics",,Top10,,,Skipped,Yes definitely,Maybe,Office,,Skipped,Yes,,Success
+200434,10,CBSE,"Math, Physics, Chemistry, Biology",,Top1,Sports,"IT/Software, Finance",Skipped,Maybe,Yes,,,Skipped,Yes,,Success
+200435,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top1,"Sports, Music",IT/Software,Skipped,Yes definitely,Maybe,,,Skipped,Yes,,Success
+200436,10,CBSE,Math,,Top10,Sports,,,Yes definitely,Maybe,,Skipped,Skipped,Yes,,Success
+200437,10,CBSE,Math,Skipped,Top5,,"IT/Software, Finance, Medicine",Skipped,Yes definitely,Maybe,,Skipped,Skipped,Yes,,Success
+200438,10,CBSE,Math,,Top30,,"IT/Software, Finance",Skipped,Maybe,Yes,,Skipped,Skipped,No,,Success
+200439,10,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",,Top30,"Sports, Music, Dance, Theatre, Debate",IT/Software,Skipped,Yes definitely,Maybe,,,Skipped,Yes,,Success
+200440,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English",,Top5,"Sports, Music, Dance, Theatre","IT/Software, Finance",Skipped,Yes definitely,No,,Skipped,Skipped,,Engineering,Success
+200441,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account, Business, Art/Design",Skipped,Avg,"Sports, Music, Dance, Theatre, Debate, Robotics, Art",,Skipped,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200442,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional",Skipped,Top1,"Sports, Music",IT/Software,Skipped,Yes definitely,Yes,,Skipped,Skipped,Yes,,Success
+200443,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top30,"Sports, Music, Dance","IT/Software, Finance",,No,No,,,Skipped,Maybe,,Success
+200444,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics",Skipped,Top10,"Sports, Music, Dance, Theatre, Debate","IT/Software, Finance, Medicine",Skipped,Maybe,Maybe,,,Skipped,Maybe,,Success
+200445,7,CBSE,"Math, Physics",,Top5,"Sports, Music",,Skipped,Yes definitely,Maybe,Office,,Skipped,Yes,,Success
+200446,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography",Skipped,Top10,Sports,IT/Software,,Yes definitely,Yes,Hybrid,,Skipped,,,Success
+200447,6,CBSE,"Math, Physics, Chemistry, Biology, Computer Science, English, Hindi/Regional, History, Geography, Economics, Account",Skipped,Top5,"Sports, Music, Dance, Theatre, Debate, Robotics, Art, Service","IT/Software, Finance, Medicine, Business",,Maybe,Yes,Hybrid,,Skipped,Yes,Engineering,Success
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable
+,,,,,,,,,,,,,,,,Failed: 'NoneType' object is not subscriptable

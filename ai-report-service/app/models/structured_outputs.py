@@ -34,6 +34,16 @@ class CareerTrajectory(BaseModel):
     career_progression: str = Field(description="Long-term career progression possibilities")
     key_milestones: List[str] = Field(description="Important milestones to achieve")
 
+class CareerSkills(BaseModel):
+    """Structured career skills output"""
+    career_name: str = Field(description="Name of the career")
+    skills: List[str] = Field(description="List of 5-7 key skills required for this career")
+
+class CareerCourses(BaseModel):
+    """Structured career courses output"""
+    career_name: str = Field(description="Name of the career")
+    courses: List[str] = Field(description="List of 3 specific courses or certifications")
+
 class PersonalizedSummary(BaseModel):
     """Structured personalized summary"""
     student_name: str = Field(description="Name of the student")

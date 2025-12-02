@@ -189,7 +189,3 @@ server:
     mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
   http2:
     enabled: true
-    
-puppeteer:
-  ms:
-    url: ${PUPPETEER_MS_URL:https://acadspace-pathfinder-j4lz.onrender.com} # Default URL for Puppeteer microservice

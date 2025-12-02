@@ -61,8 +61,8 @@ services:
       ADMIN_SECRET: ${ADMIN_SECRET:-admin-secret-123}
       PORT: 4000
       AI_SERVICE_URL: http://ai-report-service:8000
-      # PDF_SERVICE_URL: http://pdf-service:5100
-      PUPPETEER_MS_URL: http://puppeteer-ms:5200
+      PDF_SERVICE_URL: http://pdf-service:5100
+      # PUPPETEER_MS_URL: http://puppeteer-ms:5200
       # Email Configuration
       EMAIL_ENABLED: ${EMAIL_ENABLED:-true}
       EMAIL_FROM: ${EMAIL_FROM:-naviksha@example.com}
@@ -75,6 +75,10 @@ services:
       - "4000:4000"
     depends_on:
       mongo:
+        condition: service_healthy
+      ai-report-service:
+        condition: service_healthy
+      pdf-service:
         condition: service_healthy
     networks:
       - naviksha-network
@@ -113,45 +117,26 @@ services:
       retries: 5
       start_period: 60s
 
-  # Puppeteer PDF Generation Service
-  # puppeteer-ms:
-  #   build:
-  #     context: .
-  #     dockerfile: puppeteer-ms/Dockerfile
-  #   container_name: puppeteer-ms
-  #   restart: unless-stopped
-  #   environment:
-  #     PORT: 5200
-  #   ports:
-  #     - "5200:5200"
-  #   networks:
-  #     - naviksha-network
-  #   healthcheck:
-  #     test: ["CMD", "node", "-e", "require('http').get('http://localhost:5200/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
-  #     interval: 10s
-  #     timeout: 5s
-  #     retries: 5
-  #     start_period: 30s
-
-  # PDF Generation Service (Node.js - uses same jsPDF logic as frontend)
-  # pdf-service:
-  #   build:
-  #     context: .
-  #     dockerfile: pdf-service/Dockerfile
-  #   container_name: pdf-service
-  #   restart: unless-stopped
-  #   environment:
-  #     PORT: 5100
-  #   ports:
-  #     - "5100:5100"
-  #   networks:
-  #     - naviksha-network
-  #   healthcheck:
-  #     test: ["CMD", "node", "-e", "require('http').get('http://localhost:5100/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
-  #     interval: 10s
-  #     timeout: 5s
-  #     retries: 5
-  #     start_period: 30s
+  # PDF Generation Service (Puppeteer)
+  pdf-service:
+    build:
+      context: .
+      dockerfile: pdf-service/Dockerfile
+    container_name: pdf-service
+    restart: unless-stopped
+    shm_size: '1gb'
+    environment:
+      PORT: 5100
+    ports:
+      - "5100:5100"
+    networks:
+      - naviksha-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5100/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
   # Optional: MongoDB Web UI
   mongo-express:

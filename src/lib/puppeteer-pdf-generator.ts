@@ -1,21 +1,18 @@
 
 import { ReportData } from './pdf-generator';
 
-export async function generatePuppeteerPDF(
-  reportData: ReportData, 
-  userId: string,
-  mobileNo?: string,
-  studentID?: string,
-  studentName?: string
-): Promise<string> {
-  const puppeteerServiceUrl = import.meta.env.VITE_PUPPETEER_MS_URL || 'http://localhost:5200';
-  
-  const response = await fetch(`${puppeteerServiceUrl}/generate-pdf`, {
+
+// New PDF service utility: POST to http://localhost:5100/generate-pdf, expect PDF blob
+export async function generatePDFServiceBlob(
+  reportData: ReportData
+): Promise<Blob> {
+  const pdfServiceUrl = 'http://localhost:5100';
+  const response = await fetch(`${pdfServiceUrl}/generate-pdf`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ reportData, userId, mobileNo, studentID, studentName }),
+    body: JSON.stringify(reportData),
   });
 
   if (!response.ok) {
@@ -23,11 +20,5 @@ export async function generatePuppeteerPDF(
     throw new Error(`Failed to generate PDF: ${response.statusText} - ${errorBody}`);
   }
 
-  // Parse response as JSON
-  const responseJson = await response.json();
-  if (responseJson && responseJson.reportLink) {
-    return responseJson.reportLink;
-  } else {
-    throw new Error('Invalid response from PDF service: reportLink not found.');
-  }
+  return await response.blob();
 }

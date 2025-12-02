@@ -13,7 +13,7 @@ from ..models.structured_outputs import (
     CareerTrajectory, PersonalizedSummary, ConfidenceExplanation,
     CareerInsights, StructuredReportOutput, SimpleListOutput,
     KeyValueOutput, MultiKeyValueOutput, OutputType,
-    ActionPlan, ActionPlanItem
+    ActionPlan, ActionPlanItem, CareerSkills, CareerCourses
 )
 
 T = TypeVar('T', bound=BaseModel)
@@ -658,35 +658,33 @@ This skill helps you [why it's useful].
             if not career_matches:
                 return "Complete the assessment to get career trajectory insights."
             
-            top_career = career_matches[0]
+            # Format RIASEC scores for context
+            riasec_scores = profile_data.get('riasec_scores', {})
+            sorted_scores = sorted(riasec_scores.items(), key=lambda x: x[1], reverse=True)
+            top_3_traits = [f"{code} ({score})" for code, score in sorted_scores[:3]]
             
-            # Create a simple career trajectory using structured approach
-            career_trajectory = CareerTrajectory(
-                career_name=top_career.get('career_name', 'Career'),
-                immediate_focus=f"Focus on building strong foundations in {', '.join(top_career.get('primary_subjects', ['relevant subjects'])[:2])} during {profile_data.get('grade', 'current')}th grade",
-                educational_pathway=f"Pursue relevant higher education in {top_career.get('bucket', 'your chosen field')} fields",
-                career_progression=f"Progress from entry-level to senior positions in {top_career.get('career_name', 'your chosen field')}",
-                key_milestones=[
-                    f"Complete {profile_data.get('grade', 'current')}th grade with strong performance",
-                    "Gain practical experience through projects",
-                    "Pursue relevant higher education",
-                    "Build professional network"
-                ]
-            )
+            prompt = f"""Generate a short, insightful paragraph (2-3 sentences) about this student's work style based **ONLY on their RIASEC personality traits**.
             
-            # Combine into a paragraph
-            trajectory_parts = [
-                career_trajectory.immediate_focus,
-                career_trajectory.educational_pathway,
-                career_trajectory.career_progression
-            ]
-            return " ".join(trajectory_parts)
+            PROFILE:
+            - Name: {profile_data.get('name', 'Student')}
+            - Grade: {profile_data.get('grade', 'N/A')}
+            - Top RIASEC Traits: {', '.join(top_3_traits)}
+            
+            GUIDELINES:
+            - Focus on their natural working style, problem-solving approach, and environment preferences.
+            - **DO NOT name specific careers.**
+            - **DO NOT give advice or recommendations.**
+            - Just provide insights into *who they are* based on their traits (e.g., "You naturally enjoy...", "Your strength lies in...").
+            - Be encouraging and professional.
+            """
+            
+            return self.generate_content(prompt, max_tokens=200, profile_data=profile_data)
             
         except Exception as e:
-            print(f"Error generating career trajectory: {e}")
+            print(f"Error generating RIASEC insights: {e}")
             if not career_matches:
                 return "Complete the assessment to get career trajectory insights."
-            return self._get_fallback_content("career trajectory")
+            return self._get_fallback_content("RIASEC insights")
     
     def generate_skill_development_trajectory(self, profile_data: Dict, career_matches: List[Dict]) -> str:
         """
@@ -733,14 +731,14 @@ INTEREST AREAS:
 - Key Subjects: {', '.join(primary_subjects) or 'Various subjects'}
 - Personality Traits: {', '.join(riasec_profiles) or 'Various interests'}
 
-FORMAT (3–4 sentences max):
+FORMAT (5–6 sentences):
 1. Immediate focus — what to start exploring now.  
 2. Medium-term growth — next-level challenges or projects.  
 3. Long-term vision — how ongoing learning supports broader discovery.
 
 Use simple, motivational tone. Avoid career references."""
             
-            return self.generate_content(prompt, max_tokens=250, profile_data=profile_data)
+            return self.generate_content(prompt, max_tokens=350, profile_data=profile_data)
             
         except Exception as e:
             print(f"Error generating skill development trajectory: {e}")
@@ -761,6 +759,32 @@ Use simple, motivational tone. Avoid career references."""
                    f"Engage in hands-on projects and activities that interest you. " \
                    f"As you progress, continue exploring different areas and building practical skills " \
                    f"through projects, experiments, and real-world experiences."
+
+    def generate_career_skills(self, career_name: str, profile_data: Dict, career_data: Dict) -> List[str]:
+        """
+        Generate dedicated skills for a specific career
+        
+        Args:
+            career_name: Name of the career
+            profile_data: Student profile data
+            career_data: Career match data
+            
+        Returns:
+            List of recommended skills
+        """
+        try:
+            structured_skills = self.generate_structured_career_skills(career_name, profile_data, career_data)
+            return structured_skills.skills[:5]  # Return top 5 skills
+        except Exception as e:
+            print(f"Error generating structured career skills: {e}")
+            # Fallback to generic skills
+            return [
+                f"Foundational knowledge in {career_name}",
+                "Problem solving",
+                "Critical thinking",
+                "Communication skills",
+                "Technical aptitude"
+            ]
     
     def generate_skill_focused_summary(self, profile_data: Dict, career_matches: List[Dict]) -> str:
         """
@@ -927,6 +951,85 @@ Be specific, motivational, and realistic."""
         
         return self.generate_structured_content(prompt, StudyPathRecommendation, max_tokens=500, profile_data=profile_data)
     
+    def generate_structured_career_skills(
+        self, 
+        career_name: str, 
+        profile_data: Dict, 
+        career_data: Dict
+    ) -> CareerSkills:
+        """Generate structured career skills"""
+        prompt = f"""Generate 5-7 dedicated skills required for {career_name}.
+        
+STUDENT PROFILE:
+- Grade: {profile_data.get('grade', 'N/A')}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+
+CAREER REQUIREMENTS:
+- Core Subjects: {career_data.get('primary_subjects', [])}
+
+Provide a list of 5-7 specific skills (technical or soft) that are crucial for this career.
+Focus on skills that a student in grade {profile_data.get('grade', 'N/A')} can start developing.
+
+Respond strictly in JSON with this schema:
+{{
+  "career_name": "{career_name}",
+  "skills": ["Skill 1", "Skill 2", "Skill 3", "Skill 4", "Skill 5"]
+}}"""
+        
+        return self.generate_structured_content(prompt, CareerSkills, max_tokens=300, profile_data=profile_data)
+    
+    def generate_structured_career_courses(
+        self, 
+        career_name: str, 
+        profile_data: Dict, 
+        career_data: Dict
+    ) -> CareerCourses:
+        """Generate structured career courses"""
+        prompt = f"""Generate 3 specific courses or certifications for {career_name}.
+        
+STUDENT PROFILE:
+- Grade: {profile_data.get('grade', 'N/A')}
+- Subject Scores: {profile_data.get('subject_scores', {})}
+
+CAREER REQUIREMENTS:
+- Core Subjects: {career_data.get('primary_subjects', [])}
+
+Provide a list of 3 specific, real-world courses, certifications, or learning paths (e.g., Coursera, edX, specific university degrees, or certifications) relevant to this career.
+Focus on what a student in grade {profile_data.get('grade', 'N/A')} can explore or plan for.
+**IMPORTANT**: Keep each course name **concise and short** (maximum 6 words). Do NOT add explanations or descriptions.
+
+Respond strictly in JSON with this schema:
+{{
+  "career_name": "{career_name}",
+  "courses": ["Course 1", "Course 2", "Course 3"]
+}}"""
+        
+        return self.generate_structured_content(prompt, CareerCourses, max_tokens=300, profile_data=profile_data)
+
+    def generate_career_courses(self, career_name: str, profile_data: Dict, career_data: Dict) -> List[str]:
+        """
+        Generate dedicated courses for a specific career
+        
+        Args:
+            career_name: Name of the career
+            profile_data: Student profile data
+            career_data: Career match data
+            
+        Returns:
+            List of recommended courses
+        """
+        try:
+            structured_courses = self.generate_structured_career_courses(career_name, profile_data, career_data)
+            return structured_courses.courses[:3]  # Return top 3 courses
+        except Exception as e:
+            print(f"Error generating structured career courses: {e}")
+            # Fallback to generic courses
+            return [
+                f"Introductory course in {career_name}",
+                "Relevant online certification",
+                "University degree program"
+            ]
+    
     def generate_structured_skill_recommendations(
         self, 
         profile_data: Dict, 
@@ -1066,6 +1169,25 @@ Focus on:
         grade = profile_data.get('grade', 0)
         is_grade_below_8 = grade < 8
         
+        # Analyze RIASEC scores
+        riasec_scores = profile_data.get('riasec_scores', {})
+        
+        # RIASEC Code Mapping
+        riasec_map = {
+            'R': 'Realistic (Doers)',
+            'I': 'Investigative (Thinkers)',
+            'A': 'Artistic (Creators)',
+            'S': 'Social (Helpers)',
+            'E': 'Enterprising (Persuaders)',
+            'C': 'Conventional (Organizers)'
+        }
+        
+        # Sort scores by value descending
+        sorted_scores = sorted(riasec_scores.items(), key=lambda x: x[1], reverse=True)
+        # Get top 3 codes and their scores with full names
+        top_3_traits = [f"{riasec_map.get(code, code)} ({score})" for code, score in sorted_scores[:3]]
+        top_3_traits_str = ", ".join(top_3_traits)
+        
         # Build top buckets info
         buckets_info = ""
         if top_buckets_data:
@@ -1073,35 +1195,30 @@ Focus on:
             for bucket in top_buckets_data[:3]:
                 buckets_info += f"- {bucket.get('bucket_name', 'N/A')} ({bucket.get('bucket_score', 0)}% match)\n"
         
-        prompt = f"""Write a **concise personalized summary** for this student (3-4 sentences maximum total).
-
-PROFILE:
-- Name: {profile_data.get('name', 'Student')}
-- Grade: {grade}
-- RIASEC Scores: {profile_data.get('riasec_scores', {})}
-- Subject Scores: {profile_data.get('subject_scores', {})}
-- Extracurriculars: {profile_data.get('extracurriculars', [])}
-- Parent Careers: {profile_data.get('parent_careers', [])}
-
-TOP CAREER MATCH:
-- {top_career.get('career_name', 'N/A')} ({top_career.get('match_score', 0)}%)
-- Bucket: {top_career.get('bucket', 'N/A')}
-{buckets_info}
-
-STRUCTURE (3-4 sentences max total):
-1. Personality and strength insights (1 sentence).
-2. Explanation of top career fit (1 sentence).
-3. Actionable next steps (1 sentence).
-4. Motivational closing (1 sentence, optional).
-
-IMPORTANT: 
-- Keep each section to 1 sentence maximum
-- Total summary must be 3-4 sentences maximum
-- Be concise and direct - no verbose explanations
-- Focus on key insights only
-
-Respond in structured JSON:  
-`PersonalizedSummary` model."""
+        prompt = f"""Write a **short, concise profile summary** for this student (2-3 sentences maximum total).
+        
+        PROFILE:
+        - Name: {profile_data.get('name', 'Student')}
+        - Grade: {grade}
+        - RIASEC Scores: {profile_data.get('riasec_scores', {})}
+        - **TOP 3 PERSONALITY TRAITS**: {top_3_traits_str}
+        - Subject Scores: {profile_data.get('subject_scores', {})}
+        - Extracurriculars: {profile_data.get('extracurriculars', [])}
+        
+        STRUCTURE (2-3 sentences max total):
+        1. **Personality & Strengths**: Briefly describe their natural working style based on RIASEC traits (e.g., "You are a naturally analytical and organized thinker...").
+        2. **General Potential**: A concise statement about their potential for success in fields that value their specific traits.
+        
+        **CRITICAL CONSTRAINTS**:
+        - **Keep it extremely concise and direct.**
+        - **DO NOT mention specific career names.**
+        - **DO NOT give specific advice or next steps.**
+        - Keep it purely descriptive of *who they are* and *what they are good at*.
+        - Be encouraging and professional.
+        
+        Respond in structured JSON:  
+        `PersonalizedSummary` model.
+        Note: Since we are removing specific career/action advice, fill 'top_career_fit' and 'actionable_advice' with generic encouraging statements or merge the profile description across fields if needed, but the 'personality_analysis' field is the most important."""
         
         return self.generate_structured_content(prompt, PersonalizedSummary, max_tokens=300, profile_data=profile_data)
     

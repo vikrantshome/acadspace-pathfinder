@@ -22,6 +22,9 @@ public class Report {
     private String userId;
     private StudentReport reportData;
     private String reportLink;
+    @Builder.Default
+    private boolean pdfGenerated = false;
+    private String pdfGenerationError;
     
     @CreatedDate
     private LocalDateTime createdAt;

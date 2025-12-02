@@ -126,23 +126,31 @@ class TransformationService:
                 # It's an EnhancedCareerInsights object
                 explanations = career_insights.detailed_explanations if career_insights.detailed_explanations else {}
                 study_paths = career_insights.personalized_study_paths if career_insights.personalized_study_paths else {}
+                career_skills = career_insights.career_skills if career_insights.career_skills else {}
                 confidence_explanations = career_insights.confidence_explanations if career_insights.confidence_explanations else {}
+                career_courses = career_insights.career_courses if career_insights.career_courses else {}
             elif isinstance(career_insights, dict):
                 # It's a dict
                 explanations = career_insights.get("detailed_explanations", {})
                 study_paths = career_insights.get("personalized_study_paths", {})
+                career_skills = career_insights.get("career_skills", {})
                 confidence_explanations = career_insights.get("confidence_explanations", {})
+                career_courses = career_insights.get("career_courses", {})
             else:
                 # Fallback to empty dicts
                 explanations = {}
                 study_paths = {}
+                career_skills = {}
                 confidence_explanations = {}
+                career_courses = {}
             
             # Ensure all values are dicts (not None)
             if explanations is None:
                 explanations = {}
             if study_paths is None:
                 study_paths = {}
+            if career_skills is None:
+                career_skills = {}
             if confidence_explanations is None:
                 confidence_explanations = {}
             
@@ -162,6 +170,8 @@ class TransformationService:
                 "detailedCareerInsights": {
                     "explanations": explanations,
                     "studyPaths": study_paths,
+                    "careerSkills": career_skills,
+                    "careerCourses": career_courses,
                     "confidenceExplanations": confidence_explanations
                 }
             })

@@ -31,7 +31,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useAuth } from '@/components/AuthProvider';
 import { apiService } from '@/lib/api';
 import { AIFallbackNotice } from '@/components/AIFallbackNotice';
-import { generatePuppeteerPDF as generatePDFBlob } from '@/lib/puppeteer-pdf-generator';
+import { generatePDFServiceBlob } from '@/lib/puppeteer-pdf-generator';
 
 const ReportViewer = () => {
   const navigate = useNavigate();
@@ -132,18 +132,19 @@ const ReportViewer = () => {
         actionPlan: displayData.actionPlan
       };
 
-      // Generate PDF using shared utility
-      const reportLink = await generatePDFBlob(
-        reportData, 
-        user?.id || 'test_user',
-        user?.mobileNo,
-        user?.studentID,
-        displayData.studentName
-      );
-      
-      // Open the link in a new tab
-      window.open(reportLink, '_blank');
-
+      // Generate PDF using new PDF service
+      const pdfBlob = await generatePDFServiceBlob(reportData);
+      const fileName = `Career_Report_${reportData.studentName?.replace(/\s+/g, '_') || 'Student'}.pdf`;
+      const url = URL.createObjectURL(pdfBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = fileName;
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => {
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }, 200);
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');

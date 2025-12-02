@@ -57,7 +57,7 @@ class AIGenerationService:
         with ThreadPoolExecutor(max_workers=5) as executor:
             future_career_insights = executor.submit(self.enhance_career_insights, career_matches, profile)
             future_summary = executor.submit(self.generate_personalized_summary, profile, career_matches, top_buckets)
-            future_skills = executor.submit(self.generate_skill_recommendations, profile, career_matches)
+            # future_skills = executor.submit(self.generate_skill_recommendations, profile, career_matches)
             future_trajectory = executor.submit(self.generate_career_trajectory, profile, career_matches)
             future_action_plan = executor.submit(self.generate_action_plan, profile, career_matches, top_buckets)
             
@@ -65,7 +65,7 @@ class AIGenerationService:
             return {
                 "career_insights": future_career_insights.result(),
                 "summary": future_summary.result(),
-                "skills": future_skills.result(),
+                "skills": [],
                 "trajectory": future_trajectory.result(),
                 "actionPlan": future_action_plan.result()
             }
@@ -83,11 +83,14 @@ class AIGenerationService:
         """
         detailed_explanations = {}
         personalized_study_paths = {}
+        career_skills = {}
+        career_courses = {}
         confidence_explanations = {}
         
         if not self.ai_client or not profile:
             # Fallback to placeholder content for all careers
-            for career in career_matches[:5]:  # Top 5 careers
+            # Get top careers to enhance (limit to top 15 to ensure coverage for top 3 buckets)
+            for career in career_matches[:15]:  # Top 15 careers
                 career_name = career.career_name
                 detailed_explanations[career_name] = f"Based on your profile, {career_name} is a strong match due to your analytical skills and relevant background."
                 personalized_study_paths[career_name] = [
@@ -95,17 +98,29 @@ class AIGenerationService:
                     f"Complete {career.first3_steps[0] if career.first3_steps else 'practical projects'}",
                     f"Consider {career.study_path[0] if career.study_path else 'higher education'} for advanced learning"
                 ]
+                career_skills[career_name] = [
+                    f"Foundational knowledge in {career_name}",
+                    "Problem solving",
+                    "Critical thinking",
+                    "Communication skills",
+                    "Technical aptitude"
+                ]
+                career_courses[career_name] = ["Introductory Course", "Online Certification", "University Program"]
                 confidence_explanations[career_name] = f"High confidence ({career.match_score}%) due to strong alignment in your profile."
             return EnhancedCareerInsights(
                 detailed_explanations=detailed_explanations,
                 personalized_study_paths=personalized_study_paths,
+                career_skills=career_skills,
+                career_courses=career_courses,
                 confidence_explanations=confidence_explanations
             )
         
-        # Prepare profile and career data
+        # Extract relevant profile data
         profile_data = {
             'name': profile.name,
             'grade': profile.grade,
+            'board': profile.board,
+            # 'stream': profile.stream,  # Removed as it's not in StudentProfile
             'riasec_scores': profile.riasec_scores,
             'subject_scores': profile.subject_scores,
             'extracurriculars': profile.extracurriculars,
@@ -114,7 +129,7 @@ class AIGenerationService:
         
         # Prepare all career data upfront
         career_data_list = []
-        for career in career_matches[:5]:  # Top 5 careers
+        for career in career_matches[:15]:  # Top 15 careers
             career_data_list.append({
                 'career_name': career.career_name,
                 'career_data': {
@@ -133,14 +148,22 @@ class AIGenerationService:
             career_data = career_info['career_data']
             
             try:
-                # Generate all 3 AI calls in parallel for this career
-                with ThreadPoolExecutor(max_workers=3) as executor:
+                # Generate all 5 AI calls in parallel for this career
+                with ThreadPoolExecutor(max_workers=5) as executor:
                     future_explanation = executor.submit(
                         self.ai_client.generate_career_explanation,
                         career_name, profile_data, career_data
                     )
                     future_study_path = executor.submit(
                         self.ai_client.generate_study_path,
+                        career_name, profile_data, career_data
+                    )
+                    future_skills = executor.submit(
+                        self.ai_client.generate_career_skills,
+                        career_name, profile_data, career_data
+                    )
+                    future_courses = executor.submit(
+                        self.ai_client.generate_career_courses,
                         career_name, profile_data, career_data
                     )
                     future_confidence = executor.submit(
@@ -152,6 +175,8 @@ class AIGenerationService:
                         'career_name': career_name,
                         'explanation': future_explanation.result(),
                         'study_path': future_study_path.result(),
+                        'skills': future_skills.result(),
+                        'courses': future_courses.result(),
                         'confidence': future_confidence.result()
                     }
             except Exception as e:
@@ -161,6 +186,8 @@ class AIGenerationService:
                     'career_name': career_name,
                     'explanation': f"Based on your profile, {career_name} is a strong match due to your analytical skills and relevant background.",
                     'study_path': career_data['first3_steps'][:3] if career_data.get('first3_steps') else [],
+                    'skills': ["Problem solving", "Critical thinking", "Communication", "Technical skills", "Adaptability"],
+                    'courses': ["Introductory Course", "Online Certification", "University Program"],
                     'confidence': f"High confidence ({career_data['match_score']}%) due to strong alignment in your profile."
                 }
         
@@ -174,11 +201,15 @@ class AIGenerationService:
                 career_name = result['career_name']
                 detailed_explanations[career_name] = result['explanation']
                 personalized_study_paths[career_name] = result['study_path']
+                career_skills[career_name] = result['skills']
+                career_courses[career_name] = result['courses']
                 confidence_explanations[career_name] = result['confidence']
         
         return EnhancedCareerInsights(
             detailed_explanations=detailed_explanations,
             personalized_study_paths=personalized_study_paths,
+            career_skills=career_skills,
+            career_courses=career_courses,
             confidence_explanations=confidence_explanations
         )
     

@@ -1,0 +1,37 @@
+Unique Code,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11,Q12,Q13,Q14,Q15
+100747,12,CBSE,"Physics,Chemistry,Biology,Eng,Hindi,Art/Design","Phy:B1,Chem:B2,Bio:A2,Eng:A1,Oth1:A1,Oth:A1",Top30,"Music,Art",Mediciane,,No,Maybe,Office,,,Maybe,Disign/art
+100750,12,CBSE,"Physics,Chemistry,Biology,Eng,Hindi,Art/Design","Phy:79,Chem:75,Bio:87,Eng:89,Oth1:Hindi-A1,Oth2:98",Top5,"Sports,Music,Dance,Theatre,Debet","Agriculture,oth:school teacher",,Maybe,Yes,Offlice,,,No,Disign/art
+100461,12,CBSE,"English,Hindi,Economic,Account,Business","Eng:70,Oth1:Hindi-80,Oth:Account-60",Top30,"Sports,Dance",Agriculture,,Maybe,Yes,Depends,,,Maybe,Business
+100462,12,CBSE,"English,Hindi,Art/Design","Eng:50,Oth1:Hindi-80,Oth:Socialogy-70",Top5,Sports,Business,,No,Yes,Field,,,No,Engineering
+100756,12,CBSE,"Maths,Physics,Chemistry,English,Hindi,Art/Design","Math:97,Phy:90,Chem:89,Eng:78,Oth1:99",Top5,"Sports,Music,Debet",Agriculture,,Maybe,Maybe,Office,,,No,"Engineering,Law,CS/AI,Absorption of corbon gass"
+100744,12,CBSE,"English,Hindi,Economics,Account,Business,Atr/Design",,Top5,"Sports,Music,Art",Agriculture,,Maybe,Yes,Office,,,No,Disign/art
+100751,12,CBSE,"Maths,Physics,Chemistry,Biology,Comp Sci,Economics","Math:98,Phy:89,Chem:93,Bio:95,CS:87,Oth1:99",Top5,"Sports,Music","Medician,Business,Government,Agriculture",,Maybe,Yes,Hybrid,,,No,"Medicine,Design/Art,Start-up"
+100752,12,CBSE,"Physics,Chemistry,Biology,Eng,Hindi,PE","Phy:58,Chem:65,Bio:77,Eng:79,Oth1:Hindi-85,Oth2:PE-80",,"Sports,Music",Mediciane,,Maybe,Maybe,Depends,,,Maybe,"Medicine,Design/Art,Start-up"
+100710,12,CBSE,"Physics,Chemistry,Biology,Comp Sci,Hindi,History","Math:50%,Phy:60%,Chem:49%,Eng:70%,Oth1:Hindi-79%",,Sports,"Business,job",,Maybe,Yes,Field,,,Maybe,Engineering
+100709,12,CBSE,"Com Sci,Hindi","Math:50%,Phy:61%,Chem:60%,Eng:48%,Oth1:Hindi-62%",,Sports,"Business,job",,"Yes,definitely",Yes,Field,,,Maybe,Engineering
+100731,11,CBSE,"English,Hindi,Economics,Account,Business,Art/Design",Oth2:95%,Top1,"Music,Art",Agriculture,,Maybe,Maybe,Field,,,Maybe,Business
+100734,11,CBSE,"English,Hindi,Economics,Account,Business,Art/Design",Oth2:93.3%,Top1,"Music,Art",Agriculture,,Maybe,Maybe,Field,,,Maybe,Business
+100729,11,CBSE,"English,Hindi,Economics,Account,Business,PE",,,Sports,"IT/Software,Business,Agriculture,oth-ACCA/CA",,"Yes,definitely",Yes,Hybrid,,,Maybe,"Engineering,Business,CS/AI"
+100713,11,CBSE,"English,Hindi,Art/Design,PE",,Top5,"Dance,Art",Agriculture,,"Yes,definitely",No,Depends,,,Maybe,Law
+100457,11,CBSE,"English,Hindi,Art/Design,PE",,Avg,Sports,"IT/Software,Business,Agriculture",,"Yes,definitely",Yes,Hybrid,,,Maybe,Law
+100749,11,CBSE,"Physics,Chemistry,Biology,English,Hindi,PE",,Top10,"Sports,dance","Government,Agriculture",Good,"Yes,definitely",No,Depends,Biology,Teacher,Maybe,Law
+100459,11,CBSE,"English,Hindi/Reg,Art/Design,PE",,Top 10,Sports,"IT/Software,Business,Agriculture,Governtment Job",Government job,"Yes,definitely",Yes,Hybrid,"English,Hindi",Teacher,Maybe,"Engineering,Business"
+100755,12,CBSE,"Math,Physics,Chemistry,English,Hindi/Reg,PE","Math:60%,Phy:70%,Chem:75%,Eng:65%",Top 10,Sports,Agriculture,Good,No,Yes,Field,,,No,Engineering
+100465,12,CBSE,"English,Hindi/Reg,Art/Design",Eng: 61%,Avg,Sports ,Agriculture,Good,No,Yes,Field,Physical,Teacher,No,Law
+100446,12,CBSE,"Maths,physics,Chemistry,English,Hindi,PE","Math:74,Phy:81,Chem:70,Eng:90,Oth1:Hindi 90,Oth2: AE 100",Top 10,"Sports,Music,Debate,Robotics,Service",IT/Software,,Maybe,Yes,Hybrid,,,Maybe,Business
+100429,6,CBSE,"Maths, Biology,Hindi,Art/Design,Physics,Comp Sci,History,Chemistry,English,Biology","Maths:55,Bio:45,Eng:60",Top30,Sports,Car Service,Disign,Maybe,Yes,Remote,Computer,,Maybe,Disign
+100427,8,CBSE,"Maths,Biology,Physics, History,Chemistry,English,Geography","Maths:35,Physics:44,Chemistry:47,Biology:51,Eng:38,Hindi:55,Other:69",Top10,Sports,Agriculture,Good Business,Maybe,No,Remote,Maths,Government,Yes,
+100428,8,CBSE,"Maths, Biology,Hindi,Physics, History,Chemistry,English,Geography","Maths:30,Physics:20,Chemistry:35,Biology:45,English:45,Hindi:55",Work,Sports,Agriculture,Good Business,"Yes,definitely",No,Remote,Maths,Goverment is not give money,Yes,Business
+100426,8,CBSE,"Maths, Biology, Physics, History,Chemistry,English,Geography","Maths:30,Physics:35,Chemistry:44,Biology:48,English:37,Other1 Hindi:45,Other2 GK:69",Top10,Sports,Agriculture,Good Business,No,Yes,Remote,Maths,Government,No,Business
+100425,8,CBSE,"Maths,Biology,Hindi,Physics,History,Chemistry,English,Geography","Maths:42,Physics:39,Chemistry:32,Biology:30,English:54,Other 1 Hindi:60, Other 2 Civics:39",Top10,Sports,Agriculture,Business,Maybe,Yes,Office,Hindi,Government,No,Player Kabaddi
+100424,8,CBSE,"Maths,Biology,Hindi/Reg,Art/Design,Physics,History,Chemistry,English,Geography","Maths:70,Physics:80,Chemistry:75,Biology:62,CS:65,English:72",-,all,,Business,"Yes,definitely",Yes,Depends,Hindi,-,Yes,Engineering
+100423,8,CBSE,"Maths:65,Physics:71,Chemistry:75,Biology:59,English:64",,Top1,"Sports,Music,Dance,Debate,Art",Doctor,,"Yes,definitely",Maybe,Office,Doctor,Simple Job,Yes,Medicine
+100422,8,CBSE,"Maths:65,Physics:71,Chemistry:75,Biology:59,English:64","Maths:50,Physics:62,Chemistry:49,Biology:77,English:73",Top1,"Sports, Dance, Debate,Art",Automobile Engineering,Doctor,"Yes,definitely",Maybe,Office,Biology,Simple Job,Maybe,Business
+100697,-,-,"Hindi,Art/Design,History,Business","Maths:89,Phy:98,Chem:99,Bio:62,CS:90",Top1,"Sports,Music,Dance,Art",Business,JPS,No,Yes,Depends,Biology,Simple Job,No,Business
+100415,8,CBSE,"Maths,Hindi/Reg,Art/Design,Comp Sci, History,English,Geography","Maths:48,Phy:51,Chem:45,Bio:68,CS:75,Eng:42, Other 1:sans :100,Other:SST :65",Top10,"Sports,Debate,Robotics,Art",Business,Business,"Yes,definitely",Yes,Office,Art & Craft,Teacher,Maybe,Business
+100416,8,CBSE,"Maths,Hindi/Reg,Art/Design,Comp Sci, History,English,Geography","Maths:52,CS:75,Eng:69, Other1:SANS 100,Other2:SST 65",Top5,"mUSIC,dANCE aRT",Business,Business,"Yes,definitely",Yes,Office,Art & Craft,Teacher,Maybe,Business
+100414,8,CBSE,"Maths,Hindi/Reg,Art/Design,Comp Sci, History,English,Geography",,,"mUSIC,dANCE,art",Business,Farming,May be,Yes,Office,Sanskrit,Teacher,Maybe,Business
+100419,7,CBSE,"Maths,Hindi/Reg,Art/Design,Comp Sci, History,English,Geography",,Avg,Dance,Business,Farming,,Yes,Hybrid,English,Teacher,No,IPS
+100418,7,CBSE,"Maths,Hindi/Reg,Art/Design,Comp Sci, History,English,Geography",,Avg,Dance,Business,,NO,Yes,Office,sCIENCE,doctor,Yes,IPS
+100417,6,CBSE,"Maths,Hindi/Reg,Art/Design,Comp Sci, History,English,Geography",,Top30,Dance,AM,,NO,Yes,Office,mATHS,doctor,Maybe,Gudge
+100447,6,CBSE,"Maths,Hindi/Reg,Art/Design,Comp Sci, History,English,Geography",,,"Sports, Music,Dance,Art",Goverment,Job,,Yes,,Hindi,Teacher,,Business

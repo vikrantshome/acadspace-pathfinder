@@ -52,6 +52,15 @@ public class AuthController {
         try {
             log.info("Registration attempt for email: {}", request.getEmail());
             
+            // Check if user already exists
+            if (userService.existsByEmail(request.getEmail())) {
+                return ResponseEntity.badRequest()
+                    .body(new AuthResponse("", null, "Email already registered"));
+            }
+            
+            // Create new user
+            User user = userService.createUser(request);
+            
             // Generate JWT token
             String token = tokenProvider.generateToken(user.getId());
             
@@ -78,6 +87,13 @@ public class AuthController {
             
             // Get user details
             String email = authentication.getName();
+            User user = userService.findByEmail(email);
+            
+            if (user == null) {
+                return ResponseEntity.badRequest()
+                    .body(new AuthResponse("", null, "User not found"));
+            }
+            
             // Generate JWT token
             String token = tokenProvider.generateToken(user.getId());
             

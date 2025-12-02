@@ -3,6 +3,7 @@ package com.naviksha.service;
 import com.naviksha.model.TestProgress;
 import com.naviksha.repository.ProgressRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class ProgressService {
     
     private final ProgressRepository progressRepository;
