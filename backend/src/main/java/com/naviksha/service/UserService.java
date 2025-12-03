@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -107,6 +108,11 @@ public class UserService {
             
             return userRepository.save(newUser);
         }
+    }
+    
+    
+    public Optional<User> findByStudentId(String studentId) {
+        return userRepository.findByStudentID(studentId);
     }
     
     public User findByEmail(String email) {

@@ -315,7 +315,7 @@ app.post('/generate-pdf', async (req, res) => {
         if (publicUrl && studentID) {
             try {
                 const backendApiUrl = process.env.VITE_BACKEND_URL || 'http://localhost:4000';
-                await axios.post(`${backendApiUrl}/api/v1/students/${studentID}/report-link`, {
+                await axios.put(`${backendApiUrl}/api/reports/${studentID}/link`, {
                     reportLink: publicUrl
                 });
                 console.log(`Successfully saved report link for student ${studentID}`);

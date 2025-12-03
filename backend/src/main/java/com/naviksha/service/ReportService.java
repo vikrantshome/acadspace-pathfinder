@@ -10,7 +10,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.util.List;
 
@@ -54,16 +53,18 @@ public class ReportService {
                 user.getName()
         );
 
-        webClientBuilder.build()
+        PuppeteerResponse response = webClientBuilder.build()
                 .post()
                 .uri(puppeteerServiceUrl + "/generate-pdf")
-                .body(Mono.just(puppeteerRequest), PuppeteerRequest.class)
+                .bodyValue(puppeteerRequest)
                 .retrieve()
                 .bodyToMono(PuppeteerResponse.class)
-                .subscribe(response -> {
-                    report.setReportLink(response.getReportLink());
-                    reportRepository.save(report);
-                });
+                .block();
+
+        if (response != null) {
+            report.setReportLink(response.getReportLink());
+            reportRepository.save(report);
+        }
     }
 
     public Report getReport(String reportId) {
@@ -72,6 +73,14 @@ public class ReportService {
 
     public List<Report> getUserReports(String userId) {
         return reportRepository.findByUserIdOrderByCreatedAtDesc(userId);
+    }
+
+    public Report getLatestReportByUserId(String userId) {
+        List<Report> reports = reportRepository.findByUserIdOrderByCreatedAtDesc(userId);
+        if (reports.isEmpty()) {
+            return null;
+        }
+        return reports.get(0);
     }
 
     public Report save(Report report) {

@@ -7,6 +7,9 @@ import com.naviksha.service.UserService; // Added
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import java.time.LocalDateTime;
+import com.naviksha.model.User;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
@@ -18,6 +21,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import com.naviksha.model.Report;
 
 @RestController
@@ -110,38 +114,45 @@ public class ReportController {
         }
     }
 
-    @PutMapping("/{studentId}/link")
+    @PutMapping("/{studentID}/link")
     @Operation(summary = "Save report link", description = "Saves the generated report link for a student")
-    public Mono<ResponseEntity<?>> saveReportLink(
-            @PathVariable String studentId,
+    public ResponseEntity<?> saveReportLink(
+            @PathVariable String studentID,
             @RequestBody ReportLinkRequest request) {
         
-        return Mono.fromCallable(() -> userService.findByStudentId(studentId))
-            .flatMap(userOptional -> {
-                if (userOptional.isEmpty()) {
-                    log.warn("User with studentID {} not found for saving report link", studentId);
-                    return Mono.just(ResponseEntity.notFound().build());
-                }
-                User user = userOptional.get();
-                
-                // For simplicity, we'll create a new report for each link.
-                Report newReport = Report.builder()
-                    .userId(user.getId()) // Use internal user ID
-                    .reportLink(request.getReportLink())
-                    .createdAt(LocalDateTime.now())
-                    .build();
+        Optional<User> userOptional = userService.findByStudentId(studentID);
 
-                return Mono.fromCallable(() -> reportService.save(newReport))
-                    .map(savedReport -> {
-                        log.info("Report link saved successfully for studentID {}: {}", studentId, savedReport.getId());
-                        return ResponseEntity.ok(savedReport);
-                    })
-                    .onErrorResume(e -> {
-                        log.error("Error saving report link for studentID {}: {}", studentId, e.getMessage());
-                        return Mono.just(ResponseEntity.status(500).body("Error saving report link: " + e.getMessage()));
-                    });
-            })
-            .defaultIfEmpty(ResponseEntity.notFound().build());
+        if (userOptional.isEmpty()) {
+            log.warn("User with studentID {} not found for saving report link", studentID);
+            return ResponseEntity.notFound().build();
+        }
+        User user = userOptional.get();
+        
+        Report report = reportService.getLatestReportByUserId(user.getId());
+
+        if (report != null) {
+            // Update existing report
+            report.setReportLink(request.getReportLink());
+            report.setUpdatedAt(LocalDateTime.now());
+        } else {
+            // Create new report
+            report = Report.builder()
+                .userId(user.getId()) // Use internal user ID
+                .reportLink(request.getReportLink())
+                .createdAt(LocalDateTime.now())
+                .build();
+        }
+
+        try {
+            Report savedReport = reportService.save(report);
+            log.info("Report link saved successfully for studentID {}: {}", studentID, savedReport.getId());
+            return ResponseEntity.ok(savedReport);
+        } catch (Exception e) {
+            log.error("Error saving report link for studentID {}: {}", studentID, e.getMessage());
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("error", "Error saving report link: " + e.getMessage());
+            return ResponseEntity.status(500).body(errorResponse);
+        }
     }
 
     // Inner class for request body
