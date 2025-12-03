@@ -11,12 +11,13 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "@sparticuz/chromium": "^123.0.1",
+    "axios": "^1.13.2",
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "pdf-lib": "^1.17.1",
     "googleapis": "^140.0.1",
-    "puppeteer-core": "^22.0.0",
-    "@sparticuz/chromium": "^123.0.1"
+    "pdf-lib": "^1.17.1",
+    "puppeteer-core": "^22.0.0"
   },
   "devDependencies": {
     "puppeteer": "^24.31.0"

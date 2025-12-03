@@ -73,4 +73,8 @@ public class ReportService {
     public List<Report> getUserReports(String userId) {
         return reportRepository.findByUserIdOrderByCreatedAtDesc(userId);
     }
+
+    public Report save(Report report) {
+        return reportRepository.save(report);
+    }
 }

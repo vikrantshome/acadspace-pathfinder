@@ -3,6 +3,7 @@ package com.naviksha.controller;
 import com.naviksha.model.StudentReport;
 import com.naviksha.service.ReportService;
 import com.naviksha.service.AIServiceClient;
+import com.naviksha.service.UserService; // Added
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -29,6 +30,7 @@ public class ReportController {
     private final ReportService reportService;
     private final ObjectMapper objectMapper;
     private final AIServiceClient aiServiceClient;
+    private final UserService userService; // Added
 
     @GetMapping("/{reportId}")
     @Operation(summary = "Get report by ID", 
@@ -106,5 +108,45 @@ public class ReportController {
             errorResponse.put("message", e.getMessage());
             return ResponseEntity.status(500).body(errorResponse);
         }
+    }
+
+    @PutMapping("/{studentId}/link")
+    @Operation(summary = "Save report link", description = "Saves the generated report link for a student")
+    public Mono<ResponseEntity<?>> saveReportLink(
+            @PathVariable String studentId,
+            @RequestBody ReportLinkRequest request) {
+        
+        return Mono.fromCallable(() -> userService.findByStudentId(studentId))
+            .flatMap(userOptional -> {
+                if (userOptional.isEmpty()) {
+                    log.warn("User with studentID {} not found for saving report link", studentId);
+                    return Mono.just(ResponseEntity.notFound().build());
+                }
+                User user = userOptional.get();
+                
+                // For simplicity, we'll create a new report for each link.
+                Report newReport = Report.builder()
+                    .userId(user.getId()) // Use internal user ID
+                    .reportLink(request.getReportLink())
+                    .createdAt(LocalDateTime.now())
+                    .build();
+
+                return Mono.fromCallable(() -> reportService.save(newReport))
+                    .map(savedReport -> {
+                        log.info("Report link saved successfully for studentID {}: {}", studentId, savedReport.getId());
+                        return ResponseEntity.ok(savedReport);
+                    })
+                    .onErrorResume(e -> {
+                        log.error("Error saving report link for studentID {}: {}", studentId, e.getMessage());
+                        return Mono.just(ResponseEntity.status(500).body("Error saving report link: " + e.getMessage()));
+                    });
+            })
+            .defaultIfEmpty(ResponseEntity.notFound().build());
+    }
+
+    // Inner class for request body
+    @Data
+    static class ReportLinkRequest {
+        private String reportLink;
     }
 }
