@@ -170,6 +170,7 @@ def main():
         # 2. Prepare Test Answers (always attempt, even if some answers are missing)
         student_vibematch_data = vibematch_df[vibematch_df['studentID'].astype(str) == student_id].head(1)
         student_edustat_data = edustat_df[edustat_df['studentID'].astype(str) == student_id].head(1)
+        print(f"check data {edustat_df} and {student_edustat_data}")
 
         combined_answers = {}
 
@@ -255,12 +256,14 @@ def main():
                 return None
             return obj
 
-        # Ensure grade is an integer if not None for submission
-        if submission_data['grade'] is not None:
+       # Ensure grade is an integer; default to 8 if missing or invalid
+        if submission_data['grade'] is None or submission_data['grade'] == "" or str(submission_data['grade']).lower() == "nan":
+            submission_data['grade'] = 8
+        else:
             try:
                 submission_data['grade'] = int(submission_data['grade'])
-            except ValueError:
-                submission_data['grade'] = None # Set to None if conversion fails
+            except (ValueError, TypeError):
+                submission_data['grade'] = 8  # Default fallback
         
         # Convert all numpy types in submission_data to native Python types
         submission_data = convert_numpy_types(submission_data)
