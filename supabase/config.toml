@@ -1,4 +1,0 @@
-project_id = "bnkfcfgrbjqgcjjqosqp"
-
-[functions.setup-default-user]
-verify_jwt = false
