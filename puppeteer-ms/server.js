@@ -5,6 +5,7 @@ const fs = require('fs').promises;
 const path = require('path');
 const { PDFDocument } = require('pdf-lib');
 const cors = require('cors');
+const axios = require('axios');
 const { uploadToDrive } = require('./utils/googleDrive'); // Ensure this handles errors internally
 
 const app = express();
@@ -310,6 +311,20 @@ app.post('/generate-pdf', async (req, res) => {
         const filename = `Career_Report_${safeName}_${studentID || '000'}_${date}.pdf`;
 
         const publicUrl = await uploadToDrive(Buffer.from(mergedPdfBytes), filename);
+
+        if (publicUrl && studentID) {
+            try {
+                const backendApiUrl = process.env.VITE_BACKEND_URL || 'http://localhost:4000';
+                await axios.post(`${backendApiUrl}/api/v1/students/${studentID}/report-link`, {
+                    reportLink: publicUrl
+                });
+                console.log(`Successfully saved report link for student ${studentID}`);
+            } catch (apiError) {
+                console.error(`Failed to save report link for student ${studentID}:`, apiError.message);
+                // Do not block the response to the client, just log the error
+            }
+        }
+
         res.status(200).send({ reportLink: publicUrl });
 
     } catch (error) {
