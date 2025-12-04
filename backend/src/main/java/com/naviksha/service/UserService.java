@@ -51,6 +51,11 @@ public class UserService {
         if (existingUser == null && request.getEmail() != null && !request.getEmail().isEmpty()) {
             existingUser = userRepository.findByEmail(request.getEmail()).orElse(null);
         }
+        
+        // If not found by email, try by mobileNo, but only if mobileNo is not empty
+        if (existingUser == null && request.getMobileNo() != null && !request.getMobileNo().trim().isEmpty()) {
+            existingUser = userRepository.findByMobileNo(request.getMobileNo()).orElse(null);
+        }
 
         if (existingUser != null) {
             // Update existing user

@@ -1,0 +1,2 @@
+studentId,Date,City,School Name,Student Name,Parent Name,Contact,Grade,error
+100003,2025-01-16,Delhi,Modern School,Charlie Brown,Lucy Brown,7654321098,9,"Upsert registration failed: Write operation error on server ac-c7p2xbh-shard-00-02.kwnahck.mongodb.net:27017. Write error: WriteError{code=11000, message='E11000 duplicate key error collection: naviksha.users index: mobileNo dup key: { mobileNo: ""7654321098"" }', details={}}."
