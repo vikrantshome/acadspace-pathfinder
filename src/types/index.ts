@@ -108,6 +108,7 @@ export interface User {
     grade?: number;
     board?: string;
     school?: string;
+    parentName?: string;
   };
 }
 

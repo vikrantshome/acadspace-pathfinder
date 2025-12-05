@@ -19,6 +19,7 @@ public class RegisterRequest {
     
     // Optional profile fields
     private String fullName;
+    private String parentName;
     private String schoolName;
     private Integer grade;
     private String board;

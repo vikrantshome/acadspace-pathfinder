@@ -13,6 +13,7 @@ interface User {
   roles: string[];
   // Profile fields
   fullName?: string;
+  parentName?: string,
   schoolName?: string;
   grade?: number;
   board?: string;
@@ -108,6 +109,7 @@ class ApiService {
     password: string, 
     name: string, 
     fullName?: string,
+    parentName?: string,
     schoolName?: string, 
     grade?: number, 
     board?: string,
@@ -121,6 +123,7 @@ class ApiService {
         password, 
         name,
         fullName,
+        parentName,
         schoolName,
         grade,
         board,
