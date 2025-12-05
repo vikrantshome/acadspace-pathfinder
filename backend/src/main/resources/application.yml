@@ -193,4 +193,4 @@ server:
     
 puppeteer:
   ms:
-    url: ${PUPPETEER_MS_URL:http://localhost:5200} # Default URL for Puppeteer microservice
+    url: ${VITE_PUPPETEER_MS_URL:http://localhost:5200} # Default URL for Puppeteer microservice

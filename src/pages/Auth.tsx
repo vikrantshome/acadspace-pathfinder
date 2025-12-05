@@ -23,6 +23,7 @@ const Auth = () => {
     password: '123456',
     confirmPassword: '123456',
     fullName: 'Test User',
+    parentName: 'Test Parent',
     schoolName: 'Demo School',
     grade: '12',
     board: 'CBSE',
@@ -76,14 +77,15 @@ const Auth = () => {
 
     setLoading(true);
     try {
-      const gradeNumber = formData.grade ? parseInt(formData.grade, 10) : undefined;
+      const grade = formData.grade ? parseInt(formData.grade, 10) : undefined;
       await signUp(
         formData.email, 
         formData.password, 
         formData.fullName, 
         formData.fullName,
+        formData.parentName,
         formData.schoolName, 
-        gradeNumber, 
+        grade, 
         formData.board,
         formData.mobileNo
       );
@@ -210,6 +212,23 @@ const Auth = () => {
                       placeholder="Your full name"
                       value={formData.fullName}
                       onChange={(e) => handleInputChange('fullName', e.target.value)}
+                      required
+                      className="focus-ring"
+                    />
+                  </div>
+
+                  {/* Parent Name */}
+                  <div className="space-y-2">
+                    <Label htmlFor="parentName" className="flex items-center gap-2">
+                      <User className="w-4 h-4" />
+                      Parent Name
+                    </Label>
+                    <Input
+                      id="parentName"
+                      type="text"
+                      placeholder="Your parent's name"
+                      value={formData.parentName}
+                      onChange={(e) => handleInputChange('parentName', e.target.value)}
                       required
                       className="focus-ring"
                     />

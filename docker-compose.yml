@@ -62,7 +62,7 @@ services:
       PORT: 4000
       AI_SERVICE_URL: http://ai-report-service:8000
       # PDF_SERVICE_URL: http://pdf-service:5100
-      PUPPETEER_MS_URL: http://puppeteer-ms:5200
+      PUPPETEER_MS_URL: http://host.docker.internal:5200
       # Email Configuration
       EMAIL_ENABLED: ${EMAIL_ENABLED:-true}
       EMAIL_FROM: ${EMAIL_FROM:-naviksha@example.com}

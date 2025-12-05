@@ -138,11 +138,11 @@ public class ScoringService {
         // Process each vibematch answer (Likert scale 1-5)
         for (Map.Entry<String, Object> answer : answers.entrySet()) {
             String questionId = answer.getKey();
-            if (questionId.startsWith("vibematch_q") && answer.getValue() instanceof Number) { // Updated prefix
+            if (questionId.startsWith("v_") && answer.getValue() instanceof Number) {
                 int score = ((Number) answer.getValue()).intValue();
                 
-                // Extract number from questionId (e.g., "vibematch_q1" -> "1")
-                String qNumStr = questionId.substring(questionId.indexOf("q") + 1);
+                // Extract number from questionId (e.g., "v_01" -> "1")
+                String qNumStr = questionId.substring(2);
                 try {
                     int qNum = Integer.parseInt(qNumStr);
                     Map<String, Integer> riasecMap = getQuestionRiasecMapping(qNum); // Pass integer

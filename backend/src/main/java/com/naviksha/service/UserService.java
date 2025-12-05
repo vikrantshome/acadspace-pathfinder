@@ -28,6 +28,7 @@ public class UserService {
             .password(passwordEncoder.encode(request.getPassword()))
             .name(request.getName())
             .fullName(request.getFullName())
+            .parentName(request.getParentName())
             .schoolName(request.getSchoolName())
             .grade(request.getGrade())
             .board(request.getBoard())
@@ -68,6 +69,9 @@ public class UserService {
             if (request.getFullName() != null && !request.getFullName().isEmpty()) {
                 existingUser.setFullName(request.getFullName());
             }
+            if (request.getParentName() != null && !request.getParentName().isEmpty()) {
+                existingUser.setParentName(request.getParentName());
+            }
             if (request.getSchoolName() != null && !request.getSchoolName().isEmpty()) {
                 existingUser.setSchoolName(request.getSchoolName());
             }
@@ -101,6 +105,7 @@ public class UserService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .fullName(request.getFullName())
+                .parentName(request.getParentName())
                 .schoolName(request.getSchoolName())
                 .grade(request.getGrade())
                 .board(request.getBoard())

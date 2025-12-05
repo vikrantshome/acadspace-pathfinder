@@ -150,9 +150,28 @@ const ReportViewer = () => {
     }
   };
 
-  const handleShare = () => {
-    // TODO: Implement sharing functionality
-    console.log('Sharing report...');
+  const handleShare = async () => {
+    try {
+      const reportLink = await generatePDFBlob(
+        reportData, 
+        user?.id || 'test_user',
+        user?.mobileNo,
+        user?.studentID,
+        displayData.studentName
+      );
+
+      await navigator.clipboard.writeText(reportLink);
+      window.open(reportLink, '_blank');
+      
+      // Assuming you have a toast notification system, e.g., using a custom hook or library
+      // toast.success('Report link copied to clipboard and opened in a new tab!');
+      alert('Report link copied to clipboard and opened in a new tab!');
+
+    } catch (error) {
+      console.error('Error sharing report:', error);
+      // toast.error('Failed to share report. Please try again.');
+      alert('Failed to share report. Please try again.');
+    }
   };
 
   // Show loading state

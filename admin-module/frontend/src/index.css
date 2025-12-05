@@ -173,3 +173,32 @@ button:focus-visible {
 .sample-download button:hover {
     background-color: #0056b3;
 }
+.module {
+    margin-bottom: 40px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 40px 0;
+}
+.summary-download {
+    margin-top: 20px;
+}
+
+.summary-download a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #28a745; /* Green */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.25s;
+}
+
+.summary-download a:hover {
+    background-color: #218838;
+}
