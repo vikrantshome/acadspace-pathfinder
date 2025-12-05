@@ -78,19 +78,6 @@ const Auth = () => {
     setLoading(true);
     try {
       const grade = formData.grade ? parseInt(formData.grade, 10) : undefined;
-
-      console.log("Signing up with:", {
-        email: formData.email,
-        password: formData.password,
-        name: formData.fullName,
-        fullName: formData.fullName,
-        parentName: formData.parentName,
-        schoolName: formData.schoolName,
-        grade: grade,
-        board: formData.board,
-        mobileNo: formData.mobileNo
-      });
-
       await signUp(
         formData.email, 
         formData.password, 
