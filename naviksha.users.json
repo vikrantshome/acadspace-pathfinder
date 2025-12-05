@@ -1,0 +1,7244 @@
+[{
+  "_id": {
+    "$oid": "693161f9a1176560413a2ffe"
+  },
+  "email": "luptha.650@gmail.com",
+  "studentID": "AA0169",
+  "mobileNo": "9071115658",
+  "password": "$2a$10$1W2mWiood/xMDK/1qOhFterUyUxWe7I6XxLboUmIPrXwjYgIzr7lW",
+  "name": "Luptha P Gowda ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Luptha P Gowda ",
+  "schoolName": "Vidya Spoorthi School ",
+  "grade": 8,
+  "board": "CBSE",
+  "createdAt": {
+    "$date": "2025-12-04T10:27:05.430Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T10:27:05.430Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "69311c951e37d436659919c5"
+  },
+  "email": "anurag@naviksha.co.in",
+  "studentID": "AA0165",
+  "mobileNo": "6261737944",
+  "password": "$2a$10$I2oH11EeK0bDcsUrzCLOXOk6k4WCYyYuJEu5Ni3mQlMmRzsCqJKqy",
+  "name": "Anurag Kumar",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Anurag Kumar",
+  "schoolName": "Railway School",
+  "grade": 10,
+  "board": "CBSE",
+  "createdAt": {
+    "$date": "2025-12-04T05:31:01.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T05:31:01.409Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9a05331e674eaffeaf1"
+  },
+  "email": "student_100234@naviksha.com",
+  "studentID": "100234",
+  "mobileNo": "9891229694",
+  "password": "$2a$10$GQ.sH7wDVcytKqTc/65OJOQuq4/E3uprGMOK.9ZTNWEZvCbU841lK",
+  "name": "DAKSH PANI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:52.989Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T04:26:32.596Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9a05331e674eaffeaf0"
+  },
+  "email": "student_100252@naviksha.com",
+  "studentID": "100252",
+  "mobileNo": "7056979801",
+  "password": "$2a$10$tuAPhHjWv6a3qUqzQ3Qscu/zH2qa0pZxW2lCwHsxBUIw3a0Ieouum",
+  "name": "PARIDHI SAINI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:52.497Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T04:26:32.161Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9a05331e674eaffeaef"
+  },
+  "email": "student_100254@naviksha.com",
+  "studentID": "100254",
+  "mobileNo": "100254",
+  "password": "$2a$10$5x4tZ9bAI9Mq5xKqBC7ZD.jPHqtmxZcSmJhBw1XQW2rZK6k4PATZ2",
+  "name": "ASHI SINGH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:52.233Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T04:26:31.959Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f99e5331e674eaffeaee"
+  },
+  "email": "student_100265@naviksha.com",
+  "studentID": "100265",
+  "mobileNo": "9540385736",
+  "password": "$2a$10$Vy02BXtVpPzYnyK6r.A7neyFq94hoXtNK7MoQoN3DG15e0gFjSCZK",
+  "name": "DIVYA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:50.460Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T04:26:30.037Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f99e5331e674eaffeaed"
+  },
+  "email": "student_100122@naviksha.com",
+  "studentID": "100122",
+  "mobileNo": "9866776442",
+  "password": "$2a$10$h8CrS37sdoHq1mqwtwQREuOEwD802ZAeDMSO7p0iBo5tnB/yYjQfa",
+  "name": "ANAMICA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:50.200Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T04:26:29.817Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f99d5331e674eaffeaec"
+  },
+  "email": "student_100329@naviksha.com",
+  "studentID": "100329",
+  "mobileNo": "100329",
+  "password": "$2a$10$s1eBRxFu0AIj.dVeK2vvw.alD58pTMTuk8mTq53FAn8aZYFjQXcN2",
+  "name": "PARI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:49.944Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T04:26:29.607Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f99d5331e674eaffeaeb"
+  },
+  "email": "student_100278@naviksha.com",
+  "studentID": "100278",
+  "mobileNo": "9289015447",
+  "password": "$2a$10$ed60OLH815GX.gjRyQzQZuiHMlun8oTZbkM4xVfruN.sqdhtX.phO",
+  "name": "VANSH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:49.449Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T04:26:29.202Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f99c5331e674eaffeaea"
+  },
+  "email": "student_100281@naviksha.com",
+  "studentID": "100281",
+  "mobileNo": "8700857247",
+  "password": "$2a$10$4MmDZ7m8qBakXEMRGueeVuHFlrwG/gHF1/3cJtvzrPYRct9pdFTJu",
+  "name": "ARYAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:48.257Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T04:26:27.960Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9865331e674eaffeae9"
+  },
+  "email": "student_100314@naviksha.com",
+  "studentID": "100314",
+  "mobileNo": "100314",
+  "password": "$2a$10$eaqKqZ16WPxOQRzsIYGJs.iuqKmlw93mN1Sv2p6tpK13ewNpdU0AG",
+  "name": "SAMAR",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:26.463Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:48.564Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9835331e674eaffeae8"
+  },
+  "email": "student_100121@naviksha.com",
+  "studentID": "100121",
+  "mobileNo": "100121",
+  "password": "$2a$10$2x6SBMgxMoHAYzLvV7HJYuNfnaL.0iRbfmUmgHadzAeWQjaeRico.",
+  "name": "HIMANSHU",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:23.568Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:45.503Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97f5331e674eaffeae7"
+  },
+  "email": "student_100355@naviksha.com",
+  "studentID": "100355",
+  "mobileNo": "7494971255",
+  "password": "$2a$10$1vhtVMpUWArYsXUCvAYTsewJp8zP9ICpZ8BIGx6hNFRyN0yIGKaX2",
+  "name": "YASHIKA SAINI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:19.631Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:40.947Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97e5331e674eaffeae6"
+  },
+  "email": "student_100342@naviksha.com",
+  "studentID": "100342",
+  "mobileNo": "8199073414",
+  "password": "$2a$10$1nQx087dsCT4noROEZsF1O1XnRGw2B2RD/dqdsMWXZUA2AYHlaJUK",
+  "name": "HARSHITA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:18.985Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:40.317Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97e5331e674eaffeae5"
+  },
+  "email": "student_100340@naviksha.com",
+  "studentID": "100340",
+  "mobileNo": "6397785623",
+  "password": "$2a$10$8O0QTUz4012yB0eI./bNdu1Vn/0Xz7XYisaehlE9bYm4DhiswukOK",
+  "name": "SONAKSHI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:18.721Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:40.107Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97e5331e674eaffeae4"
+  },
+  "email": "student_100321@naviksha.com",
+  "studentID": "100321",
+  "mobileNo": "9289428951",
+  "password": "$2a$10$r69LzvLtsAwXHxYlCEcO3u8zMe2rNLl7npIeeq3Difr.6N2ozUNTW",
+  "name": "HIMANSHU SHARMA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:18.058Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:39.479Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97d5331e674eaffeae3"
+  },
+  "email": "student_100320@naviksha.com",
+  "studentID": "100320",
+  "mobileNo": "9306763473",
+  "password": "$2a$10$qNxkVDtXjx1pfb/sSRvr6uQA8xb4DjfpE3LyOc3skXf24VeIar.KW",
+  "name": "SHIV KUMAR",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:17.802Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:39.268Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97d5331e674eaffeae2"
+  },
+  "email": "student_100319@naviksha.com",
+  "studentID": "100319",
+  "mobileNo": "88608483393",
+  "password": "$2a$10$Gn.532ayoWTKoijjPMFvfeqmqwvWq24wngMIU1.NOCI5WqippW9bm",
+  "name": "RUDRANSH DUVENDI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:17.544Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:39.037Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97d5331e674eaffeae1"
+  },
+  "email": "student_100317@naviksha.com",
+  "studentID": "100317",
+  "mobileNo": "7938948294",
+  "password": "$2a$10$YeeUtahHJoTDCTz9xCpapeiIhO7vwlx1Ip9gPOX78sY8MNUgKjz2.",
+  "name": "ROHAN MAITI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:17.086Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:38.614Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97c5331e674eaffeae0"
+  },
+  "email": "student_100316@naviksha.com",
+  "studentID": "100316",
+  "mobileNo": "9700708806",
+  "password": "$2a$10$ktpoaXXuCKnWLJHMv7rD2ONtDSWEgRxuEbkg1pkdYxym47SHNGiQa",
+  "name": "LAKSHAY SAINI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:16.826Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:38.419Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97c5331e674eaffeadf"
+  },
+  "email": "student_100287@naviksha.com",
+  "studentID": "100287",
+  "mobileNo": "9821021417",
+  "password": "$2a$10$DXh/oeJjd974tkniHyeWfuQk6Jkc7PSudnyds.R9b/1D.OGiwMyw.",
+  "name": "DAKSH CHAUHAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:16.555Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:38.217Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97c5331e674eaffeade"
+  },
+  "email": "student_100286@naviksha.com",
+  "studentID": "100286",
+  "mobileNo": "9555455991",
+  "password": "$2a$10$q4Q0rNwAQYow1Czs9Kxepufib1LlvIpZ3YTf8OgQqYyKZHPb4JqsS",
+  "name": "RAJAT SHARMA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:16.295Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:38.016Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97c5331e674eaffeadd"
+  },
+  "email": "student_100284@naviksha.com",
+  "studentID": "100284",
+  "mobileNo": "9871412390",
+  "password": "$2a$10$BaMEJV5V1SMp74RDpcmWW.KvT4dtKe3Xe9GhF8N3i0X1VPomhFd5y",
+  "name": "NIRAV",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:16.027Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:37.809Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97b5331e674eaffeadc"
+  },
+  "email": "student_100282@naviksha.com",
+  "studentID": "100282",
+  "mobileNo": "8287977543",
+  "password": "$2a$10$jvtWVAzXtvyvkGN5pRQpoOgmoa2D7/c6KR7OVaT27EfBu1UCTX32S",
+  "name": "SATYAM",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:15.762Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:37.613Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97b5331e674eaffeadb"
+  },
+  "email": "student_100277@naviksha.com",
+  "studentID": "100277",
+  "mobileNo": "9650084614",
+  "password": "$2a$10$qbM8Poj2IuU13OeyQvTrT.9c5lGQbkBRoW3J7E38bCNZIdYJJouOe",
+  "name": "NAITIK",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:15.123Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:36.994Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97a5331e674eaffeada"
+  },
+  "email": "student_100276@naviksha.com",
+  "studentID": "100276",
+  "mobileNo": "9899347113",
+  "password": "$2a$10$x9rmdwD6W8kdbbqeD8B.beGOPu0Zg/DMAUQvnefxAGV6rYK5HVqBu",
+  "name": "MAYANK SHARMA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:14.859Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:36.785Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f97a5331e674eaffead9"
+  },
+  "email": "student_100275@naviksha.com",
+  "studentID": "100275",
+  "mobileNo": "8684893798",
+  "password": "$2a$10$hQf7DCeSHeoIgPMEeGWXKeIAgCyhRwzJijYr0FdXkhFlbbZYmxuxe",
+  "name": "RUDRA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:14.597Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:36.581Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9775331e674eaffead8"
+  },
+  "email": "student_100235@naviksha.com",
+  "studentID": "100235",
+  "mobileNo": "9810624650",
+  "password": "$2a$10$A6QlK97iymJ2shz5PmJodul9fosl.VsQvUCYjLkC7sSbeeELp93Uq",
+  "name": "YASH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:11.262Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:32.983Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9765331e674eaffead7"
+  },
+  "email": "student_100177@naviksha.com",
+  "studentID": "100177",
+  "mobileNo": "9599056537",
+  "password": "$2a$10$n6YS3eW2pk79cZhRdlKbOeZGaM01KeL2.87sv.5ioXWAoIK0VFkMu",
+  "name": "AVTAAR TYAGI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:10.038Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:31.737Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9705331e674eaffead6"
+  },
+  "email": "student_100115@naviksha.com",
+  "studentID": "100115",
+  "mobileNo": "100115",
+  "password": "$2a$10$FJcbrkdHDsh6MS6Nxn8Gmuf9bs/Zvat2/620zT4Dgn1z.5UHH.E6m",
+  "name": "DEEPAR RAJPUT",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:04.853Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:26.056Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f96d5331e674eaffead5"
+  },
+  "email": "student_100095@naviksha.com",
+  "studentID": "100095",
+  "mobileNo": "100095",
+  "password": "$2a$10$8wXzo/9WkVQDqoQWVYuSHuYwHosbCE2BbzDf1dPUVsqx8N7N81VY6",
+  "name": "SANDEEP CHAUDHARY",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:01.704Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:22.764Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f96c5331e674eaffead4"
+  },
+  "email": "student_100088@naviksha.com",
+  "studentID": "100088",
+  "mobileNo": "9654566779",
+  "password": "$2a$10$iWVGgYk/9qdm5p.CFZ2uQ.pTUJg0V619tQqX/RsSOpSMAgekCaPA.",
+  "name": "KARITIK RAGHAV",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:01:00.160Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:21.161Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f96b5331e674eaffead3"
+  },
+  "email": "student_100086@naviksha.com",
+  "studentID": "100086",
+  "mobileNo": "9690686572",
+  "password": "$2a$10$65VVNl42F88sRufAb0Ro5OuSWgRYsZKQts5uima/eUuydFbkMuMxW",
+  "name": "JIVIKA PAL",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T03:00:59.897Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:20.951Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9695331e674eaffead2"
+  },
+  "email": "student_100007@naviksha.com",
+  "studentID": "100007",
+  "mobileNo": "9818073267",
+  "password": "$2a$10$5cuwryKQ5TZkK4aXYkrvP.zfcSl7vjsWQ/Of2DNNWjX0MxBUG1CPi",
+  "name": "SURYANSH AHLAWAT",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T03:00:57.672Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:18.636Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f9695331e674eaffead1"
+  },
+  "email": "student_100005@naviksha.com",
+  "studentID": "100005",
+  "mobileNo": "100005",
+  "password": "$2a$10$aFFI.Oiw94xKmpuKOfvHfOQnSksmH.0Dr/4xzPPQVLBA4Jo3xCXl2",
+  "name": "JEETU SHARMA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T03:00:57.397Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:18.411Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f1295331e674eaffead0"
+  },
+  "email": "student_S003@naviksha.com",
+  "studentID": "S003",
+  "mobileNo": "7654321098",
+  "password": "$2a$10$GccsSOEikeAiozCBXQnJdep.bX191GbJMRW/atzQDwoEncx6MhOV6",
+  "name": "Charlie Brown",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T02:25:45.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:25:45.824Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f1295331e674eaffeacf"
+  },
+  "email": "student_100002@naviksha.com",
+  "studentID": "S002",
+  "mobileNo": "9717232488",
+  "password": "$2a$10$l4u2O8WEmzQnwBVmTig4b.lU22iwIw.ChABpobRNgfvBYBIk25Wme",
+  "name": "SAKSHI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T02:25:45.596Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:17.987Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930f1295331e674eaffeace"
+  },
+  "email": "student_100001@naviksha.com",
+  "studentID": "S001",
+  "mobileNo": "8076315979",
+  "password": "$2a$10$FT4QAhXtTEopb8ufKx4pG.LNIU14RLAgomp0A1uqRVr6xaSUNiO1.",
+  "name": "PREETI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T02:25:45.336Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T06:50:17.702Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ec68253f125034db022e"
+  },
+  "email": "student_200138@naviksha.com",
+  "studentID": "200138",
+  "mobileNo": "200138",
+  "password": "$2a$10$BZQsvgKSa37AETB4Q7xknOmmtr2poESOSAasacas/23Z/0W8D5nZS",
+  "name": "architha L",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T02:05:28.763Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:11.639Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ec65253f125034db022d"
+  },
+  "email": "student_200243@naviksha.com",
+  "studentID": "200243",
+  "mobileNo": "200243",
+  "password": "$2a$10$IMKKebfUXiA/RZENXrcxfOAE1XQVz1A5fwrbw7EaHXH52CJAzO7MO",
+  "name": "P. SIRI HIRA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T02:05:25.978Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:09.281Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ec4a253f125034db022c"
+  },
+  "email": "student_200268@naviksha.com",
+  "studentID": "200268",
+  "mobileNo": "200268",
+  "password": "$2a$10$L6sBqO2SWxGutyWVCBSD9uH5SxGsOkP9ylqVcnJa12eb4uSa.XcrS",
+  "name": "SHREYAS. A",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T02:04:58.059Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:42.559Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ec27253f125034db022b"
+  },
+  "email": "student_200245@naviksha.com",
+  "studentID": "200245",
+  "mobileNo": "200245",
+  "password": "$2a$10$Pi/vgN88PgXdX8zhnOO/yuMbugyo66Cc98q7V7HnlFmwwRVdO3EIW",
+  "name": "RITHVIKH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T02:04:23.280Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:10.747Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea883f5c66400a6c4504"
+  },
+  "email": "student_200151@naviksha.com",
+  "studentID": "200151",
+  "mobileNo": "6362550820",
+  "password": "$2a$10$LQ.sW62QwFBixGCpO49WOu.iakp4CoEOr1HBlgblK8SGME0ix00we",
+  "name": "N. Gagan bala chandra",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:28.322Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:12.165Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea883f5c66400a6c4503"
+  },
+  "email": "student_200231@naviksha.com",
+  "studentID": "200231",
+  "mobileNo": "7338006650",
+  "password": "$2a$10$/Y2L.1A.v8SVdTo2oC/WJusqErcy3Ds2ZKmEwuwKdNmLpXVKKFTPe",
+  "name": "SATHYA PRAKASH MALIK",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:28.087Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:12.014Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea873f5c66400a6c4502"
+  },
+  "email": "student_200212@naviksha.com",
+  "studentID": "200212",
+  "mobileNo": "9035599123",
+  "password": "$2a$10$yEs6zGES57Y/DJUQs5b8WeEhgII3ArbCzg5/oBmYq7VdcuqlZg5iW",
+  "name": "KAVERI R.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:27.841Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:11.860Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea873f5c66400a6c4500"
+  },
+  "email": "student_200265@naviksha.com",
+  "studentID": "200265",
+  "mobileNo": "9483845526",
+  "password": "$2a$10$gNgPUTmjNUnItNZTOaXyN.F4SFX4itykQs2j5o10WF7RvJ5hJCPru",
+  "name": "KUSHAL. S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:27.398Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:11.488Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea863f5c66400a6c44ff"
+  },
+  "email": "student_200430@naviksha.com",
+  "studentID": "200430",
+  "mobileNo": "9945426347",
+  "password": "$2a$10$4qyrj9.7qY6Je1arIR6.reBfvZM6Np2g8F09R/c9.xdfnTnoeaaXC",
+  "name": "JYOTHIRMAYI.V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:26.979Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:11.179Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea863f5c66400a6c44fe"
+  },
+  "email": "student_200394@naviksha.com",
+  "studentID": "200394",
+  "mobileNo": "9448450544",
+  "password": "$2a$10$2dcpWUC39EGWdz9.K3fPlOvZfSql99umr4NsSPNVEkbKUUhbCgYVa",
+  "name": "PRANEETH K.V.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:26.733Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:11.030Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea863f5c66400a6c44fd"
+  },
+  "email": "student_200326@naviksha.com",
+  "studentID": "200326",
+  "mobileNo": "9539811463",
+  "password": "$2a$10$641OuTjJLXtDCcobmmYHnecyaFCEhkb7K4HAJTxySo/utHClWVYiu",
+  "name": "ADIDEV.N.K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:26.490Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:10.880Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea853f5c66400a6c44fc"
+  },
+  "email": "student_200434@naviksha.com",
+  "studentID": "200434",
+  "mobileNo": "9535672027",
+  "password": "$2a$10$7mB3kgJHyVdMIUXT9esUgeScY.BP0oTxVflkVkl/8k.Dd9TAP4mbG",
+  "name": "RITHISH SUBRAMANYAM V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:25.639Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:10.188Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea853f5c66400a6c44fb"
+  },
+  "email": "student_200127@naviksha.com",
+  "studentID": "200127",
+  "mobileNo": "9538921135",
+  "password": "$2a$10$ZYY6VWny5HIyvxYSmsyIAeBrBMnnpWfoYGJZbFl/B6fO3FVwaKt.6",
+  "name": "ROHITH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:25.390Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:10.034Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea843f5c66400a6c44fa"
+  },
+  "email": "student_200332@naviksha.com",
+  "studentID": "200332",
+  "mobileNo": "8971296553",
+  "password": "$2a$10$3tGAaA5KHTDqIQHzIbDZbeSd/BgnDHRRWjeNvB8jNmAtTeSw/Gvfa",
+  "name": "CHARAN TEJAS.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:24.989Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:09.736Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea843f5c66400a6c44f9"
+  },
+  "email": "student_200203@naviksha.com",
+  "studentID": "200203",
+  "mobileNo": "9845264379",
+  "password": "$2a$10$ydZQFX7ALiIFhg1P4zXAwOTyGKzsYW47uXch8pktvU8SnAMdIYb/.",
+  "name": "MUNAVAR KHAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:24.747Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:09.586Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea843f5c66400a6c44f8"
+  },
+  "email": "student_200237@naviksha.com",
+  "studentID": "200237",
+  "mobileNo": "9900923473",
+  "password": "$2a$10$/nhZ7Mat0FH92Ky3b/UD.OdIAru.K/s3n.N/TMOWd5m6ITksRdQnC",
+  "name": "KEERTHIKA. S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:24.501Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:09.433Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea843f5c66400a6c44f6"
+  },
+  "email": "student_200435@naviksha.com",
+  "studentID": "200435",
+  "mobileNo": "9972284120",
+  "password": "$2a$10$T5HHGlN65e5TUCpq4bC56uW8XHjqczXEUoUTrUqlF9Ox41yAdW8aq",
+  "name": "HARSHITHA.K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:24.028Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:09.130Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea833f5c66400a6c44f5"
+  },
+  "email": "student_200392@naviksha.com",
+  "studentID": "200392",
+  "mobileNo": "8147166329",
+  "password": "$2a$10$wKng5KpfYUBIRlGqPG1FWerJJ21EnQBERxSRTeVsy2tG3dVJwUTpq",
+  "name": "PRERANA HIREMATH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:23.523Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:08.742Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea833f5c66400a6c44f4"
+  },
+  "email": "student_200205@naviksha.com",
+  "studentID": "200205",
+  "mobileNo": "7019105304",
+  "password": "$2a$10$9/9CooKJMD9XgB3KPbJvoujki6JAN4vy9qrMh/HzgWUdHyC8BkdWK",
+  "name": "MAAZ AHMED",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:23.110Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:08.430Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea823f5c66400a6c44f3"
+  },
+  "email": "student_200365@naviksha.com",
+  "studentID": "200365",
+  "mobileNo": "8971975004",
+  "password": "$2a$10$ekaTFBWSqLVd9vaJaJzoUegkCYg3yugDEl32/6JOuq9oDb1YXp7CS",
+  "name": "SHIRISHA.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:22.860Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:08.264Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea813f5c66400a6c44f2"
+  },
+  "email": "student_200380@naviksha.com",
+  "studentID": "200380",
+  "mobileNo": "9113899823",
+  "password": "$2a$10$Hp7gMkFeaJmEo6HyiSTKgeiZTheg84DD.C3bdKU/or4OIVAP2IpeG",
+  "name": "BHAWANA PAREEK",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:21.971Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:07.528Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea813f5c66400a6c44f1"
+  },
+  "email": "student_200173@naviksha.com",
+  "studentID": "200173",
+  "mobileNo": "9113803441",
+  "password": "$2a$10$35fnZOHnPjHkoK4xczmRaewWcXZgvS8mr2qJfUJgwS7LDncLaspa2",
+  "name": "THEJASH S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:21.323Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:07.019Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea813f5c66400a6c44f0"
+  },
+  "email": "student_200429@naviksha.com",
+  "studentID": "200429",
+  "mobileNo": "8548913755",
+  "password": "$2a$10$cljXC.0i5E8uOZIXBElKCOPsYY11thNiAAWE7G42ojMK4nQrAv1rS",
+  "name": "GAGANA SINDHU K J",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:21.072Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:06.867Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea803f5c66400a6c44ef"
+  },
+  "email": "student_200155@naviksha.com",
+  "studentID": "200155",
+  "mobileNo": "8660877712",
+  "password": "$2a$10$6hZBtUsIZC0ox04oFOrmeu45TBFUGZ805LW5PXTDh/l7RAqUhUtxy",
+  "name": "SAMARTH RAJENDRA SHINDE",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:20.663Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:06.558Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea803f5c66400a6c44ee"
+  },
+  "email": "student_200355@naviksha.com",
+  "studentID": "200355",
+  "mobileNo": "9885283843",
+  "password": "$2a$10$PlAsKVPObfj2pSEEKeaXc.S0xduBx7xHDo60MxbPe1cH7Hehdej4S",
+  "name": "V.V.SUVANI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:20.416Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:06.409Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea803f5c66400a6c44ed"
+  },
+  "email": "student_200409@naviksha.com",
+  "studentID": "200409",
+  "mobileNo": "8722220041",
+  "password": "$2a$10$kEDH1OkuWU.cNQ5K9C3uG.ITu1hdbJOYlEBiBLarnPa3/q9kDlIWa",
+  "name": "SMITHA P",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:20.013Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:06.104Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea7f3f5c66400a6c44ec"
+  },
+  "email": "student_200356@naviksha.com",
+  "studentID": "200356",
+  "mobileNo": "9845422073",
+  "password": "$2a$10$BaArA2kZQlwqz6SwKTVfZePjiBcwEusYNFRnHL.t/z0d/eKQPm0ZS",
+  "name": "KEERTHAN RAGHAVA.M.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:19.532Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:05.733Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea7e3f5c66400a6c44eb"
+  },
+  "email": "student_200360@naviksha.com",
+  "studentID": "200360",
+  "mobileNo": "7676278724",
+  "password": "$2a$10$aKkyDrlDUA6c1wbo9QWCy.UyXqRHNpfo78ezONZ4B.vWCXClKylUm",
+  "name": "Varuni.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:18.951Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:05.267Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea7e3f5c66400a6c44ea"
+  },
+  "email": "student_200228@naviksha.com",
+  "studentID": "200228",
+  "mobileNo": "8095952933",
+  "password": "$2a$10$7vuGC6MwAnCZ8IBQ3lvuWu.OvyQisrEBn.HTly.S1QRf.mtDSq8Li",
+  "name": "MANHA TAJ JABREZ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:18.705Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:05.114Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea7e3f5c66400a6c44e9"
+  },
+  "email": "student_200107@naviksha.com",
+  "studentID": "200107",
+  "mobileNo": "9110651354",
+  "password": "$2a$10$Neqr2AaxzwzdwUnnsi7CBerDh5YF8KgMGLHYnpy73JLu/ZZV8xxUi",
+  "name": "GAURAV D. SEE RVI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:18.214Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:04.775Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea7d3f5c66400a6c44e8"
+  },
+  "email": "student_200275@naviksha.com",
+  "studentID": "200275",
+  "mobileNo": "8632675888",
+  "password": "$2a$10$trggujoQ9wpXJXJABGdjneXZ3zbnjVNS6aRwEu87z0rRhZCC9IzQq",
+  "name": "KANISHKA G",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:17.705Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:04.388Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea7d3f5c66400a6c44e7"
+  },
+  "email": "student_200235@naviksha.com",
+  "studentID": "200235",
+  "mobileNo": "9080703528",
+  "password": "$2a$10$5bYmPRc7HevtJ5LG.mQSDOdDDKogloRNmOQccW8WZSmphaV4vKQq.",
+  "name": "HARSHITHA P",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:17.453Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:04.234Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930ea7d3f5c66400a6c44e6"
+  },
+  "email": "student_200444@naviksha.com",
+  "studentID": "200444",
+  "mobileNo": "8431457271",
+  "password": "$2a$10$suGBbfraJtSuexbF8n.Pt.1OxatK7AqeJHXdJO81prSBGPZGIzRnS",
+  "name": "VARUN TEJ.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:57:17.022Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:03.930Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e88010bdec6c25fbfe6a"
+  },
+  "email": "student_200226@naviksha.com",
+  "studentID": "200226",
+  "mobileNo": "9880326765",
+  "password": "$2a$10$xeImZnwqHoW/pwBqM9FUXufOh9SaYlOYUhal.KbHtR0qYBqEe7vgG",
+  "name": "HARIBA SIDDIQUA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:48:48.131Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:03.777Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6af1518bc03066aead5"
+  },
+  "email": "student_200135@naviksha.com",
+  "studentID": "200135",
+  "mobileNo": "8277127834",
+  "password": "$2a$10$g7W3MRgx8zgP6zR5OxvVAO.ECMiCWID5VYtq/XQNRAaWSEAbZ5Acu",
+  "name": "K. MOHAMMED SAAD",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:03.692Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:03.627Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6af1518bc03066aead4"
+  },
+  "email": "student_200447@naviksha.com",
+  "studentID": "200447",
+  "mobileNo": "9866843789",
+  "password": "$2a$10$pbPeLRA69TMdl0D1Q2SA4u7rt/46GZ.86H5bu6jzJDbnINjU9lp7C",
+  "name": "V.V.SAKETH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:03.494Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:01.885Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6af1518bc03066aead3"
+  },
+  "email": "student_200196@naviksha.com",
+  "studentID": "200196",
+  "mobileNo": "9591780804",
+  "password": "$2a$10$8urkyvRBvdGTg0D33jo6P.O6j7xBJCXVUeWNbUhyka5uXcLaeqF4K",
+  "name": "BALAJI MAHESH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:03.300Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:01.730Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ae1518bc03066aead2"
+  },
+  "email": "student_200217@naviksha.com",
+  "studentID": "200217",
+  "mobileNo": "8310823749",
+  "password": "$2a$10$fybUYfoYvwnw.YgSnVQgLuw7ugWFIuMb5iHDJfvXeT1W3JMAKQMse",
+  "name": "MOHAMMED RASHAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:02.944Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:01.423Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ae1518bc03066aead0"
+  },
+  "email": "student_200108@naviksha.com",
+  "studentID": "200108",
+  "mobileNo": "8722161215",
+  "password": "$2a$10$1ug7IDgUuIMHTyk.Bc71PuiSYJI7.G9gQ48Rhf8tgPJ4.tU2kNWR2",
+  "name": "S.Chinmay",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:02.374Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:00.912Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ae1518bc03066aeacf"
+  },
+  "email": "student_200195@naviksha.com",
+  "studentID": "200195",
+  "mobileNo": "9880655608",
+  "password": "$2a$10$0vZZbX.7Ml0/0f8BTHkYvevPn1cSU7aO3xYN/LUAUGnpi14jbX/vG",
+  "name": "MOHAMMED FAIZUDDIN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:02.182Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:00.707Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ad1518bc03066aeace"
+  },
+  "email": "student_200368@naviksha.com",
+  "studentID": "200368",
+  "mobileNo": "8660156736",
+  "password": "$2a$10$G6vN/t4QbXMoiwrOUzHQuObJL8lsgBj5/F0SVq5qlAQfsbHsthZVu",
+  "name": "LIKITHA RAWAL",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:01.986Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:00.556Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ad1518bc03066aeacd"
+  },
+  "email": "student_200169@naviksha.com",
+  "studentID": "200169",
+  "mobileNo": "8618954060",
+  "password": "$2a$10$.YET4lZpSHUaBewMdDB7len9jYF6PhGvrVI/h6NXdf3GwUYGf9wAm",
+  "name": "SYED KARFEM ARHAAM S.A",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:01.635Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:00.260Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ad1518bc03066aeacc"
+  },
+  "email": "student_200397@naviksha.com",
+  "studentID": "200397",
+  "mobileNo": "9886378310",
+  "password": "$2a$10$WsQEk6ZVdB1j46eaaSfdVODboQQ31kU0/YLxvIUUPRoyORrVgwCG.",
+  "name": "RISHIKESH.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:01.442Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:00.111Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ad1518bc03066aeacb"
+  },
+  "email": "student_200200@naviksha.com",
+  "studentID": "200200",
+  "mobileNo": "8088125955",
+  "password": "$2a$10$oFT/1jT3oqtlcmnpuvn3TumrJYFVmMXI9wlPIw8wOZBSGPWmfr2A.",
+  "name": "SHIVANI R SHINDE",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:01.248Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:59.934Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ad1518bc03066aeaca"
+  },
+  "email": "student_200114@naviksha.com",
+  "studentID": "200114",
+  "mobileNo": "7337613714",
+  "password": "$2a$10$Zn9zeuaGH5UOOpJwepF4QOG4yJcBKgfKcC7cgz.TMzTv6DL88tJpm",
+  "name": "SHRIYA KAMATH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:01.046Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:59.780Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ac1518bc03066aeac9"
+  },
+  "email": "student_200050@naviksha.com",
+  "studentID": "200050",
+  "mobileNo": "9964994771",
+  "password": "$2a$10$c3g2QCOaVbU9e0oU/mO.U.Vj7mcpAS4RkWEhNiWwn5T56hf8wnVqu",
+  "name": "KEERTHANA S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:00.856Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:59.621Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ac1518bc03066aeac7"
+  },
+  "email": "student_200244@naviksha.com",
+  "studentID": "200244",
+  "mobileNo": "9122956580",
+  "password": "$2a$10$O8vYS29Vy31hnr67vWEy/eaJne/a5YaJSINaxQAywLWde17AG5Vdu",
+  "name": "R. IDHAMA RAJ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:00.426Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:59.247Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ac1518bc03066aeac6"
+  },
+  "email": "student_200260@naviksha.com",
+  "studentID": "200288",
+  "mobileNo": "9449988060",
+  "password": "$2a$10$5clJb6c4mE0sQI7j.wjzYelkcSGxBYCY7g8XV70JTzynMUr4ImQYO",
+  "name": "CHINMAYI S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:00.227Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:08.110Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ac1518bc03066aeac5"
+  },
+  "email": "student_200384@naviksha.com",
+  "studentID": "200384",
+  "mobileNo": "9900858592",
+  "password": "$2a$10$fIAjbt8kzLuy1BPh2PRTfuK2aa2CwvnhWc0.hYBdEOcZ9ooMCLQT2",
+  "name": "UTHAAN PRABHU.V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:41:00.008Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:58.934Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ab1518bc03066aeac4"
+  },
+  "email": "student_200277@naviksha.com",
+  "studentID": "200277",
+  "mobileNo": "6362811418",
+  "password": "$2a$10$AJrVBP7a47bdFEiz9/QRJuipvxWZ6UNvI0BYh1VMxWW4z3Sv/pIb6",
+  "name": "MANVITHA M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:59.820Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:58.783Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ab1518bc03066aeac3"
+  },
+  "email": "student_200410@naviksha.com",
+  "studentID": "200410",
+  "mobileNo": "9035189164",
+  "password": "$2a$10$35FWM7bEFV7zvPcKg9LkG.ISbOi1Y1e/RrKrTAiKo3HcNA/jqn29C",
+  "name": "BHOOMI.R.P",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:59.621Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:58.632Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ab1518bc03066aeac2"
+  },
+  "email": "student_200334@naviksha.com",
+  "studentID": "200334",
+  "mobileNo": "7829569104",
+  "password": "$2a$10$NCP96hfWj99QBfVKfH2yA.RN6DCn6mzY0Tmeff24mWlj/fM2khXZG",
+  "name": "SUHAS.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:59.432Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:58.479Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6ab1518bc03066aeac1"
+  },
+  "email": "student_200351@naviksha.com",
+  "studentID": "200351",
+  "mobileNo": "9980889671",
+  "password": "$2a$10$CyH.6jJzhllZdr.d02YQa.U25c.araYvf0eF8KbJl2DYSBfHr0sVu",
+  "name": "PREETHAM M.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:59.236Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:58.325Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6aa1518bc03066aeabf"
+  },
+  "email": "student_200143@naviksha.com",
+  "studentID": "200143",
+  "mobileNo": "9620080204",
+  "password": "$2a$10$feZUghEgcmgrIyY22EfWbuhxy6E39.HS98N7Jt/w0UnbijUvHiByC",
+  "name": "AALIYA SIDDIQA W",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:58.686Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:57.792Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6aa1518bc03066aeabe"
+  },
+  "email": "student_200124@naviksha.com",
+  "studentID": "200124",
+  "mobileNo": "7892428498",
+  "password": "$2a$10$RswB82nXP.vNpokD4fYTIOSeptrPHDxPPXOtQhkY8RShGSdimxO8W",
+  "name": "ANKITHA A",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:58.326Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:57.489Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6aa1518bc03066aeabd"
+  },
+  "email": "student_200379@naviksha.com",
+  "studentID": "200379",
+  "mobileNo": "9743004715",
+  "password": "$2a$10$mOZ13.V3NbBMJ3/5110iIu90tq7ID91jWf3dgnG5cuYH3MvLsRDTy",
+  "name": "RISHI K.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:58.131Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:57.340Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a91518bc03066aeabc"
+  },
+  "email": "student_200417@naviksha.com",
+  "studentID": "200417",
+  "mobileNo": "9035828169",
+  "password": "$2a$10$.EO3ZugeBWjkfocDSCHWLOkVia.zxF5r1S5Zm6k955L9Ca7asSbBC",
+  "name": "DUSHYANTH.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:57.916Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:57.188Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a91518bc03066aeabb"
+  },
+  "email": "student_200215@naviksha.com",
+  "studentID": "200215",
+  "mobileNo": "9845480760",
+  "password": "$2a$10$7f2R3m38NNLKXfHqeU.UZe.PpAQSHZ6b3G1rH0c2XGRgwUiAx5dCS",
+  "name": "RANTA GUL",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:57.724Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:57.035Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a91518bc03066aeaba"
+  },
+  "email": "student_200110@naviksha.com",
+  "studentID": "200110",
+  "mobileNo": "9019147989",
+  "password": "$2a$10$q4v4999E3P54zu2wIllQ5.A1Nes627crQ.0SY0aBTaRJmvBNLKbbO",
+  "name": "N. VAMSHT",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:57.530Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:56.884Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a81518bc03066aeab7"
+  },
+  "email": "student_200140@naviksha.com",
+  "studentID": "200140",
+  "mobileNo": "7892864914",
+  "password": "$2a$10$ocSIwZOio6xgl2vwFLv2s.yvJTOKGQkigKBwJsIVSay2czmYVWLg6",
+  "name": "PREETHAM M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:56.940Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:56.267Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a81518bc03066aeab5"
+  },
+  "email": "student_200341@naviksha.com",
+  "studentID": "200341",
+  "mobileNo": "7204176890",
+  "password": "$2a$10$HBm3cqYRdjm346XQh2hxJuUUFNQICdbjdvChUfGIO/cn9Pm4YKITC",
+  "name": "Mohammad Ayan Jameer Awati",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:56.382Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:55.735Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a81518bc03066aeab4"
+  },
+  "email": "student_200293@naviksha.com",
+  "studentID": "200292",
+  "mobileNo": "9980215691",
+  "password": "$2a$10$QXT8pCfZoLoPXc7OFjB2JepzEhxgVI7yGdlU5Ub192y.acJWlEAG2",
+  "name": "PRANAVI GOWDA. S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:56.188Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:12.541Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a71518bc03066aeab3"
+  },
+  "email": "student_200194@naviksha.com",
+  "studentID": "200194",
+  "mobileNo": "9886499786",
+  "password": "$2a$10$3pVNX7DtbeueM.7Xq9ODFu..9toH5nCuu7l1ELbt9f6pvJ.VgXFtq",
+  "name": "SHAIK MOHAMMED RIHAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:55.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:55.272Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a71518bc03066aeab2"
+  },
+  "email": "student_200117@naviksha.com",
+  "studentID": "200117",
+  "mobileNo": "8191018881",
+  "password": "$2a$10$OyPtTEdU9nFKcgG3HK8jdu1KsuPVAlIdfLE.FlAO3r.n7bG6BeXte",
+  "name": "AMULYA GUPTA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:55.628Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:55.117Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a71518bc03066aeab1"
+  },
+  "email": "student_200328@naviksha.com",
+  "studentID": "200328",
+  "mobileNo": "8494910143",
+  "password": "$2a$10$nDeMrTaQ32X5xswevsWHKeaHK4EB3zFZYxoZhxiZMjTGVNorI5u..",
+  "name": "THANUSHREE.N.GOWDA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:55.438Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:54.965Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a71518bc03066aeab0"
+  },
+  "email": "student_200311@naviksha.com",
+  "studentID": "200311",
+  "mobileNo": "9731221479",
+  "password": "$2a$10$.G1x7409BWSSQBOU69VLD.5cubW/SRF/ZnJoW8Lmzx31QP/UWSYOy",
+  "name": "BHUVAN.A",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:55.240Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:54.812Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a71518bc03066aeaaf"
+  },
+  "email": "student_200179@naviksha.com",
+  "studentID": "200179",
+  "mobileNo": "8310375802",
+  "password": "$2a$10$bxAydv7gf4Q.ISOl22stNOtfId/KjQJNvZcR6hk4qgN51GtJbhrha",
+  "name": "SUNITHA BISHNOL",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:55.045Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:54.658Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a61518bc03066aeaae"
+  },
+  "email": "student_200416@naviksha.com",
+  "studentID": "200416",
+  "mobileNo": "9513073820",
+  "password": "$2a$10$SlSAFpnWuscUqlAYAPbLNOhemYMZNi6GN7clHb2iOvxvZG7NwN1/u",
+  "name": "PREETHAM.K.KAJAGAR",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:54.697Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:54.353Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a61518bc03066aeaac"
+  },
+  "email": "student_200246@naviksha.com",
+  "studentID": "200246",
+  "mobileNo": "9380993275",
+  "password": "$2a$10$TmydnOytM7ecshFZo0UXYOn3npbbCjzkDm7fQ4HYyVOW4ZYm4isfa",
+  "name": "K SAI KISHORE ROYAL",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:54.263Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:53.975Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a51518bc03066aeaab"
+  },
+  "email": "student_200224@naviksha.com",
+  "studentID": "200224",
+  "mobileNo": "8951303573",
+  "password": "$2a$10$AjWCMpkUyvCWl./B2r/OoO.o.OjbAE.uP0xspwoZeoPuqUDYPD0Ea",
+  "name": "SACHIN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:53.917Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:53.658Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a51518bc03066aeaaa"
+  },
+  "email": "student_200290@naviksha.com",
+  "studentID": "200290",
+  "mobileNo": "8762328811",
+  "password": "$2a$10$RabwBX8oYT58ab57iBAd2etmKi//.DMBBksEiuVgfwzp7BcdeHLBK",
+  "name": "KUSHI M.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:53.719Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:53.499Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a51518bc03066aeaa9"
+  },
+  "email": "student_200347@naviksha.com",
+  "studentID": "200347",
+  "mobileNo": "9902370063",
+  "password": "$2a$10$TLSK/HzH.4B8NDHCnK.SjufdkrekNN/M8A8QIurUNkzvuCIxoRjES",
+  "name": "TEJAS DHAYAPULE",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:53.525Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:53.340Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a51518bc03066aeaa8"
+  },
+  "email": "student_200407@naviksha.com",
+  "studentID": "200407",
+  "mobileNo": "9900925108",
+  "password": "$2a$10$GgpkdDO2YrUtZOyiIJ75weCvuwMfVeZ1uf8gNQkzyyV66R2VBoaZm",
+  "name": "Bhuvan Gowda.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:53.338Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:53.182Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a41518bc03066aeaa7"
+  },
+  "email": "student_200402@naviksha.com",
+  "studentID": "200402",
+  "mobileNo": "9113869138",
+  "password": "$2a$10$4ELCmNtl5th0BNOk3Pb/ruF007ePRyu8CTjJ7GLuFIV5o3OezRlcG",
+  "name": "DIXSHI DIANA N",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:52.977Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:52.873Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a41518bc03066aeaa6"
+  },
+  "email": "student_200131@naviksha.com",
+  "studentID": "200131",
+  "mobileNo": "7760864543",
+  "password": "$2a$10$ex8THCjfpsUjw9sGbUbUfulJh9c/0ktAS1WD8aBB8IJ92RyOlAf9G",
+  "name": "MANVATHA P",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:52.781Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:52.720Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a41518bc03066aeaa5"
+  },
+  "email": "student_200337@naviksha.com",
+  "studentID": "200337",
+  "mobileNo": "8050543220",
+  "password": "$2a$10$y4ioUxagUOhlXk.Nzp6BTuUFCzsOGBS6bUL6IpMDqsYB4RiYiirRq",
+  "name": "ESHA HULSURKAR",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:52.426Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:52.410Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a31518bc03066aeaa3"
+  },
+  "email": "student_200406@naviksha.com",
+  "studentID": "200406",
+  "mobileNo": "9980949521",
+  "password": "$2a$10$FeRm2GoetEXNM7GZuI/DhuZ3LpUIVZD6YIXvKQTjqPW6r9BJe4PFK",
+  "name": "Arjun.S.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:51.876Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:51.873Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a31518bc03066aeaa2"
+  },
+  "email": "student_200399@naviksha.com",
+  "studentID": "200399",
+  "mobileNo": "9632154054",
+  "password": "$2a$10$OXQLTgwL9sATojzcH0uUj.kHPqlmr68DlYIpU772C6F24K/IWLNLe",
+  "name": "Samruddhi Krishna",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:51.680Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:51.717Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a31518bc03066aeaa1"
+  },
+  "email": "student_200149@naviksha.com",
+  "studentID": "200149",
+  "mobileNo": "9620354075",
+  "password": "$2a$10$i6KdSK3DvWXAgarxAonNauhUBnAe91a8NH6g8OGdJtSlhGdNAIKr.",
+  "name": "Likitha S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:51.486Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:51.563Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a31518bc03066aea9f"
+  },
+  "email": "student_200113@naviksha.com",
+  "studentID": "200113",
+  "mobileNo": "9880066396",
+  "password": "$2a$10$bcf9oE58JX37rbdeG2gKOu8KMQsnE1YxXAmWYL7M4iIn/a/Q2WZHS",
+  "name": "POOJA R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:51.104Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:51.188Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a21518bc03066aea9e"
+  },
+  "email": "student_200252@naviksha.com",
+  "studentID": "200284",
+  "mobileNo": "8970195098",
+  "password": "$2a$10$BKJ11H0SXSp6gk.lXKa1fOY8VZ7jrnVwBZeOVwtpEsvqtba09CxG6",
+  "name": "VIVEK. S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:50.439Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:58.018Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a21518bc03066aea9d"
+  },
+  "email": "student_200439@naviksha.com",
+  "studentID": "200439",
+  "mobileNo": "9900251735",
+  "password": "$2a$10$pBn4Kv4kf5hCuqBZkw1KD.O7GqNmhkL6Cn2kU0M1Tr2.eq1mH1CuC",
+  "name": "PRANAV.K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:50.246Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:50.414Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a11518bc03066aea9b"
+  },
+  "email": "student_200188@naviksha.com",
+  "studentID": "200188",
+  "mobileNo": "9886704626",
+  "password": "$2a$10$p1dxHi7Tn/YUPSSwAgHSze2HMyzfCoxS3DoRbqM/3ruzHKNLOnUta",
+  "name": "MOHAMMED IBRAHIM NAVEEM",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:49.859Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:50.047Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a11518bc03066aea9a"
+  },
+  "email": "student_200376@naviksha.com",
+  "studentID": "200376",
+  "mobileNo": "9886156766",
+  "password": "$2a$10$cPtQ570Bk2v9yjHryCiJdOzflhgi8UaSJ5gKiDWi5JiJ0tp3AHaCq",
+  "name": "HITHA.J",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:49.666Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:49.896Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a11518bc03066aea99"
+  },
+  "email": "student_200096@naviksha.com",
+  "studentID": "200096",
+  "mobileNo": "8123491511",
+  "password": "$2a$10$jBR2MoI7Uy7FuA96sLd2p.DUIyeIxFqmge9NKCjunkFP4cP4Fo8ES",
+  "name": "Pruthvika R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:49.321Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:49.554Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a11518bc03066aea98"
+  },
+  "email": "student_200033@naviksha.com",
+  "studentID": "200033",
+  "mobileNo": "9380283613",
+  "password": "$2a$10$0sqaN.ipLWF9jFpNKldqROLNoDKvaSaSuY4T.1CQw4zl2cCNfTVge",
+  "name": "AALIYA FATHIMA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:49.126Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:49.399Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a01518bc03066aea96"
+  },
+  "email": "student_200408@naviksha.com",
+  "studentID": "200408",
+  "mobileNo": "8884755581",
+  "password": "$2a$10$wPT9vRHiY0DKgI4d9CFBveZ/rf6mZeiOBFEawCT6Al6wmVXjkFxiG",
+  "name": "RAKSHITHA.A",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:48.581Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:48.913Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a01518bc03066aea95"
+  },
+  "email": "student_200335@naviksha.com",
+  "studentID": "200335",
+  "mobileNo": "9611525662",
+  "password": "$2a$10$2EYmGX7k8yal87O4uMz6luHFaUQnZ/ON0cMCrXb/ScKERpKf7hvrW",
+  "name": "T.MANO KARTHIKEYA SAIRAM",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:48.387Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:48.762Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6a01518bc03066aea94"
+  },
+  "email": "student_200296@naviksha.com",
+  "studentID": "200296",
+  "mobileNo": "8660664687",
+  "password": "$2a$10$UO7RiMLaHZ8LaExvXh9j/.BQlwexkl1dzFWFVFsja06tjKozK/Bga",
+  "name": "ALOK GOWDA R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:48.188Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:48.606Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69f1518bc03066aea93"
+  },
+  "email": "student_200233@naviksha.com",
+  "studentID": "200233",
+  "mobileNo": "9980627113",
+  "password": "$2a$10$LRjdc4QfQ4Z48ICuvS6bL.YJ3NPeUcYG8vctuy3pLYI2Te6omVGwG",
+  "name": "DHRUV V. R. NAYAK",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:47.993Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:48.451Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69f1518bc03066aea92"
+  },
+  "email": "student_200093@naviksha.com",
+  "studentID": "200093",
+  "mobileNo": "9886161016",
+  "password": "$2a$10$OiwWNKZBA./SWXT9Q2wf5eFGOEmalaKsWfvHwIGxLviLxkoqQpfdy",
+  "name": "Dyithik S Ghorpade",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:47.796Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:48.292Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69f1518bc03066aea91"
+  },
+  "email": "student_200314@naviksha.com",
+  "studentID": "200314",
+  "mobileNo": "7349594947",
+  "password": "$2a$10$IU3QnGn.Npr8AiFz9P9pkuixpngS97z7iepgAn225JLcykkrVVqoa",
+  "name": "D.JASHMITHA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:47.430Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:47.980Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69f1518bc03066aea90"
+  },
+  "email": "student_200216@naviksha.com",
+  "studentID": "200216",
+  "mobileNo": "9535536938",
+  "password": "$2a$10$LbQUTc53dxCk9U.EA7mgLO6ojaZFbImw82/cjWsNZr6/JBElL3CS.",
+  "name": "ARSHMAN AHMED",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:47.236Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:47.821Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69f1518bc03066aea8f"
+  },
+  "email": "student_200401@naviksha.com",
+  "studentID": "200401",
+  "mobileNo": "9901853167",
+  "password": "$2a$10$a4nZNlEQnENkfH/WmKyGj.Zdez5z9BYXc7mKVkq5arhJEflKLh.sC",
+  "name": "KASTHURI.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:47.042Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:47.666Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69e1518bc03066aea8e"
+  },
+  "email": "student_200053@naviksha.com",
+  "studentID": "200053",
+  "mobileNo": "9880727909",
+  "password": "$2a$10$I2sAAUEHji1Galmf/hThuOGHb8eiEyC4Y1BhmeLPAHMqA2qRifPOm",
+  "name": "DHANYA GAURI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:46.843Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:47.510Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69e1518bc03066aea8d"
+  },
+  "email": "student_200432@naviksha.com",
+  "studentID": "200432",
+  "mobileNo": "7904500778",
+  "password": "$2a$10$csFquBD900//xoCAIDFlleRsSnl74let0ntW/cEl.yeyo83mfzpA2",
+  "name": "SHRAVAN SHIVAM SHARMA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:46.482Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:47.201Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69e1518bc03066aea8c"
+  },
+  "email": "student_200071@naviksha.com",
+  "studentID": "200225",
+  "mobileNo": "9731153952",
+  "password": "$2a$10$48fXJOQYN4tzLLdsQEqNh.FRQwjh4Rsap8CBX/Lea2h0l60lIpGXu",
+  "name": "ALEENA AMAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:46.132Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:08.976Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69d1518bc03066aea8a"
+  },
+  "email": "student_200443@naviksha.com",
+  "studentID": "200443",
+  "mobileNo": "9535538179",
+  "password": "$2a$10$Xt5XTL/4NFPePXvFGutZQenGGcxEiCdVbrykxtocil0GIOIxjMoti",
+  "name": "MADAN GOWDA.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:45.539Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:46.319Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69d1518bc03066aea89"
+  },
+  "email": "student_200297@naviksha.com",
+  "studentID": "200297",
+  "mobileNo": "9945394245",
+  "password": "$2a$10$OYLSnFcpsEPExmPg2r8cnO7NK.sCNJ8FSbLZSeH2HunZRCPLQBSFG",
+  "name": "CHARAN YADAV. A. T",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:45.193Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:46.001Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69c1518bc03066aea88"
+  },
+  "email": "student_200383@naviksha.com",
+  "studentID": "200383",
+  "mobileNo": "8970999570",
+  "password": "$2a$10$PeW6tODGVGKjcrjKqth0ZeDWC7Dxdy4Ou.KgMeasMKbm2jazNbyJ6",
+  "name": "JANANESH.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:44.999Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:45.846Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69c1518bc03066aea87"
+  },
+  "email": "student_200167@naviksha.com",
+  "studentID": "200167",
+  "mobileNo": "8073505840",
+  "password": "$2a$10$DsMVZ8wS2qNjVlLbj/70VOXYzUlxnODp5bthnnqKtRxIuuacnsgvi",
+  "name": "SUDEEP KHARA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:44.808Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:45.690Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69c1518bc03066aea86"
+  },
+  "email": "student_200412@naviksha.com",
+  "studentID": "200412",
+  "mobileNo": "6331120709",
+  "password": "$2a$10$HyD9FX.NXt4gb8F9QpU2oOTyG/FOLlPJ5RPimmpCJuVsqlf.rDv1q",
+  "name": "SUPRITH.T",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:44.606Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:45.538Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69c1518bc03066aea84"
+  },
+  "email": "student_200431@naviksha.com",
+  "studentID": "200431",
+  "mobileNo": "6360734121",
+  "password": "$2a$10$Kk9IIydr3lUc/zYAWbTNKuTR2Q5yokMkmsxsRs4NfS3tZ5xuZfy1y",
+  "name": "BHUMIKA.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:44.222Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:45.192Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69c1518bc03066aea83"
+  },
+  "email": "student_200156@naviksha.com",
+  "studentID": "200208",
+  "mobileNo": "8095313368",
+  "password": "$2a$10$osG3Rb.2vlXa3X.uwNPRZe/Yu5Ru8DEiVTOmmHziD46VvuTSsmWVe",
+  "name": "Sneha Patel",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:44.026Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:07.228Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69b1518bc03066aea82"
+  },
+  "email": "student_200381@naviksha.com",
+  "studentID": "200381",
+  "mobileNo": "9972304835",
+  "password": "$2a$10$zpe37xc9xGhl9ry5jLOOGOtCy.BRjfOV29GJT0eb4E8KN7/jiAfQW",
+  "name": "KHUSHI RAM MURTHY",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:43.665Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:44.696Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69b1518bc03066aea81"
+  },
+  "email": "student_200427@naviksha.com",
+  "studentID": "200427",
+  "mobileNo": "9535910269",
+  "password": "$2a$10$hDU/fVJnkpf65Mj82iQuYeqdMuo6ZzIqzqucYViIDTqast0./dFA.",
+  "name": "LATHASHREE.P",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:43.474Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:44.545Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69a1518bc03066aea80"
+  },
+  "email": "student_200446@naviksha.com",
+  "studentID": "200446",
+  "mobileNo": "9035839838",
+  "password": "$2a$10$hXruO1FG1EdvuS1QhMNe1uHOI8NKCL8MkMOqNXHMCDejuCPZA5Ice",
+  "name": "NISCHAL V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:42.805Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:43.891Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69a1518bc03066aea7f"
+  },
+  "email": "student_200144@naviksha.com",
+  "studentID": "200144",
+  "mobileNo": "9148570998",
+  "password": "$2a$10$m1yT1XC5PKaM8OBBJzDUIOtk1FBGErr1jIS5hBaL/zHD093Po.M2m",
+  "name": "AJAI S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:42.609Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:43.734Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69a1518bc03066aea7e"
+  },
+  "email": "student_200330@naviksha.com",
+  "studentID": "200330",
+  "mobileNo": "7829798207",
+  "password": "$2a$10$CMdf9I3lZkIFNwmbN.dWKeXhsx.Oa5ShJcGohlXh8MSD/Gp/4nIcK",
+  "name": "SHRAVANTHI.L",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:42.415Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:43.580Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e69a1518bc03066aea7c"
+  },
+  "email": "student_200291@naviksha.com",
+  "studentID": "200323",
+  "mobileNo": "9845572199",
+  "password": "$2a$10$NPWbkzuwrRZhZYNnUKUzIejF8Xr5SR5NLyjSfUrs97Dtsy6TVFqi2",
+  "name": "RISHI RAAJ. R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:42.025Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:01.274Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6991518bc03066aea7a"
+  },
+  "email": "student_200183@naviksha.com",
+  "studentID": "200183",
+  "mobileNo": "9740403886",
+  "password": "$2a$10$FhjQZqhNxXDpHDxwn8aolOabAu72ZrLbBCakLoT68RkzeP9WB.ZvC",
+  "name": "HURAI HARMAIN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:41.613Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:42.860Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6991518bc03066aea79"
+  },
+  "email": "student_200441@naviksha.com",
+  "studentID": "200441",
+  "mobileNo": "7259251696",
+  "password": "$2a$10$twsVWiCIcBOJBmFhFPcZy.wOI3MMbaasePp1SOtxoqwyiPHwlBDAO",
+  "name": "JEESHNA.V.RAO",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:41.415Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:42.709Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6981518bc03066aea77"
+  },
+  "email": "student_200164@naviksha.com",
+  "studentID": "200164",
+  "mobileNo": "9880325986",
+  "password": "$2a$10$yA8Vc1v12R2Nx4qwsjmLYOpbBxuR18IQ0sKoNWia53LjkQ7TcBxk2",
+  "name": "PREKSHA NAGARAT",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:40.741Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:42.257Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6981518bc03066aea76"
+  },
+  "email": "student_200128@naviksha.com",
+  "studentID": "200128",
+  "mobileNo": "9606753922",
+  "password": "$2a$10$5QMG5sxSQlRLcDQbaKlZBuQ9gPNkm9ZUFS9pCdRl00XiE8AYfLu3S",
+  "name": "VYSHALI P.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:40.388Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:41.956Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6981518bc03066aea75"
+  },
+  "email": "student_200154@naviksha.com",
+  "studentID": "200154",
+  "mobileNo": "9740501564",
+  "password": "$2a$10$HU3VGJWBqLhtJnwgdJrTYOR0Vn0kQ7KI9EXl0OYJwHMamf4AIpRZ2",
+  "name": "S.Diviksha",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:40.186Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:41.806Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6971518bc03066aea74"
+  },
+  "email": "student_200126@naviksha.com",
+  "studentID": "200126",
+  "mobileNo": "9113859887",
+  "password": "$2a$10$u8e7C7GkUSpgPKByitOhlOV5LuHhk1J46yqGdONLBLC/lOFQfnSWq",
+  "name": "Mahendar",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:39.988Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:41.651Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6971518bc03066aea73"
+  },
+  "email": "student_200445@naviksha.com",
+  "studentID": "200445",
+  "mobileNo": "9108254161",
+  "password": "$2a$10$KoBjfhQFnsAcSDlvCdrtr.HaFUL8WX4v/tWcAnGcm0ysR7OGRR6ue",
+  "name": "YUKTHA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:39.781Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:41.497Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6971518bc03066aea72"
+  },
+  "email": "student_200357@naviksha.com",
+  "studentID": "200357",
+  "mobileNo": "7411579686",
+  "password": "$2a$10$8oZpHHga1Krgb/aAgdfhZ.V6oh54tVAhljILemq.wUi8aYlZ0zMwa",
+  "name": "GANESH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:39.422Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:41.188Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6971518bc03066aea71"
+  },
+  "email": "student_200378@naviksha.com",
+  "studentID": "200378",
+  "mobileNo": "8147482464",
+  "password": "$2a$10$g4FNC5krxz8zTrKDlQtT3OxRR0Q4xWD95btExSldDhDqFmNSTHA0e",
+  "name": "Hamsini.M.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:39.224Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:41.039Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6961518bc03066aea70"
+  },
+  "email": "student_200095@naviksha.com",
+  "studentID": "200095",
+  "mobileNo": "9480457728",
+  "password": "$2a$10$DBWgyTfguk8NaYyBR.9PgeJEct1tPAmW1q6Q3Bdf/6xWWa72tx9sS",
+  "name": "VIYANN V PATIL",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:38.868Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:40.720Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6961518bc03066aea6f"
+  },
+  "email": "student_200388@naviksha.com",
+  "studentID": "200388",
+  "mobileNo": "8050208468",
+  "password": "$2a$10$Jnh/xK70Aa.vhmKnuD5SbuLjTppvbGYtUFcv.0iprO.okEryCty0.",
+  "name": "TANVIKA ELAKATURI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:38.668Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:40.549Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6961518bc03066aea6e"
+  },
+  "email": "student_200249@naviksha.com",
+  "studentID": "200249",
+  "mobileNo": "8147569711",
+  "password": "$2a$10$JhQvMRaIlkB/qpEyGW2XU.1yHOlioObWxXTU4Wp845Soho7HmCst6",
+  "name": "SREESHA. D ANGADI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:38.464Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:40.398Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6961518bc03066aea6d"
+  },
+  "email": "student_200372@naviksha.com",
+  "studentID": "200372",
+  "mobileNo": "7482351099",
+  "password": "$2a$10$IdS5gRPISkzO7p0mMUNTJOxgSr33hzR7xp7AQVuma0ZqfH/vhYQaC",
+  "name": "VIRAT.V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:38.266Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:40.252Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6961518bc03066aea6c"
+  },
+  "email": "student_200273@naviksha.com",
+  "studentID": "200273",
+  "mobileNo": "8050439959",
+  "password": "$2a$10$Ng0cRSESgEGdfVnY2VJkV.gEzggWMHO.oVV5a2SvBIMtpPsIiSY0y",
+  "name": "ANKITHA D",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:38.073Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:40.098Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6951518bc03066aea6b"
+  },
+  "email": "student_200440@naviksha.com",
+  "studentID": "200440",
+  "mobileNo": "9880739190",
+  "password": "$2a$10$oINV4gsOfayNOrHS7/r2VebsOAtksps37RFDMWS6SCUhPkUmcV8HO",
+  "name": "SHREYASH PJ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:37.869Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:39.942Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6951518bc03066aea6a"
+  },
+  "email": "student_200382@naviksha.com",
+  "studentID": "200382",
+  "mobileNo": "8197977303",
+  "password": "$2a$10$jxKNobm6m7Bu.O/bFdgBU.RKx9gVnkCRDvTvtTXILckvHl4bVy1Gy",
+  "name": "Nakul.Bidhun",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:37.679Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:39.791Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6951518bc03066aea69"
+  },
+  "email": "student_200309@naviksha.com",
+  "studentID": "200309",
+  "mobileNo": "9008794432",
+  "password": "$2a$10$oZArzY7YhTu4umi9mFQuNO3rC85HPWwCmnb.vKc9hrp10MXexa5I6",
+  "name": "ADITHI AAKANKSHA.P",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:37.332Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:39.478Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6941518bc03066aea67"
+  },
+  "email": "student_200105@naviksha.com",
+  "studentID": "200105",
+  "mobileNo": "9845641352",
+  "password": "$2a$10$eTpojM6rf2MARsMk6Xt6O.6faQsJhAgY3/LvYP7KLlikUtkn8ic2u",
+  "name": "MANOJ KUMAR V.R.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:36.627Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:38.778Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6941518bc03066aea66"
+  },
+  "email": "student_200348@naviksha.com",
+  "studentID": "200348",
+  "mobileNo": "6360359124",
+  "password": "$2a$10$aOZYaj.Ww/zM70GmEJbeTekif1T3W7jF1cFHXzAUVUDm0njUxVRgq",
+  "name": "N.SUHAS",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:36.428Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:38.625Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6941518bc03066aea65"
+  },
+  "email": "student_200248@naviksha.com",
+  "studentID": "200248",
+  "mobileNo": "9535759745",
+  "password": "$2a$10$5Yg/aAX3Ct.y50QRfo8IheStx4Eon7Cx7arqAjA298JK.mW0fZQ7i",
+  "name": "Siddhartha S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:36.062Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:38.315Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6931518bc03066aea64"
+  },
+  "email": "student_200315@naviksha.com",
+  "studentID": "200315",
+  "mobileNo": "9742307537",
+  "password": "$2a$10$rb9X9gxoYpAJvw3wyYe.puGUph4PkueVum2/RYIg9NAkwSlBFw17u",
+  "name": "IRTSHIKA REDDY.D",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:35.863Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:38.163Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6931518bc03066aea63"
+  },
+  "email": "student_200362@naviksha.com",
+  "studentID": "200362",
+  "mobileNo": "7411145482",
+  "password": "$2a$10$9VykMtVVmxYCXBD17RStBeRQpAx3D7olXIGC.kyD8H3B3nOn/hVsG",
+  "name": "VISHAL.K.A.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:35.661Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:38.007Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6931518bc03066aea62"
+  },
+  "email": "student_200320@naviksha.com",
+  "studentID": "200320",
+  "mobileNo": "9591122551",
+  "password": "$2a$10$UrB/TmW2AP8NKK5oRPpFjelVe94SAzaIkm9igvX2tUdfU7Q7/sl0i",
+  "name": "HAVISH GOWDA B.H.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:35.474Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:37.852Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6931518bc03066aea61"
+  },
+  "email": "student_200289@naviksha.com",
+  "studentID": "200289",
+  "mobileNo": "9980989407",
+  "password": "$2a$10$3hvg5Ae1a/R7xikpb2qItecp8NCdU9OxLzycYdmSQpaYGQei/bTxK",
+  "name": "DEEKSHA REDDY N",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:35.282Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:37.656Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6931518bc03066aea60"
+  },
+  "email": "student_200150@naviksha.com",
+  "studentID": "200150",
+  "mobileNo": "9994204546",
+  "password": "$2a$10$lz7lupJ2e5KhAR18I5gOUem35hZmFnvwAil.9j3/ohRYJFJcJjvXO",
+  "name": "MONISH KUMAR",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:35.083Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:37.502Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6921518bc03066aea5f"
+  },
+  "email": "student_200190@naviksha.com",
+  "studentID": "200190",
+  "mobileNo": "6362193469",
+  "password": "$2a$10$vieqK008DBfBT7xfijRlk.8NPulh3FBuhT/LS0X98F.tn3bZyfzoC",
+  "name": "ABDUL VASIR",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:34.885Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:37.352Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6921518bc03066aea5e"
+  },
+  "email": "student_200321@naviksha.com",
+  "studentID": "200321",
+  "mobileNo": "8660184920",
+  "password": "$2a$10$y1oLglJvvLTNoS7ai7qPgemIXNFbNBrLdV7wPTC6sfPRupY5QIDQW",
+  "name": "TANAYA G ATHREYASH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:34.697Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:37.197Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6921518bc03066aea5d"
+  },
+  "email": "student_200106@naviksha.com",
+  "studentID": "200106",
+  "mobileNo": "7975061627",
+  "password": "$2a$10$LtcPU2tA4BsA.GGL4VnclOKRVOZa//yvyxK1F//7l1rVr1R4E7KNa",
+  "name": "NARAIN KISHORE R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:34.342Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:36.892Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6921518bc03066aea5c"
+  },
+  "email": "student_200279@naviksha.com",
+  "studentID": "200279",
+  "mobileNo": "7349352112",
+  "password": "$2a$10$LbDHN7CmhoFcUVRaWd1Jveq/qJ1.yJfbZOQ6SOmYcqf9aEpanwUuS",
+  "name": "ADVITHA T. S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:34.147Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:36.737Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6911518bc03066aea5a"
+  },
+  "email": "student_200184@naviksha.com",
+  "studentID": "200184",
+  "mobileNo": "9916925454",
+  "password": "$2a$10$NLQGczdP6pMrw5BUAzmteeqp9jBAkeEZk067nsjyPNcVBfeT7I1gu",
+  "name": "SA RUCHIKA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:33.593Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:36.230Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6911518bc03066aea59"
+  },
+  "email": "student_200426@naviksha.com",
+  "studentID": "200426",
+  "mobileNo": "9513651980",
+  "password": "$2a$10$KWJy1t57d0EKxGZpE1.SluTct9tcVWt4t7TXIROODV3PiGtSVv54S",
+  "name": "KUSHANTH GOWDA.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:33.400Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:36.069Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6911518bc03066aea57"
+  },
+  "email": "student_200206@naviksha.com",
+  "studentID": "200206",
+  "mobileNo": "8660965359",
+  "password": "$2a$10$kul4qmJkWSgfaEnMVZ1Oc.IGisfEs/eg0PNNnW39mjBbXSmYVelyi",
+  "name": "K AIDAS KHAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:33.002Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:35.674Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6901518bc03066aea56"
+  },
+  "email": "student_200294@naviksha.com",
+  "studentID": "200294",
+  "mobileNo": "9538275992",
+  "password": "$2a$10$bWT9enBTdfVrKqhIgHT8mu2Yc7ghYniILACjgNdqkTxiJ3WqyeNJa",
+  "name": "ABHIPSA PRIYADARSHINI M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:32.810Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:35.519Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6901518bc03066aea55"
+  },
+  "email": "student_200398@naviksha.com",
+  "studentID": "200398",
+  "mobileNo": "9964601827",
+  "password": "$2a$10$GPWotMvpEt9qYn5WJf68ouL5Uf35PUHcLR5CnBELJ7X0bqTolx4K6",
+  "name": "NAMITHA R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:32.575Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:35.355Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6901518bc03066aea54"
+  },
+  "email": "student_200364@naviksha.com",
+  "studentID": "200424",
+  "mobileNo": "9945544769",
+  "password": "$2a$10$ltB1lEYJFP5HiNLu537IxOEReXRlEt12mm6AcdYuSC2NqfUg..R6W",
+  "name": "MEGHANA.K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:32.374Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:05.954Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6901518bc03066aea53"
+  },
+  "email": "student_200098@naviksha.com",
+  "studentID": "200098",
+  "mobileNo": "9686605263",
+  "password": "$2a$10$JxSMcKEZATkpmloodxRNh.hKW3h8cZQOrwXXLwqKgx4MeQzUf.hs6",
+  "name": "THANYAA SRI V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:32.179Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:35.047Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68f1518bc03066aea52"
+  },
+  "email": "student_200287@naviksha.com",
+  "studentID": "200287",
+  "mobileNo": "9945587539",
+  "password": "$2a$10$WYgKnrcJKutyvs0gQbImf.WTeER2Ku4be8YZyvTQF3fcPlerEIy5u",
+  "name": "TANISA V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:31.986Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:34.900Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68f1518bc03066aea51"
+  },
+  "email": "student_200270@naviksha.com",
+  "studentID": "200270",
+  "mobileNo": "7892686330",
+  "password": "$2a$10$1XOhqw/AS8rz2suveO3Sce9KInu.q0eT4VpA4YFZBzOrSc7AKEfZS",
+  "name": "Suchithra S.C",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:31.790Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:34.744Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68f1518bc03066aea50"
+  },
+  "email": "student_200159@naviksha.com",
+  "studentID": "200159",
+  "mobileNo": "9742395629",
+  "password": "$2a$10$IWl4FE23EZb0caiPpDpenuaZA8QjhP2MGFyTY9UBvxXycgdADKa0q",
+  "name": "VARUN TEJA B.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:31.581Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:34.588Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68f1518bc03066aea4e"
+  },
+  "email": "student_200112@naviksha.com",
+  "studentID": "200112",
+  "mobileNo": "7019965829",
+  "password": "$2a$10$BLytTZ5sUkiXijBEKLe4eu/zsSy0PzRpgcxQi92I3eIDwMnLphxMC",
+  "name": "ANUM FIRDOUS",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:31.188Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:34.208Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68e1518bc03066aea4d"
+  },
+  "email": "student_200222@naviksha.com",
+  "studentID": "200222",
+  "mobileNo": "9035518955",
+  "password": "$2a$10$0lt2tnK1IUbH1q8khy39KOkjzrVXU0RnwCEwqs4fimENS0Rru6.C.",
+  "name": "Aaron Joseph",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:30.833Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:33.897Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68e1518bc03066aea4c"
+  },
+  "email": "student_200232@naviksha.com",
+  "studentID": "200232",
+  "mobileNo": "7829000073",
+  "password": "$2a$10$XswUuR79ZgdquzCq0gUZVu2r9yBkrfamBMZMY88xiiV/hejo3fB8q",
+  "name": "ALIYA SHARIFF",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:30.637Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:33.742Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68e1518bc03066aea4b"
+  },
+  "email": "student_200448@naviksha.com",
+  "studentID": "200448",
+  "mobileNo": "8073109797",
+  "password": "$2a$10$6s1U3PpB9QcYat7qvx6DjOtDpbxvTEkr38JLG8OVcKiglYCv3hHJS",
+  "name": "A5UIDSH KUNDU",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:30.445Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:33.583Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68e1518bc03066aea4a"
+  },
+  "email": "student_200176@naviksha.com",
+  "studentID": "200176",
+  "mobileNo": "9986757199",
+  "password": "$2a$10$NPEQ.izFiOKVVOppl5I57e66hNmY0erGAOCjKt7MwCMMavdf4nQ5K",
+  "name": "RITHIK S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:30.250Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:33.429Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68e1518bc03066aea49"
+  },
+  "email": "student_200264@naviksha.com",
+  "studentID": "200264",
+  "mobileNo": "7204689336",
+  "password": "$2a$10$Z/kncqLR//xAmODz1grIvOhYjKE9a13xFXulz2rFqFW8kc0hiTYRK",
+  "name": "G. ROHIN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:30.049Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:33.279Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68d1518bc03066aea48"
+  },
+  "email": "student_200310@naviksha.com",
+  "studentID": "200310",
+  "mobileNo": "9880193058",
+  "password": "$2a$10$y4w2zxKGp7kIye0zNHSjc.2Rrm6bvU4HKYkt3CtRUJLkSRWo6kmDi",
+  "name": "ADITHI ARTHA.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:29.706Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:32.972Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68d1518bc03066aea47"
+  },
+  "email": "student_200148@naviksha.com",
+  "studentID": "200148",
+  "mobileNo": "9916285666",
+  "password": "$2a$10$6PMZGn9LO3kx6q0TgrfWGuSHMa6hmGPqI3D8z3UnwApJq3nAZKQj2",
+  "name": "GOKUL K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:29.521Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:32.819Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68d1518bc03066aea46"
+  },
+  "email": "student_200073@naviksha.com",
+  "studentID": "200073",
+  "mobileNo": "9945755940",
+  "password": "$2a$10$7uy6aXJlHM6tqfo6.G1mCOUIF/X9lfu3g5XmhXpisf/wRrs7tFSS6",
+  "name": "Sonakshi Khara",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:29.332Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:32.666Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68d1518bc03066aea45"
+  },
+  "email": "student_200207@naviksha.com",
+  "studentID": "200207",
+  "mobileNo": "8097085140",
+  "password": "$2a$10$O1Mn1BEtn2gbMFKnx7oBpuEiN0YRklJT1ZPDcppHP.1xf4mISZySS",
+  "name": "AYESHA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:29.132Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:32.512Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68c1518bc03066aea44"
+  },
+  "email": "student_200197@naviksha.com",
+  "studentID": "200197",
+  "mobileNo": "9742225074",
+  "password": "$2a$10$kI4.woJ2ENM4yIT0Wa6xPOPrus6giw30./JXBo96oM4yUL/EmCF8e",
+  "name": "HARSHITH AKHIL B",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:28.773Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:32.165Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68c1518bc03066aea42"
+  },
+  "email": "student_200338@naviksha.com",
+  "studentID": "200338",
+  "mobileNo": "7259663731",
+  "password": "$2a$10$Ohbj3tEmtzwH7wCRmDupM.64Uq5udzsPl8wDr0jABszUrHi8OjVzy",
+  "name": "RAKSHA.Y.C",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:28.216Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:31.632Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68b1518bc03066aea41"
+  },
+  "email": "student_200354@naviksha.com",
+  "studentID": "200354",
+  "mobileNo": "9242962098",
+  "password": "$2a$10$ZVkioO03.ql0EzSE1pcnteGg2HeYSFD5T6eiImXc9mF1rE996cgW6",
+  "name": "Shree nari G.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:27.867Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:31.330Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68b1518bc03066aea40"
+  },
+  "email": "student_200336@naviksha.com",
+  "studentID": "200336",
+  "mobileNo": "8660734246",
+  "password": "$2a$10$GdV3ukmJ8svOS1RIm5LJZ.4AlyE/tKpCHrIKnVaoYFZQab3YgCex2",
+  "name": "NAVYA SHREE.V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:27.666Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:31.179Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68b1518bc03066aea3f"
+  },
+  "email": "student_200120@naviksha.com",
+  "studentID": "200120",
+  "mobileNo": "9844274081",
+  "password": "$2a$10$V2zx.I1r2vBX6U5lnWBY8.0VUegn8xbAyi3jSrLjEOoMiUgyZhUkS",
+  "name": "URMILA BISHNOI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:27.469Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:31.028Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68b1518bc03066aea3e"
+  },
+  "email": "student_200136@naviksha.com",
+  "studentID": "200136",
+  "mobileNo": "6382412050",
+  "password": "$2a$10$xfPeSDPq7lbuBbrNN/vTseAEzKp5Fr8PLNtWmBqRztAtP/FNmu6Ae",
+  "name": "Inaya Praveen Na M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:27.276Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:30.872Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68b1518bc03066aea3d"
+  },
+  "email": "student_200182@naviksha.com",
+  "studentID": "200182",
+  "mobileNo": "9900470192",
+  "password": "$2a$10$KvT0A3g9yEusngaHm1Y0yeLq733UcgVf9xhEofvilhrLLvFRaE2VC",
+  "name": "PRAGATHI V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:27.087Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:30.708Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68a1518bc03066aea3c"
+  },
+  "email": "student_200369@naviksha.com",
+  "studentID": "200369",
+  "mobileNo": "9611611701",
+  "password": "$2a$10$0m9RuFFiD2OBO2R9rG.unuS/i1L7w0Jnx4Uc24UssXgL/H4HrrPtG",
+  "name": "DHRUVAN KARTIK",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:26.729Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:30.400Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68a1518bc03066aea3b"
+  },
+  "email": "student_200181@naviksha.com",
+  "studentID": "200181",
+  "mobileNo": "8103580850",
+  "password": "$2a$10$nsM5xQwEhmAMA4dqq5aww.NQRTeGC2ZKMoX6l7YJZ2.Utn/BqeYFe",
+  "name": "DIVIJA JAIN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:26.536Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:30.245Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68a1518bc03066aea3a"
+  },
+  "email": "student_200331@naviksha.com",
+  "studentID": "200331",
+  "mobileNo": "9342543852",
+  "password": "$2a$10$aOEYZJERslgD/A2CU9By4.03WTh0ZaeV7bsf2muHWTerhr.aSjQiS",
+  "name": "LIKITHA SRI.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:26.341Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:30.090Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e68a1518bc03066aea39"
+  },
+  "email": "student_200344@naviksha.com",
+  "studentID": "200344",
+  "mobileNo": "9740296891",
+  "password": "$2a$10$3WW30iJKLPb8iouiJE1Mae16S0amdjjYg4WfbmzA56d0tjR.rikXm",
+  "name": "T.P.HARINI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:26.139Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:29.938Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6891518bc03066aea38"
+  },
+  "email": "student_200271@naviksha.com",
+  "studentID": "200271",
+  "mobileNo": "8792529795",
+  "password": "$2a$10$P4i9A5QKWuFsm0hm30Cyne2Y9bbQdrUrFTppaHgL.rtPHszZU642u",
+  "name": "SHAMANTH K S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:25.618Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:29.464Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6891518bc03066aea36"
+  },
+  "email": "student_200353@naviksha.com",
+  "studentID": "200353",
+  "mobileNo": "9902182589",
+  "password": "$2a$10$5POkCZ/b0hJDCeczW2I0SeHz0Kg0J/lAgsExHiXKTvIoAbU6jFnsW",
+  "name": "GIRWA GOPAL KOLI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:25.216Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:29.081Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6891518bc03066aea35"
+  },
+  "email": "student_200187@naviksha.com",
+  "studentID": "200187",
+  "mobileNo": "9353636264",
+  "password": "$2a$10$0P0yDq/KEYtDqv6ra9jEhOvqxiSQR.qy0SjAa3IOY3qcP.bIMe0.u",
+  "name": "V. SAANVI BALASIGA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:25.016Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:28.919Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6881518bc03066aea34"
+  },
+  "email": "student_200121@naviksha.com",
+  "studentID": "200121",
+  "mobileNo": "9844352782",
+  "password": "$2a$10$W4PEjdV4jGdHKRkexElPbOQLqW1ZGlSGn0SbcdaEuXQZxd0T.VYoe",
+  "name": "ASHAZ AHMED",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:24.811Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:28.764Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6881518bc03066aea33"
+  },
+  "email": "student_200210@naviksha.com",
+  "studentID": "200210",
+  "mobileNo": "9972110849",
+  "password": "$2a$10$PWFGPABqrWrvSb6e7hyiSeC2o8wVnOfgx/0NwlPlybwiDNMqxjPky",
+  "name": "J. KETZYA JAVAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:24.612Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:28.613Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6881518bc03066aea32"
+  },
+  "email": "student_200418@naviksha.com",
+  "studentID": "200418",
+  "mobileNo": "9148834029",
+  "password": "$2a$10$iKjQ8CUA929yxBL4ulIkbeTl9HAHl2w5Xqjd80LmUtxXhbnF1HB2G",
+  "name": "BHUVAN.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:24.412Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:28.462Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6881518bc03066aea31"
+  },
+  "email": "student_200175@naviksha.com",
+  "studentID": "200175",
+  "mobileNo": "9110439567",
+  "password": "$2a$10$TRRfSEoPL//LJTAmxV.CO..A/yVugl1jH/MPrZGwYzy/1soqK3/se",
+  "name": "ARJUN D",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:24.213Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:28.311Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6881518bc03066aea30"
+  },
+  "email": "student_200109@naviksha.com",
+  "studentID": "200109",
+  "mobileNo": "9844051467",
+  "password": "$2a$10$LBBYvCrW45i8WYFAlWs7senu3KY0C9IQUiBPCGB.nokEOWyMk9o.O",
+  "name": "IBA IBRAHIM SHAREEFF",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:24.014Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:28.156Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6871518bc03066aea2f"
+  },
+  "email": "student_200308@naviksha.com",
+  "studentID": "200308",
+  "mobileNo": "6363434735",
+  "password": "$2a$10$x.omX9Ab0A0Qf.Qi.uzRv.XcWzvfcVyd.DTdj0EsHqrX2WwssMavG",
+  "name": "K.DEEKSHA REDDY",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:23.809Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:28.005Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6871518bc03066aea2e"
+  },
+  "email": "student_200437@naviksha.com",
+  "studentID": "200437",
+  "mobileNo": "7259706950",
+  "password": "$2a$10$U9noRHLxH8Jw7HFZHx3aLOtkg3cyhuPCpKHZAOZfC9gqVCsRT.kiK",
+  "name": "J.VISHVAS",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:23.609Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:27.855Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6871518bc03066aea2d"
+  },
+  "email": "student_200262@naviksha.com",
+  "studentID": "200213",
+  "mobileNo": "9449148103",
+  "password": "$2a$10$T9AA5SA7O3VXEhTZKXPy8ek.mGVAQJfYaC5tzlJRpXbFPMdC/Nd5K",
+  "name": "GOKUL R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:23.409Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:56.495Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6871518bc03066aea2c"
+  },
+  "email": "student_200132@naviksha.com",
+  "studentID": "200132",
+  "mobileNo": "8095339626",
+  "password": "$2a$10$pYYbc9cpxKPNqz99qIVJVuzVpGMIksix.QYTmIUd1frLa58P3R58K",
+  "name": "ZABIULLA KHAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:23.213Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:27.546Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6861518bc03066aea2a"
+  },
+  "email": "student_200349@naviksha.com",
+  "studentID": "200349",
+  "mobileNo": "9902689656",
+  "password": "$2a$10$4BVv9T3bZk40J8JXqcgmpug9KeMlXuwo8a5qXS8jaYgkkio6Rso0O",
+  "name": "DHARUN.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:22.783Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:27.173Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6861518bc03066aea29"
+  },
+  "email": "student_200069@naviksha.com",
+  "studentID": "200069",
+  "mobileNo": "9590664141",
+  "password": "$2a$10$EjARl24d8Oskrxhgv1uI6OFnjrpnJ4eLbHwr4bXOhiRUwVRao.dOO",
+  "name": "RAKSHIT VERMA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:22.576Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:27.021Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6861518bc03066aea28"
+  },
+  "email": "student_200390@naviksha.com",
+  "studentID": "200390",
+  "mobileNo": "9535290084",
+  "password": "$2a$10$BUbGltj84cRpEnU/6e/5Re/UAQ4JDkKhpFuAHEmJOl1rNkolfYVGO",
+  "name": "SOHAN RAJ S.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:22.219Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:26.699Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6861518bc03066aea27"
+  },
+  "email": "student_200253@naviksha.com",
+  "studentID": "200253",
+  "mobileNo": "9036302325",
+  "password": "$2a$10$VdGWhmTuynvIIGlun6khlOcEwSP7sb/iyGru8.1Qgruklzvjx94IG",
+  "name": "YUKTHA B",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:22.015Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:26.541Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6851518bc03066aea26"
+  },
+  "email": "student_200267@naviksha.com",
+  "studentID": "200267",
+  "mobileNo": "7338015515",
+  "password": "$2a$10$aQFAaOvRFReriSabftlEC.m/qA7lOWkp4L7kNr8464lA4Pmd3yUju",
+  "name": "VEDIKA R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:21.809Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:26.389Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6851518bc03066aea25"
+  },
+  "email": "student_200304@naviksha.com",
+  "studentID": "200304",
+  "mobileNo": "6362183692",
+  "password": "$2a$10$e1IkJrqk7X8T0R2MHotG0Ox0Vwz8v.pF0k7vxNEtyJfBiwXiEoInO",
+  "name": "VEDA R.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:21.608Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:26.235Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930e6851518bc03066aea24"
+  },
+  "email": "student_200413@naviksha.com",
+  "studentID": "200413",
+  "mobileNo": "9343661222",
+  "password": "$2a$10$5hzMsZyJ/jOuHd3S35ziUOwhUUnlScjnHnBkS3neXv11zhgv/RbIS",
+  "name": "TANISHA.N",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:40:21.411Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:26.083Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfcc1518bc03066ae95e"
+  },
+  "email": "student_200223@naviksha.com",
+  "studentID": "200223",
+  "mobileNo": "9663508226",
+  "password": "$2a$10$KghTcMI9q3yBW0xYYbH4he5IRt9x8zOAv4f3z9/8MQsV4GQctfuAC",
+  "name": "ABIR HUSSAIN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:40.306Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:25.929Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfcc1518bc03066ae95c"
+  },
+  "email": "student_200177@naviksha.com",
+  "studentID": "200177",
+  "mobileNo": "7259024073",
+  "password": "$2a$10$cYJh/tcbY0VCapfmK/aQCetBw6axv/jVjRcZ6e0.i3kGw0ATQxzfO",
+  "name": "RUTWIK R M SHARMA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:40.063Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:25.777Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfcb1518bc03066ae95a"
+  },
+  "email": "student_200118@naviksha.com",
+  "studentID": "200118",
+  "mobileNo": "9886340653",
+  "password": "$2a$10$VhBrR7kBTQrEXzNkqV4pNuwbAiQ0.W89vvGZwluHJxcL4.p6JFRG6",
+  "name": "KEERTHI M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:39.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:25.622Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfcb1518bc03066ae957"
+  },
+  "email": "student_200305@naviksha.com",
+  "studentID": "200305",
+  "mobileNo": "9840608142",
+  "password": "$2a$10$1QbRuFoo.qmQdeGPVABhG.Wqjbf41kX/FQPJL1sNiHax5nFZ8N0nC",
+  "name": "BHAGAVATI KUMARI.D",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:39.329Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:25.315Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfcb1518bc03066ae955"
+  },
+  "email": "student_200198@naviksha.com",
+  "studentID": "200198",
+  "mobileNo": "9480529265",
+  "password": "$2a$10$vtOAUv6/1ph9ntiVQg5Wyu5Wiy4mcXOr95v6rfKql6Ggc/vTkASaG",
+  "name": "GAJANAND",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:39.077Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:25.161Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfca1518bc03066ae953"
+  },
+  "email": "student_200278@naviksha.com",
+  "studentID": "200229",
+  "mobileNo": "9513370219",
+  "password": "$2a$10$BODgbmMnY0.AIVw0jcrh.uIjyx/9XbyxENtd7zauaFx3L5F/pwkI2",
+  "name": "SHASHANK GOWDA K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:38.839Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:50.259Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfca1518bc03066ae951"
+  },
+  "email": "student_200345@naviksha.com",
+  "studentID": "200298",
+  "mobileNo": "9148127959",
+  "password": "$2a$10$o6Q6IrB3aL9NuF.kpEvKMukNNoX/6XMCKVuxzKtmG8A82YpE/vviu",
+  "name": "HARSHITHA.P",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:38.571Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:43.428Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfca1518bc03066ae94f"
+  },
+  "email": "student_200240@naviksha.com",
+  "studentID": "200240",
+  "mobileNo": "7259729379",
+  "password": "$2a$10$sXyiKqPPQZpRNeFRIDoQ5eZ0PMxwz1saQJCFG6juxNI0NlH50eLx6",
+  "name": "NIKSHITHA S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:38.324Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:24.701Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfca1518bc03066ae94d"
+  },
+  "email": "student_200306@naviksha.com",
+  "studentID": "200306",
+  "mobileNo": "9980056508",
+  "password": "$2a$10$2pffRkXZ.QTQqzvmYa2C6eZjMfKEuOG1SqeeO5eMO7HEwh7CpISn6",
+  "name": "BHAVYA.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:38.065Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:24.547Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc91518bc03066ae949"
+  },
+  "email": "student_200119@naviksha.com",
+  "studentID": "200119",
+  "mobileNo": "7019294762",
+  "password": "$2a$10$dw.QUz9Lxb7BzY6DBFN9NeMQWnRfnpo3TTOmUAr9JDIYTEuJZTZyS",
+  "name": "R.T.SHU D",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:37.328Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:24.092Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc91518bc03066ae947"
+  },
+  "email": "student_200266@naviksha.com",
+  "studentID": "200266",
+  "mobileNo": "9845484876",
+  "password": "$2a$10$gsOpkrLYk/CqkhDDyGstNOV8Td6Uc50OMGSDgZaQnlXDrqjoY8XQC",
+  "name": "CHIRAG GOWDA. S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:37.091Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:23.935Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc81518bc03066ae945"
+  },
+  "email": "student_200286@naviksha.com",
+  "studentID": "200258",
+  "mobileNo": "9341211652",
+  "password": "$2a$10$NLZvOxLAGyqM8.bHMBH.pOLe6z1r4McogTjM/DgGrHG/prTQXUKEq",
+  "name": "SAINATH C. HUKKERI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:36.825Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:56.111Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc81518bc03066ae943"
+  },
+  "email": "student_200375@naviksha.com",
+  "studentID": "200375",
+  "mobileNo": "9632431096",
+  "password": "$2a$10$yieEQI3QuteIV5jPOWF.quomYtRwG/PtX9D0ObRmP24UpNbBdmxUq",
+  "name": "Thejas.Y.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:36.576Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:23.624Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc71518bc03066ae93e"
+  },
+  "email": "student_200414@naviksha.com",
+  "studentID": "200414",
+  "mobileNo": "8073469684",
+  "password": "$2a$10$k14HRjo2BQ6e3k5ELB599.KbUMcX7l3xR7pnP6luoHzzD.oD7evX.",
+  "name": "ADITRI.J",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:35.587Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:23.004Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc71518bc03066ae93c"
+  },
+  "email": "student_200374@naviksha.com",
+  "studentID": "200374",
+  "mobileNo": "9844048314",
+  "password": "$2a$10$KcARPI8TUt99Srp/D4qBtuspJhwJHCrbHnmDP.XXDiRO7AJQJb3J2",
+  "name": "KARAMPUDI KAVYA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:35.345Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:22.848Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc71518bc03066ae93a"
+  },
+  "email": "student_200080@naviksha.com",
+  "studentID": "200080",
+  "mobileNo": "9901211446",
+  "password": "$2a$10$egpF794wqlSuSrRK5Hq2EOBL0Xzo5CZgCrUuUjEYX9RFYdUu9inVu",
+  "name": "ABEL THOMAS FREDY",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:35.094Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:22.687Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc61518bc03066ae938"
+  },
+  "email": "student_200425@naviksha.com",
+  "studentID": "200425",
+  "mobileNo": "9538090052",
+  "password": "$2a$10$9ArLm4/3CJJq6kcyuAPq0.QWNkSI4wBCEKhsQCLfCtRb4pB2TmMzu",
+  "name": "SURABHI.Y",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:34.843Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:22.532Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc61518bc03066ae936"
+  },
+  "email": "student_200343@naviksha.com",
+  "studentID": "200343",
+  "mobileNo": "9845888009",
+  "password": "$2a$10$BGNzeMlOMauQcxPgQZlGNO9EM3T.02ri7qKso5ucWzmCJ85XwikDy",
+  "name": "KRUTHIKA.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:34.608Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:22.379Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc61518bc03066ae934"
+  },
+  "email": "student_200274@naviksha.com",
+  "studentID": "200227",
+  "mobileNo": "6364332326",
+  "password": "$2a$10$TnoPel9lS3zh.o7jyZguI.SzqObXc7m4/Y/35AIRwg2AvGdyN7tDS",
+  "name": "AAKRITI DHAI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:34.372Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:31.861Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc61518bc03066ae932"
+  },
+  "email": "student_200242@naviksha.com",
+  "studentID": "200242",
+  "mobileNo": "9686799064",
+  "password": "$2a$10$HmE1.PgyhgW4TqqXfOkltO39w6BzORDWiueVZ0UQYWyRtw0jMjXlG",
+  "name": "POORVI C. RATU",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:34.136Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:22.074Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc51518bc03066ae930"
+  },
+  "email": "student_200219@naviksha.com",
+  "studentID": "200219",
+  "mobileNo": "8197215189",
+  "password": "$2a$10$zvHAZBK3YgC9.nvuMv4u9eT10wIIyqzO7aIxrBFPZ7Wi19rBhOTAu",
+  "name": "LIKITH RAJ. S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:33.899Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:21.923Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc51518bc03066ae92c"
+  },
+  "email": "student_200419@naviksha.com",
+  "studentID": "200419",
+  "mobileNo": "9738236597",
+  "password": "$2a$10$uJFvuhC0ZVAT781jO1kXTu0270L9tSFqmmTZFrg7fytU01BJ9bzDK",
+  "name": "TANVEER.BASHA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:33.153Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:21.462Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc41518bc03066ae92a"
+  },
+  "email": "student_200350@naviksha.com",
+  "studentID": "200350",
+  "mobileNo": "7795009356",
+  "password": "$2a$10$YTXg1lF3dU5/c1IfyscGR.5aSZ.Ti6eFROk9.6XAF2dvFe67OFV/6",
+  "name": "THARUN.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:32.906Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:21.309Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc41518bc03066ae928"
+  },
+  "email": "student_200400@naviksha.com",
+  "studentID": "200400",
+  "mobileNo": "9740378242",
+  "password": "$2a$10$vBP6/13C3OzpVkXI/qFli.sNxcz2vYtkPERQqTrwl9/Tr/YdVO4oS",
+  "name": "NAYANA.P",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:32.660Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:21.153Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc41518bc03066ae926"
+  },
+  "email": "student_200403@naviksha.com",
+  "studentID": "200403",
+  "mobileNo": "8050645722",
+  "password": "$2a$10$0YEUa/HC.OPI338mOym4.O7otNKnr4G4TqKWrUAu5MlZNChDrC8Uy",
+  "name": "LALITHA.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:32.421Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:20.987Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc41518bc03066ae924"
+  },
+  "email": "student_200101@naviksha.com",
+  "studentID": "200101",
+  "mobileNo": "7022971707",
+  "password": "$2a$10$IaCzX2wIkTODHVRxQ3Yij.N/YWYyJBNNd2BLQ0B9cbFZhAtfic0E.",
+  "name": "MANASA B",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:32.181Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:20.834Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc31518bc03066ae921"
+  },
+  "email": "student_200377@naviksha.com",
+  "studentID": "200377",
+  "mobileNo": "9535021364",
+  "password": "$2a$10$.99lDo9e6pwBzO4ARqnhqeFJ/vJzUn4aYpsXBCiG30.l1slw3fAAe",
+  "name": "ADITHYA B M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:31.694Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:20.517Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc31518bc03066ae91f"
+  },
+  "email": "student_200115@naviksha.com",
+  "studentID": "200115",
+  "mobileNo": "9901200770",
+  "password": "$2a$10$nFYA9l2tZvAVKEvG7ljJ.eGUq/tJARj3U4hifCL56Foy/0bFOv0DO",
+  "name": "THANUSHREE S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:31.456Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:20.365Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc31518bc03066ae91d"
+  },
+  "email": "student_200259@naviksha.com",
+  "studentID": "200259",
+  "mobileNo": "9380983557",
+  "password": "$2a$10$TjdSzUUCV7NxEVUVJJ/MGO1nt/E04oxoi9XOjSDrITV33NGV5Yo3.",
+  "name": "HEMANTH T. M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:31.194Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:20.215Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc21518bc03066ae91b"
+  },
+  "email": "student_200170@naviksha.com",
+  "studentID": "200170",
+  "mobileNo": "8861521697",
+  "password": "$2a$10$ABaCRhX8iwmC.8KxwXTe2esWIvh8HXeweP1lmNVr.mGSLmGFb3Ziq",
+  "name": "NISHANTH R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:30.955Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:20.060Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc21518bc03066ae918"
+  },
+  "email": "student_200209@naviksha.com",
+  "studentID": "200209",
+  "mobileNo": "8050945393",
+  "password": "$2a$10$CrZBBSXC7NbMBRTHWLTkVet3EaNfBMcRufDHhadvJudYH9Nizwap6",
+  "name": "KAPUNYA C",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:30.456Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:19.749Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc21518bc03066ae916"
+  },
+  "email": "student_200172@naviksha.com",
+  "studentID": "200172",
+  "mobileNo": "8776989200",
+  "password": "$2a$10$m9Q2pBIymbvUZkSbJcDlFudY.91OdIyPlonL.XOmaOTeuz/EP3Ptu",
+  "name": "PRANAV",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:30.207Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:19.590Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc11518bc03066ae914"
+  },
+  "email": "student_200313@naviksha.com",
+  "studentID": "200313",
+  "mobileNo": "9449105499",
+  "password": "$2a$10$R9NM07vsPr2sSLxfH/VjI.75/nrjBMyFcQd4uuJU3hUBpgk8gk9By",
+  "name": "BRINDA ANGADI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:29.971Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:19.435Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc11518bc03066ae910"
+  },
+  "email": "student_200282@naviksha.com",
+  "studentID": "200250",
+  "mobileNo": "9986822536",
+  "password": "$2a$10$Szhh4pQSukZMHgKuwfAQb.0QrPlDDJ5nDuwEfm3CYhUl71N5xBhlO",
+  "name": "ARJUN K.S.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:29.247Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:39.326Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc11518bc03066ae90e"
+  },
+  "email": "student_200146@naviksha.com",
+  "studentID": "200146",
+  "mobileNo": "9793438959",
+  "password": "$2a$10$bE5ixUASck3FG4/47MwP7.BAt0idcPfc/vWlazmjs0.f0Y69eIk9O",
+  "name": "Hardik Kumar",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:29.005Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:18.811Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc01518bc03066ae90c"
+  },
+  "email": "student_200111@naviksha.com",
+  "studentID": "200111",
+  "mobileNo": "6362181045",
+  "password": "$2a$10$R8zqbcZUJfvUVzfH3fNRG.YKGwoxqks4Wl1F8yOSB0Qltqeiu0jIq",
+  "name": "LEROY CLEMENT A R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:28.764Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:18.659Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc01518bc03066ae90a"
+  },
+  "email": "student_200327@naviksha.com",
+  "studentID": "200327",
+  "mobileNo": "6362211537",
+  "password": "$2a$10$9HFYzFjZT7pelQfSCH8PauxBcn5ipTnSBETIKrrXl84UmKj5PAHry",
+  "name": "SANVI.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:28.517Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:18.480Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc01518bc03066ae908"
+  },
+  "email": "student_200152@naviksha.com",
+  "studentID": "200152",
+  "mobileNo": "9886883519",
+  "password": "$2a$10$rwhqZB04CyaEsyy1CQB1j.H0.C1tcDcvFuNka8PFEnRdViC6mCZnq",
+  "name": "PRATIK SINGH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:28.269Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:18.325Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfc01518bc03066ae906"
+  },
+  "email": "student_200387@naviksha.com",
+  "studentID": "200387",
+  "mobileNo": "8050290255",
+  "password": "$2a$10$W6yNIEwRet0XwvIay3t78uo/q7QAgcwVQxAkrqqWiiQR54DIxaW3C",
+  "name": "Nishanth.H",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:28.030Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:18.163Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbf1518bc03066ae904"
+  },
+  "email": "student_200247@naviksha.com",
+  "studentID": "200247",
+  "mobileNo": "9663058585",
+  "password": "$2a$10$DQlBkE1pStmYd2GikOQbgOtVCffseRfWlGzUEDPRMNofgUkT5PMna",
+  "name": "SAMARTH S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:27.786Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:18.010Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbf1518bc03066ae901"
+  },
+  "email": "student_200263@naviksha.com",
+  "studentID": "200263",
+  "mobileNo": "9052290057",
+  "password": "$2a$10$/iHdLhRc8NG6DExINbo/6eWGbneZFX29om.9wGecwpV0xZGm64qNi",
+  "name": "AMULYA V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:27.273Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:17.691Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbe1518bc03066ae8fe"
+  },
+  "email": "student_200211@naviksha.com",
+  "studentID": "200211",
+  "mobileNo": "9611840802",
+  "password": "$2a$10$7HFJnjpaOrlD4hNgquAx3eC7amQXnb4Uj8SnLutIsgLLzPCIDbXMa",
+  "name": "ABIGAIL",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:26.780Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:17.381Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbe1518bc03066ae8fc"
+  },
+  "email": "student_200178@naviksha.com",
+  "studentID": "200178",
+  "mobileNo": "9535159021",
+  "password": "$2a$10$EkJkfhne6Rc8upMosMvYYOo77JFxLQumrwGlJkI.LMMYb79/SEpNy",
+  "name": "SANTHOSH KUMAR R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:26.526Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:17.225Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbe1518bc03066ae8fa"
+  },
+  "email": "student_200442@naviksha.com",
+  "studentID": "200442",
+  "mobileNo": "9611295258",
+  "password": "$2a$10$NfrjSFMHux9JT5Nvmia0cO6RQ5dGNf6Lf/qyZB9FtcxJaCf0OC1By",
+  "name": "NEERAJ.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:26.286Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:17.072Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbe1518bc03066ae8f8"
+  },
+  "email": "student_200339@naviksha.com",
+  "studentID": "200339",
+  "mobileNo": "9008565855",
+  "password": "$2a$10$bfh0daT9SqShEfZWbLq2aeRVAWxJ7DJ3sWNBHRR/AJs7kJPXyXeb6",
+  "name": "MANYA.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:26.059Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:16.915Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbd1518bc03066ae8f4"
+  },
+  "email": "student_200192@naviksha.com",
+  "studentID": "200192",
+  "mobileNo": "9448855129",
+  "password": "$2a$10$k.HGM7Ci9fJgcKR.Qc68/.IWXDCsYgnR3YgRzsJvqT.fC.Rna/Uoe",
+  "name": "BALAJI S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:25.318Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:16.442Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbd1518bc03066ae8f2"
+  },
+  "email": "student_200324@naviksha.com",
+  "studentID": "200324",
+  "mobileNo": "9606212566",
+  "password": "$2a$10$hHL/Yx9mu9AyYAYiDU9Ms.7P5mdwH0uZv4.hPipUmcaV9/r2oiTWu",
+  "name": "NITHVASHREE.N",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:25.071Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:16.292Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbc1518bc03066ae8f0"
+  },
+  "email": "student_200395@naviksha.com",
+  "studentID": "200094",
+  "mobileNo": "7760902036",
+  "password": "$2a$10$fTblx9mZs5NmgTpt6eaWXOG4UBVSNytk3.v0VkuQRTGc49ZFu8etm",
+  "name": "JOGESH.J",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:24.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:54.201Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbc1518bc03066ae8ee"
+  },
+  "email": "student_200319@naviksha.com",
+  "studentID": "200319",
+  "mobileNo": "9538640900",
+  "password": "$2a$10$BaE/toGbrsI6ymOWiVqZ7eA7YDZcicJW0xQwMNeFTECwXjfhH9/La",
+  "name": "VEDHIKA.V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:24.584Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:15.987Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbc1518bc03066ae8ec"
+  },
+  "email": "student_200139@naviksha.com",
+  "studentID": "200139",
+  "mobileNo": "9900340771",
+  "password": "$2a$10$PDE9kFnpJhDqu0xq2t.gkeWe0v8LcBsMRcmm7OSvJmCRKzluOIgbe",
+  "name": "HUMAIRA SHARIFF",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:24.345Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:15.828Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbc1518bc03066ae8ea"
+  },
+  "email": "student_200361@naviksha.com",
+  "studentID": "200361",
+  "mobileNo": "7892456017",
+  "password": "$2a$10$ruZi9/slAU2Mv5eSu0ASuO/AF4SnJaKnnRUYR2ukHoHcVV5eDztDK",
+  "name": "Gowtham",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:24.094Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:15.675Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbb1518bc03066ae8e8"
+  },
+  "email": "student_200415@naviksha.com",
+  "studentID": "200415",
+  "mobileNo": "9353950790",
+  "password": "$2a$10$7VDeDKVA9s/apD5lt16aV.1.z2Hmu0yMoA9ygM.WFRp.a9XT5bNZS",
+  "name": "ROHIT TEJAS",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:23.850Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:15.521Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfbb1518bc03066ae8e6"
+  },
+  "email": "student_200234@naviksha.com",
+  "studentID": "200422",
+  "mobileNo": "9845621319",
+  "password": "$2a$10$yZBV5l2SqxRYLbSvf4L7NeCNbJGNd50h6ZEOD1lVL/GGc3icvgYWe",
+  "name": "HARSHA LOCHAN C",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:23.609Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:27.395Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfba1518bc03066ae8e2"
+  },
+  "email": "student_200147@naviksha.com",
+  "studentID": "200147",
+  "mobileNo": "9972868806",
+  "password": "$2a$10$qqs541uMGTQa2ppbvM.WW.ROw1AqaVZXnfBmZumcPgVb12iT3ea/a",
+  "name": "HARI PRIYA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:22.871Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:14.891Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfba1518bc03066ae8e0"
+  },
+  "email": "student_200097@naviksha.com",
+  "studentID": "200097",
+  "mobileNo": "9901710874",
+  "password": "$2a$10$7IfNkVYlnWS/8uqCzWgo6.wxgrgVaNk1LTnhj0V7lwonWDX7vFnYm",
+  "name": "HEMANTH A.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:22.627Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:14.737Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfba1518bc03066ae8de"
+  },
+  "email": "student_200371@naviksha.com",
+  "studentID": "200371",
+  "mobileNo": "6366142535",
+  "password": "$2a$10$M/XYCsmi5L6UaD9oGLabR.h4vKCBkMDq/32Y4MiraBGOdxnhNlNNm",
+  "name": "B N LIKITH SAI GOUDA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:22.390Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:14.575Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb91518bc03066ae8db"
+  },
+  "email": "student_200221@naviksha.com",
+  "studentID": "200137",
+  "mobileNo": "7975468726",
+  "password": "$2a$10$Tt01GZanbzBe.zwOzVUKNu72S9/LnXk8mySio0msukouuKfkvDDti",
+  "name": "RATIF AHMED A",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:21.920Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:04.614Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb91518bc03066ae8d9"
+  },
+  "email": "student_200261@naviksha.com",
+  "studentID": "200261",
+  "mobileNo": "9513333140",
+  "password": "$2a$10$pwCJ6Ay/L0tDUIOJtLIOjOH/gSNpBRxmfOm6D/doivqyH/nrw5zO.",
+  "name": "Nakul. M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:21.691Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:14.090Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb91518bc03066ae8d7"
+  },
+  "email": "student_200396@naviksha.com",
+  "studentID": "200396",
+  "mobileNo": "8792140213",
+  "password": "$2a$10$pCaT8N5CxE8C3CbrVB4Qwuk.ufHC8l8WFsElvQshBbboYtgg4ZDFi",
+  "name": "BINDU SHREE.H",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:21.454Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:13.932Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb81518bc03066ae8d3"
+  },
+  "email": "student_200072@naviksha.com",
+  "studentID": "200072",
+  "mobileNo": "8861200539",
+  "password": "$2a$10$WylVQerlOtkfamThsE4ziO5KcScN2BLKtzJB1igPGBHp5/nWRzn1u",
+  "name": "SAMARA SAYYAD",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:20.719Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:13.466Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb81518bc03066ae8d1"
+  },
+  "email": "student_200391@naviksha.com",
+  "studentID": "200391",
+  "mobileNo": "9535304355",
+  "password": "$2a$10$Jrnwdov9a8FubvSFlTeoneaLKfWMdkLAjBaHh33BpSKf30q8kAC2e",
+  "name": "CHARITHA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:20.473Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:13.312Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb71518bc03066ae8cd"
+  },
+  "email": "student_200186@naviksha.com",
+  "studentID": "200174",
+  "mobileNo": "9632452262",
+  "password": "$2a$10$xXidF39U4L0EV1TBlTi08OLE2pRUSS8a1SuFUGZWcUXi1LotiVIcO",
+  "name": "MISBAH J",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:19.745Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:52.098Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb71518bc03066ae8ca"
+  },
+  "email": "student_200145@naviksha.com",
+  "studentID": "200145",
+  "mobileNo": "9986598373",
+  "password": "$2a$10$PaJ6T3AtNFaptbyPzXk0TONeHnI/t9Nw3x7iLCegtGBhhg9/QkApq",
+  "name": "Angel Mary Philip",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:19.274Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:12.526Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb61518bc03066ae8c7"
+  },
+  "email": "student_200340@naviksha.com",
+  "studentID": "200340",
+  "mobileNo": "9880027547",
+  "password": "$2a$10$sbMT7j3oAkakoDcSJyhJO.YR1JBMfiD0K.e4fo03JVCkcaQXLWFZS",
+  "name": "SAMEEKSHA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:18.753Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:12.136Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb61518bc03066ae8c5"
+  },
+  "email": "student_200438@naviksha.com",
+  "studentID": "200438",
+  "mobileNo": "7676301253",
+  "password": "$2a$10$S23dNczpverCpGso4HJvbeUZAdyS6oPA7nI8foKRbVwiHY8CIJeXq",
+  "name": "R.SUDEEP",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:18.507Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:11.980Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb51518bc03066ae8c1"
+  },
+  "email": "student_200254@naviksha.com",
+  "studentID": "200254",
+  "mobileNo": "9663058287",
+  "password": "$2a$10$fY5GSAluafFLgUPb8a3Ji.cztKfoE8vEHYAVw6zCbN50Q4SXGlZrS",
+  "name": "POORNASHREE M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:17.741Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:11.520Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb51518bc03066ae8be"
+  },
+  "email": "student_200089@naviksha.com",
+  "studentID": "200089",
+  "mobileNo": "9113543929",
+  "password": "$2a$10$f4vthtZEVChTuO2lUBLKf.aKkwhfCr53nFYCMTmkCkhXV964WjcWy",
+  "name": "KAVIN SAI V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:17.231Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:11.215Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb41518bc03066ae8bc"
+  },
+  "email": "student_200325@naviksha.com",
+  "studentID": "200325",
+  "mobileNo": "8217067170",
+  "password": "$2a$10$rmb/vW3ZbWmz/OiR/MO8ou6dmEr9zK0lo.cCdRal/uS5GVlY6CFr2",
+  "name": "PRANEETH REDDY.D",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:16.990Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:11.060Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb41518bc03066ae8b7"
+  },
+  "email": "student_200359@naviksha.com",
+  "studentID": "200359",
+  "mobileNo": "99945726066",
+  "password": "$2a$10$wlfjd99oW2uMuTmLmOHKceOXj/Mvie.SUq9zObPoXcY6utF/i3JXa",
+  "name": "Likith.G.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:16.068Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:10.443Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb31518bc03066ae8b5"
+  },
+  "email": "student_200204@naviksha.com",
+  "studentID": "200204",
+  "mobileNo": "9535228370",
+  "password": "$2a$10$KP3Io487lL/66n9Hz0kIVenhv4164z3aHGKWhjistWaQqLH0asubW",
+  "name": "ANIRUDH R JADAV",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:15.824Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:10.287Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb31518bc03066ae8b3"
+  },
+  "email": "student_200239@naviksha.com",
+  "studentID": "200239",
+  "mobileNo": "7338284981",
+  "password": "$2a$10$YwpkJrxxtLVzkdNrOhZx0uXg2FlcOdGyV1u6Lf3SVgELjd8UBr/ha",
+  "name": "LOHITH M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:15.578Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:10.132Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb31518bc03066ae8b1"
+  },
+  "email": "student_200363@naviksha.com",
+  "studentID": "200363",
+  "mobileNo": "8951352545",
+  "password": "$2a$10$anZfsJoT.5xbOHX1dkPtqOmAas3MtLZgGknX1e/awTY/GAPMAmUku",
+  "name": "M.DHANOSH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:15.330Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:09.976Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb31518bc03066ae8af"
+  },
+  "email": "student_200134@naviksha.com",
+  "studentID": "200134",
+  "mobileNo": "9880255825",
+  "password": "$2a$10$7w2YlMYonbxVaVOlmEkbheJEQNYZaxx.edrvunPmDaee.3YRYcH6q",
+  "name": "KAVIRAJ L M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:15.089Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:09.822Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb21518bc03066ae8ab"
+  },
+  "email": "student_200373@naviksha.com",
+  "studentID": "200373",
+  "mobileNo": "9880051593",
+  "password": "$2a$10$Qvw1OWG9iCrpaMLz1Af4Le5GBT1MNthldS0vMs58uy8NzvB5eb0Aa",
+  "name": "ESHANI SANTHOSH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:14.395Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:09.283Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb21518bc03066ae8a9"
+  },
+  "email": "student_200333@naviksha.com",
+  "studentID": "200281",
+  "mobileNo": "9019085754",
+  "password": "$2a$10$ZH3K0iDCAhmcJp.qqSt0/.qY6mqRPPdBqXUG7LwtErP19mvqD843q",
+  "name": "CHIRAG M.G",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:14.164Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:56.725Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb11518bc03066ae8a5"
+  },
+  "email": "student_200276@naviksha.com",
+  "studentID": "200276",
+  "mobileNo": "9880126863",
+  "password": "$2a$10$.40qQgLbIG5.p8dz2ilWY.04Iuoer/x3ln/Wy22tKdCQSpwmVAeEW",
+  "name": "Anikith-G",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:13.406Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:08.641Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb11518bc03066ae8a3"
+  },
+  "email": "student_200312@naviksha.com",
+  "studentID": "200312",
+  "mobileNo": "7019915422",
+  "password": "$2a$10$8jIYKiLQbMMaEiEn9CbgvO/Odj7a.SEJLwNg/wZRYsjSaYLjMm6u2",
+  "name": "BINDU SHRI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:13.161Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:08.480Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb01518bc03066ae8a1"
+  },
+  "email": "student_200342@naviksha.com",
+  "studentID": "200342",
+  "mobileNo": "9945871822",
+  "password": "$2a$10$IcYQTw3HHtpB3ENUdPhHoeJb8RPotMF19v3E.Eg8qcxkdK1IfSHbO",
+  "name": "KUSHAL.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:12.911Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:08.324Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb01518bc03066ae89f"
+  },
+  "email": "student_200189@naviksha.com",
+  "studentID": "200189",
+  "mobileNo": "8747838436",
+  "password": "$2a$10$MXaNHmXinQS71c/HQAirjOQurL/2oM5tnsJ5Wf8wrygm5XZVWWQza",
+  "name": "ABDUL ZAHID K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:12.657Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:08.174Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb01518bc03066ae89d"
+  },
+  "email": "student_200295@naviksha.com",
+  "studentID": "200295",
+  "mobileNo": "6362642571",
+  "password": "$2a$10$cQBRSw3iN9ld.YxMvFYUyunlJatfogFQbV23pQv3ngtgi0P5.V73S",
+  "name": "BHARADWAJ S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:12.416Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:08.021Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfb01518bc03066ae89b"
+  },
+  "email": "student_200436@naviksha.com",
+  "studentID": "200436",
+  "mobileNo": "8095507317",
+  "password": "$2a$10$nG0lTrJ0h4BT.V1UXboLhu4EA.2r8kiKTepq3keal7mqjnPf7CLTe",
+  "name": "MOHAMMED AFEAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:12.159Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:07.858Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfaf1518bc03066ae899"
+  },
+  "email": "student_200230@naviksha.com",
+  "studentID": "200230",
+  "mobileNo": "7406275189",
+  "password": "$2a$10$YiF2hRov1I95SCdLkyD8F..9Emw39NgYUfO4evz5s0o4yutKx7Tz6",
+  "name": "SAGAR KUMAR R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:11.908Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:07.698Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfaf1518bc03066ae897"
+  },
+  "email": "student_200405@naviksha.com",
+  "studentID": "200405",
+  "mobileNo": "9686643910",
+  "password": "$2a$10$Xmo/qVxCPiXEQYnQaHi/2uZ3wutLbBJ1kgKqEvLX1WG6byW5XqRCq",
+  "name": "MITHUN.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:11.664Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:07.540Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfaf1518bc03066ae895"
+  },
+  "email": "student_200346@naviksha.com",
+  "studentID": "200346",
+  "mobileNo": "9740403138",
+  "password": "$2a$10$AFAKzVVnUQvMUlrm2lAzmug8u8w7LNsd0HqM3Rfq8aWzjNBWsoHN2",
+  "name": "DARSHAN.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:11.399Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:07.371Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfaf1518bc03066ae893"
+  },
+  "email": "student_200358@naviksha.com",
+  "studentID": "200358",
+  "mobileNo": "7619419664",
+  "password": "$2a$10$SoxgSlmxQ5G4ldrVO3GXy.VGZHGa65SI0/lQ3bD6bZFz3TKJEJeOi",
+  "name": "Janhavi.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:11.151Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:07.212Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfae1518bc03066ae890"
+  },
+  "email": "student_200316@naviksha.com",
+  "studentID": "200316",
+  "mobileNo": "8722417065",
+  "password": "$2a$10$6DOHZ/dkVBwnMKk5NYRMo.UYNJq.JPLib.JU/pgRzMQRNDNE6GgzC",
+  "name": "HARSHA NANDAN.G.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:10.639Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:06.830Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfae1518bc03066ae88d"
+  },
+  "email": "student_200386@naviksha.com",
+  "studentID": "200386",
+  "mobileNo": "9731926390",
+  "password": "$2a$10$5/ApddAmepbxIwQ7T79.Kud8WHocpfRQ991L/oiOtMXpYyhhWi8yq",
+  "name": "PAVITHRAS",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:10.125Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:06.431Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfad1518bc03066ae88b"
+  },
+  "email": "student_200168@naviksha.com",
+  "studentID": "200168",
+  "mobileNo": "8861569123",
+  "password": "$2a$10$dArO9gAe29GA/WVJOTXeoOy9i8WPilsk7EtTyFejeLBdZ5X/08wZ.",
+  "name": "MO. JIA SIKANDAR",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:09.878Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:06.272Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfad1518bc03066ae889"
+  },
+  "email": "student_200317@naviksha.com",
+  "studentID": "200317",
+  "mobileNo": "8951208604",
+  "password": "$2a$10$zp3VAgtfS5GDYM66Npe4quX3m8cMMgrx7ScD7e2ZZcN8ZpWd23Ti2",
+  "name": "DEVARAJ.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:09.642Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:06.115Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfad1518bc03066ae887"
+  },
+  "email": "student_200272@naviksha.com",
+  "studentID": "200272",
+  "mobileNo": "7022623853",
+  "password": "$2a$10$UjexN2RUFbl1J/zqRcyDx.DYCAj0DpwDIu.OR0SbnWaavnQEQzYwK",
+  "name": "HITHAI SHREE G.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:09.393Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:05.956Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfac1518bc03066ae884"
+  },
+  "email": "student_200116@naviksha.com",
+  "studentID": "200116",
+  "mobileNo": "6361259729",
+  "password": "$2a$10$s4JtfJXfUNSwZRdpyvF6R.EDyylouObRjCsWEWJBzRJbkkHQJ2gle",
+  "name": "VARTHIKA D",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:08.898Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:05.624Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfac1518bc03066ae882"
+  },
+  "email": "student_200329@naviksha.com",
+  "studentID": "200329",
+  "mobileNo": "9945479555",
+  "password": "$2a$10$.lZlfmQ1cmTDAjCS2gPyBObgCVHPRX0wY9LYdCgpuHTjxQsTBXhDi",
+  "name": "RUPITHA.P.GOWDA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:08.643Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:05.466Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfac1518bc03066ae880"
+  },
+  "email": "student_200153@naviksha.com",
+  "studentID": "200153",
+  "mobileNo": "9591657714",
+  "password": "$2a$10$TwajWYnPv2LX2ZOJSeC.lOM3r/P1x0kXpz/5IrplYUoRvOlanjrxO",
+  "name": "RUTHVIK N",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:08.387Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:05.314Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfac1518bc03066ae87e"
+  },
+  "email": "student_200404@naviksha.com",
+  "studentID": "200404",
+  "mobileNo": "8660376158",
+  "password": "$2a$10$kPd5zn1QJaSKhHrcbBbnS.MW.OjlGz4oOy.XX3jH5gFC10KJktF7u",
+  "name": "KARUNYA.V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:08.140Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:05.157Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfab1518bc03066ae87c"
+  },
+  "email": "student_200300@naviksha.com",
+  "studentID": "200300",
+  "mobileNo": "9900122120",
+  "password": "$2a$10$Fst7TBtH3uubMZiFnoTxTuNWhAug./ifoOciNuyQCLhSeQa2PzODq",
+  "name": "THUSHAR M NADAPAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:07.886Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:04.990Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfab1518bc03066ae87a"
+  },
+  "email": "student_200303@naviksha.com",
+  "studentID": "200303",
+  "mobileNo": "9731449772",
+  "password": "$2a$10$R3jRfU0.KS0rKRMxpArjBu7UCIJoIHfbZLkgXYK8.6Nknke/Td/w6",
+  "name": "BANUSREE",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:07.624Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:04.834Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfab1518bc03066ae878"
+  },
+  "email": "student_200280@naviksha.com",
+  "studentID": "200280",
+  "mobileNo": "800859600",
+  "password": "$2a$10$5P8FQSo71wraY4j305vQreiDofkAqSFQwsSYVtfLoRjb8z5q2PUfe",
+  "name": "SHAMEER ROWTHER",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:07.373Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:04.673Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfaa1518bc03066ae876"
+  },
+  "email": "student_200088@naviksha.com",
+  "studentID": "200302",
+  "mobileNo": "9980928433",
+  "password": "$2a$10$ggkN6DxjzEeJx03bGKESDePhLpPlbHQeN1u9MtfjYK66x/JBADoIO",
+  "name": "MOKSHA.B",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 6,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:06.963Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:09.669Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfaa1518bc03066ae874"
+  },
+  "email": "student_200393@naviksha.com",
+  "studentID": "200393",
+  "mobileNo": "9341312106",
+  "password": "$2a$10$Zqqx1XaiV7A.Q990ixG3ses9C42Pwq0IEMAnSlwJl1jALSX1Tr6ry",
+  "name": "KUMAR SWAMY.L",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 9,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:06.707Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:04.347Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfaa1518bc03066ae872"
+  },
+  "email": "student_200285@naviksha.com",
+  "studentID": "200257",
+  "mobileNo": "9980452409",
+  "password": "$2a$10$i6ZbzIkC4jFtkQ7Jd9w8P.LJkZhlcoley6Ckqt8XYnd4sEdkgVVT.",
+  "name": "CHAJTRA M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 8,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:06.456Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:29.306Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfaa1518bc03066ae870"
+  },
+  "email": "student_200420@naviksha.com",
+  "studentID": "200420",
+  "mobileNo": "9480285943",
+  "password": "$2a$10$ZpNvdKFlKZ2pLT5oHy/aOuL5znwNqkR1mk/k0ouUsrc8tubHPvEaK",
+  "name": "HARSHA VARDHAN.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 10,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:06.167Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:04.021Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930dfa91518bc03066ae86e"
+  },
+  "email": "student_200385@naviksha.com",
+  "studentID": "200385",
+  "mobileNo": "9731762411",
+  "password": "$2a$10$ILMhGDPu550yO.up2qQRAe7.vP/KWCRBtCdhjVQn7JqMFfxbLEc6m",
+  "name": "VINDHYA.D.P",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "grade": 7,
+  "createdAt": {
+    "$date": "2025-12-04T01:11:05.862Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:03.859Z"
+  },
+  "_class": "com.naviksha.model.User"
+}]

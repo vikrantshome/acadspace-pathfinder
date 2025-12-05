@@ -74,7 +74,7 @@ def read_student_details(path):
     # Standardize column names
     df = df.rename(columns={
         'studentID': 'studentID',
-        'Name': 'fullName',
+        'Student Name': 'fullName',
         'School Name': 'schoolName',
         'Grade': 'grade',
         'City': 'city',

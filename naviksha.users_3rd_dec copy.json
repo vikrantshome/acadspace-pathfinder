@@ -1,0 +1,3599 @@
+[{
+  "_id": {
+    "$oid": "692fae1037a6a9052aa20c00"
+  },
+  "email": "sshobha42423@gmail.com",
+  "password": "$2a$10$AxNKzDWaME4EzzrZCahz1.NxENWEnKtIdCOQE1oruqc39pmYxCDk6",
+  "name": "Vishwas",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Vishwas",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 9,
+  "board": "ICSE",
+  "mobileNo": "7338161093",
+  "studentID": "AA0013",
+  "createdAt": {
+    "$date": "2025-12-03T03:27:12.692Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:27:12.692Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae1937a6a9052aa20c01"
+  },
+  "email": "vedaskammar@gmail.com",
+  "password": "$2a$10$TuGM6foriCTCVsLg7PK8TeW80cxA5wiuN3gGTFg.zmuvpPIaOJoS6",
+  "name": "Veda S Kammar",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Veda S Kammar",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 9,
+  "board": "CISCE",
+  "mobileNo": "9742449397",
+  "studentID": "AA0014",
+  "createdAt": {
+    "$date": "2025-12-03T03:27:21.548Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:27:21.548Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae2037a6a9052aa20c02"
+  },
+  "email": "daksrai2011@gmail.com",
+  "password": "$2a$10$4vR2itAnC4J3anhBHmpjYOJm5.8B4R.ezcejKbGKLQUon4ohD9Xja",
+  "name": "Daksh Rai",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Daksh Rai",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 9,
+  "board": "ICSE",
+  "mobileNo": "9480983840",
+  "studentID": "AA0015",
+  "createdAt": {
+    "$date": "2025-12-03T03:27:28.958Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:27:28.958Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae2437a6a9052aa20c03"
+  },
+  "email": "nishanthhybbpdr6@gmail.com",
+  "password": "$2a$10$1f9kUNqSHFvMmrGQZE.6reTK6eOCHjq7lw86Dd26TOQf1M4bP/q0G",
+  "name": "nishanth",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "nishanth",
+  "schoolName": "Devin academy for learning",
+  "grade": 9,
+  "board": "icse",
+  "mobileNo": "9035880998",
+  "studentID": "AA0016",
+  "createdAt": {
+    "$date": "2025-12-03T03:27:32.365Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:27:32.365Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae3b37a6a9052aa20c04"
+  },
+  "email": "kalvathigs288@gmail.com",
+  "password": "$2a$10$NHFqgFUHL1Yl0UL9epGptu90g6oLJbLcH7dc01cqhKvecQ3RKwgpa",
+  "name": "Jasmitha R Reddy",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Jasmitha R Reddy",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 9,
+  "board": "ICSE",
+  "mobileNo": "9740853736",
+  "studentID": "AA0017",
+  "createdAt": {
+    "$date": "2025-12-03T03:27:55.969Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:27:55.969Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae3f37a6a9052aa20c06"
+  },
+  "email": "aluwaladivya@gmail.com",
+  "password": "$2a$10$2bFK8E/44Exfk8C1kV8tGeOYgmLLNsH0EodrV3BCrnFJX1/12qMR6",
+  "name": "ALUWALA DIVYA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "ALUWALA DIVYA",
+  "schoolName": "devin academy for learning",
+  "grade": 10,
+  "board": "ICSE",
+  "mobileNo": "9845767388",
+  "studentID": "AA0018",
+  "createdAt": {
+    "$date": "2025-12-03T03:27:59.920Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:27:59.920Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae4037a6a9052aa20c07"
+  },
+  "email": "vaishnaviraju112@gmail.com",
+  "password": "$2a$10$ejzI9pV.GcXy/wpnFAiUt.8cWDzHeUir7RM4UQxRiyz4xOa.qnn0W",
+  "name": "Vaishnavi.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Vaishnavi.R",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 10,
+  "board": "ICSE",
+  "mobileNo": "9900418556",
+  "studentID": "AA0019",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:00.368Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:00.368Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae4437a6a9052aa20c08"
+  },
+  "email": "shobhagavi1989@gmail.com",
+  "password": "$2a$10$dJ53BNRdLXePfQ0J.DFNTOS8R6a1Ys3bDQTlIP7Q9M1boecW8tfz2",
+  "name": "Test User",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Test User",
+  "schoolName": "devin acadamy for learning",
+  "grade": 9,
+  "board": "cisce",
+  "mobileNo": "8197393033",
+  "studentID": "AA0020",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:04.120Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:04.120Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae4437a6a9052aa20c09"
+  },
+  "email": "khyathiroy2011@gmail.com",
+  "password": "$2a$10$Hi70GSLKaMaWvk2fM1DFluM4UmzMh3PjZhTyeK85uUgbzvtrZebZG",
+  "name": "C.C. Khyathi Roy",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "C.C. Khyathi Roy",
+  "schoolName": "Devin Academy for Learning",
+  "grade": 9,
+  "board": "ICSE",
+  "mobileNo": "9686015319",
+  "studentID": "AA0021",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:04.479Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:04.479Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae4b37a6a9052aa20c0a"
+  },
+  "email": "rakshanagaraj008@gmail.com",
+  "password": "$2a$10$B4O3wOX5/kraUfPPhOx73.Cb5zg/C/T.RcETrtWUgrasOO8TPrE/W",
+  "name": "Raksha",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Raksha",
+  "schoolName": "Devin academy for learning",
+  "grade": 9,
+  "board": "CISCE",
+  "mobileNo": "9880358492",
+  "studentID": "AA0022",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:11.072Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:11.072Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae4d37a6a9052aa20c0b"
+  },
+  "email": "amish.natesh@gmail.com",
+  "password": "$2a$10$qCtQa5H7kx8QFyek2ZecZ.IUMhbDCVsAk9lTGKiQN1adzIC3Me/dO",
+  "name": "Amish N",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Amish N",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 10,
+  "board": "CISCE",
+  "mobileNo": "8095459219",
+  "studentID": "AA0023",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:13.561Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:13.561Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae4f37a6a9052aa20c0c"
+  },
+  "email": "sujataharapanahalli@gmail.com",
+  "password": "$2a$10$1LBaIFYUcBMDO0P6GdwgUOsQxpZGPJUZ2gE.sjhUWCDmKzcPLtgxm",
+  "name": "sakshi.sh",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "sakshi.sh",
+  "schoolName": "devin academy for learning",
+  "grade": 9,
+  "board": "CICSE",
+  "mobileNo": "9901114197",
+  "studentID": "AA0024",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:15.878Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:15.878Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae5037a6a9052aa20c0d"
+  },
+  "email": "khushidaa2011@gmail.com",
+  "password": "$2a$10$.wQZwJGF06cXm9tf91o6Que5hrsLV/UKNdCOwNu5YFmkDrrU/Xvbu",
+  "name": "Khushi Dharmaraja",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Khushi Dharmaraja",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 9,
+  "board": "ICSE",
+  "mobileNo": "9900175714",
+  "studentID": "AA0025",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:16.671Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:16.671Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae5437a6a9052aa20c0e"
+  },
+  "email": "yogithaniha@gmail.com",
+  "password": "$2a$10$cG28GxmbjKC3s0Jk3Wz0uuWOJ3pKiMGoiovCy8uKQAdxtjfjgxPbK",
+  "name": "NIHARIKA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "NIHARIKA",
+  "schoolName": "devin acdemy for learning ",
+  "grade": 9,
+  "board": "ISCE",
+  "mobileNo": "8792956714",
+  "studentID": "AA0026",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:20.368Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:20.368Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae6937a6a9052aa20c10"
+  },
+  "email": "WRAJKUMAR7055@GMAIL.COM",
+  "password": "$2a$10$kI3AUpausDC/kTct70DbU.SJg5PzTPNrp9ZPwHkzZ/YHYxRueY3dy",
+  "name": "SPOORTHI R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "SPOORTHI R",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 10,
+  "board": "ICSE",
+  "mobileNo": "9880157055",
+  "studentID": "AA0027",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:41.022Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:41.022Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fae6937a6a9052aa20c11"
+  },
+  "email": "manjunath74bujji@gmail.com",
+  "password": "$2a$10$CD5sjQffKaeX7sYXqeDnY.gXSaqGYgERbXi644rr/5PFNykAPlk4C",
+  "name": "B Yashwanth",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "B Yashwanth",
+  "schoolName": "Devin Academy for learning",
+  "grade": 9,
+  "board": "ICSE",
+  "mobileNo": "8660825970",
+  "studentID": "AA0028",
+  "createdAt": {
+    "$date": "2025-12-03T03:28:41.480Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:28:41.480Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692faea537a6a9052aa20c1d"
+  },
+  "email": "sameekshagangadhar.1.4@example.com",
+  "password": "$2a$10$BQkQTEk7AMIepwWVuu49XOxcFQqK1jvQWJUtA7xgQwqQpzW7e68AK",
+  "name": "SAMEEKSHA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "SAMEEKSHA",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 9,
+  "board": "ICSE",
+  "mobileNo": "7259401603",
+  "studentID": "AA0029",
+  "createdAt": {
+    "$date": "2025-12-03T03:29:41.666Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:29:41.666Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692faeaf37a6a9052aa20c1e"
+  },
+  "email": "ambikamadhugowda99022@gmail.com",
+  "password": "$2a$10$jmpx4MLa9DxolgoKAl61VulRkqZ/Q/zvbSuVHB4MPiblVWbSN83mm",
+  "name": "Shirisha.M.Gowda",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Shirisha.M.Gowda",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 9,
+  "board": "ICSE",
+  "mobileNo": "9902212239",
+  "studentID": "AA0030",
+  "createdAt": {
+    "$date": "2025-12-03T03:29:51.595Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:29:51.595Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692faec637a6a9052aa20c21"
+  },
+  "email": "bilviniv@gmail.com",
+  "password": "$2a$10$StxIBQkSBV7nVsINAzxGOeGLCXGQCUjrvPWqpJEbGlX3cZ0KrrwzK",
+  "name": "Bilvini.v",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Bilvini.v",
+  "schoolName": "devin academy for learning",
+  "grade": 9,
+  "board": "ICSE",
+  "mobileNo": "9740614888",
+  "studentID": "AA0031",
+  "createdAt": {
+    "$date": "2025-12-03T03:30:14.150Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:30:14.150Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb37237a6a9052aa20c4c"
+  },
+  "email": "sheshadrihs6291@gmail.com",
+  "password": "$2a$10$TSCrqiz3rGwdzbj3pBCiIeXE.KmihJlApktcFKPt56hVmL0uWrv76",
+  "name": "Test User",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Test User",
+  "schoolName": "Demo School",
+  "grade": 10,
+  "board": "Icse",
+  "mobileNo": "7019803720",
+  "studentID": "AA0032",
+  "createdAt": {
+    "$date": "2025-12-03T03:50:10.071Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:50:10.071Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb56b37a6a9052aa20c4d"
+  },
+  "email": "likithlikith829@gmail.com",
+  "password": "$2a$10$rma6A7diMRxWt66Mj4STA.8D65M05wrRGu6kghX2dsqxmdoDkYSDW",
+  "name": "Likith Gowda G",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Likith Gowda G",
+  "schoolName": "Demo School",
+  "grade": 10,
+  "board": "STATE",
+  "mobileNo": "9845489278",
+  "studentID": "AA0033",
+  "createdAt": {
+    "$date": "2025-12-03T03:58:35.778Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:58:35.778Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb57f37a6a9052aa20c4e"
+  },
+  "email": "nithya.kumar31@gmail.com",
+  "password": "$2a$10$heKkbWRqchNWUsOTJZr3TuWnVqWgAYKSGZF4tfk1AcQVmtUtrfe1y",
+  "name": "Test User",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Test User",
+  "schoolName": "Demo School",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9845001429",
+  "studentID": "AA0034",
+  "createdAt": {
+    "$date": "2025-12-03T03:58:55.155Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:58:55.155Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb58a37a6a9052aa20c4f"
+  },
+  "email": "Gagan@123.com",
+  "password": "$2a$10$ww/enh2NNsjW6HcVTqxhw.WMZJD6EmisIk3681HqpVn2T2Bu8ttoW",
+  "name": "GAGAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "GAGAN",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 10,
+  "board": "STATE",
+  "mobileNo": "8073128895",
+  "studentID": "AA0035",
+  "createdAt": {
+    "$date": "2025-12-03T03:59:06.957Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:59:06.957Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb5b737a6a9052aa20c50"
+  },
+  "email": "geethashree.m@gmail.com",
+  "password": "$2a$10$H2IsIGq4QLQ8kS87xkz1LulsrQc.XnSQyal9aSGkck1mfCxHYS5Fm",
+  "name": "geethashree",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "geethashree",
+  "schoolName": "Devin academy for learning",
+  "grade": 12,
+  "board": "state",
+  "mobileNo": "9845111477",
+  "studentID": "AA0036",
+  "createdAt": {
+    "$date": "2025-12-03T03:59:51.662Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:59:51.662Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb5bd37a6a9052aa20c52"
+  },
+  "email": "lalitrajuhr@gmail.com",
+  "password": "$2a$10$Fjdc1HIR1IRG6kTFW/fVd.g15X76apwAZTgJ67HaaN2QVdy2GZq8.",
+  "name": "Test User",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Test User",
+  "schoolName": "Demo School",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9611984626",
+  "studentID": "AA0037",
+  "createdAt": {
+    "$date": "2025-12-03T03:59:57.063Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:59:57.063Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb5bf37a6a9052aa20c53"
+  },
+  "email": "dodgedbro2@gmail.com",
+  "password": "$2a$10$BbFNg8bkc4vykSkxnuQ51eiHBEoN9KEX2YRIT1Na8EZ61Z1QGft9.",
+  "name": "Vishal Raj R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Vishal Raj R",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 10,
+  "board": "STATE",
+  "mobileNo": "9611356618",
+  "studentID": "AA0038",
+  "createdAt": {
+    "$date": "2025-12-03T03:59:59.257Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T03:59:59.257Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb5c337a6a9052aa20c55"
+  },
+  "email": "mokshithpaladugu56@gmail.com",
+  "password": "$2a$10$No84QJswHkdX7sq9yl3qyOEWC5t6jNL1pJuWLhzg7rMs1zsllPcFy",
+  "name": "Mokshith",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Mokshith",
+  "schoolName": "devin academy for learning",
+  "grade": 9,
+  "board": "state",
+  "mobileNo": "9550012797",
+  "studentID": "AA0039",
+  "createdAt": {
+    "$date": "2025-12-03T04:00:03.578Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:00:03.578Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb5cc37a6a9052aa20c57"
+  },
+  "email": "jpcreddy@123",
+  "password": "$2a$10$21Nlj/JZAd30N0jjyVsDVOnTP2LT7jWlB0G5bXzsIIm5Bqrbs1136",
+  "name": "Prathusha JC",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Prathusha JC",
+  "schoolName": "Devin academy for learning ",
+  "grade": 10,
+  "board": "STATE",
+  "mobileNo": "9901191919",
+  "studentID": "AA0040",
+  "createdAt": {
+    "$date": "2025-12-03T04:00:12.663Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:00:12.663Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb5d637a6a9052aa20c59"
+  },
+  "email": "leharkt088@gmil.com",
+  "password": "$2a$10$LTI9.iHyLbQG7dSYCpInFO4eFl.NmQf5fLxMOqmrG6XVISSuk3hTq",
+  "name": "Lehr kt",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Lehr kt",
+  "schoolName": "devin acdemy for learning",
+  "grade": 10,
+  "board": "state",
+  "mobileNo": "6363716866",
+  "studentID": "AA0041",
+  "createdAt": {
+    "$date": "2025-12-03T04:00:22.872Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:00:22.872Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb5d937a6a9052aa20c5a"
+  },
+  "email": "Ashalakshmipathi@gmail.com",
+  "password": "$2a$10$k7On1l6QAvqp2g9m2FmAyOhV/d3GKmsZ.i99D87AUMyR31h516BX.",
+  "name": "Test User",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Test User",
+  "schoolName": "Demo School",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "8197526715",
+  "studentID": "AA0042",
+  "createdAt": {
+    "$date": "2025-12-03T04:00:25.263Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:00:25.263Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb5eb37a6a9052aa20c5d"
+  },
+  "email": "vidishag68@gmail.com",
+  "password": "$2a$10$KYXxAEptazkDr6USjwFUbufVdxGJgG8N4V1Rt3u5.KjNVyqggyAq.",
+  "name": "Vidisha.D Gowda",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Vidisha.D Gowda",
+  "schoolName": "devin acadamy for learning",
+  "grade": 9,
+  "board": "state",
+  "mobileNo": "9980669015",
+  "studentID": "AA0043",
+  "createdAt": {
+    "$date": "2025-12-03T04:00:43.373Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:00:43.373Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb5f837a6a9052aa20c5f"
+  },
+  "email": "Prajuchidu@gmail.com",
+  "password": "$2a$10$MaO6ZtvZWALG1chwXyuMxO17.r1yyJ8K9IeirmYvQ.w.oQ7BRyDPe",
+  "name": "Chidananda S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Chidananda S",
+  "schoolName": "devin academy for learning",
+  "grade": 10,
+  "board": "STATE",
+  "mobileNo": "9901090458",
+  "studentID": "AA0044",
+  "createdAt": {
+    "$date": "2025-12-03T04:00:56.761Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:00:56.761Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb61537a6a9052aa20c62"
+  },
+  "email": "amruth0301@gmail.com",
+  "password": "$2a$10$xdo9wllhJogdxKeckMO4t.fm4NHvXvAtyz0CebRHzGIQ1zQybpbDu",
+  "name": "Amruth M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Amruth M",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 10,
+  "board": "state ",
+  "mobileNo": "7406117778",
+  "studentID": "AA0045",
+  "createdAt": {
+    "$date": "2025-12-03T04:01:25.054Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:01:25.054Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb62337a6a9052aa20c64"
+  },
+  "email": "Rithika.R@GMAIL.COM",
+  "password": "$2a$10$0QFK3XE2Yh6AhVPtgOxaH.cmlx4u/BBI02O/LAzTpOo0zn43M4NgK",
+  "name": "Rithika.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Rithika.R",
+  "schoolName": "Dev-In academy for learning ",
+  "grade": 10,
+  "board": "State",
+  "mobileNo": "9566316303",
+  "studentID": "AA0046",
+  "createdAt": {
+    "$date": "2025-12-03T04:01:39.557Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:01:39.557Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb62c37a6a9052aa20c65"
+  },
+  "email": "hasinigprasad5309@gmail.com",
+  "password": "$2a$10$4SbRJV5jee5EfuJ33GSlGOfx4w7LGZ2i63z9aAmG2iNJOxBdz.ZAK",
+  "name": "Hasini G Prasad",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Hasini G Prasad",
+  "schoolName": "devin acdemy for learning ",
+  "grade": 9,
+  "board": "state",
+  "mobileNo": "7411582177",
+  "studentID": "AA0047",
+  "createdAt": {
+    "$date": "2025-12-03T04:01:48.263Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:01:48.263Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb62c37a6a9052aa20c66"
+  },
+  "email": "vaishnavikm20@gmail.com",
+  "password": "$2a$10$kslzoUc3QkFPczMwTyyC3uggFtjNcMnjgYakEXCD7wO24gcB6zIvm",
+  "name": "Vaishnavi K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Vaishnavi K",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 9,
+  "board": "STATE",
+  "mobileNo": "9844186186",
+  "studentID": "AA0048",
+  "createdAt": {
+    "$date": "2025-12-03T04:01:48.872Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:01:48.872Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb63837a6a9052aa20c67"
+  },
+  "email": "neha63628@gmail.com",
+  "password": "$2a$10$Kt7y8IC3ADVIJUaZ8qgBpeWLYHcLkKa58mY/B8w.9B/Ek6g8kh9m6",
+  "name": "Neha.N",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Neha.N",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 9,
+  "board": "state",
+  "mobileNo": "6362866402",
+  "studentID": "AA0049",
+  "createdAt": {
+    "$date": "2025-12-03T04:02:00.152Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:02:00.152Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb64937a6a9052aa20c69"
+  },
+  "email": "nithya.kumar311@gmail.com",
+  "password": "$2a$10$3/txURKp8nGMtQBh394hYeKHSeYpnspw0/pjCKstyguGODyA5XQVS",
+  "name": "Purvesh gowda s",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Purvesh gowda s",
+  "schoolName": "Dev in academy for learning  School",
+  "grade": 9,
+  "board": "state",
+  "mobileNo": "9686368962",
+  "studentID": "AA0050",
+  "createdAt": {
+    "$date": "2025-12-03T04:02:17.458Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:02:17.458Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fb66d37a6a9052aa20c70"
+  },
+  "email": "krishnabelagi18@gmail.com",
+  "password": "$2a$10$YZBXyWeTRCD3Jn744aQWbua//.k7T340akq78x3JTGgdv8OtwpNVW",
+  "name": "KRISHNA .V",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "KRISHNA .V",
+  "schoolName": "DEVIN ACADEMY FOR LEARNIG",
+  "grade": 10,
+  "board": "STATE",
+  "mobileNo": "8217789816",
+  "studentID": "AA0051",
+  "createdAt": {
+    "$date": "2025-12-03T04:02:53.051Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:02:53.051Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbc6237a6a9052aa20c9b"
+  },
+  "email": "hari.yogesh@17",
+  "password": "$2a$10$C/wikD234TEiode07FvMieY00BlWWY1WAv75O30jU78VoPDc9AoQq",
+  "name": "prathiksha ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "prathiksha ",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 8,
+  "board": "state ",
+  "mobileNo": "9880228849",
+  "studentID": "AA0052",
+  "createdAt": {
+    "$date": "2025-12-03T04:28:18.779Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:28:18.779Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbc7c37a6a9052aa20c9c"
+  },
+  "email": "ahanapravishi@gmail.com",
+  "password": "$2a$10$4eYh3abIJRAd0g8hbbaXR.b13YkkDMU3o6IKJqRF0odEUl3ZA/72S",
+  "name": "Test User",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Test User",
+  "schoolName": "Demo School",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "8050739560",
+  "studentID": "AA0053",
+  "createdAt": {
+    "$date": "2025-12-03T04:28:44.371Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:28:44.371Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbc9637a6a9052aa20c9d"
+  },
+  "email": "medhanagendra19@gmail.com",
+  "password": "$2a$10$FhgM955Pp8i7TZJ.3gDWA.MemWDIwXGWuFKFLS2QYPoSfAdiHcUYm",
+  "name": "Medha N ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Medha N ",
+  "schoolName": "Devin academy for learning",
+  "grade": 8,
+  "board": "CISCE",
+  "mobileNo": "9620219112",
+  "studentID": "AA0054",
+  "createdAt": {
+    "$date": "2025-12-03T04:29:10.471Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:29:10.471Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbcb137a6a9052aa20c9f"
+  },
+  "email": "sureshmayagiri1@gmail.com",
+  "password": "$2a$10$Oc46PnNvtXjWaGNA4qsES.w5w9qpbM6MdLzQSMQC5iUWPY.8xESMe",
+  "name": "Aditya S Mayagiri",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Aditya S Mayagiri",
+  "schoolName": "Dev In academy for learning",
+  "grade": 8,
+  "board": "state",
+  "mobileNo": "9880118871",
+  "studentID": "AA0055",
+  "createdAt": {
+    "$date": "2025-12-03T04:29:37.759Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:29:37.759Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbcc837a6a9052aa20ca1"
+  },
+  "email": "tesot@example.com",
+  "password": "$2a$10$kD6GZ8yi6hilvqsq1hyMTu91fO5H9sG4SPYgBwcQLkmyuq.cD4u/G",
+  "name": "Ashrith Nagraj Gonewar  ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Ashrith Nagraj Gonewar  ",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 8,
+  "board": "state",
+  "mobileNo": "9028014644",
+  "studentID": "AA0056",
+  "createdAt": {
+    "$date": "2025-12-03T04:30:00.258Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:30:00.258Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbccb37a6a9052aa20ca2"
+  },
+  "email": "hastinpsgame@gmail.com",
+  "password": "$2a$10$Ft4KEPN/VIwNbNDAa7FYG.DbWjqS58JZrZNZz2ptUz3AwD/bjNSaO",
+  "name": "Hastin.A",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Hastin.A",
+  "schoolName": "Devin academy for learning ",
+  "grade": 8,
+  "board": "ICSE",
+  "mobileNo": "9606322989",
+  "studentID": "AA0057",
+  "createdAt": {
+    "$date": "2025-12-03T04:30:03.758Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:30:03.758Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbce637a6a9052aa20ca4"
+  },
+  "email": "charanlisha@gmail.com",
+  "password": "$2a$10$2C3wtSSq32wngHKTIHWf1e0ibC6bIKmOLkKz1hkz22HD0AHgSE7hi",
+  "name": "LISHA.S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "LISHA.S",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 8,
+  "board": "STATE",
+  "mobileNo": "9916979754",
+  "studentID": "AA0058",
+  "createdAt": {
+    "$date": "2025-12-03T04:30:30.356Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:30:30.356Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbcf537a6a9052aa20ca5"
+  },
+  "email": "sahithya17@gmail.com",
+  "password": "$2a$10$sn7WZvkgn9u77tA0st8jcOpt6MAFYjxJpNVpFC8lNm8ylIqkZjV.i",
+  "name": "Lakshmi Pravasthi .S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Lakshmi Pravasthi .S",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 8,
+  "board": "ICSE",
+  "mobileNo": "9686744111",
+  "studentID": "AA0059",
+  "createdAt": {
+    "$date": "2025-12-03T04:30:45.865Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:30:45.865Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbcf737a6a9052aa20ca6"
+  },
+  "email": "teqst@example.com",
+  "password": "$2a$10$VgNSlw6we3LrVwqTeysUBuxx5q/uA5HDkhApPsxq0WuHitE3BpOze",
+  "name": "Harini gowtam ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Harini gowtam ",
+  "schoolName": "Demo School",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9880073300",
+  "studentID": "AA0060",
+  "createdAt": {
+    "$date": "2025-12-03T04:30:47.678Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:30:47.678Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbd0337a6a9052aa20ca9"
+  },
+  "email": "tepst@example.com",
+  "password": "$2a$10$beC5ilzQjaEcxoft.tvmeO.eTe4ODSTT5I00dIMrrVjdYK4HEvbu.",
+  "name": "Priyanka Malik",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Priyanka Malik",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 8,
+  "board": "State",
+  "mobileNo": "8105005066",
+  "studentID": "AA0061",
+  "createdAt": {
+    "$date": "2025-12-03T04:30:59.077Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:30:59.077Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbd2737a6a9052aa20cac"
+  },
+  "email": "ateeshpaswan51@gmail.com",
+  "password": "$2a$10$IfRnR93f4zaSpt8TTbKWhegKfIPOHJzrBMs6pwmj4e6kaPoqkZIta",
+  "name": "ATEESH KUMAR PASWAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "ATEESH KUMAR PASWAN",
+  "schoolName": "Devin academy for learning",
+  "grade": 8,
+  "board": "ICSE",
+  "mobileNo": "8840739483",
+  "studentID": "AA0062",
+  "createdAt": {
+    "$date": "2025-12-03T04:31:35.354Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:31:35.354Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbd2737a6a9052aa20cad"
+  },
+  "email": "1roysangeeta@gmail.com",
+  "password": "$2a$10$Iu91U1.HOiJv1pWIoOROgutlIBFJB7M7nXZ/OpW2N.f0ryoENOGSa",
+  "name": "KIYARA ROY K A ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "KIYARA ROY K A ",
+  "schoolName": "Demo School",
+  "grade": 8,
+  "board": "ICSE",
+  "mobileNo": "9108416844",
+  "studentID": "AA0063",
+  "createdAt": {
+    "$date": "2025-12-03T04:31:35.763Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:31:35.763Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbd2937a6a9052aa20cae"
+  },
+  "email": "preri.email@007",
+  "password": "$2a$10$H6HD9g2Pun50nMctcMaF8e90TKLWCa49ZkCV3Xc3TFQEQZgkVq0YW",
+  "name": "Prerith M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Prerith M",
+  "schoolName": "Dev-in Academy for learning ",
+  "grade": 8,
+  "board": "STATE",
+  "mobileNo": "9886012107",
+  "studentID": "AA0064",
+  "createdAt": {
+    "$date": "2025-12-03T04:31:37.063Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:31:37.063Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbd3337a6a9052aa20cb0"
+  },
+  "email": "moulyashashikumar@123",
+  "password": "$2a$10$7H.0/weigKmBzQYo9WV0MeP4nH7AzzY3rGv0tFWz7LOR4h6BbKatS",
+  "name": "Trisha.s ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Trisha.s ",
+  "schoolName": "Dev -in academy for learning ",
+  "grade": 8,
+  "board": "State ",
+  "mobileNo": "9686584777",
+  "studentID": "AA0065",
+  "createdAt": {
+    "$date": "2025-12-03T04:31:47.756Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:31:47.756Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbd7537a6a9052aa20cba"
+  },
+  "email": "jeevandeepreddy@gmail.com",
+  "password": "$2a$10$daxa/AnOElkUZnkcVcnj9Ofw5ycGNPQYPyUD11cvLyaabEFIQMC4O",
+  "name": "JEEVAN DEEP REDDY .P.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "JEEVAN DEEP REDDY .P.M",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 8,
+  "board": "ICSCE",
+  "mobileNo": "8904666938",
+  "studentID": "AA0069",
+  "createdAt": {
+    "$date": "2025-12-03T04:32:53.258Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:32:53.258Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbd8237a6a9052aa20cbc"
+  },
+  "email": "niveditha0803@gmail.com",
+  "password": "$2a$10$FkRJI6jD/aHNVVbRN6/FG.rnWz/pOuaexn3gMAbgaKWH2TTfNkihu",
+  "name": "HARSHINI GOWTAM",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "HARSHINI GOWTAM",
+  "schoolName": "Devin Academy for Learning School",
+  "grade": 8,
+  "board": "CISCE",
+  "mobileNo": "9845000663",
+  "studentID": "AA0070",
+  "createdAt": {
+    "$date": "2025-12-03T04:33:06.658Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:33:06.658Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbd8437a6a9052aa20cbd"
+  },
+  "email": "abc@gmail.com",
+  "password": "$2a$10$k7Qp1..x/r5LUWaAwAvuDeBJWYa7dQqPkhL7e5bNQ9bg2qn328AmS",
+  "name": "Prathiksha.C",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Prathiksha.C",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 8,
+  "board": "STATE",
+  "mobileNo": "9845999618",
+  "studentID": "AA0071",
+  "createdAt": {
+    "$date": "2025-12-03T04:33:08.251Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:33:08.251Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbdab37a6a9052aa20cc0"
+  },
+  "email": "lehparkt088@gmil.com",
+  "password": "$2a$10$OPiF4yhsmAIt0MIvzavIVuWsQxy3DhpWolZYiyMlFF6LMbx2VOuTK",
+  "name": "Dhiya praveen",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Dhiya praveen",
+  "schoolName": "Devin Academy for Learning",
+  "grade": 8,
+  "board": "ICSE",
+  "mobileNo": "9886250594",
+  "studentID": "AA0072",
+  "createdAt": {
+    "$date": "2025-12-03T04:33:47.061Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:33:47.061Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fbdac37a6a9052aa20cc1"
+  },
+  "email": "Mohanmoni3634@gemail.com",
+  "password": "$2a$10$q42TfIl4o4z1OY.9JCnV3OHSZ9Cw56u.fSe7oyK..EUr8Xxn97TOO",
+  "name": "Deyuthi Mohan.K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Deyuthi Mohan.K",
+  "schoolName": "devin academy for learning",
+  "grade": 8,
+  "board": "State",
+  "mobileNo": "9620545443",
+  "studentID": "AA0073",
+  "createdAt": {
+    "$date": "2025-12-03T04:33:48.065Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T04:33:48.065Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc77c37a6a9052aa20ced"
+  },
+  "email": "M.chandrashekar6@GMAIL.com",
+  "password": "$2a$10$/pqhjFXtRcyPIl5u4A/y7.493G0GyhAbgTE4iTjc6WquDhiBm/.GC",
+  "name": "ANIRUDH.C",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "ANIRUDH.C",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9916073753",
+  "studentID": "AA0074",
+  "createdAt": {
+    "$date": "2025-12-03T05:15:40.065Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:15:40.065Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc78637a6a9052aa20cee"
+  },
+  "email": "ushagantait@gmail.com",
+  "password": "$2a$10$NHc7SJH5x7mlM/yi8pd4U.7TRYD2eCgB4M5pGIh0Ade/6Oj37qxRS",
+  "name": "Ujan Gantait",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Ujan Gantait",
+  "schoolName": "devin acdemy for learning ",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "8310512078",
+  "studentID": "AA0075",
+  "createdAt": {
+    "$date": "2025-12-03T05:15:50.158Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:15:50.158Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc78e37a6a9052aa20cef"
+  },
+  "email": "tespt@example.com",
+  "password": "$2a$10$yaq2E.GLlAqIQHFFPniYZeckHCBLnVU2AxeN5K4hfAN9wY9tecLai",
+  "name": "Nachiket S H",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Nachiket S H",
+  "schoolName": "Devin academy for learning",
+  "grade": 6,
+  "board": "CISCE",
+  "mobileNo": "8884299765",
+  "studentID": "AA0076",
+  "createdAt": {
+    "$date": "2025-12-03T05:15:58.858Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:15:58.858Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc79b37a6a9052aa20cf1"
+  },
+  "email": "sannidhisathish4@gmail.com",
+  "password": "$2a$10$MNatu/6jn2MI8kN4KSuHhuYhMzqi/tfxuvICCvs6wQtgpqpRVAaOm",
+  "name": "Sannidhi Sathish ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Sannidhi Sathish ",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9964092052",
+  "studentID": "AA0077",
+  "createdAt": {
+    "$date": "2025-12-03T05:16:11.458Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:16:11.458Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc7a937a6a9052aa20cf3"
+  },
+  "email": "Venya@gemail.com",
+  "password": "$2a$10$6k0x0ecQ9hOuQalhNvvlTuSWF8TIqjRJEtnECcyqVj2lpmgxQGzA6",
+  "name": "venyareddy",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "venyareddy",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9916822542",
+  "studentID": "AA0078",
+  "createdAt": {
+    "$date": "2025-12-03T05:16:25.308Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:16:25.308Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc7a937a6a9052aa20cf4"
+  },
+  "email": "roshiniharsha994@GMAIL",
+  "password": "$2a$10$smkDNCJLvGyaeaq0D9mHC.tDB70C5dK24icDrgzyv5ywN3Dgm5ML2",
+  "name": "harsha vardhan . G",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "harsha vardhan . G",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "7411704824",
+  "studentID": "AA0079",
+  "createdAt": {
+    "$date": "2025-12-03T05:16:25.857Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:16:25.857Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc7aa37a6a9052aa20cf5"
+  },
+  "email": "kavitha148@gmail.com",
+  "password": "$2a$10$8ErFJjGCu6WZuLE9UA0ouOjsdcr.0.cxYUb0c0NEeB2ekAgmu103i",
+  "name": "Nishanth .Reddy.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Nishanth .Reddy.R",
+  "schoolName": "devin academy for learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9901994097",
+  "studentID": "AA0080",
+  "createdAt": {
+    "$date": "2025-12-03T05:16:26.271Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:16:26.271Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc7d237a6a9052aa20cf7"
+  },
+  "email": "mganga84@gmail.com",
+  "password": "$2a$10$IvgVPAoqNJYSjOind3D3R.mbw0a4KZUV3ac6RU2.cQH7wJQuKXZhC",
+  "name": "VARSHITHA M G ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "VARSHITHA M G ",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING ",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9972595848",
+  "studentID": "AA0081",
+  "createdAt": {
+    "$date": "2025-12-03T05:17:06.608Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:17:06.608Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc7de37a6a9052aa20cf8"
+  },
+  "email": "rooparachu92@gmail.com",
+  "password": "$2a$10$Vun.NMR2SrlAYCslKfyJaOvNiyDkrwB5QpjYOShtWjR8aXkrC/bIa",
+  "name": "RISHIKA B",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "RISHIKA B",
+  "schoolName": "Devin academy for learning ",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9535705569",
+  "studentID": "AA0082",
+  "createdAt": {
+    "$date": "2025-12-03T05:17:18.705Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:17:18.705Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc7f137a6a9052aa20cfa"
+  },
+  "email": "farz1972@gmail.com",
+  "password": "$2a$10$N9oN86aqhdNY.TOJtWWZnepkmVqtNfr29Vd/.84Nr.Fni0xnTOUIu",
+  "name": "Farheen Feroz D",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Farheen Feroz D",
+  "schoolName": "Dev-in Academy For Learning",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9686031245",
+  "studentID": "AA0083",
+  "createdAt": {
+    "$date": "2025-12-03T05:17:37.406Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:17:37.406Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc80237a6a9052aa20cff"
+  },
+  "email": "tesPt@example.com",
+  "password": "$2a$10$pq29sU.276hoPXgGtpQZJeK0JsnzKny2m2dsHtZ3xrZBZLiXXPCC.",
+  "name": "AYINASH . R. J",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "AYINASH . R. J",
+  "schoolName": "Devin Academy for learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9731648307",
+  "studentID": "AA0084",
+  "createdAt": {
+    "$date": "2025-12-03T05:17:54.656Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:17:54.656Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc80e37a6a9052aa20d01"
+  },
+  "email": "testi@example.com",
+  "password": "$2a$10$mdzDDOV9/asd0588.DsL6OPLyVpvH7pwPwZjLgpfnipVO6dOBImJK",
+  "name": "Abhay Raghav Reddy.r",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Abhay Raghav Reddy.r",
+  "schoolName": "Devin Academy For Learning ",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9148864275",
+  "studentID": "AA0085",
+  "createdAt": {
+    "$date": "2025-12-03T05:18:06.196Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:18:06.196Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc81137a6a9052aa20d03"
+  },
+  "email": "shanth@gmail.com",
+  "password": "$2a$10$O9RCDuh3hcjJdMH2Kc/NWOTnv8P8gnlD7xI51h7Q4/8MHNP17zOzq",
+  "name": "ashwini",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "ashwini",
+  "schoolName": "devin academy for learning",
+  "grade": 6,
+  "board": "icse",
+  "mobileNo": "9986072000",
+  "studentID": "AA0086",
+  "createdAt": {
+    "$date": "2025-12-03T05:18:09.995Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:18:09.995Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc81e37a6a9052aa20d04"
+  },
+  "email": "abcd.123@gmail.com",
+  "password": "$2a$10$d/cy89yqTBmCithkErQefu4JgaMiBvYgmEsxjmfVXbhywrY9MYJtC",
+  "name": "MANOGNA VISHWANATH",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "MANOGNA VISHWANATH",
+  "schoolName": "Devin Academy for Learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9900182092",
+  "studentID": "AA0087",
+  "createdAt": {
+    "$date": "2025-12-03T05:18:22.357Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:18:22.357Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc84037a6a9052aa20d08"
+  },
+  "email": "tesut@example.com",
+  "password": "$2a$10$lcsD.snoM2WvEUDRH1sKNuVUqMI59/AH66nz87RUXMacNIvN19HTm",
+  "name": "srijan.s",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "srijan.s",
+  "schoolName": "devin academy for learning",
+  "grade": 6,
+  "board": "icse",
+  "mobileNo": "9886316555",
+  "studentID": "AA0088",
+  "createdAt": {
+    "$date": "2025-12-03T05:18:56.979Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:18:56.979Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc84937a6a9052aa20d09"
+  },
+  "email": "abc1@gmail.com",
+  "password": "$2a$10$EX8maYPgAr7vhZ88j7mmSu7LV96WsWjXyCtqor58FeQjpgDSwbpQS",
+  "name": "Harshith.s",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Harshith.s",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9880468600",
+  "studentID": "AA0089",
+  "createdAt": {
+    "$date": "2025-12-03T05:19:05.590Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:19:05.590Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc85137a6a9052aa20d0c"
+  },
+  "email": "XGRBFV@gmail.com",
+  "password": "$2a$10$aepNTlX3CNfoJ9OGoh3lD.FwwDiUyOT4d37HMGSKW9746nKMRWCM6",
+  "name": "koushik krishna",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "koushik krishna",
+  "schoolName": "devin academy for learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9036002011",
+  "studentID": "AA0090",
+  "createdAt": {
+    "$date": "2025-12-03T05:19:13.758Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:19:13.758Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc86237a6a9052aa20d0d"
+  },
+  "email": "abc123@gmail.com",
+  "password": "$2a$10$49qWTGdfsn77BXaXHZMd0.Zpy/qLdE6Ffg5SlmFTvXHWEBo57bG5u",
+  "name": "praveen kumar",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "praveen kumar",
+  "schoolName": "Dev In academy for learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9980874034",
+  "studentID": "AA0091",
+  "createdAt": {
+    "$date": "2025-12-03T05:19:30.986Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:19:30.986Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fc98c37a6a9052aa20d21"
+  },
+  "email": "abc2@gmail.com",
+  "password": "$2a$10$iWeNQABmjD7W8u26T/QpK.5ctKOtXBzVxa7Y7gQy/S5TULJVAuGGK",
+  "name": "Tvindhya ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Tvindhya ",
+  "schoolName": "devin academy for learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9535542443",
+  "studentID": "AA0092",
+  "createdAt": {
+    "$date": "2025-12-03T05:24:28.664Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:24:28.664Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fcfda37a6a9052aa20d3d"
+  },
+  "email": "tesQt@example.com",
+  "password": "$2a$10$jvVWhZ/GCq6AgoDuJh3RN.S/g6faNyocMfFZc8XzGJsDduBlwwpdu",
+  "name": "LIKHITH RAJ.R",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "LIKHITH RAJ.R",
+  "schoolName": "Devin academy for learning",
+  "grade": 6,
+  "board": "CISCE",
+  "mobileNo": "7337825083",
+  "studentID": "AA0093",
+  "createdAt": {
+    "$date": "2025-12-03T05:51:22.070Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:51:22.070Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fcfe537a6a9052aa20d3e"
+  },
+  "email": "madhusudhana3@gmail.com",
+  "password": "$2a$10$Z9Muu86AbJQmOprPd4J10.PfyI9lMfW9KxSlxY8wRaEOjEqys3vAG",
+  "name": "Aarika.Madhusudhana",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Aarika.Madhusudhana",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9480771435",
+  "studentID": "AA0094",
+  "createdAt": {
+    "$date": "2025-12-03T05:51:33.657Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:51:33.657Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd00837a6a9052aa20d3f"
+  },
+  "email": "abcd1@gmai.com",
+  "password": "$2a$10$LyDb53G5uQI3W7T25bjHQeo9LLAgDFfS2f0MTTVMgKkTBjLll3orO",
+  "name": "gnankuval.j",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "gnankuval.j",
+  "schoolName": "Dev-in Academy for learning ",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9902726635",
+  "studentID": "AA0095",
+  "createdAt": {
+    "$date": "2025-12-03T05:52:08.959Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:52:08.959Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd01737a6a9052aa20d40"
+  },
+  "email": "vedasingh@gmail.com",
+  "password": "$2a$10$THTnHwP/ODd2N8lHOb47KeVsOSHP1h.TwNXyxd/uYs/b0Dd/AaVoi",
+  "name": "Medhha Singh R ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Medhha Singh R ",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9686999002",
+  "studentID": "AA0096",
+  "createdAt": {
+    "$date": "2025-12-03T05:52:23.461Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:52:23.461Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd01d37a6a9052aa20d42"
+  },
+  "email": "tekst@example.com",
+  "password": "$2a$10$58NlyUmcMYzQa5O/yQxFJu7LQfzvD2y/Ak6XDmNes..Oc3ZHg6.C2",
+  "name": "namratha .v",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "namratha .v",
+  "schoolName": "Devin academy for learning",
+  "grade": 6,
+  "board": "icse ",
+  "mobileNo": "9845628564",
+  "studentID": "AA0097",
+  "createdAt": {
+    "$date": "2025-12-03T05:52:29.758Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:52:29.758Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd02737a6a9052aa20d43"
+  },
+  "email": "abc4@gmail.com",
+  "password": "$2a$10$9ZhEFUlT59dDZqt4EERt7Ose0ODsaLrPmMY.HaVCRouojFVZnelsW",
+  "name": "lochan reddy ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "lochan reddy ",
+  "schoolName": "Demo School",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9901975301",
+  "studentID": "AA0098",
+  "createdAt": {
+    "$date": "2025-12-03T05:52:39.957Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:52:39.957Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd03437a6a9052aa20d44"
+  },
+  "email": "rooparachku92@gmail.com",
+  "password": "$2a$10$H4fBA8A1VuituLJkCgQlFeEUJqEk2RuS271bQJeseL38huZYKAw/W",
+  "name": "HAASINI G.H.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "HAASINI G.H.",
+  "schoolName": "Devin academy for learning ",
+  "grade": 6,
+  "board": "ICSCE ",
+  "mobileNo": "9880489504",
+  "studentID": "AA0099",
+  "createdAt": {
+    "$date": "2025-12-03T05:52:52.054Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:52:52.054Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd03e37a6a9052aa20d46"
+  },
+  "email": "abc8@gmail.com",
+  "password": "$2a$10$BpF7q1lEpgxl7m.s8ozx2ucU3Lqogjcy6EjxcFduXMP1G2lYctsPu",
+  "name": "RITHVIK ADHITHYA. G",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "RITHVIK ADHITHYA. G",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9566734775",
+  "studentID": "AA0100",
+  "createdAt": {
+    "$date": "2025-12-03T05:53:02.156Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:53:02.156Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd04437a6a9052aa20d48"
+  },
+  "email": "kavyashreekm@gmail.com",
+  "password": "$2a$10$b9RBZQaB7fmV9fOvwxb3OO2bLwxlvGfxXN1hHptCA5p.xAvuWa4S.",
+  "name": "SAMUDYATHA T S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "SAMUDYATHA T S",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9535694650",
+  "studentID": "AA0101",
+  "createdAt": {
+    "$date": "2025-12-03T05:53:08.561Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:53:08.561Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd05f37a6a9052aa20d4a"
+  },
+  "email": "ABC5@GMAIL.COM",
+  "password": "$2a$10$kSrJctZzPJ/CHwAzPVlG/ua51h6H8v9uVQZ9oneI8aYptefK1bfsa",
+  "name": "K. POOJA SRI GOWRI",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "K. POOJA SRI GOWRI",
+  "schoolName": "DEVIN ",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "7406666001",
+  "studentID": "AA0102",
+  "createdAt": {
+    "$date": "2025-12-03T05:53:35.851Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:53:35.851Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd08637a6a9052aa20d4e"
+  },
+  "email": "vishnupriya@example.com",
+  "password": "$2a$10$YtOUfoN2rVFiY1TNE36FO.XybRqSct6jHkbD11gLfpwTYd86Ve6Xy",
+  "name": "vishnupriya .NTest User",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "vishnupriya .NTest User",
+  "schoolName": "Devin Academy for Learning",
+  "grade": 6,
+  "board": "icse",
+  "mobileNo": "9964352080",
+  "studentID": "AA0103",
+  "createdAt": {
+    "$date": "2025-12-03T05:54:14.756Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:54:14.756Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd09537a6a9052aa20d50"
+  },
+  "email": "abc10@gmail.com",
+  "password": "$2a$10$uY5Oiqa5Cz3L4OvvPymikuDBhauIxVgkmNolJx7wAj8tLc1AHibyC",
+  "name": "Manvita Gowda",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Manvita Gowda",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9986865601",
+  "studentID": "AA0104",
+  "createdAt": {
+    "$date": "2025-12-03T05:54:29.751Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:54:29.751Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd09f37a6a9052aa20d51"
+  },
+  "email": "abc11@gmail.com",
+  "password": "$2a$10$z1IJbg13OdnlYFBePF84UOaevYZXBcYjwd4NC4y1iJ1rIxsJhrgYm",
+  "name": "deepthi ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "deepthi ",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9481377362",
+  "studentID": "AA0105",
+  "createdAt": {
+    "$date": "2025-12-03T05:54:39.562Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:54:39.562Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd0a537a6a9052aa20d52"
+  },
+  "email": "Sahan@gmail.coma",
+  "password": "$2a$10$gH2Ze7wGzC.4agfQQ/Bv7e/wEmDE/8SoWMg/TPd4bM58KiKAgDq86",
+  "name": "sahana shanmugha",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "sahana shanmugha",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 6,
+  "board": "CBSE",
+  "mobileNo": "9916966688",
+  "studentID": "AA0106",
+  "createdAt": {
+    "$date": "2025-12-03T05:54:45.766Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:54:45.766Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd0ac37a6a9052aa20d53"
+  },
+  "email": "abc55@gmail.com",
+  "password": "$2a$10$rUuZSc2w42gXSdL3Z3bujO6AOocFOeK8Z6reCGaH5urFpUtZP36bC",
+  "name": "sudhiksha.M",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "sudhiksha.M",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 6,
+  "board": "ISCE",
+  "mobileNo": "7090601440",
+  "studentID": "AA0107",
+  "createdAt": {
+    "$date": "2025-12-03T05:54:52.750Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:54:52.750Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd0d437a6a9052aa20d57"
+  },
+  "email": "abcGR-6@gmail.com",
+  "password": "$2a$10$QT5muy6miFXotE27ayAtFO2AK9AGBJ0J5ewFVLob8hPfPIUfVbTci",
+  "name": "SVANIK WADAKUPPU",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "SVANIK WADAKUPPU",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9845392255",
+  "studentID": "AA0108",
+  "createdAt": {
+    "$date": "2025-12-03T05:55:32.361Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:55:32.361Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd0e837a6a9052aa20d58"
+  },
+  "email": "tjest@example.com",
+  "password": "$2a$10$UTFDzw5JOdqnJ244aEFfGe/Ni9biqLKJ1WG5s.aJYdvlcgo.sS0P6",
+  "name": "MONIKA PATHAK ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "MONIKA PATHAK ",
+  "schoolName": "DEVIN ACADEMY FOR LEARING",
+  "grade": 6,
+  "board": "CBSE",
+  "mobileNo": "8618722207",
+  "studentID": "AA0109",
+  "createdAt": {
+    "$date": "2025-12-03T05:55:52.841Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:55:52.841Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd0fd37a6a9052aa20d5c"
+  },
+  "email": "narayanan2000@gmail.com",
+  "password": "$2a$10$WipvCIs5qCtpZtaaDmh3c.F2sC9E7iEHg1Jjmcuf.AuDpKNFPR8MG",
+  "name": "shravan.narayanan",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "shravan.narayanan",
+  "schoolName": "devin academy for learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9901773801",
+  "studentID": "AA0110",
+  "createdAt": {
+    "$date": "2025-12-03T05:56:13.048Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:56:13.048Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd14137a6a9052aa20d62"
+  },
+  "email": "abc44@gmail.com",
+  "password": "$2a$10$RjTK.tdIVQFdHBZQHXdZI.o7CNDJyOr05xLxnCR0Sqp/x4kWHJdY6",
+  "name": "chandana.s.",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "chandana.s.",
+  "schoolName": "devin academy ",
+  "board": "CBSE",
+  "mobileNo": "9611905250",
+  "studentID": "AA0111",
+  "createdAt": {
+    "$date": "2025-12-03T05:57:21.763Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T05:57:21.763Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd4df37a6a9052aa20d78"
+  },
+  "email": "tMest@example.com",
+  "password": "$2a$10$BeaAuH6kBSV0Y7nlN/QOk.CXSxFQTCIGcdEAmWdCyXXGKg3ASOuc.",
+  "name": "PRAJWAL V HEGD ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "PRAJWAL V HEGD ",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING ",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9972822886",
+  "studentID": "AA0112",
+  "createdAt": {
+    "$date": "2025-12-03T06:12:47.450Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:12:47.450Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd4ee37a6a9052aa20d79"
+  },
+  "email": "shilpa6172@gmail.com",
+  "password": "$2a$10$QfxEpSSxCEyYXWUzRgDFte8vcKr1mbhvmvGowtnSEbh5uSK17EMXW",
+  "name": "Atharv Hegde",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Atharv Hegde",
+  "schoolName": "devin academy for learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9742592232",
+  "studentID": "AA0113",
+  "createdAt": {
+    "$date": "2025-12-03T06:13:02.650Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:13:02.650Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd60e37a6a9052aa20d81"
+  },
+  "email": "mastergagan4335@gmail.com",
+  "password": "$2a$10$9zcu5CR9GymyYqK7FLx.wudChrgm47qI9E37t8lLdVnab557GvJiS",
+  "name": "Test User",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Test User",
+  "schoolName": "Demo School",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9513222882",
+  "studentID": "AA0114",
+  "createdAt": {
+    "$date": "2025-12-03T06:17:50.347Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:17:50.347Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd61737a6a9052aa20d82"
+  },
+  "email": "test3@example.com",
+  "password": "$2a$10$3uRgcAQUl87.qZT3HmqaHOhcb22DuQpcaFK4XDOsVt1jUbHtS22OG",
+  "name": "Nishanth.r",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Nishanth.r",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9880532133",
+  "studentID": "AA0115",
+  "createdAt": {
+    "$date": "2025-12-03T06:17:59.866Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:17:59.866Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd63637a6a9052aa20d83"
+  },
+  "email": "HithenReddy@gmail.com",
+  "password": "$2a$10$tzF7peckB6ynFF3ezPPSouQMp9vvi4mw691Qe1izE3tDjHT42rEoW",
+  "name": "Hithen Reddy H A",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Hithen Reddy H A",
+  "schoolName": "Devin academy for learning ",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9535135858",
+  "studentID": "AA0116",
+  "createdAt": {
+    "$date": "2025-12-03T06:18:30.854Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:18:30.854Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd8dc37a6a9052aa20d9e"
+  },
+  "email": "mravu1423@gmail.com",
+  "password": "$2a$10$1Ki3XnB70URLuHzRupQBcunb0vNGQbXub45cisHW.VOO0BZjfOZjG",
+  "name": "arya krishna",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "arya krishna",
+  "schoolName": "devin academy for learning",
+  "grade": 7,
+  "board": "icse",
+  "mobileNo": "9632036866",
+  "studentID": "AA0117",
+  "createdAt": {
+    "$date": "2025-12-03T06:29:48.358Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:29:48.358Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd8e937a6a9052aa20d9f"
+  },
+  "email": "girikalale@yahoo.com",
+  "password": "$2a$10$PfeXNs73gQPCb9Wu8fD0l.FXcWqbgOwjVNo3PKa2PiFyMz7y3A/Ga",
+  "name": "Vaibhav.G",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Vaibhav.G",
+  "schoolName": "Devin Academy for Learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9900505021",
+  "studentID": "AA0118",
+  "createdAt": {
+    "$date": "2025-12-03T06:30:01.119Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:30:01.119Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd8e937a6a9052aa20da0"
+  },
+  "email": "neenabhuvan1993@gmail.com",
+  "password": "$2a$10$Y/JSMBqrNOo2Pvj66RsZOeDFNhrMSj5DGf3Ck7maRGUtLBbYXJIWK",
+  "name": "bhuvan robo 2.0",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "bhuvan robo 2.0",
+  "schoolName": "Devin academy f",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "8095520883",
+  "studentID": "AA0119",
+  "createdAt": {
+    "$date": "2025-12-03T06:30:01.559Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:30:01.559Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd8ed37a6a9052aa20da1"
+  },
+  "email": "abi.sek@gmail.com",
+  "password": "$2a$10$MOzctujWtbxXCsFsKrWNe.1lh4X9GNSpH26aKWFZfTC7hLYhRt12u",
+  "name": "Tanmay",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Tanmay",
+  "schoolName": "devin academy for learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9663390256",
+  "studentID": "AA0120",
+  "createdAt": {
+    "$date": "2025-12-03T06:30:05.658Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:30:05.658Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd8f337a6a9052aa20da2"
+  },
+  "email": "ktest@example.com",
+  "password": "$2a$10$RXQAkaXZescS8n5aW9RKc.WnUtQHchRiNS.P31xM/j6dHUT9imWMS",
+  "name": "charan",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "charan",
+  "schoolName": "devin acadmy for learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9980206228",
+  "studentID": "AA0121",
+  "createdAt": {
+    "$date": "2025-12-03T06:30:11.557Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:30:11.557Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd8f537a6a9052aa20da3"
+  },
+  "email": "karthisujay@gmail.com",
+  "password": "$2a$10$7gFugfNYkktlqNqmny0w4OtkkroCDn9eecVgCAen./hgUvgEZMS9i",
+  "name": "Shayan K",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Shayan K",
+  "schoolName": "Devin academy for learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9632784613",
+  "studentID": "AA0122",
+  "createdAt": {
+    "$date": "2025-12-03T06:30:13.358Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:30:13.358Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd90f37a6a9052aa20da7"
+  },
+  "email": "teost@example.com",
+  "password": "$2a$10$ionSOlQjEm.5KDzFRruPkuvVjpNi7DAywnvm0eMVN2x5poI8VIYgy",
+  "name": "prathvik r",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "prathvik r",
+  "schoolName": "Devin academy for learning ",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9341624023",
+  "studentID": "AA0123",
+  "createdAt": {
+    "$date": "2025-12-03T06:30:39.558Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:30:39.558Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd91837a6a9052aa20da8"
+  },
+  "email": "anooppaswan95@gamil.com",
+  "password": "$2a$10$Zi/Gw.5KKPe.NdWEC4ShLOZNJ8FjeOxyR6n/UoA/6kraGIU8QH4rq",
+  "name": "ANOOP KUMAR PASWAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "ANOOP KUMAR PASWAN",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "7411267456",
+  "studentID": "AA0124",
+  "createdAt": {
+    "$date": "2025-12-03T06:30:48.950Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:30:48.950Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd93a37a6a9052aa20dab"
+  },
+  "email": "rajeshwarirupendra@gmail.com",
+  "password": "$2a$10$2GJn1oXSV9nQvLflPy0Xf.mYUF1aTX4xx5YQUDdjsjQRiThos1LHe",
+  "name": "M.Pranith Reddy",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "M.Pranith Reddy",
+  "schoolName": "DEVIN ACADEMY FOR LEARING",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "8867799223",
+  "studentID": "AA0125",
+  "createdAt": {
+    "$date": "2025-12-03T06:31:22.350Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:31:22.350Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd94a37a6a9052aa20dae"
+  },
+  "email": "Rao.vishwa@gmail.com",
+  "password": "$2a$10$tXWQPaFEgyfzfvN0GaF/C.dSjdiFkuY9gaQyKE4sveMOnKxVCrMQS",
+  "name": "Sachith v rao",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Sachith v rao",
+  "schoolName": "Demo School",
+  "grade": 12,
+  "board": "icse",
+  "mobileNo": "9738012030",
+  "studentID": "AA0126",
+  "createdAt": {
+    "$date": "2025-12-03T06:31:38.661Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:31:38.661Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd94c37a6a9052aa20daf"
+  },
+  "email": "tbest@example.com",
+  "password": "$2a$10$GZlLtwV/H3JlQYERpJDxEud99Tbwg/riU2LWOi6n7Kmg24RLURAAW",
+  "name": "pragyan",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "pragyan",
+  "schoolName": "devin academy for learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9538642955",
+  "studentID": "AA0127",
+  "createdAt": {
+    "$date": "2025-12-03T06:31:40.249Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:31:40.249Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd97737a6a9052aa20db4"
+  },
+  "email": "saideekshith069@gmail.com",
+  "password": "$2a$10$ySnslL0x4fjUgETSQEekVeNzA.5MJvuFCgHA.gLRu4YUbtIU9atFe",
+  "name": "sai deekshith.U",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "sai deekshith.U",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "7411808001",
+  "studentID": "AA0128",
+  "createdAt": {
+    "$date": "2025-12-03T06:32:23.290Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:32:23.290Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd9a337a6a9052aa20db7"
+  },
+  "email": "naruro9tails@gmail.com",
+  "password": "$2a$10$oxIvA1XAzlnIBrfO3nxmkuBxOdymfluyMGrqD68rFLdwkAvFEuAFm",
+  "name": "ARJUNA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "ARJUNA",
+  "schoolName": "DEVIN ACADEMY",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "8123480497",
+  "studentID": "AA0129",
+  "createdAt": {
+    "$date": "2025-12-03T06:33:07.565Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:33:07.565Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fd9ac37a6a9052aa20db8"
+  },
+  "email": "teBst@example.com",
+  "password": "$2a$10$IyUcaZpcV2/SOIUDA2fvJuQbKInGRmJRoW8j4cZ03psfpRaRd4Ts6",
+  "name": "Srujan SHETTY",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Srujan SHETTY",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "6361341656",
+  "studentID": "AA0130",
+  "createdAt": {
+    "$date": "2025-12-03T06:33:16.449Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:33:16.449Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fda0337a6a9052aa20dbf"
+  },
+  "email": "NETRAVATHIMANU@GMAIL.COM",
+  "password": "$2a$10$yastCTJU4sWnWlQTB4th0OMmvrs/UYrr5Orjib0LkIDfNr9iOIrbO",
+  "name": "BHAGTH YADAV M N ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "BHAGTH YADAV M N ",
+  "schoolName": "DEV IN ACADEMY FOR LEARB",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9538195049",
+  "studentID": "AA0131",
+  "createdAt": {
+    "$date": "2025-12-03T06:34:43.763Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:34:43.763Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fda4c37a6a9052aa20dc3"
+  },
+  "email": "nagesh@gmail.com",
+  "password": "$2a$10$.avZOnamiMRrzdfgSID4tu/Ube4m7Qn4ujlRWDmXQNb.udAn.2gW6",
+  "name": "ved n pojary",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "ved n pojary",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9902882490",
+  "studentID": "AA0132",
+  "createdAt": {
+    "$date": "2025-12-03T06:35:56.650Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:35:56.650Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdabd37a6a9052aa20dcb"
+  },
+  "email": "Premakhushi2@gmail.com",
+  "password": "$2a$10$AhOnY4aKZvP6DV5m.2CDN.bttvOvbTwSMnmBtbZ9Jxev9./lQS8/S",
+  "name": "Test User",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Test User",
+  "schoolName": "Demo School",
+  "grade": 7,
+  "board": "CBSE",
+  "mobileNo": "9902414942",
+  "studentID": "AA0138",
+  "createdAt": {
+    "$date": "2025-12-03T06:37:49.860Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:37:49.860Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdac837a6a9052aa20dcc"
+  },
+  "email": "durgesh@gmail.com",
+  "password": "$2a$10$7th8jY/As1Y9aGY6m6TKg.QTCReYioItO4x0GxK1JqE5OP.BvA8Fq",
+  "name": "durgesh",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "durgesh",
+  "schoolName": "devin academy for learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9342501022",
+  "studentID": "AA0139",
+  "createdAt": {
+    "$date": "2025-12-03T06:38:00.853Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:38:00.853Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdaf137a6a9052aa20dd0"
+  },
+  "email": "abc85@gmail.com",
+  "password": "$2a$10$47hGGnobgSGHvEONlv/LZOlFiDwY4TKm49ER1dY0CLRbnMuu17/5q",
+  "name": "Shabbir Ali",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Shabbir Ali",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "7676177113",
+  "studentID": "AA0140",
+  "createdAt": {
+    "$date": "2025-12-03T06:38:41.144Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:38:41.144Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdc4037a6a9052aa20ddc"
+  },
+  "email": "testL@example.com",
+  "password": "$2a$10$vkfy83Pp8eKPhAeon5BQLugnfhrFu8pIDaSSCz1dYwMjdlzOx50gK",
+  "name": "KRUTHIKA.S ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "KRUTHIKA.S ",
+  "schoolName": "Demo School",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "6360431813",
+  "studentID": "AA0141",
+  "createdAt": {
+    "$date": "2025-12-03T06:44:16.087Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:44:16.087Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdcb337a6a9052aa20de4"
+  },
+  "email": "mtest@example.com",
+  "password": "$2a$10$wpDpR6C7hC06S.gB8/c4seOTC3.kOUiAO63vjrwlWIVXuHmmS7bjS",
+  "name": "Jeevitha U",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Jeevitha U",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9916901504",
+  "studentID": "AA0142",
+  "createdAt": {
+    "$date": "2025-12-03T06:46:11.555Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:46:11.555Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdd7637a6a9052aa20de9"
+  },
+  "email": "tani2012.music@gmail.com",
+  "password": "$2a$10$YinLfCWnQ/tL.PJ.c9ZqAuWeyWlQPZn1xYzHV6x7hFKOAzbveIy52",
+  "name": "Tanisha . J . Karekar",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Tanisha . J . Karekar",
+  "schoolName": "Dev-in Academy for learning ",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "8495039555",
+  "studentID": "AA0143",
+  "createdAt": {
+    "$date": "2025-12-03T06:49:26.800Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:49:26.800Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdd7837a6a9052aa20dea"
+  },
+  "email": "yashika@gmail.COM",
+  "password": "$2a$10$Ax6DQCx7NirDDSbEPInKQ.zcYlFTe5ArDxVp6jmh0qpdW9YS9xoP2",
+  "name": "yashika",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "yashika",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9108803178",
+  "studentID": "AA0144",
+  "createdAt": {
+    "$date": "2025-12-03T06:49:28.853Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:49:28.853Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fddb237a6a9052aa20dee"
+  },
+  "email": "temst@example.com",
+  "password": "$2a$10$csiUm0RvKgphaqFnwIqz0OCU5CIW8gFRgr8mgttWylAFaJdiMeU/a",
+  "name": "srushti raichur",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "srushti raichur",
+  "schoolName": "devin academy for learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9886054548",
+  "studentID": "AA0145",
+  "createdAt": {
+    "$date": "2025-12-03T06:50:26.053Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:50:26.053Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fddd437a6a9052aa20df0"
+  },
+  "email": "tmest@example.com",
+  "password": "$2a$10$/0Vhv0FOj/2KJMJynAr/EupUlBPGqW.kcQEuSJXMeshpPwc.roQja",
+  "name": "Pranathi pandre ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Pranathi pandre ",
+  "schoolName": "Devin academy for learning ",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "7507715631",
+  "studentID": "AA0146",
+  "createdAt": {
+    "$date": "2025-12-03T06:51:00.358Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:51:00.358Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fddf137a6a9052aa20df2"
+  },
+  "email": "tesmt@example.com",
+  "password": "$2a$10$eK32DcMnYg1iN77/SIia2OG7KTZz9KMi8ztKtNCaR.8PhR59KebqO",
+  "name": "Vedika Manya Sindhya ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Vedika Manya Sindhya ",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9343204777",
+  "studentID": "AA0147",
+  "createdAt": {
+    "$date": "2025-12-03T06:51:29.752Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:51:29.752Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fde3437a6a9052aa20df7"
+  },
+  "email": "tmemst@example.com",
+  "password": "$2a$10$WJxMOfTUEDoWHp1N6yvr/uhdRetVHLWxb6p7QftvWpFChRzkUcLca",
+  "name": "Laksha.G",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Laksha.G",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "7337783349",
+  "studentID": "AA0148",
+  "createdAt": {
+    "$date": "2025-12-03T06:52:36.248Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:52:36.248Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdf3d37a6a9052aa20e01"
+  },
+  "email": "anoomppaswan95@gamil.com",
+  "password": "$2a$10$yVXAirSq2vAYVx8q9BxIxuSfDUTRyVh306lTwUfYitPQ5OelPUFYm",
+  "name": "shresha",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "shresha",
+  "schoolName": "DEVIN ACADEMY FOR LEARNING",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "9513993948",
+  "studentID": "AA0149",
+  "createdAt": {
+    "$date": "2025-12-03T06:57:01.996Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:57:01.996Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdf5637a6a9052aa20e03"
+  },
+  "email": "MN@GMAIL.COM",
+  "password": "$2a$10$w/aroTRpKhF1qYuKRU1o.OxmijRMNmGZ8HcwHUeZuU.STEzDob/Dy",
+  "name": "HARSHITHA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "HARSHITHA",
+  "schoolName": "DAVIN ACATIMY FOR LARNING",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9621839247",
+  "studentID": "AA0150",
+  "createdAt": {
+    "$date": "2025-12-03T06:57:26.612Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:57:26.612Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fdf6b37a6a9052aa20e04"
+  },
+  "email": "SANVIGOWDAHM@123",
+  "password": "$2a$10$07dhCowo0Mg5AncYd.rCnOq9FOXkzCcBlRWLB9a6UBCB/VHjk3a3a",
+  "name": "sanvi gowda HM",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "sanvi gowda HM",
+  "schoolName": "devin academy for learning",
+  "grade": 7,
+  "board": "CBSE",
+  "mobileNo": "9480929468",
+  "studentID": "AA0151",
+  "createdAt": {
+    "$date": "2025-12-03T06:57:47.161Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T06:57:47.161Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "692fe11237a6a9052aa20e18"
+  },
+  "email": "tmmmmmst@example.com",
+  "password": "$2a$10$ARLaO0KaWn5cbNHEwD5tR.iH08nU9gHTFeDcDnSq14HQqG9UoZzH2",
+  "name": "Pratham",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Pratham",
+  "schoolName": "devin academy for learning",
+  "grade": 7,
+  "board": "ICSE",
+  "mobileNo": "7619655559",
+  "studentID": "AA0152",
+  "createdAt": {
+    "$date": "2025-12-03T07:04:50.680Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T07:04:50.680Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930154360509967c00207af"
+  },
+  "email": "nandithaq@gmail.com",
+  "password": "$2a$10$UkprJbG00xBjxSSG/xlVq.nMg2aNLoaHA8B8oZ01q/xKISZ7Vn2M2",
+  "name": "THUSHAR M NANDAN",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "THUSHAR M NANDAN",
+  "schoolName": "Vidya spoorthi school ",
+  "grade": 8,
+  "board": "CBSE",
+  "mobileNo": "09900122120",
+  "studentID": "AA0153",
+  "createdAt": {
+    "$date": "2025-12-03T10:47:31.688Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T10:47:31.688Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "693028db878f1e0355f93b39"
+  },
+  "email": "bishwanthdheepan@gmail.com",
+  "password": "$2a$10$1.QKE4tLuNy.AzrItDXEmeYnghbGl/7UrqDS85T3UBtwRYHwdq7Fu",
+  "name": "Bishwanth dheepan",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Bishwanth dheepan",
+  "schoolName": "Devin academy for learning ",
+  "grade": 10,
+  "board": "icse",
+  "mobileNo": "9916069710",
+  "studentID": "AA0154",
+  "createdAt": {
+    "$date": "2025-12-03T12:11:07.144Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T12:11:07.144Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "693029d3878f1e0355f93b3c"
+  },
+  "email": "rocharchidhan2012@gmail.com",
+  "password": "$2a$10$9c.qKpFmBCDUW5nT9tDbOOemh5Sdv9hCVDqBhTthc.3HI1Ze5crTy",
+  "name": "Archidhan",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Archidhan",
+  "schoolName": "Devin academy for learning",
+  "grade": 8,
+  "board": "ICSE",
+  "mobileNo": "7448481073",
+  "studentID": "AA0155",
+  "createdAt": {
+    "$date": "2025-12-03T12:15:15.211Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T12:15:15.211Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "693049198386554b132c25e4"
+  },
+  "email": "student_200299@naviksha.com",
+  "studentID": "AA0156",
+  "mobileNo": "8618021293",
+  "password": "$2a$10$FiXYnhyWj3NPtkp/OiW9UuXBQtMTLcPkE0ZrAMSGkA.GPW/8d4ax.",
+  "name": "M. A. LIKHITHA",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "M A LIKHITHA ",
+  "schoolName": "Vidya spoorti School ",
+  "grade": 8,
+  "board": "CBSE",
+  "createdAt": {
+    "$date": "2025-12-03T14:28:41.124Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:16:49.248Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "69304dcf8386554b132c25e5"
+  },
+  "email": "geethashradha@gmail.com",
+  "password": "$2a$10$47LMfbHSerZw1jMYsVzMlerZ5WkjSFzFlDY14DOd9KpmazR3tftNa",
+  "name": "Shradha. C",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Shradha. C",
+  "schoolName": "Devin Academy for learning ",
+  "grade": 8,
+  "board": "ICSE",
+  "mobileNo": "6361422846",
+  "studentID": "AA0157",
+  "createdAt": {
+    "$date": "2025-12-03T14:48:47.770Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T14:48:47.770Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930505e8386554b132c25e6"
+  },
+  "email": "vamshi4184@gmail.com",
+  "password": "$2a$10$iMC1h19TLBZUf6tzKrtEe.KrYwOnhJLl3WeMyI9JTcGp.Vc6bkf7G",
+  "name": "Vamshi Kaveramma NM ",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Vamshi Kaveramma NM ",
+  "schoolName": "Devin academy for learning ",
+  "grade": 8,
+  "board": "ICSE",
+  "mobileNo": "8762269777",
+  "studentID": "AA0158",
+  "createdAt": {
+    "$date": "2025-12-03T14:59:42.659Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T14:59:42.659Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "693051a58386554b132c25e8"
+  },
+  "email": "cholesiddhant@gmail.com",
+  "password": "$2a$10$S6kr6S79/LmHkTa0YvJtguHT5yAmZBvR/4XEdQf2QAxC7oLPp0uJW",
+  "name": "Siddhant",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Siddhant",
+  "schoolName": "RPS",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "8432714150",
+  "studentID": "AA0159",
+  "createdAt": {
+    "$date": "2025-12-03T15:05:09.255Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T15:05:09.255Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930558a8386554b132c25ec"
+  },
+  "email": "khushi.dhananjaya@gmail.com",
+  "password": "$2a$10$cg4CF/2bVY4qkQ/VIWP8yORcCGgsBi9HRyalW59bt7QOXx/fmcqo6",
+  "name": "Khushi.D",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Khushi.D",
+  "schoolName": "Devin academy for learning",
+  "grade": 8,
+  "board": "ICSE",
+  "mobileNo": "9740085560",
+  "studentID": "AA0160",
+  "createdAt": {
+    "$date": "2025-12-03T15:21:46.659Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T15:21:46.659Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "693057b48386554b132c25ef"
+  },
+  "email": "bkotresh3@gmail.com",
+  "password": "$2a$10$FCzeXNRegY94dHNzBdaAqudljLUeH5UgbRG.8dRP.oeM.c9V.IZ6m",
+  "name": " kotresha",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": " kotresha",
+  "schoolName": "Demo School",
+  "grade": 10,
+  "board": "Cbse ",
+  "mobileNo": "7892072773",
+  "studentID": "AA0161",
+  "createdAt": {
+    "$date": "2025-12-03T15:31:00.040Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T15:31:00.040Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "693057ec8386554b132c25f1"
+  },
+  "email": "student_200091@naviksha.com",
+  "studentID": "AA0162",
+  "mobileNo": "8008590600",
+  "password": "$2a$10$rkQhp2.Om4VoK6tUHfCnoe0H9l40KEiivWGUKJ4HRKhqhWRrFA/oK",
+  "name": "Shahid Rowther S",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Shahil rowther ",
+  "schoolName": "Vidya spoorthi school",
+  "grade": 6,
+  "board": "CBSE",
+  "createdAt": {
+    "$date": "2025-12-03T15:31:56.351Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-04T02:17:04.963Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "6930584e8386554b132c25f3"
+  },
+  "email": "ishwarsingh5764@gmail.com",
+  "password": "$2a$10$.EHRILSOKSC2XI2RFcXCLeVX5XtlKC3Kcug9D1uHLAtjBUd5zeune",
+  "name": "Bhavya sain",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Bhavya sain",
+  "schoolName": "Greno public school ",
+  "grade": 12,
+  "board": "CBSE",
+  "mobileNo": "9720160229",
+  "studentID": "AA0163",
+  "createdAt": {
+    "$date": "2025-12-03T15:33:34.546Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T15:33:34.546Z"
+  },
+  "_class": "com.naviksha.model.User"
+},
+{
+  "_id": {
+    "$oid": "69306b13e9e2135994cdefcc"
+  },
+  "email": "mpganga84@gmail.com",
+  "password": "$2a$10$.W21OAUtpNejfzv1jyAFxOmsr4zVj.lZNRI51GtRMlU7R09FPSdZy",
+  "name": "Varshitha M G",
+  "roles": [
+    "ROLE_USER"
+  ],
+  "active": true,
+  "fullName": "Varshitha M G",
+  "schoolName": "Devin Academy For Learning",
+  "grade": 6,
+  "board": "ICSE",
+  "mobileNo": "9535683889",
+  "studentID": "AA0164",
+  "createdAt": {
+    "$date": "2025-12-03T16:53:39.948Z"
+  },
+  "updatedAt": {
+    "$date": "2025-12-03T16:53:39.948Z"
+  },
+  "_class": "com.naviksha.model.User"
+}]

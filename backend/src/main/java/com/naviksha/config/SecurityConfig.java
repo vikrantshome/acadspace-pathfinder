@@ -120,8 +120,12 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Allow CORS preflight
                 .requestMatchers("/api/auth/lookup").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/progress/{userId}").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/progress/user/{userId}").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/tests/combined/submit").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/api/reports/*/link").permitAll()
                 .requestMatchers("/api/reports/demo/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/reports/user/**").permitAll()
                 .requestMatchers("/health").permitAll()
                 .requestMatchers("/actuator/health").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
