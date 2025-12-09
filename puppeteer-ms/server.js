@@ -310,7 +310,7 @@ app.post('/generate-pdf', async (req, res) => {
         const safeName = (studentName || 'Student').replace(/[^a-zA-Z0-9]/g, '_');
         const filename = `Career_Report_${safeName}_${studentID || '000'}_${date}.pdf`;
 
-        const publicUrl = await uploadToDrive(Buffer.from(mergedPdfBytes), filename);
+        const publicUrl = await uploadToDrive(Buffer.from(mergedPdfBytes), filename, studentID);
 
         if (publicUrl && studentID) {
             try {
