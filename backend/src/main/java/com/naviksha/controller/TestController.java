@@ -3,7 +3,7 @@ package com.naviksha.controller;
 import com.naviksha.dto.TestSubmissionDTO;
 import com.naviksha.model.*;
 import com.naviksha.service.*;
-import com.naviksha.service.EmailService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -137,7 +137,8 @@ public class TestController {
             return ResponseEntity.ok(Map.of(
                 "reportId", savedReport.getId(),
                 "report", report,
-                "message", "Test submitted successfully"
+                "message", "Test submitted successfully",
+                "reportLink", savedReport.getReportLink() 
             ));
             
         } catch (Exception e) {

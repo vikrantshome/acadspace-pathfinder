@@ -1,0 +1,39 @@
+{
+  "info": {
+    "_postman_id": "b3f0e0f0-c1d0-4e9b-8e2b-f9d2e1e3e4e5",
+    "name": "AI Report Service Request",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Generate AI Report (Java Format)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"studentName\": \"Theyas S\",\n  \"schoolName\": \"Saraswathi vidya mandira\",\n  \"grade\": 6,\n  \"board\": \"CBSE\",\n  \"vibeScores\": {\n    \"R\": 20,\n    \"I\": 35,\n    \"A\": 15,\n    \"S\": 10,\n    \"E\": 15,\n    \"C\": 5\n  },\n  \"eduStats\": {\n    \"Math\": 15,\n    \"Phy\": 8,\n    \"Chem\": 14,\n    \"Bio\": 14,\n    \"Eng\": 20\n  },\n  \"extracurriculars\": [\n    \"Music\",\n    \"Debate\",\n    \"Service\"\n  ],\n  \"parents\": [\n    \"Business\",\n    \"Cricketer\"\n  ],\n  \"top5Buckets\": [\n    {\n      \"bucketName\": \"Business & Entrepreneurship\",\n      \"bucketScore\": 75,\n      \"topCareers\": [\n        {\n          \"careerName\": \"Entrepreneur\",\n          \"matchScore\": 80,\n          \"topReasons\": [\n            \"High 'Enterprising' score\",\n            \"Family background in business\"\n          ],\n          \"studyPath\": [\n            \"BBA\",\n            \"MBA\"\n          ],\n          \"first3Steps\": [\n            \"Identify a problem to solve\",\n            \"Develop a business plan\",\n            \"Seek mentorship and funding\"\n          ],\n          \"confidence\": \"High\",\n          \"whatWouldChangeRecommendation\": \"If risk aversion is high\"\n        }\n      ]\n    },\n    {\n      \"bucketName\": \"Sports & Athletics\",\n      \"bucketScore\": 70,\n      \"topCareers\": [\n        {\n          \"careerName\": \"Professional Cricketer\",\n          \"matchScore\": 72,\n          \"topReasons\": [\n            \"Family background in cricket\",\n            \"Strong 'Realistic' and 'Enterprising' scores\"\n          ],\n          \"studyPath\": [\n            \"Focus on professional training\",\n            \"Bachelor's degree in a related field like Sports Management\"\n          ],\n          \"first3Steps\": [\n            \"Join a cricket academy\",\n            \"Participate in local and state-level tournaments\",\n            \"Focus on physical fitness and skill development\"\n          ],\n          \"confidence\": \"Medium\",\n          \"whatWouldChangeRecommendation\": \"If physical fitness or performance declines\"\n        }\n      ]\n    }\n  ],\n  \"summaryParagraph\": \"Theyas is a student with a strong enterprising spirit, likely influenced by his family background. He also shows potential in realistic and investigative areas. His academic performance is varied, with a notable interest in business-related subjects. His extracurricular activities in debate and service suggest good communication and social skills.\",\n  \"aiEnhanced\": null,\n  \"enhancedSummary\": null,\n  \"skillRecommendations\": null,\n  \"detailedSkillRecommendations\": null,\n  \"careerTrajectoryInsights\": null,\n  \"detailedCareerInsights\": null,\n  \"actionPlan\": null\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/api/v1/generate-report-java",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8000",
+          "path": [
+            "api",
+            "v1",
+            "generate-report-java"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -134,6 +134,15 @@ public class ScoringService {
         scores.put("S", 0);
         scores.put("E", 0);
         scores.put("C", 0);
+
+        // Default missing vibematch answers to 3.
+        // Assumes there are 14 vibematch questions (v_01 to v_14).
+        // This should be updated if the number of questions changes.
+        for (int i = 1; i <= 14; i++) {
+            String questionKey = String.format("v_%02d", i);
+            // If the answer is not present or null, default it to 3
+            answers.putIfAbsent(questionKey, 3);
+        }
         
         // Process each vibematch answer (Likert scale 1-5)
         for (Map.Entry<String, Object> answer : answers.entrySet()) {

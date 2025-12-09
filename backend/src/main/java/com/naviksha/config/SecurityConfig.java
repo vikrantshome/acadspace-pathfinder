@@ -117,6 +117,7 @@ public class SecurityConfig {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authz -> authz
                 // Public endpoints
+                .requestMatchers("/error").permitAll() // Allow Spring Boot error handling for unauthenticated users
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll() // Allow CORS preflight
                 .requestMatchers("/api/auth/lookup").permitAll()
                 .requestMatchers("/api/auth/**").permitAll()

@@ -7,7 +7,6 @@ import lombok.Data;
 
 @Data
 public class RegisterRequest {
-    @Email(message = "Email should be valid")
     private String email;
     
     @NotBlank(message = "Password is required")
@@ -24,6 +23,7 @@ public class RegisterRequest {
     private Integer grade;
     private String board;
     private String mobileNo;
+    @NotBlank(message = "Student ID cannot be empty")
     private String studentID;
     private String city;
 }
