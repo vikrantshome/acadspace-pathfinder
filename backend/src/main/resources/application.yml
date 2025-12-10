@@ -90,9 +90,14 @@ pdf:
     timeout: ${PDF_SERVICE_TIMEOUT:60000}  # 60 seconds
     enabled: ${PDF_SERVICE_ENABLED:true}
 
+# Puppeteer Microservice URL
+puppeteer:
+  ms:
+    url: ${PUPPETEER_MS_URL:http://localhost:5200}
+
 # Email Configuration
 email:
-  enabled: ${EMAIL_ENABLED:true}
+  enabled: ${EMAIL_ENABLED:false}
   from: ${EMAIL_FROM:naviksha@example.com}
   from-name: ${EMAIL_FROM_NAME:Naviksha AI}
 
@@ -135,7 +140,7 @@ spring:
   
   data:
     mongodb:
-     uri: "${MONGO_URI:mongodb+srv://naviksha:naviksha@cluster0.si3upnh.mongodb.net/naviksha?retryWrites=true&w=majority}"
+     uri: "${MONGO_URI:mongodb+srv://ainaviksha_db_user:gHV1FANEjzVAsMBP@naviksha.kwnahck.mongodb.net/naviksha?retryWrites=true&w=majority}"
   # Enable debug logging in development
 logging:
   level:
@@ -156,7 +161,7 @@ spring:
   
   data:
     mongodb:
-     uri: "${MONGO_URI:mongodb+srv://naviksha:naviksha@cluster0.si3upnh.mongodb.net/naviksha?retryWrites=true&w=majority}"
+     uri: "${MONGO_URI:mongodb+srv://ainaviksha_db_user:gHV1FANEjzVAsMBP@naviksha.kwnahck.mongodb.net/naviksha?retryWrites=true&w=majority}"
 
 # Test JWT with very short expiration
 jwt:
@@ -191,6 +196,4 @@ server:
   http2:
     enabled: true
     
-puppeteer:
-  ms:
-    url: ${VITE_PUPPETEER_MS_URL:http://localhost:5200} # Default URL for Puppeteer microservice
+

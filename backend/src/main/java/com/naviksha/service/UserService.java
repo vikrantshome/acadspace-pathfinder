@@ -48,12 +48,7 @@ public class UserService {
             existingUser = userRepository.findByStudentID(request.getStudentID()).orElse(null);
         }
 
-        // If not found by studentID, try by email
-        if (existingUser == null && request.getEmail() != null && !request.getEmail().isEmpty()) {
-            existingUser = userRepository.findByEmail(request.getEmail()).orElse(null);
-        }
-        
-        // If not found by email, try by mobileNo, but only if mobileNo is not empty
+        // If not found by studentID, try by mobileNo, but only if mobileNo is not empty
         if (existingUser == null && request.getMobileNo() != null && !request.getMobileNo().trim().isEmpty()) {
             existingUser = userRepository.findByMobileNo(request.getMobileNo()).orElse(null);
         }
