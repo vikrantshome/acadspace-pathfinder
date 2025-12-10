@@ -3,42 +3,61 @@
  * Modern, secure authentication with Supabase
  */
 
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
-import { Mail, Lock, User, GraduationCap, School, AlertCircle, Loader2, Phone } from 'lucide-react';
-import { useAuth } from '@/components/AuthProvider';
-import { toast } from '@/hooks/use-toast';
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import {
+  Mail,
+  Lock,
+  User,
+  GraduationCap,
+  School,
+  AlertCircle,
+  Loader2,
+  Phone,
+} from "lucide-react";
+import { useAuth } from "@/components/AuthProvider";
+import { toast } from "@/hooks/use-toast";
 
 const Auth = () => {
   const { user, signIn, signUp } = useAuth();
   const [isSignUp, setIsSignUp] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [isSchoolListVisible, setSchoolListVisible] = useState(false);
+  const [schoolInputValue, setSchoolInputValue] = useState("");
   const [formData, setFormData] = useState({
-    email: 'test@example.com',
-    password: '123456',
-    confirmPassword: '123456',
-    fullName: 'Test User',
-    parentName: 'Test Parent',
-    schoolName: 'Demo School',
-    grade: '12',
-    board: 'CBSE',
-    mobileNo: ''
+    email: "",
+    password: "",
+    confirmPassword: "",
+    fullName: "",
+    parentName: "",
+    schoolName: "",
+    grade: "",
+    board: "",
+    mobileNo: "",
   });
   const navigate = useNavigate();
 
   // Read query parameters for pre-filling signup form
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    const mobileNo = params.get('mobileNo');
+    const mobileNo = params.get("mobileNo");
 
     if (mobileNo) {
       setIsSignUp(true); // Automatically switch to signup form
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         mobileNo: mobileNo,
       }));
@@ -48,12 +67,12 @@ const Auth = () => {
   // Check if user is already logged in
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate("/");
     }
   }, [user, navigate]);
 
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
   const handleSignUp = async () => {
@@ -61,7 +80,7 @@ const Auth = () => {
       toast({
         title: "Passwords don't match",
         description: "Please make sure both passwords are identical",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -70,7 +89,7 @@ const Auth = () => {
       toast({
         title: "Password too short",
         description: "Password must be at least 6 characters long",
-        variant: "destructive"
+        variant: "destructive",
       });
       return;
     }
@@ -79,17 +98,17 @@ const Auth = () => {
     try {
       const grade = formData.grade ? parseInt(formData.grade, 10) : undefined;
       await signUp(
-        formData.email, 
-        formData.password, 
-        formData.fullName, 
+        formData.email,
+        formData.password,
+        formData.fullName,
         formData.fullName,
         formData.parentName,
-        formData.schoolName, 
-        grade, 
+        formData.schoolName || schoolInputValue,
+        grade,
         formData.board,
         formData.mobileNo
       );
-      navigate('/');
+      navigate("/");
     } catch (error: any) {
       // Error handling is done in AuthProvider
     } finally {
@@ -101,7 +120,7 @@ const Auth = () => {
     setLoading(true);
     try {
       await signIn(formData.email, formData.password);
-      navigate('/');
+      navigate("/");
     } catch (error: any) {
       // Error handling is done in AuthProvider
     } finally {
@@ -127,13 +146,12 @@ const Auth = () => {
             <GraduationCap className="w-6 h-6 md:w-8 md:h-8 text-primary" />
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-white">
-            {isSignUp ? 'Join Naviksha AI' : 'Welcome Back'}
+            {isSignUp ? "Join Naviksha AI" : "Welcome Back"}
           </h1>
           <p className="text-sm md:text-base text-white/80 px-2">
-            {isSignUp 
-              ? 'Navigate Your Future with AI-Powered Career Guidance' 
-              : 'Continue your career discovery journey'
-            }
+            {isSignUp
+              ? "Navigate Your Future with AI-Powered Career Guidance"
+              : "Continue your career discovery journey"}
           </p>
         </div>
 
@@ -141,7 +159,7 @@ const Auth = () => {
         <Card className="glass border-0 shadow-2xl">
           <CardHeader className="space-y-1 pb-4">
             <CardTitle className="text-lg md:text-xl text-center">
-              {isSignUp ? 'Create Account' : 'Sign In'}
+              {isSignUp ? "Create Account" : "Sign In"}
             </CardTitle>
           </CardHeader>
           <CardContent className="px-4 md:px-6">
@@ -157,12 +175,10 @@ const Auth = () => {
                   type="email"
                   placeholder="your.email@example.com"
                   value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
-                  required
+                  onChange={(e) => handleInputChange("email", e.target.value)}
                   className="focus-ring"
                 />
               </div>
-
               {/* Password */}
               <div className="space-y-2">
                 <Label htmlFor="password" className="flex items-center gap-2">
@@ -174,7 +190,9 @@ const Auth = () => {
                   type="password"
                   placeholder="••••••••"
                   value={formData.password}
-                  onChange={(e) => handleInputChange('password', e.target.value)}
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
                   required
                   className="focus-ring"
                 />
@@ -185,7 +203,10 @@ const Auth = () => {
                 <>
                   {/* Confirm Password */}
                   <div className="space-y-2">
-                    <Label htmlFor="confirmPassword" className="flex items-center gap-2">
+                    <Label
+                      htmlFor="confirmPassword"
+                      className="flex items-center gap-2"
+                    >
                       <Lock className="w-4 h-4" />
                       Confirm Password
                     </Label>
@@ -194,7 +215,9 @@ const Auth = () => {
                       type="password"
                       placeholder="••••••••"
                       value={formData.confirmPassword}
-                      onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("confirmPassword", e.target.value)
+                      }
                       required
                       className="focus-ring"
                     />
@@ -202,7 +225,10 @@ const Auth = () => {
 
                   {/* Full Name */}
                   <div className="space-y-2">
-                    <Label htmlFor="fullName" className="flex items-center gap-2">
+                    <Label
+                      htmlFor="fullName"
+                      className="flex items-center gap-2"
+                    >
                       <User className="w-4 h-4" />
                       Full Name
                     </Label>
@@ -211,7 +237,9 @@ const Auth = () => {
                       type="text"
                       placeholder="Your full name"
                       value={formData.fullName}
-                      onChange={(e) => handleInputChange('fullName', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("fullName", e.target.value)
+                      }
                       required
                       className="focus-ring"
                     />
@@ -219,7 +247,10 @@ const Auth = () => {
 
                   {/* Parent Name */}
                   <div className="space-y-2">
-                    <Label htmlFor="parentName" className="flex items-center gap-2">
+                    <Label
+                      htmlFor="parentName"
+                      className="flex items-center gap-2"
+                    >
                       <User className="w-4 h-4" />
                       Parent Name
                     </Label>
@@ -228,26 +259,115 @@ const Auth = () => {
                       type="text"
                       placeholder="Your parent's name"
                       value={formData.parentName}
-                      onChange={(e) => handleInputChange('parentName', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("parentName", e.target.value)
+                      }
                       required
                       className="focus-ring"
                     />
                   </div>
 
-                  {/* School Name */}
                   <div className="space-y-2">
-                    <Label htmlFor="schoolName" className="flex items-center gap-2">
+                    <Label
+                      htmlFor="schoolName"
+                      className="flex items-center gap-2"
+                    >
                       <School className="w-4 h-4" />
                       School Name
                     </Label>
-                    <Input
-                      id="schoolName"
-                      type="text"
-                      placeholder="Your school name"
-                      value={formData.schoolName}
-                      onChange={(e) => handleInputChange('schoolName', e.target.value)}
-                      className="focus-ring"
-                    />
+                    <Command>
+                      <CommandInput
+                        placeholder="Input school name..."
+                        value={schoolInputValue}
+                        onValueChange={(value) => {
+                          setSchoolInputValue(value);
+                          setSchoolListVisible(true);
+                        }}
+                        onBlur={() => {
+                          setTimeout(() => {
+                            setSchoolListVisible(false);
+                          }, 200);
+                        }}
+                      />
+                      {isSchoolListVisible && (
+                        <CommandList>
+                          <CommandEmpty>No results found.</CommandEmpty>
+                          <CommandGroup>
+                            {[
+                              "Indian Public School",
+                              "Vidya Spoorthi School",
+                              "Basant Valley Senior Sec. School",
+                              "Greno Public School",
+                              "Devin Academy for Learning",
+                              "Wisdom Era English school",
+                              "Wisdom Wings English Medium school",
+                              "SARASWATHI VIDYA MANDIRA ANEKAL",
+                              "SRSD Sr.Sec School Delhi",
+                              "MP Model Public School Delhi",
+                              "JN International School South Delhi",
+                              "Royal Academy Public School",
+                              "Harsha Int Public School",
+                              "Jnanasagara International Public School",
+                              "MORNING STAR PUBLIC SCHOOL",
+                              "SANSKRITI MODERN SCHOOL",
+                              "Mata Roshni Devi Public School",
+                              "St. Mary's Public School, Bangalore",
+                              "The Vrukksha school",
+                              "Ram Jatan Public School",
+                              "GD Goenka Signature School",
+                              "Seshadripuram High School",
+                              "ASN School",
+                              "Mysore West Lions Sevaniketan School",
+                              "Shri Ram Bharat Public School (SRBPS)",
+                              "Cambridge Public School",
+                              "Cambridge English School",
+                              "Birla Open Minds International School",
+                              "Raman Munjal vidya Mandir, Gurugram",
+                              "Sahaj International School, Ghaziabad",
+                              "Kalka Public School",
+                              "St Rock's Girls Convent",
+                              "St Antony's School",
+                              "St Alousious School",
+                              "The Prodigies International School",
+                              "Patel Public School",
+                              "Presidency School Kasturinagar",
+                              "New Baldwin International School, Anekal",
+                              "Creative Kids Group of Institutions",
+                              "Shantinikethana School",
+                              "The Deen's Academy",
+                              "Baldwin Boys High School",
+                              "BMN Public School",
+                              "The Rising International School",
+                              "DPS",
+                              "SJR Kengeri Public School",
+                              "DPIS",
+                              "Sri Ram Vidyalaya Jakkur",
+                              "Riverstone International School",
+                              "Agragami Vidya Kendra",
+                              "VEDAS INTERNATIONAL SCHOOL",
+                              "Florida English School",
+                            ]
+                              .filter((school) =>
+                                school
+                                  .toLowerCase()
+                                  .includes(schoolInputValue.toLowerCase())
+                              )
+                              .map((school) => (
+                                <CommandItem
+                                  key={school}
+                                  onSelect={() => {
+                                    handleInputChange("schoolName", school);
+                                    setSchoolInputValue(school);
+                                    setSchoolListVisible(false);
+                                  }}
+                                >
+                                  {school}
+                                </CommandItem>
+                              ))}
+                          </CommandGroup>
+                        </CommandList>
+                      )}
+                    </Command>
                   </div>
 
                   {/* Grade and Board */}
@@ -261,7 +381,9 @@ const Auth = () => {
                         min="6"
                         max="12"
                         value={formData.grade}
-                        onChange={(e) => handleInputChange('grade', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("grade", e.target.value)
+                        }
                         className="focus-ring"
                       />
                     </div>
@@ -272,7 +394,9 @@ const Auth = () => {
                         type="text"
                         placeholder="CBSE"
                         value={formData.board}
-                        onChange={(e) => handleInputChange('board', e.target.value)}
+                        onChange={(e) =>
+                          handleInputChange("board", e.target.value)
+                        }
                         className="focus-ring"
                       />
                     </div>
@@ -280,7 +404,10 @@ const Auth = () => {
 
                   {/* Mobile Number */}
                   <div className="space-y-2">
-                    <Label htmlFor="mobileNo" className="flex items-center gap-2">
+                    <Label
+                      htmlFor="mobileNo"
+                      className="flex items-center gap-2"
+                    >
                       <Phone className="w-4 h-4" />
                       Mobile Number
                     </Label>
@@ -289,7 +416,9 @@ const Auth = () => {
                       type="text"
                       placeholder="Your mobile number"
                       value={formData.mobileNo}
-                      onChange={(e) => handleInputChange('mobileNo', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange("mobileNo", e.target.value)
+                      }
                       className="focus-ring"
                     />
                   </div>
@@ -305,12 +434,10 @@ const Auth = () => {
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    {isSignUp ? 'Creating Account...' : 'Signing In...'}
+                    {isSignUp ? "Creating Account..." : "Signing In..."}
                   </>
                 ) : (
-                  <>
-                    {isSignUp ? 'Create Account' : 'Sign In'}
-                  </>
+                  <>{isSignUp ? "Create Account" : "Sign In"}</>
                 )}
               </Button>
             </form>
@@ -320,14 +447,16 @@ const Auth = () => {
               <Separator />
               <div className="text-center mt-3 md:mt-4">
                 <p className="text-xs md:text-sm text-muted-foreground">
-                  {isSignUp ? 'Already have an account?' : "Don't have an account?"}
+                  {isSignUp
+                    ? "Already have an account?"
+                    : "Don't have an account?"}
                 </p>
                 <Button
                   variant="link"
                   onClick={() => setIsSignUp(!isSignUp)}
                   className="text-primary font-semibold text-sm md:text-base"
                 >
-                  {isSignUp ? 'Sign In' : 'Create Account'}
+                  {isSignUp ? "Sign In" : "Create Account"}
                 </Button>
               </div>
             </div>
@@ -337,8 +466,8 @@ const Auth = () => {
         {/* Privacy Note */}
         <div className="text-center px-2">
           <p className="text-white/60 text-xs leading-relaxed">
-            By creating an account, you agree to our privacy practices. 
-            Your data is secure and never shared with third parties.
+            By creating an account, you agree to our privacy practices. Your
+            data is secure and never shared with third parties.
           </p>
         </div>
       </div>
