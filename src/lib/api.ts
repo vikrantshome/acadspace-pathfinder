@@ -113,9 +113,10 @@ class ApiService {
     schoolName?: string, 
     grade?: number, 
     board?: string,
-    mobileNo?: string
+    mobileNo?: string,
+    city?: string // Added city
   ): Promise<AuthResponse> {
-    const response = await fetch(`${API_BASE_URL}/auth/register`, {
+    const response = await fetch(`${API_BASE_URL}/auth/upsert-register`, { // Changed endpoint
       method: 'POST',
       headers: this.getHeaders(),
       body: JSON.stringify({ 
@@ -127,7 +128,8 @@ class ApiService {
         schoolName,
         grade,
         board,
-        mobileNo
+        mobileNo,
+        city // Included city
       }),
     });
 
