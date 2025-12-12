@@ -95,6 +95,8 @@ public class SecurityConfig {
             configuration.addAllowedOrigin("https://www.naviksha.co.in");
             configuration.addAllowedOrigin("https://naviksha.co.in");
             configuration.addAllowedOrigin("http://naviksha.co.in"); // HTTP fallback
+            configuration.addAllowedOrigin("https://app.naviksha.co.in");
+            configuration.addAllowedOrigin("http://app.naviksha.co.in");
             configuration.addAllowedOrigin("https://naviksha-frontend.onrender.com");
             configuration.addAllowedOrigin("https://acadspace-pathfinder.onrender.com");
         }
