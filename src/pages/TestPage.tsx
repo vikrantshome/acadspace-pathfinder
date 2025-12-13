@@ -171,7 +171,7 @@ const TestPage = () => {
       const timer = setTimeout(saveProgress, 1000); // Small delay to avoid rapid saves
       return () => clearTimeout(timer);
     }
-  }, [currentQuestionIndex, user?.id, testType, saving]);
+  }, [answers]);
 
   // Load existing answer for current question (safe)
   useEffect(() => {
