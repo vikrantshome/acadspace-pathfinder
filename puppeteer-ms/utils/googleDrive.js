@@ -14,13 +14,12 @@ async function getDriveClient() {
     if (driveClient) return driveClient;
 
     try {
-        const [credsData, tokenData] = await Promise.all([
-            fs.readFile(CREDENTIALS_PATH),
-            fs.readFile(TOKEN_PATH)
-        ]);
+        if (!process.env.GOOGLE_CLIENT_SECRET_JSON || !process.env.GOOGLE_TOKEN_JSON) {
+            throw new Error("Google Drive credentials are not set in environment variables.");
+        }
 
-        const credentials = JSON.parse(credsData);
-        const token = JSON.parse(tokenData);
+        const credentials = JSON.parse(process.env.GOOGLE_CLIENT_SECRET_JSON);
+        const token = JSON.parse(process.env.GOOGLE_TOKEN_JSON);
         
         const creds = credentials.web || credentials.installed;
         const { client_secret, client_id, redirect_uris } = creds;
