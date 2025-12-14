@@ -3,9 +3,8 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Copy project files needed for build
-# Note: Build context is repo root, so paths must include subdirectory
-COPY backend/pom.xml ./
-COPY backend/src ./src
+COPY pom.xml ./
+COPY src ./src
 
 # Build the jar (skip tests for faster image build)
 RUN mvn -DskipTests package
