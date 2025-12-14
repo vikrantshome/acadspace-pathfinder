@@ -53,13 +53,13 @@ WORKDIR /usr/src/app
 ENV NODE_ENV=production
 
 # Copy package.json and package-lock.json
-COPY puppeteer-ms/package.json puppeteer-ms/package-lock.json ./
+COPY package.json package-lock.json ./
 
 # Install dependencies
 RUN npm install
 
 # Copy the rest of the application code
-COPY puppeteer-ms/ .
+COPY . .
 
 # Expose the port the app runs on
 EXPOSE 5200
