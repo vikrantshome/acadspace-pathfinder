@@ -318,6 +318,7 @@ const Auth = () => {
                               "Seshadripuram High School",
                               "ASN School",
                               "Mysore West Lions Sevaniketan School",
+                              "Mysore West Lions",                             
                               "Shri Ram Bharat Public School (SRBPS)",
                               "Cambridge Public School",
                               "Cambridge English School",
