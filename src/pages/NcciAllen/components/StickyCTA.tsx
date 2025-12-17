@@ -25,7 +25,7 @@ const StickyCTA = () => {
           className="rounded-full shadow-lg"
           asChild
         >
-          <a href="https://www.naviksha.co.in/auth" target="_blank" rel="noopener noreferrer">
+          <a href="https://app.naviksha.co.in/auth" target="_blank" rel="noopener noreferrer">
             Start Now • Get Report
           </a>
         </Button>
@@ -41,7 +41,7 @@ const StickyCTA = () => {
           className="w-full"
           asChild
         >
-          <a href="https://www.naviksha.co.in/auth" target="_blank" rel="noopener noreferrer">
+          <a href="https://app.naviksha.co.in/auth" target="_blank" rel="noopener noreferrer">
             Start Now • Get Report
           </a>
         </Button>

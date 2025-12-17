@@ -37,7 +37,7 @@ const Hero = () => {
             className="text-lg px-8 w-full sm:w-auto"
             asChild
           >
-            <a href="https://www.naviksha.co.in/auth" target="_blank" rel="noopener noreferrer">
+            <a href="https://app.naviksha.co.in/auth" target="_blank" rel="noopener noreferrer">
               Start Now • Get Report
             </a>
           </Button>
