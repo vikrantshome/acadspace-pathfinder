@@ -11,7 +11,7 @@ const CTASection = () => {
           Get your personalised career matches and roadmap today.
         </p>
         <Button size="lg" className="text-lg px-12 mb-2" asChild>
-          <a href="https://www.naviksha.co.in/auth" target="_blank" rel="noopener noreferrer">
+          <a href="https://app.naviksha.co.in/auth" target="_blank" rel="noopener noreferrer">
             Start Now • Get Report
           </a>
         </Button>

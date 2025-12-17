@@ -33,7 +33,7 @@ const FAQSection = () => {
             <AccordionContent>
               You can take the Career Compass Test at your school under teacher guidance, and online through this ALLEN Online portal{" "}
               <a 
-                href="https://www.naviksha.co.in/auth" 
+                href="https://app.naviksha.co.in/auth" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:underline font-medium"
@@ -51,7 +51,7 @@ const FAQSection = () => {
             <AccordionContent>
               Once you complete the Career Compass Test, you'll receive your personalized report instantly. The report includes your top 3 career matches with fit scores, detailed strengths analysis, and a customized learning roadmap. If you have already taken the test, you can access the report{" "}
               <a 
-                href="https://www.naviksha.co.in/auth" 
+                href="https://app.naviksha.co.in/auth" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-primary hover:underline font-medium"
