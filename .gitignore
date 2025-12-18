@@ -42,3 +42,9 @@ ai-report-service/app/services/__pycache__/ai_client.cpython-311.pyc
 ai-report-service/app/__pycache__/__init__.cpython-311.pyc
 .genkit/
 data/
+admin-module/
+excel/input/
+excel/output/
+excel/logs/
+__pycache__/
+puppeteer-ms/token.json
