@@ -1,8 +1,8 @@
 
-import { ReportData } from './pdf-generator';
+import { StudentReport } from '@/types';
 
 export async function generatePuppeteerPDF(
-  reportData: ReportData, 
+  reportData: StudentReport, 
   userId: string,
   mobileNo?: string,
   studentID?: string,
