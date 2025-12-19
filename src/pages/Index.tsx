@@ -38,6 +38,7 @@ const Index = () => {
   const { user, signOut } = useAuth();
   const [testProgress, setTestProgress] = useState({ vibematch: null, edustats: null });
   const [hasReport, setHasReport] = useState(false);
+  const [latestReportId, setLatestReportId] = useState<string | null>(null);
 
 useEffect(() => {
   if (!user) return;
@@ -52,13 +53,23 @@ useEffect(() => {
         edustats: edustats?.status ?? inferStatus(edustats),
       });
 
-      // 2) Load latest report (demo fallback for now)
-      try {
-        const report = await apiService.getDemoReport();
-        setHasReport(!!report);
-      } catch (err) {
-        console.error('Failed to load demo report', err);
+      // 2) Load latest report
+      const reports = await apiService.getUserReports(user.id);
+      if (reports && reports.length > 0) {
+        setHasReport(true);
+        setLatestReportId(reports[0].id);
+      } else {
         setHasReport(false);
+        setLatestReportId(null);
+        // Load demo report for now (commented out as per instruction)
+        // try {
+        //   const demoReport = await apiService.getDemoReport();
+        //   setHasReport(!!demoReport);
+        //   // Assuming demo report also has an ID or we can mock one for navigation
+        //   // setLatestReportId(demoReport.id || 'demo'); 
+        // } catch (err) {
+        //   console.error('Failed to load demo report', err);
+        // }
       }
     } catch (e) {
       console.error('Dashboard fetch error : '+e);
@@ -154,8 +165,8 @@ function inferStatus(p?: { currentQuestionIndex?: number; answers?: any; complet
                 </CardContent>
               </Card>
 
-              {hasReport && (
-                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate('/report')}>
+              {hasReport && latestReportId && (
+                <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate(`/report/${latestReportId}`)}>
                   <CardContent className="p-6 text-center">
                     <FileText className="w-8 h-8 mx-auto mb-3 text-success" />
                     <h3 className="font-semibold">Full Report</h3>
@@ -252,8 +263,8 @@ function inferStatus(p?: { currentQuestionIndex?: number; answers?: any; complet
                       View Results
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
-                    {hasReport && (
-                      <Button variant="outline" onClick={() => navigate('/report')} className="w-full sm:w-auto">
+                    {hasReport && latestReportId && (
+                      <Button variant="outline" onClick={() => navigate(`/report/${latestReportId}`)} className="w-full sm:w-auto">
                         <Download className="w-4 h-4 mr-2" />
                         Full Report
                       </Button>
