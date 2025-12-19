@@ -126,6 +126,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET, "/api/progress/{userId}").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/progress/user/{userId}").permitAll()
                 .requestMatchers(HttpMethod.POST, "/api/tests/combined/submit").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/reports/*/report-link").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/api/reports/*/link").permitAll()
                 .requestMatchers("/api/reports/demo/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/reports/user/**").permitAll()

@@ -3,6 +3,7 @@ package com.naviksha.controller;
 import com.naviksha.model.StudentReport;
 import com.naviksha.service.ReportService;
 import com.naviksha.service.AIServiceClient;
+import com.naviksha.service.PdfGenerationService;
 import com.naviksha.service.UserService; // Added
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -35,6 +36,27 @@ public class ReportController {
     private final ObjectMapper objectMapper;
     private final AIServiceClient aiServiceClient;
     private final UserService userService; // Added
+    private final PdfGenerationService pdfGenerationService;
+
+    @GetMapping("/{reportId}/report-link")
+    @Operation(summary = "Get report link by ID",
+            description = "Get career report link by ID, with retry mechanism",
+            security = @SecurityRequirement(name = "bearerAuth"))
+    public ResponseEntity<?> getReportLink(@PathVariable String reportId, Authentication authentication) {
+        try {
+            String reportLink = reportService.getReportLink(reportId);
+
+            if (reportLink == null) {
+                return ResponseEntity.notFound().build();
+            }
+
+            return ResponseEntity.ok(Map.of("reportLink", reportLink));
+        } catch (Exception e) {
+            log.error("Error fetching report link for report: {}", reportId, e);
+            return ResponseEntity.internalServerError().body("Error fetching report link");
+        }
+    }
+
 
     @GetMapping("/{reportId}")
     @Operation(summary = "Get report by ID", 
