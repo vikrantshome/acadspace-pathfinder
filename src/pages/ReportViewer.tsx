@@ -132,14 +132,12 @@ const ReportViewer = () => {
         actionPlan: displayData.actionPlan
       };
 
+      if (!reportId) {
+        alert('Report ID not found. Cannot generate PDF.');
+        return;
+      }
       // Generate PDF using shared utility
-      const reportLink = await generatePDFBlob(
-        reportData, 
-        user?.id || 'test_user',
-        user?.mobileNo,
-        user?.studentID,
-        displayData.studentName
-      );
+      const reportLink = await generatePDFBlob(reportId);
       
       // Open the link in a new tab
       window.open(reportLink, '_blank');
@@ -152,13 +150,11 @@ const ReportViewer = () => {
 
   const handleShare = async () => {
     try {
-      const reportLink = await generatePDFBlob(
-        reportData, 
-        user?.id || 'test_user',
-        user?.mobileNo,
-        user?.studentID,
-        displayData.studentName
-      );
+      if (!reportId) {
+        alert('Report ID not found. Cannot generate PDF.');
+        return;
+      }
+      const reportLink = await generatePDFBlob(reportId);
 
       await navigator.clipboard.writeText(reportLink);
       window.open(reportLink, '_blank');
