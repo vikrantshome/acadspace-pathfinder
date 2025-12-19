@@ -303,6 +303,14 @@ class ApiService {
     return this.handleResponse<any>(response);
   }
 
+  async getReportLink(reportId: string): Promise<{ reportLink: string }> {
+    const response = await fetch(`${API_BASE_URL}/reports/${reportId}/report-link`, {
+      headers: this.getHeaders(),
+    });
+
+    return this.handleResponse<{ reportLink: string }>(response);
+  }
+
   async getDemoReport(): Promise<any> {
     const response = await fetch(`${API_BASE_URL}/reports/demo/aisha`);
     return this.handleResponse<any>(response);
