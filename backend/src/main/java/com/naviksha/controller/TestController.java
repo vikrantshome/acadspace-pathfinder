@@ -136,9 +136,8 @@ public class TestController {
             
             return ResponseEntity.ok(Map.of(
                 "reportId", savedReport.getId(),
-                "report", report,
-                "message", "Test submitted successfully",
-                "reportLink", savedReport.getReportLink() 
+                "report", report, // Include the full report object
+                "message", "Test submitted successfully, Report generation started successfully."
             ));
             
         } catch (Exception e) {

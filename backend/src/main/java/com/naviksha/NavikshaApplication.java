@@ -3,6 +3,7 @@ package com.naviksha;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
  * Main Spring Boot Application class for Naviksha AI Career Guidance Backend
@@ -20,6 +21,7 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
  */
 @SpringBootApplication
 @EnableMongoAuditing
+@EnableAsync
 public class NavikshaApplication {
 
     public static void main(String[] args) {
