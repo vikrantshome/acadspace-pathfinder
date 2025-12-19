@@ -17,7 +17,7 @@ export interface Question {
 
 export interface Career {
   careerId: string;
-  careerName: string;
+  careerName:string;
   bucket: string;
   riasec_profile: string;
   primarySubjects: string[];
@@ -58,7 +58,7 @@ export interface CareerMatch {
   careerName: string;
   matchScore: number;
   topReasons?: string[];
-  studyPath?: string[];
+  studyPath?: string | string[];
   first3Steps?: string[];
   confidence?: string;
   whatWouldChangeRecommendation?: string;
@@ -72,30 +72,36 @@ export interface CareerBucket {
 
 export interface StudentReport {
   studentName: string;
+  schoolName?: string;
   grade?: number;
   board?: string;
-  vibeScores: RiasecScores;
-  edu_stats: { [subject: string]: number };
+  vibeScores?: RiasecScores;
+  vibe_scores?: RiasecScores; // Alias for vibeScores
+  edu_stats?: { [subject: string]: number };
   extracurriculars?: string[];
   parents?: string[];
-  top5_buckets: CareerBucket[];
-  summaryParagraph: string;
-  reportId: string;
-  generatedAt: Date;
+  top5Buckets?: CareerBucket[];
+  top5_buckets?: CareerBucket[]; // Alias for top5Buckets
+  summaryParagraph?: string;
+  reportId?: string;
+  generatedAt?: Date;
   // AI Enhancement fields
   aiEnhanced?: boolean;
   enhancedSummary?: string;
   skillRecommendations?: string[]; // Focused skill names
-  detailedSkillRecommendations?: Array<{skill_name?: string; skillName?: string; explanation?: string}>; // For grade < 8: [{skill_name, explanation}]
+  detailedSkillRecommendations?: Array<{skill_name?: string; skillName?: string; explanation?: string}>;
   careerTrajectoryInsights?: string;
   detailedCareerInsights?: {
-    career_name: string;
-    explanation: string;
-    study_path: string[];
-    next_steps: string[];
-    confidence: string;
-    what_would_change: string;
-  }[];
+    career_name?: string;
+    explanation?: string;
+    study_path?: string[];
+    next_steps?: string[];
+    confidence?: string;
+    what_would_change?: string;
+    explanations?: Record<string, string>;
+    studyPaths?: Record<string, string | string[]>;
+  };
+  actionPlan?: Array<{title: string; desc: string; timeline: string; color?: string}>;
 }
 
 export interface User {
