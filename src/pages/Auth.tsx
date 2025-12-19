@@ -1,10 +1,10 @@
 /**
- * Authentication Page - Handles both login and signup
+ * Sign-Up Page - Handles new user registration
  * Modern, secure authentication with Supabase
  */
 
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -24,7 +24,6 @@ import {
   User,
   GraduationCap,
   School,
-  AlertCircle,
   Loader2,
   Phone,
 } from "lucide-react";
@@ -32,8 +31,7 @@ import { useAuth } from "@/components/AuthProvider";
 import { toast } from "@/hooks/use-toast";
 
 const Auth = () => {
-  const { user, signIn, signUp } = useAuth();
-  const [isSignUp, setIsSignUp] = useState(true);
+  const { user, signUp } = useAuth();
   const [loading, setLoading] = useState(false);
   const [isSchoolListVisible, setSchoolListVisible] = useState(false);
   const [schoolInputValue, setSchoolInputValue] = useState("");
@@ -56,7 +54,6 @@ const Auth = () => {
     const mobileNo = params.get("mobileNo");
 
     if (mobileNo) {
-      setIsSignUp(true); // Automatically switch to signup form
       setFormData((prev) => ({
         ...prev,
         mobileNo: mobileNo,
@@ -116,25 +113,9 @@ const Auth = () => {
     }
   };
 
-  const handleSignIn = async () => {
-    setLoading(true);
-    try {
-      await signIn(formData.email, formData.password);
-      navigate("/");
-    } catch (error: any) {
-      // Error handling is done in AuthProvider
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSignUp) {
-      handleSignUp();
-    } else {
-      handleSignIn();
-    }
+    handleSignUp();
   };
 
   return (
@@ -146,12 +127,10 @@ const Auth = () => {
             <GraduationCap className="w-6 h-6 md:w-8 md:h-8 text-primary" />
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-white">
-            {isSignUp ? "Join Naviksha AI" : "Welcome Back"}
+            Join Naviksha AI
           </h1>
           <p className="text-sm md:text-base text-white/80 px-2">
-            {isSignUp
-              ? "Navigate Your Future with AI-Powered Career Guidance"
-              : "Continue your career discovery journey"}
+            Navigate Your Future with AI-Powered Career Guidance
           </p>
         </div>
 
@@ -159,7 +138,7 @@ const Auth = () => {
         <Card className="glass border-0 shadow-2xl">
           <CardHeader className="space-y-1 pb-4">
             <CardTitle className="text-lg md:text-xl text-center">
-              {isSignUp ? "Create Account" : "Sign In"}
+              Create Account
             </CardTitle>
           </CardHeader>
           <CardContent className="px-4 md:px-6">
@@ -199,232 +178,234 @@ const Auth = () => {
               </div>
 
               {/* Sign Up Fields */}
-              {isSignUp && (
-                <>
-                  {/* Confirm Password */}
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="confirmPassword"
-                      className="flex items-center gap-2"
-                    >
-                      <Lock className="w-4 h-4" />
-                      Confirm Password
-                    </Label>
-                    <Input
-                      id="confirmPassword"
-                      type="password"
-                      placeholder="••••••••"
-                      value={formData.confirmPassword}
-                      onChange={(e) =>
-                        handleInputChange("confirmPassword", e.target.value)
-                      }
+              <>
+                {/* Confirm Password */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="confirmPassword"
+                    className="flex items-center gap-2"
+                  >
+                    <Lock className="w-4 h-4" />
+                    Confirm Password
+                  </Label>
+                  <Input
+                    id="confirmPassword"
+                    type="password"
+                    placeholder="••••••••"
+                    value={formData.confirmPassword}
+                    onChange={(e) =>
+                      handleInputChange("confirmPassword", e.target.value)
+                    }
+                    required
+                    className="focus-ring"
+                  />
+                </div>
+
+                {/* Full Name */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="fullName"
+                    className="flex items-center gap-2"
+                  >
+                    <User className="w-4 h-4" />
+                    Full Name
+                  </Label>
+                  <Input
+                    id="fullName"
+                    type="text"
+                    placeholder="Your full name"
+                    value={formData.fullName}
+                    onChange={(e) =>
+                      handleInputChange("fullName", e.target.value)
+                    }
+                    required
+                    className="focus-ring"
+                  />
+                </div>
+
+                {/* Parent Name */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="parentName"
+                    className="flex items-center gap-2"
+                  >
+                    <User className="w-4 h-4" />
+                    Parent Name
+                  </Label>
+                  <Input
+                    id="parentName"
+                    type="text"
+                    placeholder="Your parent's name"
+                    value={formData.parentName}
+                    onChange={(e) =>
+                      handleInputChange("parentName", e.target.value)
+                    }
+                    required
+                    className="focus-ring"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="schoolName"
+                    className="flex items-center gap-2"
+                  >
+                    <School className="w-4 h-4" />
+                    School Name
+                  </Label>
+                  <Command>
+                    <CommandInput
+                      placeholder="Input school name..."
+                      value={schoolInputValue}
+                      onValueChange={(value) => {
+                        setSchoolInputValue(value);
+                        setSchoolListVisible(true);
+                      }}
+                      onBlur={() => {
+                        setTimeout(() => {
+                          setSchoolListVisible(false);
+                        }, 200);
+                      }}
                       required
-                      className="focus-ring"
                     />
-                  </div>
+                    {isSchoolListVisible && (
+                      <CommandList>
+                        <CommandEmpty>No results found.</CommandEmpty>
+                        <CommandGroup>
+                          {[
+                            "Indian Public School",
+                            "Vidya Spoorthi School",
+                            "Basant Valley Senior Sec. School",
+                            "Greno Public School",
+                            "Devin Academy for Learning",
+                            "Wisdom Era English school",
+                            "Wisdom Wings English Medium school",
+                            "SARASWATHI VIDYA MANDIRA ANEKAL",
+                            "SRSD Sr.Sec School Delhi",
+                            "MP Model Public School Delhi",
+                            "JN International School South Delhi",
+                            "Royal Academy Public School",
+                            "Harsha Int Public School",
+                            "Jnanasagara International Public School",
+                            "MORNING STAR PUBLIC SCHOOL",
+                            "SANSKRITI MODERN SCHOOL",
+                            "Mata Roshni Devi Public School",
+                            "St. Mary's Public School, Bangalore",
+                            "The Vrukksha school",
+                            "Ram Jatan Public School",
+                            "GD Goenka Signature School",
+                            "Seshadripuram High School",
+                            "ASN School",
+                            "Mysore West Lions Sevaniketan School",
+                            "Mysore West Lions",
+                            "Shri Ram Bharat Public School (SRBPS)",
+                            "Cambridge Public School",
+                            "Cambridge English School",
+                            "Birla Open Minds International School",
+                            "Raman Munjal vidya Mandir, Gurugram",
+                            "Sahaj International School, Ghaziabad",
+                            "Kalka Public School",
+                            "St Rock's Girls Convent",
+                            "St Antony's School",
+                            "St Alousious School",
+                            "The Prodigies International School",
+                            "Patel Public School",
+                            "Presidency School Kasturinagar",
+                            "New Baldwin International School, Anekal",
+                            "Creative Kids Group of Institutions",
+                            "Shantinikethana School",
+                            "The Deen's Academy",
+                            "Baldwin Boys High School",
+                            "BMN Public School",
+                            "The Rising International School",
+                            "DPS",
+                            "SJR Kengeri Public School",
+                            "DPIS",
+                            "Sri Ram Vidyalaya Jakkur",
+                            "Riverstone International School",
+                            "Agragami Vidya Kendra",
+                            "VEDAS INTERNATIONAL SCHOOL",
+                            "Florida English School",
+                          ]
+                            .filter((school) =>
+                              school
+                                .toLowerCase()
+                                .includes(schoolInputValue.toLowerCase())
+                            )
+                            .map((school) => (
+                              <CommandItem
+                                key={school}
+                                onSelect={() => {
+                                  handleInputChange("schoolName", school);
+                                  setSchoolInputValue(school);
+                                  setSchoolListVisible(false);
+                                }}
+                              >
+                                {school}
+                              </CommandItem>
+                            ))}
+                        </CommandGroup>
+                      </CommandList>
+                    )}
+                  </Command>
+                </div>
 
-                  {/* Full Name */}
+                {/* Grade and Board */}
+                <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label
-                      htmlFor="fullName"
-                      className="flex items-center gap-2"
-                    >
-                      <User className="w-4 h-4" />
-                      Full Name
-                    </Label>
+                    <Label htmlFor="grade">Grade</Label>
                     <Input
-                      id="fullName"
-                      type="text"
-                      placeholder="Your full name"
-                      value={formData.fullName}
+                      id="grade"
+                      type="number"
+                      placeholder="10"
+                      min="6"
+                      max="12"
+                      value={formData.grade}
                       onChange={(e) =>
-                        handleInputChange("fullName", e.target.value)
+                        handleInputChange("grade", e.target.value)
                       }
+                      className="focus-ring"
                       required
-                      className="focus-ring"
                     />
                   </div>
-
-                  {/* Parent Name */}
                   <div className="space-y-2">
-                    <Label
-                      htmlFor="parentName"
-                      className="flex items-center gap-2"
-                    >
-                      <User className="w-4 h-4" />
-                      Parent Name
-                    </Label>
+                    <Label htmlFor="board">Board</Label>
                     <Input
-                      id="parentName"
+                      id="board"
                       type="text"
-                      placeholder="Your parent's name"
-                      value={formData.parentName}
+                      placeholder="CBSE"
+                      value={formData.board}
                       onChange={(e) =>
-                        handleInputChange("parentName", e.target.value)
+                        handleInputChange("board", e.target.value)
                       }
+                      className="focus-ring"
                       required
-                      className="focus-ring"
                     />
                   </div>
+                </div>
 
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="schoolName"
-                      className="flex items-center gap-2"
-                    >
-                      <School className="w-4 h-4" />
-                      School Name
-                    </Label>
-                    <Command>
-                      <CommandInput
-                        placeholder="Input school name..."
-                        value={schoolInputValue}
-                        onValueChange={(value) => {
-                          setSchoolInputValue(value);
-                          setSchoolListVisible(true);
-                        }}
-                        onBlur={() => {
-                          setTimeout(() => {
-                            setSchoolListVisible(false);
-                          }, 200);
-                        }}
-                      />
-                      {isSchoolListVisible && (
-                        <CommandList>
-                          <CommandEmpty>No results found.</CommandEmpty>
-                          <CommandGroup>
-                            {[
-                              "Indian Public School",
-                              "Vidya Spoorthi School",
-                              "Basant Valley Senior Sec. School",
-                              "Greno Public School",
-                              "Devin Academy for Learning",
-                              "Wisdom Era English school",
-                              "Wisdom Wings English Medium school",
-                              "SARASWATHI VIDYA MANDIRA ANEKAL",
-                              "SRSD Sr.Sec School Delhi",
-                              "MP Model Public School Delhi",
-                              "JN International School South Delhi",
-                              "Royal Academy Public School",
-                              "Harsha Int Public School",
-                              "Jnanasagara International Public School",
-                              "MORNING STAR PUBLIC SCHOOL",
-                              "SANSKRITI MODERN SCHOOL",
-                              "Mata Roshni Devi Public School",
-                              "St. Mary's Public School, Bangalore",
-                              "The Vrukksha school",
-                              "Ram Jatan Public School",
-                              "GD Goenka Signature School",
-                              "Seshadripuram High School",
-                              "ASN School",
-                              "Mysore West Lions Sevaniketan School",
-                              "Mysore West Lions",                             
-                              "Shri Ram Bharat Public School (SRBPS)",
-                              "Cambridge Public School",
-                              "Cambridge English School",
-                              "Birla Open Minds International School",
-                              "Raman Munjal vidya Mandir, Gurugram",
-                              "Sahaj International School, Ghaziabad",
-                              "Kalka Public School",
-                              "St Rock's Girls Convent",
-                              "St Antony's School",
-                              "St Alousious School",
-                              "The Prodigies International School",
-                              "Patel Public School",
-                              "Presidency School Kasturinagar",
-                              "New Baldwin International School, Anekal",
-                              "Creative Kids Group of Institutions",
-                              "Shantinikethana School",
-                              "The Deen's Academy",
-                              "Baldwin Boys High School",
-                              "BMN Public School",
-                              "The Rising International School",
-                              "DPS",
-                              "SJR Kengeri Public School",
-                              "DPIS",
-                              "Sri Ram Vidyalaya Jakkur",
-                              "Riverstone International School",
-                              "Agragami Vidya Kendra",
-                              "VEDAS INTERNATIONAL SCHOOL",
-                              "Florida English School",
-                            ]
-                              .filter((school) =>
-                                school
-                                  .toLowerCase()
-                                  .includes(schoolInputValue.toLowerCase())
-                              )
-                              .map((school) => (
-                                <CommandItem
-                                  key={school}
-                                  onSelect={() => {
-                                    handleInputChange("schoolName", school);
-                                    setSchoolInputValue(school);
-                                    setSchoolListVisible(false);
-                                  }}
-                                >
-                                  {school}
-                                </CommandItem>
-                              ))}
-                          </CommandGroup>
-                        </CommandList>
-                      )}
-                    </Command>
-                  </div>
-
-                  {/* Grade and Board */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="grade">Grade</Label>
-                      <Input
-                        id="grade"
-                        type="number"
-                        placeholder="10"
-                        min="6"
-                        max="12"
-                        value={formData.grade}
-                        onChange={(e) =>
-                          handleInputChange("grade", e.target.value)
-                        }
-                        className="focus-ring"
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="board">Board</Label>
-                      <Input
-                        id="board"
-                        type="text"
-                        placeholder="CBSE"
-                        value={formData.board}
-                        onChange={(e) =>
-                          handleInputChange("board", e.target.value)
-                        }
-                        className="focus-ring"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Mobile Number */}
-                  <div className="space-y-2">
-                    <Label
-                      htmlFor="mobileNo"
-                      className="flex items-center gap-2"
-                    >
-                      <Phone className="w-4 h-4" />
-                      Mobile Number
-                    </Label>
-                    <Input
-                      id="mobileNo"
-                      type="text"
-                      placeholder="Your mobile number"
-                      value={formData.mobileNo}
-                      onChange={(e) =>
-                        handleInputChange("mobileNo", e.target.value)
-                      }
-                      className="focus-ring"
-                    />
-                  </div>
-                </>
-              )}
+                {/* Mobile Number */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="mobileNo"
+                    className="flex items-center gap-2"
+                  >
+                    <Phone className="w-4 h-4" />
+                    Mobile Number
+                  </Label>
+                  <Input
+                    id="mobileNo"
+                    type="text"
+                    placeholder="Your mobile number"
+                    value={formData.mobileNo}
+                    onChange={(e) =>
+                      handleInputChange("mobileNo", e.target.value)
+                    }
+                    className="focus-ring"
+                    required
+                  />
+                </div>
+              </>
 
               {/* Submit Button */}
               <Button
@@ -435,10 +416,10 @@ const Auth = () => {
                 {loading ? (
                   <>
                     <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    {isSignUp ? "Creating Account..." : "Signing In..."}
+                    Creating Account...
                   </>
                 ) : (
-                  <>{isSignUp ? "Create Account" : "Sign In"}</>
+                  <>Create Account</>
                 )}
               </Button>
             </form>
@@ -448,16 +429,14 @@ const Auth = () => {
               <Separator />
               <div className="text-center mt-3 md:mt-4">
                 <p className="text-xs md:text-sm text-muted-foreground">
-                  {isSignUp
-                    ? "Already have an account?"
-                    : "Don't have an account?"}
+                  Already have an account?
                 </p>
                 <Button
                   variant="link"
-                  onClick={() => setIsSignUp(!isSignUp)}
+                  asChild
                   className="text-primary font-semibold text-sm md:text-base"
                 >
-                  {isSignUp ? "Sign In" : "Create Account"}
+                  <Link to="/login">Sign In</Link>
                 </Button>
               </div>
             </div>
