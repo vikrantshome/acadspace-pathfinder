@@ -142,36 +142,7 @@ const TestPage = () => {
     }
   }, [user?.id, testType, testName, questions.length]);
 
-  // Auto-save progress when moving to next question
-  useEffect(() => {
-    const saveProgress = async () => {
-      if (!user?.id || !testType || saving || answers.length === 0) {
-        return;
-      }
 
-      setSaving(true);
-      try {
-        const answersObject = answers.reduce<Record<string, any>>((acc, answer) => {
-          acc[answer.questionId] = answer.answer;
-          return acc;
-        }, {});
-        await apiService.saveProgress(testType, {
-          currentQuestionIndex,
-          answers: answersObject,
-        });
-      } catch (error) {
-        console.error('Error saving progress:', error);
-      } finally {
-        setSaving(false);
-      }
-    };
-
-    // Save when question index changes (user moves to next question)
-    if (answers.length > 0) {
-      const timer = setTimeout(saveProgress, 1000); // Small delay to avoid rapid saves
-      return () => clearTimeout(timer);
-    }
-  }, [answers]);
 
   // Load existing answer for current question (safe)
   useEffect(() => {
@@ -250,10 +221,35 @@ const TestPage = () => {
       return;
     }
 
-    if (isLastQuestion) {
-      await completeTest();
-    } else {
-      setCurrentQuestionIndex((prev) => prev + 1);
+    setSaving(true);
+    try {
+      // Save progress before moving to the next question
+      const answersObject = answers.reduce<Record<string, any>>((acc, answer) => {
+        acc[answer.questionId] = answer.answer;
+        return acc;
+      }, {});
+
+      await apiService.saveProgress(testType!, {
+        currentQuestionIndex,
+        answers: answersObject,
+        completed: false, // Ensure we don't mark as complete prematurely
+      });
+
+      // If save is successful, then proceed
+      if (isLastQuestion) {
+        await completeTest();
+      } else {
+        setCurrentQuestionIndex((prev) => prev + 1);
+      }
+    } catch (error) {
+      console.error('Error saving progress:', error);
+      toast({
+        title: 'Error Saving Progress',
+        description: 'Could not save your progress. Please check your connection and try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -677,10 +673,15 @@ const TestPage = () => {
                     <Button
                       variant={isLastQuestion ? 'success' : 'career'}
                       onClick={handleNext}
-                      disabled={!!q?.required && !hasAnswer}
+                      disabled={(!!q?.required && !hasAnswer) || saving}
                       className="w-full sm:w-auto sm:min-w-[140px] hover-scale order-first sm:order-last"
                     >
-                      {isLastQuestion ? (
+                      {saving ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Saving...
+                        </>
+                      ) : isLastQuestion ? (
                         <>
                           <Save className="w-4 h-4 mr-2" />
                           {testType === 'vibematch' ? 'Continue to Next Test' : 'Complete & Generate Report'}
