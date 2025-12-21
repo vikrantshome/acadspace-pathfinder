@@ -41,7 +41,10 @@ const Index = () => {
   const [latestReportId, setLatestReportId] = useState<string | null>(null);
 
 useEffect(() => {
-  if (!user) return;
+  if (!user) {
+    navigate('/login');
+    return;
+  }
   (async () => {
     try {
       // 1) Load progress for each assessment
@@ -75,7 +78,7 @@ useEffect(() => {
       console.error('Dashboard fetch error : '+e);
     }
   })();
-}, [user]);
+}, [user, navigate]);
 
 
 function inferStatus(p?: { currentQuestionIndex?: number; answers?: any; completed?: boolean }) {
