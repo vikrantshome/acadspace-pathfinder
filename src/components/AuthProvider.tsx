@@ -130,6 +130,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       apiService.logout();
       setUser(null);
       toast.success('Logged out successfully');
+      window.location.href = 'https://www.naviksha.co.in/'; // Redirect after logout
     } catch (error: any) {
       toast.error('Error signing out');
       throw error;
