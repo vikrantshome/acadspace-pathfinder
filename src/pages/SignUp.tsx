@@ -346,7 +346,8 @@ const Auth = () => {
                             "PNC Cognitio School",
                             "Bloomers School",
                             "Global Achievers School",
-                            "Samsiddh Group of Schools"
+                            "Samsiddh Group of Schools",
+                            "Sir Fortune world school, Noida"
                           ]
                             .filter((school) =>
                               school
