@@ -24,7 +24,7 @@ public class ReportService {
         Report savedReport = reportRepository.save(report);
 
         // Asynchronously generate PDF via the new dedicated service
-        pdfGenerationService.generatePdfAndSaveLink(savedReport);
+        pdfGenerationService.generatePdfAndSaveLinkAsync(savedReport);
 
         return savedReport;
     }
@@ -50,7 +50,7 @@ public class ReportService {
         return reportRepository.save(report);
     }
 
-    public String getReportLink(String reportId) throws InterruptedException {
+    public String getReportLink(String reportId) {
         Report report = reportRepository.findById(reportId).orElse(null);
         if (report == null) {
             return null;
@@ -60,19 +60,8 @@ public class ReportService {
             return report.getReportLink();
         }
 
-        // Retry logic
-        for (int i = 0; i < 15; i++) {
-            Thread.sleep(1000);
-            report = reportRepository.findById(reportId).orElse(null);
-            if (report != null && report.getReportLink() != null && !report.getReportLink().isEmpty()) {
-                return report.getReportLink();
-            }
-        }
-
-        // If still no link, generate it
-        pdfGenerationService.generatePdfAndSaveLink(report);
-        // It might take a moment to save, so we fetch it again
-        Report updatedReport = reportRepository.findById(reportId).orElse(null);
+        // If no link, generate it synchronously
+        Report updatedReport = pdfGenerationService.generatePdfAndSaveLinkSync(report);
         return updatedReport != null ? updatedReport.getReportLink() : null;
     }
 

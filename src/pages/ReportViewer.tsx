@@ -40,6 +40,7 @@ const ReportViewer = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [reportData, setReportData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [isDownloading, setIsDownloading] = useState(false);
 
   // Check auth and fetch report data
   useEffect(() => {
@@ -114,6 +115,7 @@ const ReportViewer = () => {
   };
 
   const handleDownload = async () => {
+    setIsDownloading(true);
     try {
       // Prepare report data matching the ReportData interface
       const reportData: ReportData = {
@@ -145,6 +147,8 @@ const ReportViewer = () => {
     } catch (error) {
       console.error('Error generating PDF:', error);
       alert('Failed to generate PDF. Please try again.');
+    } finally {
+      setIsDownloading(false);
     }
   };
 
@@ -391,9 +395,18 @@ const ReportViewer = () => {
               </div>
             </div>
             <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4 pt-4 px-4">
-              <Button variant="secondary" onClick={handleDownload} className="flex items-center gap-2 w-full sm:w-auto">
-                <Download className="w-4 h-4" />
-                Download PDF
+              <Button variant="secondary" onClick={handleDownload} disabled={isDownloading} className="flex items-center gap-2 w-full sm:w-auto">
+                {isDownloading ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Processing...
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4" />
+                    Download PDF
+                  </>
+                )}
               </Button>
               <Button variant="outline" onClick={handleShare} className="flex items-center gap-2 bg-white/10 border-white/20 text-white hover:bg-white/20 w-full sm:w-auto">
                 <Share2 className="w-4 h-4" />
