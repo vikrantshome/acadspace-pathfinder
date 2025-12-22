@@ -25,12 +25,17 @@ public class PdfGenerationService {
     private String puppeteerServiceUrl;
 
     @Async
-    public void generatePdfAndSaveLink(Report report) {
+    public void generatePdfAndSaveLinkAsync(Report report) {
         log.info("Asynchronously generating PDF for report ID: {}", report.getId());
+        generatePdfAndSaveLinkSync(report);
+    }
+
+    public Report generatePdfAndSaveLinkSync(Report report) {
+        log.info("Synchronously generating PDF for report ID: {}", report.getId());
         User user = userService.findById(report.getUserId());
         if (user == null) {
             log.error("Cannot generate PDF. User not found for report ID: {}", report.getId());
-            return;
+            return report; // Return original report, link not generated
         }
 
         PuppeteerRequest puppeteerRequest = new PuppeteerRequest(
@@ -48,17 +53,20 @@ public class PdfGenerationService {
                     .bodyValue(puppeteerRequest)
                     .retrieve()
                     .bodyToMono(PuppeteerResponse.class)
-                    .block(); // This block is acceptable here as it's in a separate, async thread
+                    .block();
 
             if (response != null && response.getReportLink() != null) {
                 report.setReportLink(response.getReportLink());
-                reportRepository.save(report);
+                Report updatedReport = reportRepository.save(report);
                 log.info("Successfully generated and saved PDF link for report ID: {}", report.getId());
+                return updatedReport;
             } else {
                 log.error("Failed to get a valid response or report link from Puppeteer service for report ID: {}", report.getId());
+                return report; // Return original report, link not generated
             }
         } catch (Exception e) {
             log.error("Error during PDF generation for report ID: {}. Reason: {}", report.getId(), e.getMessage());
+            return report; // Return original report, link not generated
         }
     }
 }
