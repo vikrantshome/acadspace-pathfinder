@@ -346,14 +346,15 @@ const Auth = () => {
                             "Rustomjee Int School",
                             "SKS Academy (x10)",
                             "Sri Ram Universal School",
-                            "St. Antony's School",
+                            "St. Antony's School, Ghaziabad",
                             "PNC Cognitio School",
                             "Bloomers School",
                             "Global Achievers School",
                             "Samsiddh Group of Schools",
                             "Sir Fortune world school, Noida",
                             "Priyadarshini High School",
-                            "Vidya Soudha Public School"
+                            "Vidya Soudha Public School",
+                            "DAV School, Faridabad"
                           ]
                             .filter((school) =>
                               school
