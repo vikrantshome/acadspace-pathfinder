@@ -273,6 +273,11 @@ const Auth = () => {
                         <CommandEmpty>No results found.</CommandEmpty>
                         <CommandGroup>
                           {[
+                            "Fortune World school, Noida",
+                            "Lions Public School, Delhi",
+                            "DAV Public School, Faridabad",
+                            "The Modern School, Faridabad",
+                            "Sahaj international school, Ghaziabad",
                             "Indian Public School",
                             "Vidya Spoorthi School",
                             "Basant Valley Senior Sec. School",
@@ -303,7 +308,6 @@ const Auth = () => {
                             "Cambridge English School",
                             "Birla Open Minds International School",
                             "Raman Munjal vidya Mandir, Gurugram",
-                            "Sahaj International School, Ghaziabad",
                             "Kalka Public School",
                             "St Rock's Girls Convent",
                             "St Antony's School",
