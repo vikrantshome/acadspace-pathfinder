@@ -116,6 +116,7 @@ class ApiService {
     mobileNo?: string,
     city?: string // Added city
   ): Promise<AuthResponse> {
+    localStorage.removeItem('login_source'); // Clear previous login source
     const response = await fetch(`${API_BASE_URL}/auth/upsert-register`, { // Changed endpoint
       method: 'POST',
       headers: this.getHeaders(),
@@ -152,6 +153,7 @@ class ApiService {
   }
 
   async login(username: string, password: string, storeToken = true): Promise<AuthResponse> {
+    localStorage.removeItem('login_source'); // Clear previous login source
     const response = await fetch(`${API_BASE_URL}/auth/login`, {
       method: 'POST',
       headers: this.getHeaders(),
@@ -178,6 +180,7 @@ class ApiService {
   }
 
   async lookup(studentID: string, mobileNo: string): Promise<AuthResponse> {
+    localStorage.removeItem('login_source'); // Clear previous login source
     const response = await fetch(`${API_BASE_URL}/auth/lookup`, {
       method: 'POST',
       headers: this.getHeaders(),
@@ -199,10 +202,34 @@ class ApiService {
     return data;
   }
 
+  async nlpLogin(nlpSsoToken: string): Promise<AuthResponse> {
+    const response = await fetch(`${API_BASE_URL}/auth/nlp-login`, {
+      method: 'POST',
+      headers: this.getHeaders(),
+      body: JSON.stringify({ nlpSsoToken }),
+    });
+
+    const data = await this.handleResponse<AuthResponse>(response);
+
+    if (!data) {
+      throw new Error('Invalid response from server. Please check your backend URL configuration.');
+    }
+
+    if (data.token) {
+      this.token = data.token;
+      localStorage.setItem('auth_token', data.token);
+      localStorage.setItem('user_data', JSON.stringify(data.user));
+      localStorage.setItem('login_source', 'nlp'); // Set NLP login source
+    }
+
+    return data;
+  }
+
   /**
    * Persist token and user data after out-of-band verification (eg. OTP)
    */
   setAuth(token: string, user: User) {
+    localStorage.removeItem('login_source'); // Assuming standard flow unless specified
     this.token = token;
     localStorage.setItem('auth_token', token);
     localStorage.setItem('user_data', JSON.stringify(user));
@@ -221,10 +248,15 @@ class ApiService {
     this.token = null;
     localStorage.removeItem('auth_token');
     localStorage.removeItem('user_data');
+    localStorage.removeItem('login_source');
   }
 
   isAuthenticated(): boolean {
     return !!this.token;
+  }
+  
+  isNlpLogin(): boolean {
+    return localStorage.getItem('login_source') === 'nlp';
   }
 
   getCurrentUserFromStorage(): User | null {
