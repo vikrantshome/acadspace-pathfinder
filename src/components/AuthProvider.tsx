@@ -11,6 +11,7 @@ import { toast } from 'sonner';
 interface AuthContextType {
   user: User | null;
   loading: boolean;
+  isNlpSession: boolean;
   signIn: (username: string, password: string) => Promise<void>;
   lookup: (studentID: string, mobileNo: string) => Promise<void>;
   signUp: (
@@ -46,6 +47,7 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isNlpSession, setIsNlpSession] = useState(false);
 
   // Initialize auth state
   useEffect(() => {
@@ -54,6 +56,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         try {
           const userData = apiService.getCurrentUserFromStorage();
           setUser(userData);
+          setIsNlpSession(apiService.isNlpLogin());
         } catch (error) {
           console.error('Error loading user data:', error);
           apiService.logout();
@@ -69,6 +72,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const response = await apiService.login(username, password);
       setUser(response.user);
+      setIsNlpSession(false);
       toast.success('Logged in successfully');
     } catch (error: any) {
       toast.error(error.message || 'Login failed');
@@ -80,6 +84,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const response = await apiService.lookup(studentID, mobileNo);
       setUser(response.user);
+      setIsNlpSession(false);
       toast.success('Logged in successfully');
     } catch (error: any) {
       toast.error(error.message || 'Login failed');
@@ -111,6 +116,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         mobileNo
       );
       setUser(response.user);
+      setIsNlpSession(false);
       toast.success('Account created successfully');
     } catch (error: any) {
       // Log full error object for debugging (Render logs / device logs)
@@ -129,6 +135,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       apiService.logout();
       setUser(null);
+      setIsNlpSession(false);
       toast.success('Logged out successfully');
       window.location.href = 'https://www.naviksha.co.in/'; // Redirect after logout
     } catch (error: any) {
@@ -153,6 +160,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const userData = await apiService.getCurrentUser();
       setUser(userData);
+      setIsNlpSession(apiService.isNlpLogin());
       localStorage.setItem('user_data', JSON.stringify(userData));
     } catch (error: any) {
       console.error('Error refreshing profile:', error);
@@ -162,6 +170,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const value = {
     user,
     loading,
+    isNlpSession,
     signIn,
     lookup,
     signUp,

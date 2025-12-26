@@ -2,6 +2,8 @@ package com.naviksha.controller;
 
 import com.naviksha.dto.AuthRequest;
 import com.naviksha.dto.AuthResponse;
+import com.naviksha.dto.NlpLoginRequest;
+import com.naviksha.dto.NlpProfileResponse;
 import com.naviksha.dto.RegisterRequest;
 import com.naviksha.model.User;
 import com.naviksha.security.JwtTokenProvider;
@@ -11,13 +13,20 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClient;
+
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * Authentication Controller
@@ -45,6 +54,10 @@ public class AuthController {
     private final UserService userService;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
+    
+    // Configurable in production, hardcoded for now as per instructions
+    private static final String NLP_API_URL = "https://nova.nexterp.in/nlp/nlp/v2/sso_profile.json";
+    private static final String CLIENT_ID = "AcadSpace";
 
     @PostMapping("/register")
     @Operation(summary = "Register new user", description = "Create a new user account with email and password")
@@ -120,6 +133,114 @@ public class AuthController {
             log.error("Login error for username: {}", request.getUsername(), e);
             return ResponseEntity.badRequest()
                 .body(new AuthResponse("", null, "Login failed: " + e.getMessage()));
+        }
+    }
+
+    @PostMapping("/nlp-login")
+    @Operation(summary = "NLP SSO Login", description = "Login using NLP SSO Token")
+    public ResponseEntity<?> nlpLogin(@RequestBody NlpLoginRequest request) {
+        try {
+            log.info("NLP Login attempt with token: {}", request.getNlpSsoToken());
+            
+            if (request.getNlpSsoToken() == null || request.getNlpSsoToken().isEmpty()) {
+                 return ResponseEntity.badRequest()
+                    .body(new AuthResponse("", null, "NLP SSO Token is missing"));
+            }
+
+            NlpProfileResponse nlpResponse;
+
+            // --- MOCK LOGIC FOR LOCAL TESTING ---
+            if ("TEST_TOKEN".equals(request.getNlpSsoToken())) {
+                log.info("Using MOCK NLP response for TEST_TOKEN");
+                nlpResponse = new NlpProfileResponse();
+                nlpResponse.setCode(0);
+                nlpResponse.setMsg("Success");
+                
+                NlpProfileResponse.NlpUser mockUser = new NlpProfileResponse.NlpUser();
+                mockUser.setId("mock_student_123");
+                mockUser.setName("Test Student");
+                mockUser.setGender("Male");
+                mockUser.setGrade("Class 10");
+                mockUser.setMastergrade("10");
+                mockUser.setSchoolName("Test Academy");
+                
+                nlpResponse.setUser(mockUser);
+            } else {
+                // --- REAL EXTERNAL API CALL ---
+                // 1. Prepare Authorization Header
+                String authString = CLIENT_ID + ":" + request.getNlpSsoToken();
+                String authHeader = Base64.getEncoder().encodeToString(authString.getBytes(StandardCharsets.UTF_8));
+                
+                // 2. Call NLP API
+                WebClient webClient = WebClient.create();
+                nlpResponse = webClient.post()
+                        .uri(NLP_API_URL)
+                        .header("sso-authorization", authHeader)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .retrieve()
+                        .bodyToMono(NlpProfileResponse.class)
+                        .block(); // Blocking for simplicity in this synchronous controller
+            }
+            // ------------------------------------
+            
+            if (nlpResponse == null) {
+                return ResponseEntity.badRequest()
+                    .body(new AuthResponse("", null, "No response from NLP Server"));
+            }
+            
+            if (nlpResponse.getCode() != 0) {
+                 return ResponseEntity.badRequest()
+                    .body(new AuthResponse("", null, "NLP Login Failed: " + nlpResponse.getMsg()));
+            }
+            
+            NlpProfileResponse.NlpUser nlpUser = nlpResponse.getUser();
+            if (nlpUser == null) {
+                 return ResponseEntity.badRequest()
+                    .body(new AuthResponse("", null, "NLP User details missing"));
+            }
+
+            // 3. Map to local User and Upsert
+            RegisterRequest regRequest = new RegisterRequest();
+            String nlpInternalId = "NLP_" + nlpUser.getId();
+            regRequest.setStudentID(nlpInternalId);
+            regRequest.setName(nlpUser.getName());
+            regRequest.setFullName(nlpUser.getName());
+            regRequest.setSchoolName(nlpUser.getSchoolName());
+            
+            // Check if user exists to decide on password and email
+            // We only set a random password and placeholder email for NEW users. 
+            // Existing users keep their data to avoid overwriting.
+            boolean userExists = userService.findByStudentId(nlpInternalId).isPresent();
+            
+            if (!userExists) {
+                regRequest.setPassword(UUID.randomUUID().toString());
+                regRequest.setEmail(nlpUser.getId() + "@nlp.naviksha.com");
+            }
+            
+            try {
+                if (nlpUser.getGrade() != null && !nlpUser.getGrade().isEmpty()) {
+                    // Handle "Class 10" or "10" format
+                    String gradeStr = nlpUser.getGrade().replaceAll("[^0-9]", "");
+                    if (!gradeStr.isEmpty()) {
+                        regRequest.setGrade(Integer.parseInt(gradeStr));
+                    }
+                }
+            } catch (NumberFormatException e) {
+                log.warn("Could not parse grade: {}", nlpUser.getGrade());
+            }
+
+            User user = userService.createOrUpdateUser(regRequest);
+            
+            // 4. Generate JWT
+            String token = tokenProvider.generateToken(user.getId());
+            
+            log.info("NLP User logged in successfully: {}", user.getEmail());
+            return ResponseEntity.ok(new AuthResponse(token, user, "NLP Login successful"));
+            
+        } catch (Exception e) {
+            log.error("NLP Login Error", e);
+            return ResponseEntity.badRequest()
+                .body(new AuthResponse("", null, "NLP Login Error: " + e.getMessage()));
         }
     }
 

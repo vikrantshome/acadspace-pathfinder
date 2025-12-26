@@ -8,6 +8,7 @@ import { AuthProvider } from "@/components/AuthProvider";
 import Index from "./pages/Index";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import NLP from "./pages/NLP";
 import Onboarding from "./pages/Onboarding";
 import TestPage from "./pages/TestPage";
 import Results from "./pages/Results";
@@ -34,6 +35,7 @@ const App = () => {
               <Route path="/register" element={<SignUp />} />
               <Route path="/auth" element={<Login />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/nlp" element={<NLP />} />
               <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/test/:testType" element={<TestPage />} />
               <Route path="/results" element={<Results />} />

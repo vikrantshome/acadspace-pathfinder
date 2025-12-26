@@ -35,7 +35,7 @@ import { apiService } from '@/lib/api';
 
 const Index = () => {
   const navigate = useNavigate();
-  const { user, signOut } = useAuth();
+  const { user, signOut, isNlpSession } = useAuth();
   const [testProgress, setTestProgress] = useState({ vibematch: null, edustats: null });
   const [hasReport, setHasReport] = useState(false);
   const [latestReportId, setLatestReportId] = useState<string | null>(null);
@@ -120,10 +120,12 @@ function inferStatus(p?: { currentQuestionIndex?: number; answers?: any; complet
                 <h1 className="text-2xl font-bold">Welcome back, {user?.fullName || user?.name || user.email}!</h1>
                 <p className="text-muted-foreground">Continue your career discovery journey</p>
               </div>
-              <Button variant="ghost" onClick={signOut} className="flex items-center gap-2">
-                <LogOut className="w-4 h-4" />
-                Sign Out
-              </Button>
+              {!isNlpSession && (
+                <Button variant="ghost" onClick={signOut} className="flex items-center gap-2">
+                  <LogOut className="w-4 h-4" />
+                  Sign Out
+                </Button>
+              )}
             </div>
           </div>
         </div>
