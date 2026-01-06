@@ -28,7 +28,7 @@ public class User {
     @Indexed(unique = true, sparse = true)
     private String studentID;
     
-    @Indexed(unique = true, sparse = true)
+    @Indexed(sparse = true)
     private String mobileNo;
     
     private String password;
