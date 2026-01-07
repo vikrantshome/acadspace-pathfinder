@@ -2,10 +2,11 @@
 import { apiService } from './api';
 
 export async function generatePuppeteerPDF(
-  reportId: string
+  reportId: string,
+  partner?: string
 ): Promise<string> {
   try {
-    const response = await apiService.getReportLink(reportId);
+    const response = await apiService.getReportLink(reportId, partner);
     if (response && response.reportLink) {
       return response.reportLink;
     } else {

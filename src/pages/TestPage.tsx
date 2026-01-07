@@ -304,6 +304,11 @@ const TestPage = () => {
           ...(vibematchProgress.answers || {}),
           ...edustatsAnswers,
         };
+        
+        // Add partner tag if applicable (for PDF report logo)
+        if (localStorage.getItem('login_source') === 'nlp') {
+          combinedAnswers['partner'] = 'nlp';
+        }
 
         const submission = {
           userName: user.name,

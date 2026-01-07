@@ -23,6 +23,7 @@ public class StudentReport {
     private List<String> parents;
     private List<CareerBucket> top5Buckets;
     private String summaryParagraph;
+    private String partner; // "nlp", "allen", etc.
     
     // AI Enhancement Fields
     private Boolean aiEnhanced;

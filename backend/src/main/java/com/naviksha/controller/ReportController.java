@@ -39,21 +39,22 @@ public class ReportController {
     private final PdfGenerationService pdfGenerationService;
 
     @GetMapping("/{reportId}/report-link")
-    @Operation(summary = "Get report link by ID",
-            description = "Get career report link by ID, with retry mechanism",
-            security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<?> getReportLink(@PathVariable String reportId, Authentication authentication) {
+    @Operation(summary = "Get report PDF link", description = "Get public link for report PDF")
+    public ResponseEntity<Map<String, String>> getReportLink(
+            @PathVariable String reportId,
+            @RequestParam(required = false) String partner) {
         try {
-            String reportLink = reportService.getReportLink(reportId);
-
+            String reportLink = reportService.getReportLink(reportId, partner);
+            
             if (reportLink == null) {
-                return ResponseEntity.notFound().build();
+                // If link is not ready, return 202 Accepted (Processing)
+                return ResponseEntity.accepted().body(Map.of("message", "Report generation in progress"));
             }
-
+            
             return ResponseEntity.ok(Map.of("reportLink", reportLink));
         } catch (Exception e) {
-            log.error("Error fetching report link for report: {}", reportId, e);
-            return ResponseEntity.internalServerError().body("Error fetching report link");
+            log.error("Error getting report link: {}", reportId, e);
+            return ResponseEntity.internalServerError().build();
         }
     }
 
