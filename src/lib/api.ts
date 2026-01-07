@@ -335,8 +335,12 @@ class ApiService {
     return this.handleResponse<any>(response);
   }
 
-  async getReportLink(reportId: string): Promise<{ reportLink: string }> {
-    const response = await fetch(`${API_BASE_URL}/reports/${reportId}/report-link`, {
+  async getReportLink(reportId: string, partner?: string): Promise<{ reportLink: string }> {
+    const url = partner 
+      ? `${API_BASE_URL}/reports/${reportId}/report-link?partner=${partner}`
+      : `${API_BASE_URL}/reports/${reportId}/report-link`;
+
+    const response = await fetch(url, {
       headers: this.getHeaders(),
     });
 

@@ -50,19 +50,40 @@ public class ReportService {
         return reportRepository.save(report);
     }
 
-    public String getReportLink(String reportId) {
+    public String getReportLink(String reportId, String partner) {
         Report report = reportRepository.findById(reportId).orElse(null);
         if (report == null) {
             return null;
         }
 
-        if (report.getReportLink() != null && !report.getReportLink().isEmpty()) {
+        // If partner is specified (e.g. "nlp"), ensure report data has it and force regeneration
+        boolean forceRegeneration = false;
+        if (partner != null && !partner.isEmpty()) {
+            if (report.getReportData() != null) {
+                // If partner tag is missing or different, update it and force regeneration
+                String currentPartner = report.getReportData().getPartner();
+                if (currentPartner == null || !currentPartner.equalsIgnoreCase(partner)) {
+                    report.getReportData().setPartner(partner);
+                    // We need to save this partner change to DB so future fetches have it? 
+                    // Or just use it for this generation? 
+                    // Let's save it to be safe and consistent.
+                    reportRepository.save(report);
+                    forceRegeneration = true;
+                }
+            }
+        }
+
+        if (!forceRegeneration && report.getReportLink() != null && !report.getReportLink().isEmpty()) {
             return report.getReportLink();
         }
 
-        // If no link, generate it synchronously
+        // If no link or forced regeneration, generate it synchronously
         Report updatedReport = pdfGenerationService.generatePdfAndSaveLinkSync(report);
         return updatedReport != null ? updatedReport.getReportLink() : null;
+    }
+
+    public String getReportLink(String reportId) {
+        return getReportLink(reportId, null);
     }
 
 }

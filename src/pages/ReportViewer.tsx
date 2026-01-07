@@ -36,7 +36,7 @@ import { generatePuppeteerPDF as generatePDFBlob } from '@/lib/puppeteer-pdf-gen
 const ReportViewer = () => {
   const navigate = useNavigate();
   const { reportId } = useParams<{ reportId?: string }>();
-  const { user, loading: authLoading } = useAuth();
+  const { user, loading: authLoading, isNlpSession } = useAuth();
   const [activeTab, setActiveTab] = useState('overview');
   const [reportData, setReportData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -139,7 +139,7 @@ const ReportViewer = () => {
         return;
       }
       // Generate PDF using shared utility
-      const reportLink = await generatePDFBlob(reportId);
+      const reportLink = await generatePDFBlob(reportId, isNlpSession ? 'nlp' : undefined);
       
       // Open the link in a new tab
       window.open(reportLink, '_blank');
@@ -158,7 +158,7 @@ const ReportViewer = () => {
         alert('Report ID not found. Cannot generate PDF.');
         return;
       }
-      const reportLink = await generatePDFBlob(reportId);
+      const reportLink = await generatePDFBlob(reportId, isNlpSession ? 'nlp' : undefined);
 
       await navigator.clipboard.writeText(reportLink);
       window.open(reportLink, '_blank');

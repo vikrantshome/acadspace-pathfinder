@@ -46,6 +46,8 @@ public class PdfGenerationService {
                 user.getName()
         );
 
+        log.info("Sending PDF generation request to: {}/generate-pdf", puppeteerServiceUrl);
+
         try {
             PuppeteerResponse response = webClientBuilder.build()
                     .post()
@@ -65,7 +67,8 @@ public class PdfGenerationService {
                 return report; // Return original report, link not generated
             }
         } catch (Exception e) {
-            log.error("Error during PDF generation for report ID: {}. Reason: {}", report.getId(), e.getMessage());
+            log.error("Error during PDF generation for report ID: {}. URL: {}", report.getId(), puppeteerServiceUrl, e);
+            e.printStackTrace(); // Force stack trace to stdout
             return report; // Return original report, link not generated
         }
     }

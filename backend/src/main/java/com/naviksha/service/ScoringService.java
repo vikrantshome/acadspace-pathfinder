@@ -89,6 +89,12 @@ public class ScoringService {
         // Group into buckets and get top 5
         List<CareerBucket> topBuckets = groupIntoBuckets(careerMatches);
         
+        // Extract partner from answers if present
+        String partner = null;
+        if (submission.getAnswers().containsKey("partner")) {
+            partner = String.valueOf(submission.getAnswers().get("partner"));
+        }
+
         // Build final report
         StudentReport report = StudentReport.builder()
             .studentName(submission.getUserName())
@@ -101,6 +107,7 @@ public class ScoringService {
             .parents(submission.getParentCareers())
             .top5Buckets(topBuckets.subList(0, Math.min(5, topBuckets.size())))
             .summaryParagraph(generateSummaryParagraph(submission, topBuckets))
+            .partner(partner)
             .build();
         
         // Enhance report with AI service
@@ -204,7 +211,7 @@ public class ScoringService {
      */
     public double computeFinalScore(Career career, TestSubmissionDTO submission, Map<String, Integer> riasecScores) {
         double riasecScore = riasecMatchScore(career, riasecScores);
-        double subjectScore = subjectMatchScore(career, submission.getSubjectScores());
+        double subjectScore = subjectMatchScore(career, submission);
         double practicalScore = practicalFitScore(career, submission);
         double contextScore = contextFitScore(career, submission);
         
@@ -246,11 +253,32 @@ public class ScoringService {
     /**
      * Calculate subject academic match score (0-100)
      * Compares user's grades in relevant subjects with career requirements
+     * Updated: Checks e_03 for mandatory subject availability
      */
-    public double subjectMatchScore(Career career, Map<String, Integer> subjectScores) {
+    public double subjectMatchScore(Career career, TestSubmissionDTO submission) {
+        Map<String, Integer> subjectScores = submission.getSubjectScores();
         List<String> primarySubjects = parseSubjectList(career.getPrimarySubjects());
+        
         if (primarySubjects.isEmpty()) return 50; // Neutral score if no specific subjects
         
+        // --- PHASE 1 ENHANCEMENT: Hard Subject Filter (e_03) ---
+        // Check if user has taken the required subjects
+        // We assume 'subjectScores' map only contains subjects the user actually takes
+        // If a primary subject is missing from the map, it's a mismatch.
+        int missingSubjects = 0;
+        for (String subject : primarySubjects) {
+            if (!subjectScores.containsKey(subject)) {
+                 missingSubjects++;
+            }
+        }
+        
+        // If critical subjects are missing, return 0 (Disqualified)
+        // We allow 1 missing if there are many requirements, but strict otherwise
+        if (missingSubjects > 0) {
+            return 0; 
+        }
+        // -------------------------------------------------------
+
         double totalScore = 0.0;
         int relevantSubjects = 0;
         
@@ -261,7 +289,7 @@ public class ScoringService {
             }
         }
         
-        if (relevantSubjects == 0) return 50; // Neutral if no relevant subject scores
+        if (relevantSubjects == 0) return 50; // Should be caught by missingSubjects check, but safe fallback
         
         double avgScore = totalScore / relevantSubjects;
         
@@ -279,6 +307,7 @@ public class ScoringService {
      */
     public double practicalFitScore(Career career, TestSubmissionDTO submission) {
         double score = 50.0; // Base score
+        Map<String, Object> answers = submission.getAnswers();
         
         // Analyze extracurriculars alignment
         List<String> extracurriculars = submission.getExtracurriculars();
@@ -305,6 +334,38 @@ public class ScoringService {
             double textScore = subjectivityService.analyzeTextAlignment(subjectiveText, career);
             score += textScore * 0.3; // 30% influence from text analysis
         }
+
+        // --- PHASE 2 ENHANCEMENT ---
+
+        // 1. Negative Filtering (e_13 - "Jobs NOT wanted")
+        Object e13 = answers.get("e_13");
+        if (e13 instanceof String) {
+            String unwantedText = ((String) e13).toLowerCase();
+            String careerNameLower = career.getCareerName().toLowerCase();
+            String bucketLower = career.getBucket().toLowerCase();
+            
+            // Simple keyword check against career name or bucket keywords
+            // e.g. "I hate coding" -> matches "computer science" bucket or "developer" careers
+            if (unwantedText.contains(careerNameLower) || 
+                (bucketLower.contains("computer") && unwantedText.contains("coding")) ||
+                (bucketLower.contains("medical") && unwantedText.contains("blood")) ||
+                unwantedText.contains(bucketLower.split(" ")[0])) { // Check first word of bucket
+                
+                score -= 50; // massive penalty to filter it out
+            }
+        }
+
+        // 2. Positive Reinforcement (e_12 - "Subjects Enjoyed")
+        // Just a simple keyword boost on top of what SubjectivityService does
+        Object e12 = answers.get("e_12");
+        if (e12 instanceof String) {
+            String enjoyedText = ((String) e12).toLowerCase();
+            if (enjoyedText.contains(career.getCareerName().toLowerCase()) || 
+                enjoyedText.contains(career.getBucket().toLowerCase())) {
+                score += 10;
+            }
+        }
+        // ---------------------------
         
         return Math.max(0, Math.min(100, score));
     }
@@ -312,10 +373,12 @@ public class ScoringService {
     /**
      * Calculate contextual fit score (0-100)
      * Considers family background and social factors
+     * Updated: Checks e_14 (Long Study), e_09 (Vocational), e_15 (Dream), e_05 (Class Rank)
      */
     public double contextFitScore(Career career, TestSubmissionDTO submission) {
         double score = 50.0; // Base neutral score
-        
+        Map<String, Object> answers = submission.getAnswers();
+
         // Family career influence
         List<String> parentCareers = submission.getParentCareers();
         String careerBucket = career.getBucket();
@@ -342,6 +405,76 @@ public class ScoringService {
         if (workStyle != null) {
             score += analyzeWorkStyleFit(workStyle, career);
         }
+
+        // --- PHASE 1 & 2 ENHANCEMENT ---
+        
+        // 1. Long Study Duration (e_14)
+        Object e14 = answers.get("e_14");
+        if (e14 instanceof String && "No".equals(e14)) {
+            String qual = career.getMinQualification();
+            if (qual != null && (qual.contains("MBBS") || qual.contains("B.Arch") || qual.contains("PhD") || career.getCareerName().contains("Doctor"))) {
+                score -= 30; 
+            }
+        }
+
+        // 2. Vocational Training (e_09)
+        Object e09 = answers.get("e_09");
+        boolean isVocationalBucket = "Trades Vocational & Skilled Services".equals(career.getBucket());
+        if (e09 instanceof String) {
+            if ("Yes, definitely".equals(e09) && isVocationalBucket) {
+                score += 25;
+            } else if ("No".equals(e09) && isVocationalBucket) {
+                score -= 25;
+            }
+        }
+
+        // 3. Dream Career (e_15)
+        Object e15 = answers.get("e_15");
+        if (e15 instanceof String) {
+            String dream = (String) e15;
+            if (career.getBucket().contains(dream) || career.getCareerName().contains(dream)) {
+                score += 20;
+            }
+        }
+
+        // 4. Class Rank (e_05)
+        // Adjust for highly competitive fields
+        Object e05 = answers.get("e_05");
+        if (e05 instanceof String) {
+            String rank = (String) e05;
+            boolean isCompetitive = career.getBucket().contains("Healthcare") || 
+                                    career.getBucket().contains("Core Technology") || 
+                                    career.getBucket().contains("Law");
+
+            if (isCompetitive) {
+                if (rank.contains("Top 1") || rank.contains("Top 5")) {
+                    score += 5; // Small confidence boost
+                } else if (rank.contains("Below average")) {
+                    score -= 10; // Cautionary penalty
+                }
+            }
+        }
+
+        // 5. Family/Community Sentiment (e_08)
+        Object e08 = answers.get("e_08");
+        if (e08 instanceof String) {
+            String sentimentText = ((String) e08).toLowerCase();
+            String careerName = career.getCareerName().toLowerCase();
+            String bucketName = career.getBucket().toLowerCase();
+            
+            boolean mentionsCareer = sentimentText.contains(careerName) || 
+                                   sentimentText.contains(bucketName) ||
+                                   sentimentText.contains(bucketName.split(" ")[0].toLowerCase()); // e.g. "engineering" from "engineering & core..."
+
+            if (mentionsCareer) {
+                if (sentimentText.contains("bad") || sentimentText.contains("taboo") || sentimentText.contains("avoid") || sentimentText.contains("waste")) {
+                    score -= 20; // Family disapproval penalty
+                } else if (sentimentText.contains("good") || sentimentText.contains("best") || sentimentText.contains("proud") || sentimentText.contains("respect")) {
+                    score += 15; // Family approval bonus
+                }
+            }
+        }
+        // ---------------------------
         
         return Math.max(0, Math.min(100, score));
     }
