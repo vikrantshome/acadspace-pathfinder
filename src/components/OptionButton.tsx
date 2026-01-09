@@ -38,29 +38,20 @@ export const OptionButton: React.FC<OptionButtonProps> = ({
   disabled = false,
   className
 }) => {
-  const [lastTapTime, setLastTapTime] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handleClick = () => {
     if (disabled) return;
 
-    const now = Date.now();
-    const timeSinceLastTap = now - lastTapTime;
+    triggerAnimation();
 
-    // Double-tap detection (within 300ms)
-    if (isSelected && timeSinceLastTap < 300 && onUnselect) {
-      triggerAnimation();
-      onUnselect(option);
-    } else if (!isSelected) {
-      triggerAnimation();
-      onSelect(option);
-    } else if (type === 'single') {
-      // For single selection, clicking again should unselect
-      triggerAnimation();
+    if (isSelected) {
+      // Toggle off if already selected
       onUnselect?.(option);
+    } else {
+      // Select if not selected
+      onSelect(option);
     }
-
-    setLastTapTime(now);
   };
 
   const triggerAnimation = () => {
@@ -71,7 +62,6 @@ export const OptionButton: React.FC<OptionButtonProps> = ({
   if (type === 'likert') {
     return (
       <div className={cn("space-y-3", className)}>
-        <div className="text-sm font-medium">{option}</div>
         <LikertScale 
           value={likertValue}
           onChange={onLikertChange || (() => {})}
@@ -118,7 +108,7 @@ export const OptionButton: React.FC<OptionButtonProps> = ({
   );
 };
 
-// Likert Scale Component (0-3 scale)
+// Likert Scale Component (1-5 scale)
 const LikertScale: React.FC<{
   value: number;
   onChange: (value: number) => void;
@@ -127,6 +117,7 @@ const LikertScale: React.FC<{
   const labels = [
     "Strongly Disagree",
     "Disagree", 
+    "Neutral",
     "Agree",
     "Strongly Agree"
   ];
@@ -139,7 +130,7 @@ const LikertScale: React.FC<{
       </div>
       
       <div className="flex gap-2">
-        {[0, 1, 2, 3].map((rating) => (
+        {[1, 2, 3, 4, 5].map((rating) => (
           <Button
             key={rating}
             variant={value === rating ? "career" : "outline"}
@@ -154,18 +145,15 @@ const LikertScale: React.FC<{
           >
             <div className="text-center">
               <div className="font-bold">{rating}</div>
-              <div className="text-xs opacity-75">
-                {labels[rating].split(' ')[0]}
-              </div>
             </div>
           </Button>
         ))}
       </div>
 
       {/* Current selection label */}
-      {value >= 0 && (
-        <div className="text-center text-sm text-muted-foreground">
-          {labels[value]}
+      {value >= 1 && (
+        <div className="text-center text-sm text-muted-foreground font-medium">
+          {labels[value - 1]}
         </div>
       )}
     </div>
