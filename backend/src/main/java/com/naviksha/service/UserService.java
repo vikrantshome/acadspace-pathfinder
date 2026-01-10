@@ -34,7 +34,8 @@ public class UserService {
             .board(request.getBoard())
             .mobileNo(request.getMobileNo())
             .studentID(studentID)
-            .city(request.getCity()) // Added city field
+            .city(request.getCity())
+            .state(request.getState())
             .build();
         
         return userRepository.save(user);
@@ -77,6 +78,9 @@ public class UserService {
             if (request.getCity() != null && !request.getCity().isEmpty()) {
                 existingUser.setCity(request.getCity());
             }
+            if (request.getState() != null && !request.getState().isEmpty()) {
+                existingUser.setState(request.getState());
+            }
             // Only update password if provided
             if (request.getPassword() != null && !request.getPassword().isEmpty()) {
                 existingUser.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -102,6 +106,7 @@ public class UserService {
                 .mobileNo(request.getMobileNo())
                 .studentID(studentID)
                 .city(request.getCity())
+                .state(request.getState())
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
                 .build();

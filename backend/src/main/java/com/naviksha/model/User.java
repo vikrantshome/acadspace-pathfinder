@@ -47,6 +47,7 @@ public class User {
     private Integer grade;
     private String board;
     private String city; // Added city field
+    private String state;
     
     @CreatedDate
     private LocalDateTime createdAt;

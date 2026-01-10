@@ -175,7 +175,7 @@ function inferStatus(p?: { currentQuestionIndex?: number; answers?: any; complet
               
               <Card className="hover:shadow-lg transition-shadow cursor-pointer" onClick={() => navigate(nextAction.path)}>
                 <CardContent className="p-6 text-center">
-                  <Target className="w-8 h-8 mx-auto mb-3 text-accent" />
+                  <Target className="w-8 h-8 mx-auto mb-3 text-primary" />
                   <h3 className="font-semibold">{nextAction.text}</h3>
                   <p className="text-sm text-muted-foreground">Continue your assessment</p>
                 </CardContent>
@@ -235,7 +235,7 @@ function inferStatus(p?: { currentQuestionIndex?: number; answers?: any; complet
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <BookOpen className="w-6 h-6 text-accent" />
+                      <BookOpen className="w-6 h-6 text-primary" />
                       <h3 className="font-semibold">Academic Background</h3>
                     </div>
                     <Badge variant={getTestStatus('edustats').variant}>

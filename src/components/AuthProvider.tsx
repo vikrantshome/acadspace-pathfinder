@@ -23,7 +23,9 @@ interface AuthContextType {
     schoolName?: string, 
     grade?: number, 
     board?: string,
-    mobileNo?: string
+    mobileNo?: string,
+    city?: string,
+    state?: string
   ) => Promise<void>;
   signOut: () => Promise<void>;
   updateProfile: (updates: Partial<User>) => Promise<void>;
@@ -101,7 +103,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     schoolName?: string, 
     grade?: number, 
     board?: string,
-    mobileNo?: string
+    mobileNo?: string,
+    city?: string,
+    state?: string
   ) => {
     try {
       const response = await apiService.register(
@@ -113,7 +117,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         schoolName, 
         grade, 
         board,
-        mobileNo
+        mobileNo,
+        city,
+        state
       );
       setUser(response.user);
       setIsNlpSession(false);

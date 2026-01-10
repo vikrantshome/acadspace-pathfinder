@@ -19,6 +19,8 @@ interface User {
   board?: string;
   mobileNo?: string;
   studentID?: string;
+  city?: string;
+  state?: string;
 }
 
 interface AuthResponse {
@@ -114,7 +116,8 @@ class ApiService {
     grade?: number, 
     board?: string,
     mobileNo?: string,
-    city?: string // Added city
+    city?: string, // Added city
+    state?: string // Added state
   ): Promise<AuthResponse> {
     localStorage.removeItem('login_source'); // Clear previous login source
     const response = await fetch(`${API_BASE_URL}/auth/upsert-register`, { // Changed endpoint
@@ -130,7 +133,8 @@ class ApiService {
         grade,
         board,
         mobileNo,
-        city // Included city
+        city, // Included city
+        state // Included state
       }),
     });
 
