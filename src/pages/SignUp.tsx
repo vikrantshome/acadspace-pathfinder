@@ -292,7 +292,7 @@ const Auth = () => {
                           "Reena Mehta Junior College of Arts, Science & Commerce",
                           "ROYAL ACADEMY PUBLIC SCHOOL",
                           "Rustomjee International School",
-                          "S.T. Mary's Middle School",
+                          "St. Mary's English Public School",
                           "Saraswati vidya mandir",
                           "Seshadripuram High School",
                           "Seventh Day Adventist Senior Secondary School",
