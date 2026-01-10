@@ -134,20 +134,18 @@ public class ScoringService {
      * C = Conventional (organizing, detail-oriented)
      */
     private Map<String, Integer> calculateRiasecScores(Map<String, Object> answers) {
-        Map<String, Integer> scores = new HashMap<>();
-        scores.put("R", 0);
-        scores.put("I", 0);
-        scores.put("A", 0);
-        scores.put("S", 0);
-        scores.put("E", 0);
-        scores.put("C", 0);
+        Map<String, Double> totalScores = new HashMap<>();
+        Map<String, Integer> questionCounts = new HashMap<>();
+        
+        // Initialize maps
+        for (String cat : Arrays.asList("R", "I", "A", "S", "E", "C")) {
+            totalScores.put(cat, 0.0);
+            questionCounts.put(cat, 0);
+        }
 
-        // Default missing vibematch answers to 3.
-        // Assumes there are 14 vibematch questions (v_01 to v_14).
-        // This should be updated if the number of questions changes.
+        // Default missing vibematch answers to 3 (Neutral).
         for (int i = 1; i <= 14; i++) {
             String questionKey = String.format("v_%02d", i);
-            // If the answer is not present or null, default it to 3
             answers.putIfAbsent(questionKey, 3);
         }
         
@@ -157,13 +155,16 @@ public class ScoringService {
             if (questionId.startsWith("v_") && answer.getValue() instanceof Number) {
                 int score = ((Number) answer.getValue()).intValue();
                 
-                // Extract number from questionId (e.g., "v_01" -> "1")
                 String qNumStr = questionId.substring(2);
                 try {
                     int qNum = Integer.parseInt(qNumStr);
-                    Map<String, Integer> riasecMap = getQuestionRiasecMapping(qNum); // Pass integer
+                    Map<String, Integer> riasecMap = getQuestionRiasecMapping(qNum);
                     for (Map.Entry<String, Integer> mapping : riasecMap.entrySet()) {
-                        scores.merge(mapping.getKey(), score * mapping.getValue(), Integer::sum);
+                        String category = mapping.getKey();
+                        // Add score to category total (weighted by mapping value, usually 1)
+                        totalScores.merge(category, (double) score * mapping.getValue(), Double::sum);
+                        // Increment question count for this category
+                        questionCounts.merge(category, 1, Integer::sum);
                     }
                 } catch (NumberFormatException e) {
                     log.warn("Invalid question number format in RIASEC answer: {}", questionId);
@@ -171,13 +172,30 @@ public class ScoringService {
             }
         }
         
-        // Convert to percentages (normalize to 0-100 scale)
-        int totalScore = scores.values().stream().mapToInt(Integer::intValue).sum();
-        if (totalScore > 0) {
-            scores.replaceAll((key, value) -> (int) Math.round((value * 100.0) / totalScore));
+        // Calculate averages and then normalize to percentages
+        Map<String, Integer> finalScores = new HashMap<>();
+        double sumOfAverages = 0.0;
+        
+        // First pass: Calculate averages
+        Map<String, Double> averages = new HashMap<>();
+        for (String cat : totalScores.keySet()) {
+            int count = questionCounts.get(cat);
+            double avg = count > 0 ? totalScores.get(cat) / count : 0.0;
+            averages.put(cat, avg);
+            sumOfAverages += avg;
         }
         
-        return scores;
+        // Second pass: Normalize to percentage distribution (0-100)
+        if (sumOfAverages > 0) {
+            for (Map.Entry<String, Double> entry : averages.entrySet()) {
+                finalScores.put(entry.getKey(), (int) Math.round((entry.getValue() * 100.0) / sumOfAverages));
+            }
+        } else {
+            // Fallback if no scores
+            finalScores.putAll(Map.of("R", 0, "I", 0, "A", 0, "S", 0, "E", 0, "C", 0));
+        }
+        
+        return finalScores;
     }
 
     /**
