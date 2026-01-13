@@ -622,7 +622,7 @@ const TestPage = () => {
 
       {/* Test Content - Only show if authenticated */}
       {user && (
-        <div className="container mx-auto px-4 py-4 md:py-8 max-w-6xl">
+        <div className="container mx-auto px-4 py-4 md:py-8 max-w-8xl">
           <div className="flex flex-col xl:grid xl:grid-cols-4 gap-4 md:gap-8">
             {/* Journey Tracker - Mobile: top, Desktop: sidebar */}
             <div className="xl:col-span-1 order-2 xl:order-1">
