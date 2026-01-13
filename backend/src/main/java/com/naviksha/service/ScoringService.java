@@ -137,6 +137,9 @@ public class ScoringService {
         Map<String, Double> totalScores = new HashMap<>();
         Map<String, Integer> questionCounts = new HashMap<>();
         
+        // Create a mutable copy of answers to avoid modifying the original map
+        Map<String, Object> mutableAnswers = new HashMap<>(answers);
+        
         // Initialize maps
         for (String cat : Arrays.asList("R", "I", "A", "S", "E", "C")) {
             totalScores.put(cat, 0.0);
@@ -146,11 +149,11 @@ public class ScoringService {
         // Default missing vibematch answers to 3 (Neutral).
         for (int i = 1; i <= 14; i++) {
             String questionKey = String.format("v_%02d", i);
-            answers.putIfAbsent(questionKey, 3);
+            mutableAnswers.putIfAbsent(questionKey, 3);
         }
         
         // Process each vibematch answer (Likert scale 1-5)
-        for (Map.Entry<String, Object> answer : answers.entrySet()) {
+        for (Map.Entry<String, Object> answer : mutableAnswers.entrySet()) {
             String questionId = answer.getKey();
             if (questionId.startsWith("v_") && answer.getValue() instanceof Number) {
                 int score = ((Number) answer.getValue()).intValue();

@@ -200,9 +200,18 @@ class ScoringServiceTests {
             "Mathematics", 45, "Physics", 40, "Chemistry", 70
         );
         
+        // Wrap subject scores in TestSubmissionDTO
+        TestSubmissionDTO strongSubmission = TestSubmissionDTO.builder()
+            .subjectScores(strongSubjects)
+            .build();
+            
+        TestSubmissionDTO weakSubmission = TestSubmissionDTO.builder()
+            .subjectScores(weakSubjects)
+            .build();
+
         // When: Computing subject match scores
-        double strongScore = scoringService.subjectMatchScore(engineer, strongSubjects);
-        double weakScore = scoringService.subjectMatchScore(engineer, weakSubjects);
+        double strongScore = scoringService.subjectMatchScore(engineer, strongSubmission);
+        double weakScore = scoringService.subjectMatchScore(engineer, weakSubmission);
         
         // Then: Strong subjects should score better
         assertTrue(strongScore > weakScore, "Strong relevant subjects should score higher");
