@@ -56,7 +56,7 @@ public class AuthController {
     private final JwtTokenProvider tokenProvider;
     
     // Configurable in production, hardcoded for now as per instructions
-    private static final String NLP_API_URL = "https://nova.nexterp.in/nlp/nlp/v2/sso_profile.json";
+    private static final String NLP_API_URL = "https://nlp.nexterp.in/nlp/nlp/v2/sso_profile.json";
     private static final String CLIENT_ID = "AcadSpace";
 
     @PostMapping("/register")
