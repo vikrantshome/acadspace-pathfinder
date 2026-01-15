@@ -18,6 +18,8 @@ The backend is a Maven project. You can run it using the Spring Boot Maven plugi
 2.  **Run the application in development mode:**
     ```bash
     mvn spring-boot:run -Dspring.profiles.active=prod
+
+    mvn spring-boot:run -Dspring.profiles.active=prod -D AI_SERVICE_URL=http://localhost:8000
     ```
 
 The backend server will start, and it will be accessible at `http://localhost:4000` (or the port specified in your `application.yml`).

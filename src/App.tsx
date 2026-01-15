@@ -18,6 +18,13 @@ import NotFound from "./pages/NotFound";
 import ExportQuestions from "./pages/ExportQuestions";
 import NcciAllenPage from "@/pages/NcciAllen/pages/Index";
 
+const ExternalRedirect = ({ to }: { to: string }) => {
+  React.useEffect(() => {
+    window.location.href = to;
+  }, [to]);
+  return null;
+};
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -44,6 +51,12 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
               <Route path="/export-questions" element={<ExportQuestions />} />
               <Route path="/allen-career-compass" element={<NcciAllenPage />} />
+              <Route
+                path="/engineers-test"
+                element={
+                  <ExternalRedirect to="https://scaler-future-fit-roan.vercel.app/" />
+                }
+              />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
