@@ -11,7 +11,7 @@ public class NlpProfileResponse {
 
     @Data
     public static class NlpUser {
-        @JsonProperty("Id")
+        @JsonProperty("id")
         private String id;
         private String name;
         private String gender;

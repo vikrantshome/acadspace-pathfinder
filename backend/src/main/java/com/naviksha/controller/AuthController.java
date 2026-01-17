@@ -207,16 +207,6 @@ public class AuthController {
             regRequest.setFullName(nlpUser.getName());
             regRequest.setSchoolName(nlpUser.getSchoolName());
             
-            // Check if user exists to decide on password and email
-            // We only set a random password and placeholder email for NEW users. 
-            // Existing users keep their data to avoid overwriting.
-            boolean userExists = userService.findByStudentId(nlpInternalId).isPresent();
-            
-            if (!userExists) {
-                regRequest.setPassword(UUID.randomUUID().toString());
-                regRequest.setEmail(nlpUser.getId() + "@nlp.naviksha.com");
-            }
-            
             try {
                 if (nlpUser.getGrade() != null && !nlpUser.getGrade().isEmpty()) {
                     // Handle "Class 10" or "10" format
