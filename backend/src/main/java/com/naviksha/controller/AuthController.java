@@ -199,6 +199,11 @@ public class AuthController {
                     .body(new AuthResponse("", null, "NLP User details missing"));
             }
 
+            if (nlpUser.getId() == null || nlpUser.getId().isEmpty()) {
+                return ResponseEntity.badRequest()
+                    .body(new AuthResponse("", null, "NLP User ID is missing in response"));
+            }
+
             // 3. Map to local User and Upsert
             RegisterRequest regRequest = new RegisterRequest();
             String nlpInternalId = "NLP_" + nlpUser.getId();
