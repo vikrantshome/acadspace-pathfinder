@@ -123,25 +123,25 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
+    <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-hero">
       <div className="w-full max-w-3xl space-y-6 animate-fade-in">
         {/* Header */}
-        <div className="text-center space-y-2">
-          <div className="w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl shadow-lg mx-auto flex items-center justify-center mb-3 md:mb-4">
+        <div className="space-y-2 text-center">
+          <div className="flex items-center justify-center w-12 h-12 mx-auto mb-3 bg-white shadow-lg md:w-16 md:h-16 rounded-2xl md:mb-4">
             <GraduationCap className="w-6 h-6 md:w-8 md:h-8 text-primary" />
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold text-white">
+          <h1 className="text-2xl font-bold text-white md:text-3xl">
             Join Naviksha AI
           </h1>
-          <p className="text-sm md:text-base text-white/80 px-2">
+          <p className="px-2 text-sm md:text-base text-white/80">
             Navigate Your Future with AI-Powered Career Guidance
           </p>
         </div>
 
         {/* Auth Card */}
-        <Card className="glass border-0 shadow-2xl">
-          <CardHeader className="space-y-1 pb-4">
-            <CardTitle className="text-lg md:text-xl text-center">
+        <Card className="border-0 shadow-2xl glass">
+          <CardHeader className="pb-4 space-y-1">
+            <CardTitle className="text-lg text-center md:text-xl">
               Create Account
             </CardTitle>
           </CardHeader>
@@ -149,7 +149,7 @@ const Auth = () => {
             <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4">
 
               {/* Full Name & Parent Name Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label
                     htmlFor="fullName"
@@ -193,7 +193,7 @@ const Auth = () => {
               </div>
 
               {/* Email & Mobile Number Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="email" className="flex items-center gap-2">
                     <Mail className="w-4 h-4" />
@@ -270,6 +270,7 @@ const Auth = () => {
                           "Devin Academy For Learning",
                           "Dnyan Sagar English Medium School",
                           "Dr. Shivajirao S. Jondhle International School",
+                          "Endeavour's international School",
                           "Fortune High School",
                           "GCC International School",
                           "Greenwood High School",
@@ -281,6 +282,7 @@ const Auth = () => {
                           "Kalka Public School",
                           "Lilavati Lalji Dayal High School",
                           "Lilavati Lalji Dayal High School and College Of Commerce",
+                          "Maria Niketan Insitution",
                           "Maria Niketan School of institutions",
                           "MORNING STAR PUBLIC SCHOOL",
                           "Mount Carmel Public School",
@@ -303,6 +305,7 @@ const Auth = () => {
                           "Shivaji Shikshan Sanstha",
                           "SRSD Sr.Sec School Delhi",
                           "St Alousious School",
+                          "St Annes PU College",
                           "St Antony's School",
                           "St. MEERA'S Public School",
                           "St. Ramanand English Medium High School",
@@ -407,7 +410,7 @@ const Auth = () => {
               </div>
 
                {/* Password & Confirm Password Row */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="password" className="flex items-center gap-2">
                     <Lock className="w-4 h-4" />
@@ -450,7 +453,7 @@ const Auth = () => {
               {/* Submit Button */}
               <Button
                 type="submit"
-                className="w-full h-11 md:h-12 text-sm md:text-base font-semibold transition-smooth mt-4 md:mt-6"
+                className="w-full mt-4 text-sm font-semibold h-11 md:h-12 md:text-base transition-smooth md:mt-6"
                 disabled={loading}
               >
                 {loading ? (
@@ -467,14 +470,14 @@ const Auth = () => {
             {/* Toggle Mode */}
             <div className="mt-4 md:mt-6">
               <Separator />
-              <div className="text-center mt-3 md:mt-4">
+              <div className="mt-3 text-center md:mt-4">
                 <p className="text-xs md:text-sm text-muted-foreground">
                   Already have an account?
                 </p>
                 <Button
                   variant="link"
                   asChild
-                  className="text-primary font-semibold text-sm md:text-base"
+                  className="text-sm font-semibold text-primary md:text-base"
                 >
                   <Link to="/login">Sign In</Link>
                 </Button>
@@ -484,8 +487,8 @@ const Auth = () => {
         </Card>
 
         {/* Privacy Note */}
-        <div className="text-center px-2">
-          <p className="text-white/60 text-xs leading-relaxed">
+        <div className="px-2 text-center">
+          <p className="text-xs leading-relaxed text-white/60">
             By creating an account, you agree to our privacy practices. Your
             data is secure and never shared with third parties.
           </p>
