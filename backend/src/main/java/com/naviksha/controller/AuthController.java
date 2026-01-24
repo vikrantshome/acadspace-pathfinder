@@ -183,6 +183,8 @@ public class AuthController {
             }
             // ------------------------------------
             
+            log.info("NLP Response: {}", nlpResponse);
+
             if (nlpResponse == null) {
                 return ResponseEntity.badRequest()
                     .body(new AuthResponse("", null, "No response from NLP Server"));
