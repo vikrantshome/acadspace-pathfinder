@@ -1,5 +1,6 @@
 package com.naviksha.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -18,6 +19,7 @@ public class NlpProfileResponse {
         private String grade;
         private String mastergrade;
         @JsonProperty("school_name")
+        @JsonAlias({"schoolName", "schoolname", "SchoolName"})
         private String schoolName;
     }
 }
