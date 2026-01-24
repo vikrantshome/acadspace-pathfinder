@@ -224,16 +224,16 @@ public class AuthController {
                 regRequest.setEmail(nlpUser.getId() + "@nlp.naviksha.com");
             }
             
-            try {
-                if (nlpUser.getGrade() != null && !nlpUser.getGrade().isEmpty()) {
-                    // Handle "Class 10" or "10" format
-                    String gradeStr = nlpUser.getGrade().replaceAll("[^0-9]", "");
-                    if (!gradeStr.isEmpty()) {
-                        regRequest.setGrade(Integer.parseInt(gradeStr));
-                    }
-                }
-            } catch (NumberFormatException e) {
-                log.warn("Could not parse grade: {}", nlpUser.getGrade());
+            // Attempt to parse grade from 'grade' field first, then 'mastergrade'
+            Integer parsedGrade = parseGrade(nlpUser.getGrade());
+            if (parsedGrade == null) {
+                parsedGrade = parseGrade(nlpUser.getMastergrade());
+            }
+
+            if (parsedGrade != null) {
+                regRequest.setGrade(parsedGrade);
+            } else {
+                log.warn("Could not parse grade from: {} or {}", nlpUser.getGrade(), nlpUser.getMastergrade());
             }
 
             User user = userService.createOrUpdateUser(regRequest);
@@ -345,5 +345,42 @@ public class AuthController {
             return ResponseEntity.badRequest()
                 .body(new AuthResponse("", null, "Lookup failed: " + e.getMessage()));
         }
+    }    private Integer parseGrade(String gradeInput) {
+        if (gradeInput == null) return null;
+        
+        // Normalize: remove generic words, keep alphanumeric
+        String s = gradeInput.toUpperCase()
+                .replace("GRADE", "")
+                .replace("CLASS", "")
+                .replace("std", "") // just in case
+                .replaceAll("[^A-Z0-9]", "")
+                .trim();
+        
+        // Check Roman numerals
+        switch (s) {
+            case "I": return 1;
+            case "II": return 2;
+            case "III": return 3;
+            case "IV": return 4;
+            case "V": return 5;
+            case "VI": return 6;
+            case "VII": return 7;
+            case "VIII": return 8;
+            case "IX": return 9;
+            case "X": return 10;
+            case "XI": return 11;
+            case "XII": return 12;
+        }
+        
+        // If not Roman, try extracting digits
+        try {
+            String digits = gradeInput.replaceAll("[^0-9]", "");
+            if (!digits.isEmpty()) {
+                return Integer.parseInt(digits);
+            }
+        } catch (NumberFormatException e) {
+            // ignore
+        }
+        return null;
     }
 }
