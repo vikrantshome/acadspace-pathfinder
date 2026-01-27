@@ -37,25 +37,25 @@ const NLP: React.FC = () => {
     };
 
     loginWithNlpToken();
-  }, [searchParams, navigate, refreshProfile]);
+  }, [searchParams, navigate]);
 
   return (
-    <div className="min-h-screen bg-gradient-hero flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 text-center space-y-6">
+    <div className="flex items-center justify-center min-h-screen p-4 bg-gradient-hero">
+      <div className="w-full max-w-md p-8 space-y-6 text-center bg-white shadow-2xl rounded-2xl">
         {error ? (
           <>
             <h1 className="text-2xl font-bold text-red-600">Login Failed</h1>
             <p className="text-gray-600">{error}</p>
             <button
               onClick={() => navigate('/login')}
-              className="mt-4 px-6 py-2 bg-primary text-white rounded-full font-medium"
+              className="px-6 py-2 mt-4 font-medium text-white rounded-full bg-primary"
             >
               Go to Login
             </button>
           </>
         ) : (
           <>
-            <Loader2 className="w-12 h-12 text-primary animate-spin mx-auto" />
+            <Loader2 className="w-12 h-12 mx-auto text-primary animate-spin" />
             <h1 className="text-2xl font-bold">Logging you in...</h1>
             <p className="text-gray-600">Please wait while we verify your NLP session.</p>
           </>
