@@ -173,13 +173,23 @@ public class AuthController {
                 
                 // 2. Call NLP API
                 WebClient webClient = WebClient.create();
-                nlpResponse = webClient.post()
+                ResponseEntity<NlpProfileResponse> responseEntity = webClient.post()
                         .uri(NLP_API_URL)
                         .header("sso-authorization", authHeader)
                         .contentType(MediaType.APPLICATION_JSON)
                         .retrieve()
-                        .bodyToMono(NlpProfileResponse.class)
+                        .toEntity(NlpProfileResponse.class)
                         .block(); // Blocking for simplicity in this synchronous controller
+
+                if (responseEntity != null) {
+                    HttpHeaders headers = responseEntity.getHeaders();
+                    log.info("NLP Response Headers: {}", headers);
+                    log.info("NLP Response Header x-nexted-trace: {}", headers.getFirst("x-nexted-trace"));
+                    nlpResponse = responseEntity.getBody();
+                    log.info("NLP Full Response Body: {}", nlpResponse);
+                } else {
+                    nlpResponse = null;
+                }
             }
             // ------------------------------------
             
@@ -221,7 +231,7 @@ public class AuthController {
             
             if (!userExists) {
                 regRequest.setPassword("123456");
-                regRequest.setEmail(nlpUser.getId() + "@nlp.naviksha.com");
+                // regRequest.setEmail(nlpUser.getId() + "@nlp.naviksha.com");
             }
             
             // Attempt to parse grade from 'grade' field first, then 'mastergrade'
