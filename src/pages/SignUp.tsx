@@ -383,7 +383,7 @@ const Auth = () => {
                     id="grade"
                     type="number"
                     placeholder="10"
-                    min="6"
+                    min="1"
                     max="12"
                     value={formData.grade}
                     onChange={(e) =>
