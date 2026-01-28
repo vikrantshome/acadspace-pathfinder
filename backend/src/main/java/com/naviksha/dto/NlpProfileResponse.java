@@ -18,24 +18,8 @@ public class NlpProfileResponse {
         private String gender;
         private String grade;
         private String mastergrade;
-        
-        @JsonProperty("schoolName")
-        @JsonAlias({"schoolname", "SchoolName"})
-        private String schoolNameCamel;
-
         @JsonProperty("school_name")
-        private String schoolNameSnake;
-
-        public String getSchoolName() {
-            if (schoolNameSnake != null && !schoolNameSnake.isEmpty()) {
-                return schoolNameSnake;
-            }
-            return schoolNameCamel;
-        }
-
-        public void setSchoolName(String schoolName) {
-            this.schoolNameCamel = schoolName;
-            this.schoolNameSnake = schoolName;
-        }
+        @JsonAlias({"schoolName", "schoolname", "SchoolName"})
+        private String schoolName;
     }
 }
