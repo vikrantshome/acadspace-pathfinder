@@ -258,6 +258,7 @@ const Auth = () => {
                       <CommandEmpty>No results found.</CommandEmpty>
                       <CommandGroup>
                         {[
+                          "Airson English School",
                           "Angel Public School",
                           "BASANT VALLY PUBLIC SCHOOL",
                           "Beena English Medium School",
@@ -289,6 +290,7 @@ const Auth = () => {
                           "Muni International School",
                           "Mysore West Lions Sevaniketan",
                           "Pict Model School",
+                          "Piet Sanskriti Senior Secondary School",
                           "PNC Cognitio School",
                           "Police Modern School",
                           "Priyadarshini High School",
