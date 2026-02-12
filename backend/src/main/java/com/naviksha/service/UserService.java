@@ -18,6 +18,11 @@ public class UserService {
     private final SequenceService sequenceService;
     
     public User createUser(RegisterRequest request) {
+        if (request.getMobileNo() != null && request.getName() != null && 
+            userRepository.existsByMobileNoAndNameIgnoreCase(request.getMobileNo(), request.getName())) {
+            throw new RuntimeException("User with this name and mobile number already exists.");
+        }
+
         String studentID = request.getStudentID();
         if (studentID == null || studentID.isEmpty()) {
             studentID = sequenceService.getNextStudentID();
@@ -89,6 +94,11 @@ public class UserService {
             return userRepository.save(existingUser);
         } else {
             // Create new user
+            if (request.getMobileNo() != null && request.getName() != null && 
+                userRepository.existsByMobileNoAndNameIgnoreCase(request.getMobileNo(), request.getName())) {
+                throw new RuntimeException("User with this name and mobile number already exists.");
+            }
+
             String studentID = request.getStudentID();
             if (studentID == null || studentID.isEmpty()) {
                 studentID = sequenceService.getNextStudentID();

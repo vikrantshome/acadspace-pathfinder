@@ -95,7 +95,7 @@ public class AuthController {
         } catch (Exception e) {
             log.error("Upsert registration failed for email: {}", request.getEmail(), e);
             return ResponseEntity.badRequest()
-                .body(new AuthResponse("", null, "Upsert registration failed: " + e.getMessage()));
+                .body(new AuthResponse("", null, "Registration failed: " + e.getMessage()));
         }
     }
 
