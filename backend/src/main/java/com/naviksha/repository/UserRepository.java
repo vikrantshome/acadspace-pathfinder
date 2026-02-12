@@ -14,4 +14,5 @@ public interface UserRepository extends MongoRepository<User, String> {
     Optional<User> findByMobileNo(String mobileNo);
     List<User> findAllByMobileNo(String mobileNo);
     boolean existsByEmail(String email);
+    boolean existsByMobileNoAndNameIgnoreCase(String mobileNo, String name);
 }
