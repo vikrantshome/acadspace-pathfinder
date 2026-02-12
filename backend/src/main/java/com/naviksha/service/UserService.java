@@ -128,14 +128,16 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
     
-    public User findUserByLookup(com.naviksha.dto.LookupRequest request) {
+    public java.util.List<User> findUsersByLookup(com.naviksha.dto.LookupRequest request) {
         if (request.getStudentID() != null && !request.getStudentID().isEmpty()) {
-            return userRepository.findByStudentID(request.getStudentID()).orElse(null);
+            return userRepository.findByStudentID(request.getStudentID())
+                    .map(java.util.List::of)
+                    .orElse(java.util.List.of());
         }
         if (request.getMobileNo() != null && !request.getMobileNo().isEmpty()) {
-            return userRepository.findByMobileNo(request.getMobileNo()).orElse(null);
+            return userRepository.findAllByMobileNo(request.getMobileNo());
         }
-        return null;
+        return java.util.List.of();
     }
 
     

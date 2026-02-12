@@ -27,6 +27,7 @@ interface AuthResponse {
   token: string;
   user: User;
   message: string;
+  profiles?: User[];
 }
 
 interface TestSubmission {
@@ -201,6 +202,9 @@ class ApiService {
       this.token = data.token;
       localStorage.setItem('auth_token', data.token);
       localStorage.setItem('user_data', JSON.stringify(data.user));
+    } else if (data.profiles && data.profiles.length > 0) {
+      // Multiple profiles found, return data without token
+      return data;
     }
 
     return data;

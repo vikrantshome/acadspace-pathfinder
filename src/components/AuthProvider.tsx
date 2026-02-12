@@ -13,7 +13,7 @@ interface AuthContextType {
   loading: boolean;
   isNlpSession: boolean;
   signIn: (username: string, password: string) => Promise<void>;
-  lookup: (studentID: string, mobileNo: string) => Promise<void>;
+  lookup: (studentID: string, mobileNo: string) => Promise<any>;
   signUp: (
     email: string, 
     password: string, 
@@ -85,9 +85,14 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const lookup = async (studentID: string, mobileNo: string) => {
     try {
       const response = await apiService.lookup(studentID, mobileNo);
-      setUser(response.user);
-      setIsNlpSession(false);
-      toast.success('Logged in successfully');
+      
+      if (response.token && response.user) {
+        setUser(response.user);
+        setIsNlpSession(false);
+        toast.success('Logged in successfully');
+      }
+      
+      return response;
     } catch (error: any) {
       toast.error(error.message || 'Login failed');
       throw error;
