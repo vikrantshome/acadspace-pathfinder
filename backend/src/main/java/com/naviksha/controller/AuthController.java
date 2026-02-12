@@ -337,18 +337,25 @@ public class AuthController {
         try {
             log.info("Lookup attempt for studentID: {} or mobileNo: {}", request.getStudentID(), request.getMobileNo());
             
-            User user = userService.findUserByLookup(request);
+            java.util.List<User> users = userService.findUsersByLookup(request);
             
-            if (user == null) {
+            if (users.isEmpty()) {
                 return ResponseEntity.status(404)
                     .body(new AuthResponse("", null, "User not found"));
             }
             
-            // Generate JWT token
-            String token = tokenProvider.generateToken(user.getId());
-            
-            log.info("User found and logged in successfully: {}", user.getEmail());
-            return ResponseEntity.ok(new AuthResponse(token, user, "Login successful"));
+            if (users.size() == 1) {
+                User user = users.get(0);
+                // Generate JWT token
+                String token = tokenProvider.generateToken(user.getId());
+                
+                log.info("User found and logged in successfully: {}", user.getEmail());
+                return ResponseEntity.ok(new AuthResponse(token, user, "Login successful"));
+            } else {
+                // Multiple users found
+                log.info("Multiple profiles found for mobile: {}", request.getMobileNo());
+                return ResponseEntity.ok(new AuthResponse(null, null, "Multiple profiles found. Please select one.", users));
+            }
             
         } catch (Exception e) {
             log.error("Lookup error", e);
