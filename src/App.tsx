@@ -18,6 +18,13 @@ import NotFound from "./pages/NotFound";
 import ExportQuestions from "./pages/ExportQuestions";
 import NcciAllenPage from "@/pages/NcciAllen/pages/Index";
 
+const AppliChoiceRedirect = () => {
+  React.useEffect(() => {
+    window.location.href = "https://applichoice.naviksha.co.in";
+  }, []);
+  return null;
+};
+
 const queryClient = new QueryClient();
 
 const App = () => {
@@ -44,6 +51,7 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
               <Route path="/export-questions" element={<ExportQuestions />} />
               <Route path="/allen-career-compass" element={<NcciAllenPage />} />
+              <Route path="/applichoice" element={<AppliChoiceRedirect />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
