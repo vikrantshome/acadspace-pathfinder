@@ -12,6 +12,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -26,13 +29,13 @@ import java.util.Map;
  * Provides administrative functions for managing careers, tests, and system data
  * 
  * ADMIN ENDPOINTS (Requires ADMIN role):
- * - GET /admin/careers - List all careers
- * - POST /admin/careers - Add new career
- * - PUT /admin/careers/{careerId} - Update career
- * - DELETE /admin/careers/{careerId} - Delete career
- * - POST /admin/seed - Seed database from data files
- * - POST /admin/recompute/{userId} - Recompute user's latest report
- * - GET /admin/audit - View admin action logs
+ * - GET /api/admin/careers - List all careers
+ * - POST /api/admin/careers - Add new career
+ * - PUT /api/admin/careers/{careerId} - Update career
+ * - DELETE /api/admin/careers/{careerId} - Delete career
+ * - POST /api/admin/seed - Seed database from data files
+ * - POST /api/admin/recompute/{userId} - Recompute user's latest report
+ * - GET /api/admin/audit - View admin action logs
  * 
  * ADMIN ACCESS CONTROL:
  * - Requires ROLE_ADMIN or ADMIN_SECRET header
@@ -45,7 +48,7 @@ import java.util.Map;
  * 3. Have user account with ROLE_ADMIN (created during seed)
  */
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/api/admin")
 @RequiredArgsConstructor
 @Slf4j
 @Tag(name = "Admin", description = "Administrative functions (requires ADMIN role)")
@@ -242,6 +245,25 @@ public class AdminController {
             log.error("Error fetching system stats", e);
             return ResponseEntity.internalServerError()
                 .body("Error fetching system statistics");
+        }
+    }
+
+    @GetMapping("/analytics/reports-summary")
+    @PreAuthorize("hasRole('ADMIN')")
+    @Operation(summary = "Get reports summary for analytics", 
+               description = "Get a paginated list of report summaries for the data grid",
+               security = @SecurityRequirement(name = "bearerAuth"))
+    public ResponseEntity<Page<com.naviksha.dto.ReportSummaryDTO>> getReportsSummary(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "50") int size,
+            Authentication authentication) {
+        try {
+            Pageable pageable = PageRequest.of(page, size);
+            Page<com.naviksha.dto.ReportSummaryDTO> summaryPage = adminService.getReportsSummary(pageable);
+            return ResponseEntity.ok(summaryPage);
+        } catch (Exception e) {
+            log.error("Error fetching reports summary", e);
+            return ResponseEntity.internalServerError().build();
         }
     }
 

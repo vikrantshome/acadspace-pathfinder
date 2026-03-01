@@ -12,6 +12,13 @@ interface Question {
   riasec_map?: Record<string, number>;
 }
 
+export const exportToExcel = (data: any[], fileName: string) => {
+  const ws = XLSX.utils.json_to_sheet(data);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Data");
+  XLSX.writeFile(wb, `${fileName}_${new Date().toISOString().split('T')[0]}.xlsx`);
+};
+
 export const exportTestQuestionsToExcel = () => {
   // Create a new workbook
   const wb = XLSX.utils.book_new();

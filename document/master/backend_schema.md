@@ -22,6 +22,7 @@ This document outlines the MongoDB schema for the backend service.
 | `grade` | `Integer` | Student's grade. |
 | `board` | `String` | School board (e.g., "CBSE"). |
 | `city` | `String` | City of the user. |
+| `state` | `String` | User's state. |
 | `createdAt` | `LocalDateTime` | Timestamp of when the user was created. |
 | `updatedAt` | `LocalDateTime` | Timestamp of the last update. |
 
@@ -170,6 +171,7 @@ These models are used as embedded objects within the documents above.
 | `parents` | `List<String>` | A list of parent's careers. |
 | `top5Buckets` | `List<CareerBucket>` | A list of the top 5 career buckets. |
 | `summaryParagraph`| `String` | A summary paragraph of the report. |
+| `partner` | `String` | The partner name (e.g., "nlp", "allen"). |
 | `aiEnhanced` | `Boolean` | Flag indicating if the report was enhanced by AI. |
 | `enhancedSummary` | `String` | The AI-enhanced summary. |
 | `skillRecommendations` | `List<String>` | A list of skill recommendations. |

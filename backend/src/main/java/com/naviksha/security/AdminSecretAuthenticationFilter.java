@@ -27,7 +27,7 @@ import java.util.Collections;
  * Usage:
  * - Include X-Admin-Secret header with valid admin secret
  * - Admin secret is configured via ADMIN_SECRET environment variable
- * - Only works for /admin/** endpoints
+ * - Only works for /api/admin/** endpoints
  */
 @Component
 @RequiredArgsConstructor
@@ -45,7 +45,7 @@ public class AdminSecretAuthenticationFilter extends OncePerRequestFilter {
         log.debug("AdminSecretFilter processing request: {}", request.getRequestURI());
         
         // Only process admin endpoints
-        if (!request.getRequestURI().startsWith("/admin/")) {
+        if (!request.getRequestURI().startsWith("/api/admin/")) {
             log.debug("Not an admin endpoint, skipping: {}", request.getRequestURI());
             filterChain.doFilter(request, response);
             return;
