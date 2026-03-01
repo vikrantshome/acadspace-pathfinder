@@ -3,7 +3,10 @@
 
 import { API_CONFIG } from './config';
 
-const API_BASE_URL = API_CONFIG.BASE_URL;
+const API_BASE_URL = API_CONFIG.BASE_URL; // e.g., http://localhost:8080/api
+// Admin base URL is without the /api suffix. API_CONFIG.BASE_URL is usually {host}/api. 
+// We want just {host}/admin.
+const ADMIN_BASE_URL = API_BASE_URL.replace(/\/api$/, '') + '/api/admin'; 
 const API_HEALTH_CHECK_URL = API_CONFIG.HEALTH_CHECK_URL;
 
 interface User {
@@ -385,6 +388,61 @@ class ApiService {
     });
 
     return this.handleResponse<{ reportLink: string }>(response);
+  }
+
+  // Admin Endpoints
+  async getAdminStats(): Promise<any> {
+    const response = await fetch(`${ADMIN_BASE_URL}/stats`, {
+      headers: this.getHeaders(),
+    });
+    return this.handleResponse<any>(response);
+  }
+
+  async getAdminCareers(): Promise<any[]> {
+    const response = await fetch(`${ADMIN_BASE_URL}/careers`, {
+      headers: this.getHeaders(),
+    });
+    return this.handleResponse<any[]>(response);
+  }
+
+  async createCareer(careerData: any): Promise<any> {
+    const response = await fetch(`${ADMIN_BASE_URL}/careers`, {
+      method: 'POST',
+      headers: this.getHeaders(),
+      body: JSON.stringify(careerData),
+    });
+    return this.handleResponse<any>(response);
+  }
+
+  async updateCareer(careerId: string, careerData: any): Promise<any> {
+    const response = await fetch(`${ADMIN_BASE_URL}/careers/${careerId}`, {
+      method: 'PUT',
+      headers: this.getHeaders(),
+      body: JSON.stringify(careerData),
+    });
+    return this.handleResponse<any>(response);
+  }
+
+  async deleteCareer(careerId: string): Promise<any> {
+    const response = await fetch(`${ADMIN_BASE_URL}/careers/${careerId}`, {
+      method: 'DELETE',
+      headers: this.getHeaders(),
+    });
+    return this.handleResponse<any>(response);
+  }
+
+  async getAdminAuditLogs(page: number = 0, size: number = 50): Promise<any[]> {
+    const response = await fetch(`${ADMIN_BASE_URL}/audit?page=${page}&size=${size}`, {
+      headers: this.getHeaders(),
+    });
+    return this.handleResponse<any[]>(response);
+  }
+
+  async getAllReportsForAnalytics(page: number = 0, size: number = 50): Promise<any> {
+    const response = await fetch(`${ADMIN_BASE_URL}/analytics/reports-summary?page=${page}&size=${size}`, {
+      headers: this.getHeaders(),
+    });
+    return this.handleResponse<any>(response);
   }
 
   // Profile management

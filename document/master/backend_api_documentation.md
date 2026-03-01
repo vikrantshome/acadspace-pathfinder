@@ -112,6 +112,13 @@ This document provides a comprehensive overview of the backend API endpoints. Th
 *   **Authentication:** None (Public)
 *   **Request Body:** `RegisterRequest` object (JSON) - `@Valid`
 
+#### 2.7. NLP Login
+
+*   **Endpoint:** `POST /api/auth/nlp-login`
+*   **Description:** Login using NLP SSO Token. Validates token with NLP API and upserts the user.
+*   **Authentication:** None (Public)
+*   **Request Body:** `NlpLoginRequest` object (JSON) containing `nlpSsoToken`.
+
 ### 3. Health Controller (`/health`, `/actuator/health`)
 
 *   **Base URL:** `/`
@@ -145,8 +152,9 @@ This document provides a comprehensive overview of the backend API endpoints. Th
 
 *   **Endpoint:** `GET /api/reports/{reportId}/report-link`
 *   **Description:** Get the external link for a career report.
-*   **Authentication:** `bearerAuth` (Requires authentication)
+*   **Authentication:** None (Public)
 *   **Path Variable:** `reportId` (String) - ID of the report.
+*   **Query Parameter:** `partner` (String, optional) - Partner name (e.g., "nlp", "allen").
 
 #### 4.3. Get user reports
 

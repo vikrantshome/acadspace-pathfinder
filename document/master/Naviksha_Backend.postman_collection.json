@@ -383,6 +383,34 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "NLP Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nlpSsoToken\": \"TEST_TOKEN\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/auth/nlp-login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"nlp-login"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -457,14 +485,9 @@
 					"name": "Get report link",
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{userToken}}"
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/reports/{{reportId}}/report-link",
+							"raw": "{{baseUrl}}/api/reports/{{reportId}}/report-link?partner=allen",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -473,6 +496,12 @@
 								"reports",
 								"{{reportId}}",
 								"report-link"
+							],
+							"query": [
+								{
+									"key": "partner",
+									"value": "allen"
+								}
 							]
 						}
 					},

@@ -40,7 +40,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
  * 
  * Protected Endpoints:
  * - /api/** (requires authentication)
- * - /admin/** (requires ADMIN role)
+ * - /api/admin/** (requires ADMIN role)
  */
 @Configuration
 @EnableWebSecurity
@@ -133,10 +133,10 @@ public class SecurityConfig {
                 .requestMatchers("/health").permitAll()
                 .requestMatchers("/actuator/health").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
-                .requestMatchers("/admin/ui/**").permitAll() // Static admin UI
+                .requestMatchers("/api/admin/ui/**").permitAll() // Static admin UI
                 
                 // Admin endpoints require ADMIN role
-                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 
                 // API endpoints require authentication
                 .requestMatchers("/api/**").authenticated()
