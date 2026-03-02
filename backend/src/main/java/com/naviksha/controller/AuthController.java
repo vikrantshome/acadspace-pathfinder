@@ -57,7 +57,7 @@ public class AuthController {
     
     // Configurable in production, hardcoded for now as per instructions
     private static final String NLP_API_URL = "https://nlp.nexterp.in/nlp/nlp/v2/sso_profile.json";
-    private static final String CLIENT_ID = "AcadSpace";
+    private static final String CLIENT_ID = "Naviksha AI";
 
     @PostMapping("/register")
     @Operation(summary = "Register new user", description = "Create a new user account with email and password")
