@@ -9,12 +9,12 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Separator } from '@/components/ui/separator';
-import { 
-  Download, 
-  Share2, 
-  Star, 
-  TrendingUp, 
-  BookOpen, 
+import {
+  Download,
+  Share2,
+  Star,
+  TrendingUp,
+  BookOpen,
   Target,
   ArrowRight,
   CheckCircle2,
@@ -44,12 +44,12 @@ const ReportViewer = () => {
 
   // Check auth and fetch report data
   useEffect(() => {
-    if (!authLoading && !user) {
+    if (!authLoading && !user && !reportId) {
       navigate('/auth');
       return;
     }
 
-    if (user) {
+    if (user || reportId) {
       fetchReportData();
     }
   }, [user, authLoading, navigate, reportId]);
@@ -71,7 +71,7 @@ const ReportViewer = () => {
       } else if (user?.id) {
         // Fetch user's latest report from Java backend
         const reports = await apiService.getUserReports(user.id);
-        
+
         if (reports && reports.length > 0) {
           const latestReport = reports[0];
           console.log('Using latest report from database:', {
@@ -117,30 +117,13 @@ const ReportViewer = () => {
   const handleDownload = async () => {
     setIsDownloading(true);
     try {
-      // Prepare report data matching the ReportData interface
-      const reportData: ReportData = {
-        studentName: displayData.studentName,
-        schoolName: displayData.schoolName,
-        grade: displayData.grade,
-        board: displayData.board,
-        vibeScores: displayData.vibeScores,
-        top5_buckets: displayData.top5_buckets,
-        summaryParagraph: displayData.summaryParagraph,
-        enhancedSummary: displayData.enhancedSummary,
-        skillRecommendations: displayData.skillRecommendations,
-        detailedSkillRecommendations: displayData.detailedSkillRecommendations,
-        careerTrajectoryInsights: displayData.careerTrajectoryInsights,
-        detailedCareerInsights: displayData.detailedCareerInsights,
-        actionPlan: displayData.actionPlan
-      };
-
       if (!reportId) {
         alert('Report ID not found. Cannot generate PDF.');
         return;
       }
       // Generate PDF using shared utility
       const reportLink = await generatePDFBlob(reportId, isNlpSession ? 'nlp' : undefined);
-      
+
       // Open the link in a new tab
       window.open(reportLink, '_blank');
 
@@ -162,7 +145,7 @@ const ReportViewer = () => {
 
       await navigator.clipboard.writeText(reportLink);
       window.open(reportLink, '_blank');
-      
+
       // Assuming you have a toast notification system, e.g., using a custom hook or library
       // toast.success('Report link copied to clipboard and opened in a new tab!');
       alert('Report link copied to clipboard and opened in a new tab!');
@@ -275,7 +258,7 @@ const ReportViewer = () => {
     // Parse remaining lines for details
     for (let i = 1; i < lines.length; i++) {
       const line = lines[i].trim();
-      
+
       // Match format: "Category: Academic" or "Importance Level: Critical" (no markdown)
       const simpleMatch = line.match(/^(Category|Importance Level|Timeline):\s*(.+)$/);
       if (simpleMatch) {
@@ -322,7 +305,7 @@ const ReportViewer = () => {
         }
       }
     }
-    
+
     // Save last key-value
     if (currentKey && currentValue) {
       details[currentKey] = currentValue.trim();
@@ -468,59 +451,59 @@ const ReportViewer = () => {
         {/* Navigation Tabs */}
         <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
           {[
-            { 
-              id: 'overview', 
+            {
+              id: 'overview',
               label: isGradeBelow8 ? 'Skill Development Profile Summary' : 'Career Profile Summary',
               labelShort: isGradeBelow8 ? 'Skills' : 'Career',
-              icon: Target 
+              icon: Target
             },
-            { 
-              id: 'personality', 
+            {
+              id: 'personality',
               label: 'RIASEC Personality Profile',
               labelShort: 'RIASEC',
-              icon: TrendingUp 
+              icon: TrendingUp
             },
             ...(!isGradeBelow8 ? [
-              { 
-                id: 'careers', 
+              {
+                id: 'careers',
                 label: 'Top Career Recommendations',
                 labelShort: 'Top',
-                icon: Briefcase 
+                icon: Briefcase
               }
             ] : []),
             ...(displayData.aiEnhanced ? [
-              { 
-                id: 'ai-skills', 
+              {
+                id: 'ai-skills',
                 label: 'Skills to Develop',
                 labelShort: 'Skills',
-                icon: Lightbulb 
+                icon: Lightbulb
               },
-              { 
-                id: 'ai-trajectory', 
+              {
+                id: 'ai-trajectory',
                 label: isGradeBelow8 ? 'Skill Development Journey' : 'Career Trajectory Insights',
                 labelShort: isGradeBelow8 ? 'Journey' : 'Trajectory',
-                icon: TrendingUp 
+                icon: TrendingUp
               },
               ...(!isGradeBelow8 ? [
-                { 
-                  id: 'ai-insights-explanations', 
+                {
+                  id: 'ai-insights-explanations',
                   label: 'Detailed Career Explanations',
                   labelShort: 'Detailed',
-                  icon: Star 
+                  icon: Star
                 },
-                { 
-                  id: 'ai-insights-paths', 
+                {
+                  id: 'ai-insights-paths',
                   label: 'Personalized Study Paths',
                   labelShort: 'Paths',
-                  icon: BookOpen 
+                  icon: BookOpen
                 }
               ] : [])
             ] : []),
-            { 
-              id: 'next-steps', 
+            {
+              id: 'next-steps',
               label: 'Your Action Plan',
               labelShort: 'Action',
-              icon: ArrowRight 
+              icon: ArrowRight
             }
           ].map(tab => (
             <Button
@@ -690,7 +673,7 @@ const ReportViewer = () => {
                             </div>
                           </div>
                         </div>
-                        
+
                         <div className="space-y-2">
                           <div>
                             <h5 className="font-medium text-sm">Top Reasons:</h5>
@@ -700,12 +683,12 @@ const ReportViewer = () => {
                               ))}
                             </ul>
                           </div>
-                          
+
                           <div>
                             <h5 className="font-medium text-sm">Study Path:</h5>
                             <p className="text-sm text-muted-foreground">{career.studyPath}</p>
                           </div>
-                          
+
                           <div>
                             <h5 className="font-medium text-sm">First 3 Steps:</h5>
                             <ol className="text-sm text-muted-foreground ml-4 list-decimal">
@@ -730,8 +713,8 @@ const ReportViewer = () => {
             <div className="text-center space-y-2">
               <h2 className="text-3xl font-bold">Skills to Develop</h2>
               <p className="text-lg text-muted-foreground">
-                {isGradeBelow8 
-                  ? 'Focus on building foundational skills that will help you explore different areas' 
+                {isGradeBelow8
+                  ? 'Focus on building foundational skills that will help you explore different areas'
                   : 'Personalized skill development recommendations based on your profile'}
               </p>
             </div>
@@ -787,14 +770,14 @@ const ReportViewer = () => {
               <div className="space-y-6">
                 {/* Focused Skills Section */}
                 {displayData.skillRecommendations && displayData.skillRecommendations.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Target className="w-5 h-5" />
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Target className="w-5 h-5" />
                         Focused Skills
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
                       <div className="space-y-4">
                         {displayData.skillRecommendations.map((skill, index) => {
                           const parsed = parseSkill(skill);
@@ -803,8 +786,8 @@ const ReportViewer = () => {
                               <CardHeader>
                                 <CardTitle className="flex items-center gap-3 text-lg">
                                   <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold">
-                      {index + 1}
-                    </div>
+                                    {index + 1}
+                                  </div>
                                   {parsed.skillName}
                                 </CardTitle>
                               </CardHeader>
@@ -814,13 +797,13 @@ const ReportViewer = () => {
                                     <div>
                                       <span className="font-semibold text-sm">Category: </span>
                                       <span className="text-sm text-muted-foreground">{parsed.category}</span>
-                    </div>
+                                    </div>
                                   )}
                                   {parsed.importanceLevel && (
                                     <div>
                                       <span className="font-semibold text-sm">Importance Level: </span>
                                       <span className="text-sm text-muted-foreground">{parsed.importanceLevel}</span>
-                  </div>
+                                    </div>
                                   )}
                                   {parsed.developmentMethod && (
                                     <div>
@@ -839,9 +822,9 @@ const ReportViewer = () => {
                             </Card>
                           );
                         })}
-              </div>
-            </CardContent>
-          </Card>
+                      </div>
+                    </CardContent>
+                  </Card>
                 )}
 
                 {/* Detailed Skill Explanations Section */}
@@ -856,13 +839,13 @@ const ReportViewer = () => {
                     <CardContent>
                       <div className="space-y-4">
                         {displayData.detailedSkillRecommendations.map((skillItem, index) => {
-                          let skillName = (typeof skillItem === 'object' && skillItem !== null) 
-                            ? (skillItem.skill_name || skillItem.skillName || '') 
+                          let skillName = (typeof skillItem === 'object' && skillItem !== null)
+                            ? (skillItem.skill_name || skillItem.skillName || '')
                             : '';
-                          const explanation = (typeof skillItem === 'object' && skillItem !== null) 
-                            ? (skillItem.explanation || '') 
+                          const explanation = (typeof skillItem === 'object' && skillItem !== null)
+                            ? (skillItem.explanation || '')
                             : String(skillItem);
-                          
+
                           // Extract skill name from explanation if not provided
                           if (!skillName || skillName === 'Skill Name' || skillName.trim() === '') {
                             const explText = String(explanation || '').trim();
@@ -883,9 +866,9 @@ const ReportViewer = () => {
                               }
                             }
                           }
-                          
+
                           if (!skillName || skillName.trim() === '') return null;
-                          
+
                           return (
                             <Card key={index} className="border-l-4 border-secondary">
                               <CardHeader>
@@ -907,15 +890,15 @@ const ReportViewer = () => {
             )}
 
             {/* Fallback message if no skills */}
-            {(!isGradeBelow8 && parsedSkills.length === 0) && 
-             (isGradeBelow8 && (!displayData.skillRecommendations || displayData.skillRecommendations.length === 0) && 
-              (!displayData.detailedSkillRecommendations || displayData.detailedSkillRecommendations.length === 0)) && (
-              <Card>
-                <CardContent className="py-8 text-center">
-                  <p className="text-muted-foreground">No skill recommendations available at this time.</p>
-                </CardContent>
-              </Card>
-            )}
+            {(!isGradeBelow8 && parsedSkills.length === 0) &&
+              (isGradeBelow8 && (!displayData.skillRecommendations || displayData.skillRecommendations.length === 0) &&
+                (!displayData.detailedSkillRecommendations || displayData.detailedSkillRecommendations.length === 0)) && (
+                <Card>
+                  <CardContent className="py-8 text-center">
+                    <p className="text-muted-foreground">No skill recommendations available at this time.</p>
+                  </CardContent>
+                </Card>
+              )}
           </div>
         )}
 
@@ -931,8 +914,8 @@ const ReportViewer = () => {
                 </Badge>
               </CardTitle>
               <p className="text-muted-foreground">
-                {isGradeBelow8 
-                  ? 'Your personalized skill development pathway' 
+                {isGradeBelow8
+                  ? 'Your personalized skill development pathway'
                   : 'Long-term career path analysis and recommendations'}
               </p>
             </CardHeader>
@@ -948,65 +931,65 @@ const ReportViewer = () => {
 
         {/* Detailed Career Explanations Tab - Only for grade >= 8 */}
         {activeTab === 'ai-insights-explanations' && !isGradeBelow8 && displayData.detailedCareerInsights && (
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Lightbulb className="w-5 h-5" />
-                  Detailed Career Explanations
-                  <Badge variant="default" className="bg-orange-600">
-                    🤖 AI Powered
-                  </Badge>
-                </CardTitle>
-                <p className="text-muted-foreground">
-                  In-depth analysis of why each career recommendation fits your profile
-                </p>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {displayData.detailedCareerInsights.explanations && 
-                   Object.entries(displayData.detailedCareerInsights.explanations).map(([career, explanation]) => (
-                  <Card key={career} className="border-l-4 border-orange-500">
-                    <CardHeader>
-                      <CardTitle className="text-lg">{career}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{String(explanation)}</p>
-                    </CardContent>
-                  </Card>
-                ))}
-                {(!displayData.detailedCareerInsights.explanations || 
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Lightbulb className="w-5 h-5" />
+                Detailed Career Explanations
+                <Badge variant="default" className="bg-orange-600">
+                  🤖 AI Powered
+                </Badge>
+              </CardTitle>
+              <p className="text-muted-foreground">
+                In-depth analysis of why each career recommendation fits your profile
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {displayData.detailedCareerInsights.explanations &&
+                  Object.entries(displayData.detailedCareerInsights.explanations).map(([career, explanation]) => (
+                    <Card key={career} className="border-l-4 border-orange-500">
+                      <CardHeader>
+                        <CardTitle className="text-lg">{career}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{String(explanation)}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                {(!displayData.detailedCareerInsights.explanations ||
                   Object.keys(displayData.detailedCareerInsights.explanations || {}).length === 0) && (
-                  <p className="text-muted-foreground text-center py-8">No detailed career explanations available at this time.</p>
-                )}
-                </div>
-              </CardContent>
-            </Card>
+                    <p className="text-muted-foreground text-center py-8">No detailed career explanations available at this time.</p>
+                  )}
+              </div>
+            </CardContent>
+          </Card>
         )}
 
         {/* Personalized Study Paths Tab - Only for grade >= 8 */}
         {activeTab === 'ai-insights-paths' && !isGradeBelow8 && displayData.detailedCareerInsights && (
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <BookOpen className="w-5 h-5" />
-                    Personalized Study Paths
-                    <Badge variant="default" className="bg-green-600">
-                      🤖 AI Powered
-                    </Badge>
-                  </CardTitle>
-                  <p className="text-muted-foreground">
-                    Customized educational roadmap for your career goals
-                  </p>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                {displayData.detailedCareerInsights.studyPaths && 
-                 Object.entries(displayData.detailedCareerInsights.studyPaths).map(([career, path]) => (
-                  <Card key={career} className="border-l-4 border-green-500">
-                    <CardHeader>
-                      <CardTitle className="text-lg">{career}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="w-5 h-5" />
+                Personalized Study Paths
+                <Badge variant="default" className="bg-green-600">
+                  🤖 AI Powered
+                </Badge>
+              </CardTitle>
+              <p className="text-muted-foreground">
+                Customized educational roadmap for your career goals
+              </p>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {displayData.detailedCareerInsights.studyPaths &&
+                  Object.entries(displayData.detailedCareerInsights.studyPaths).map(([career, path]) => (
+                    <Card key={career} className="border-l-4 border-green-500">
+                      <CardHeader>
+                        <CardTitle className="text-lg">{career}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
                         <div className="space-y-2">
                           {Array.isArray(path) ? path.map((step, index) => (
                             <div key={index} className="flex items-start gap-2">
@@ -1019,16 +1002,16 @@ const ReportViewer = () => {
                             <p className="text-muted-foreground">{String(path)}</p>
                           )}
                         </div>
-                    </CardContent>
-                  </Card>
-                    ))}
-                {(!displayData.detailedCareerInsights.studyPaths || 
+                      </CardContent>
+                    </Card>
+                  ))}
+                {(!displayData.detailedCareerInsights.studyPaths ||
                   Object.keys(displayData.detailedCareerInsights.studyPaths || {}).length === 0) && (
-                  <p className="text-muted-foreground text-center py-8">No personalized study paths available at this time.</p>
-                )}
-                  </div>
-                </CardContent>
-              </Card>
+                    <p className="text-muted-foreground text-center py-8">No personalized study paths available at this time.</p>
+                  )}
+              </div>
+            </CardContent>
+          </Card>
         )}
 
         {/* Next Steps Tab */}
@@ -1049,7 +1032,7 @@ const ReportViewer = () => {
                   // Use AI-generated action plan if available, otherwise fallback to hardcoded
                   const actionPlan = displayData.actionPlan || [];
                   const colorPalette = ['#3b82f6', '#10b981', '#f59e0b', '#a855f7', '#14b8a6'];
-                  
+
                   const nextSteps = actionPlan.length > 0 ? actionPlan : (isGradeBelow8 ? [
                     { title: "Build Foundational Skills", desc: "Focus on developing core skills in subjects you enjoy. Practice regularly through fun activities, games, and hands-on projects.", timeline: "Ongoing" },
                     { title: "Explore Different Areas", desc: "Try different activities and hobbies to discover what interests you most. Join clubs, participate in school activities, and explore new subjects.", timeline: "This month" },
@@ -1070,29 +1053,29 @@ const ReportViewer = () => {
                   return nextSteps.map((step, index) => {
                     const stepColor = colorPalette[index % colorPalette.length];
                     return (
-                  <div key={index} className="flex items-start gap-4 p-4 border rounded-lg">
+                      <div key={index} className="flex items-start gap-4 p-4 border rounded-lg">
                         <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: `${stepColor}20` }}>
                           <div style={{ color: stepColor }}>
                             {icons[index % icons.length]}
                           </div>
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold">{step.title}</h4>
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="font-semibold">{step.title}</h4>
                             <Badge variant="outline" className="text-xs" style={{ borderColor: stepColor, color: stepColor }}>
                               {step.timeline}
                             </Badge>
-                      </div>
+                          </div>
                           <p className="text-sm text-muted-foreground">{step.desc || step.description}</p>
-                    </div>
-                  </div>
+                        </div>
+                      </div>
                     );
                   });
                 })()}
               </div>
-              
+
               <Separator className="my-6" />
-              
+
               <div className="flex gap-3">
                 <Button onClick={() => navigate('/')} variant="outline" className="flex-1">
                   Take Another Assessment
