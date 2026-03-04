@@ -65,7 +65,6 @@ public class ReportController {
                security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<?> getReport(@PathVariable String reportId, Authentication authentication) {
         try {
-            String userEmail = authentication.getName();
             Report report = reportService.getReport(reportId);
             
             if (report == null) {
