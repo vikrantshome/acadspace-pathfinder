@@ -11,13 +11,13 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { 
-  User, 
-  Settings, 
-  Award, 
-  BookOpen, 
-  TrendingUp, 
-  Calendar,
+import {
+  User,
+  Settings,
+  Award,
+  BookOpen,
+  TrendingUp,
+
   Mail,
   GraduationCap,
   Target,
@@ -30,7 +30,6 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/components/AuthProvider';
 import ProfileEditor from '@/components/ProfileEditor';
 import uiMicrocopy from '@/data/ui_microcopy.json';
-import sampleReport from '@/data/sample_report_Aisha.json';
 import { apiService } from '@/lib/api';
 
 const Profile = () => {
@@ -38,69 +37,79 @@ const Profile = () => {
   const { user } = useAuth();
   const [reportData, setReportData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [testProgress, setTestProgress] = useState<{ vibematch: any; edustats: any }>({ vibematch: null, edustats: null });
+  const [latestReportId, setLatestReportId] = useState<string | null>(null);
+
+  // Infer test status from progress data (same pattern as Index.tsx)
+  function inferStatus(p?: { currentQuestionIndex?: number; answers?: any; completed?: boolean }) {
+    if (!p) return null;
+    if (p.completed === true) return 'completed';
+    if (p.answers && Object.keys(p.answers).length > 0) return 'in_progress';
+    return null;
+  }
 
   useEffect(() => {
-    const fetchReportData = async () => {
+    const fetchProfileData = async () => {
+      if (!user?.id) {
+        setLoading(false);
+        return;
+      }
+
       try {
         setLoading(true);
-        
-        if (user?.id) {
-          // Fetch user's reports from Java backend
-          const reports = await apiService.getUserReports(user.id);
-          
-          if (reports && reports.length > 0) {
-            // Get the most recent report
-            const latestReport = reports[0];
-            setReportData(latestReport.reportData);
-            return;
-          }
+
+        // 1) Fetch real test progress
+        const [vibematch, edustats] = await Promise.all([
+          apiService.getProgress(user.id, 'vibematch').catch(() => null),
+          apiService.getProgress(user.id, 'edustats').catch(() => null),
+        ]);
+        setTestProgress({ vibematch, edustats });
+
+        // 2) Fetch user's reports — no fallback to demo/sample data
+        const reports = await apiService.getUserReports(user.id);
+        if (reports && reports.length > 0) {
+          const latestReport = reports[0];
+          setReportData(latestReport.reportData);
+          setLatestReportId(latestReport.id || null);
         }
-        
-        // Fallback to demo report
-        const demoReport = await apiService.getDemoReport();
-        setReportData(demoReport);
+        // If no reports, reportData stays null → empty states shown
       } catch (error) {
-        console.error('Failed to fetch report data:', error);
-        setReportData(sampleReport);
+        console.error('Failed to fetch profile data:', error);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchReportData();
+    fetchProfileData();
   }, [user]);
 
-  // Use real user data from authentication
+  // Build user data from real auth state
   const userData = {
     name: user?.fullName || user?.name || "User",
     email: user?.email || "",
     grade: user?.grade || null,
     board: user?.board || null,
     schoolName: user?.schoolName || null,
-    joinedDate: "2024-09-01", // This could be added to User model if needed
-    testsCompleted: 2, // This would come from test data
-    totalTests: 3
   };
 
+  // Derive test completion stats from real progress
+  const vibematchStatus = inferStatus(testProgress.vibematch);
+  const edustatsStatus = inferStatus(testProgress.edustats);
+  const totalTests = 2; // vibematch + edustats (the actual tests in the system)
+  const testsCompleted = [vibematchStatus, edustatsStatus].filter(s => s === 'completed').length;
+
+  // Build test history from real progress data
   const testHistory = [
     {
-      testName: "Vibe Match Assessment",
-      completedDate: "2024-09-15",
-      score: "92%",
-      status: "completed"
+      testName: "Personality & Interests",
+      status: vibematchStatus || 'not_started',
+      testPath: '/test/vibematch',
     },
     {
-      testName: "Education Stats",
-      completedDate: "2024-09-14", 
-      score: "88%",
-      status: "completed"
+      testName: "Academic Background",
+      status: edustatsStatus || 'not_started',
+      testPath: '/test/edustats',
     },
-    {
-      testName: "Career Exploration",
-      completedDate: null,
-      score: null,
-      status: "pending"
-    }
   ];
 
   return (
@@ -122,7 +131,7 @@ const Profile = () => {
                 </p>
               </div>
             </div>
-            
+
             <ProfileEditor />
           </div>
         </div>
@@ -152,12 +161,14 @@ const Profile = () => {
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span>Tests Completed</span>
-                      <span className="font-medium">{userData.testsCompleted}/{userData.totalTests}</span>
+                      <span className="font-medium">{testsCompleted}/{totalTests}</span>
                     </div>
-                    <Progress value={(userData.testsCompleted / userData.totalTests) * 100} className="h-2" />
+                    <Progress value={(testsCompleted / totalTests) * 100} className="h-2" />
                   </div>
                   <div className="text-sm text-muted-foreground">
-                    Complete all assessments to get your full career report
+                    {testsCompleted === totalTests
+                      ? 'All assessments completed! View your career report.'
+                      : 'Complete all assessments to get your full career report'}
                   </div>
                 </CardContent>
               </Card>
@@ -185,10 +196,6 @@ const Profile = () => {
                       <span>{userData.schoolName}</span>
                     </div>
                   )}
-                  <div className="flex items-center gap-2 text-sm">
-                    <Calendar className="w-4 h-4 text-muted-foreground" />
-                    <span>Joined {new Date(userData.joinedDate).toLocaleDateString()}</span>
-                  </div>
                 </CardContent>
               </Card>
 
@@ -201,32 +208,55 @@ const Profile = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
-                  <Button 
-                    variant="career" 
-                    size="sm" 
-                    className="w-full justify-start"
-                    onClick={() => navigate('/test/vibematch')}
-                  >
-                    <BookOpen className="w-4 h-4 mr-2" />
-                    Continue Assessment
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="w-full justify-start"
-                    onClick={() => navigate('/results')}
-                  >
-                    <TrendingUp className="w-4 h-4 mr-2" />
-                    View Results
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="w-full justify-start"
-                  >
-                    <Download className="w-4 h-4 mr-2" />
-                    Download Report
-                  </Button>
+                  {testsCompleted < totalTests ? (
+                    <Button
+                      variant="career"
+                      size="sm"
+                      className="w-full justify-start"
+                      onClick={() => navigate(
+                        vibematchStatus === 'completed' ? '/test/edustats' : '/test/vibematch'
+                      )}
+                    >
+                      <BookOpen className="w-4 h-4 mr-2" />
+                      {vibematchStatus === 'completed'
+                        ? 'Continue to Academic Test'
+                        : vibematchStatus === 'in_progress'
+                          ? 'Resume Personality Test'
+                          : 'Start Assessment'}
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="career"
+                      size="sm"
+                      className="w-full justify-start"
+                      onClick={() => navigate(latestReportId ? `/report/${latestReportId}` : '/results')}
+                    >
+                      <TrendingUp className="w-4 h-4 mr-2" />
+                      View Full Report
+                    </Button>
+                  )}
+                  {latestReportId && (
+                    <>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full justify-start"
+                        onClick={() => navigate('/results')}
+                      >
+                        <TrendingUp className="w-4 h-4 mr-2" />
+                        View Results Summary
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="w-full justify-start"
+                        onClick={() => navigate(`/report/${latestReportId}`)}
+                      >
+                        <Download className="w-4 h-4 mr-2" />
+                        Download Report
+                      </Button>
+                    </>
+                  )}
                 </CardContent>
               </Card>
             </div>
@@ -244,28 +274,44 @@ const Profile = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                  {Object.entries((reportData?.vibe_scores || sampleReport.vibe_scores)).map(([key, value]) => {
-                    const labels = {
-                      R: 'Realistic',
-                      I: 'Investigative', 
-                      A: 'Artistic',
-                      S: 'Social',
-                      E: 'Enterprising',
-                      C: 'Conventional'
-                    };
-                    
-                    return (
-                      <div key={key} className="space-y-2">
-                        <div className="flex justify-between items-center">
-                          <span className="font-medium">{labels[key as keyof typeof labels]}</span>
-                          <Badge variant="secondary">{value as number}%</Badge>
+                {(reportData?.vibeScores || reportData?.vibe_scores) ? (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                    {Object.entries(reportData.vibeScores || reportData.vibe_scores).map(([key, value]) => {
+                      const labels = {
+                        R: 'Realistic',
+                        I: 'Investigative',
+                        A: 'Artistic',
+                        S: 'Social',
+                        E: 'Enterprising',
+                        C: 'Conventional'
+                      };
+
+                      return (
+                        <div key={key} className="space-y-2">
+                          <div className="flex justify-between items-center">
+                            <span className="font-medium">{labels[key as keyof typeof labels]}</span>
+                            <Badge variant="secondary">{value as number}%</Badge>
+                          </div>
+                          <Progress value={value as number} className="h-2" />
                         </div>
-                        <Progress value={value as number} className="h-2" />
-                      </div>
-                    );
-                  })}
-                </div>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <div className="text-center py-8 text-muted-foreground">
+                    <Target className="w-10 h-10 mx-auto mb-3 opacity-40" />
+                    <p className="font-medium">No personality data yet</p>
+                    <p className="text-sm mt-1">Complete your assessments to see your RIASEC profile</p>
+                    <Button
+                      variant="career"
+                      size="sm"
+                      className="mt-4"
+                      onClick={() => navigate('/test/vibematch')}
+                    >
+                      Start Assessment
+                    </Button>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </TabsContent>
@@ -284,30 +330,39 @@ const Profile = () => {
                   {testHistory.map((test, index) => (
                     <div key={index} className="flex items-center justify-between p-4 border rounded-lg">
                       <div className="flex items-center gap-4">
-                        <div className={`w-3 h-3 rounded-full ${
-                          test.status === 'completed' ? 'bg-success' : 'bg-muted-foreground'
-                        }`} />
+                        <div className={`w-3 h-3 rounded-full ${test.status === 'completed' ? 'bg-success'
+                          : test.status === 'in_progress' ? 'bg-yellow-500'
+                            : 'bg-muted-foreground'
+                          }`} />
                         <div>
                           <h4 className="font-medium">{test.testName}</h4>
                           <p className="text-sm text-muted-foreground">
-                            {test.completedDate 
-                              ? `Completed ${new Date(test.completedDate).toLocaleDateString()}`
-                              : 'Not started'
+                            {test.status === 'completed'
+                              ? 'Completed'
+                              : test.status === 'in_progress'
+                                ? 'In Progress'
+                                : 'Not started'
                             }
                           </p>
                         </div>
                       </div>
-                      
+
                       <div className="flex items-center gap-4">
-                        {test.score && (
-                          <Badge variant="secondary">{test.score}</Badge>
-                        )}
-                        <Button 
-                          variant={test.status === 'completed' ? 'outline' : 'career'} 
+                        <Badge variant={
+                          test.status === 'completed' ? 'default'
+                            : test.status === 'in_progress' ? 'secondary'
+                              : 'outline'
+                        }>
+                          {test.status === 'completed' ? 'Done'
+                            : test.status === 'in_progress' ? 'In Progress'
+                              : 'Pending'}
+                        </Badge>
+                        <Button
+                          variant={test.status === 'completed' ? 'outline' : 'career'}
                           size="sm"
-                          onClick={() => navigate(`/test/${test.testName.toLowerCase().replace(/\s+/g, '')}`)}
+                          onClick={() => navigate(test.testPath)}
                         >
-                          {test.status === 'completed' ? 'Review' : 'Start'}
+                          {test.status === 'completed' ? 'Review' : test.status === 'in_progress' ? 'Continue' : 'Start'}
                         </Button>
                       </div>
                     </div>
@@ -334,34 +389,52 @@ const Profile = () => {
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
-                  {(reportData?.top5_buckets || sampleReport.top5_buckets).slice(0, 3).map((bucket, index) => (
-                    <div key={index} className="p-4 border rounded-lg">
-                      <div className="flex items-center justify-between mb-3">
-                        <h4 className="font-semibold">{bucket.bucketName}</h4>
-                        <Badge variant="default">{bucket.bucketScore}% Match</Badge>
-                      </div>
-                      <div className="space-y-2">
-                        {bucket.topCareers.slice(0, 2).map((career, careerIndex) => (
-                          <div key={careerIndex} className="flex items-center justify-between text-sm">
-                            <span className="text-muted-foreground">{career.careerName}</span>
-                            <span className="font-medium">{career.matchScore}%</span>
+                {(reportData?.top5Buckets || reportData?.top5_buckets) ? (
+                  <>
+                    <div className="space-y-4">
+                      {(reportData.top5Buckets || reportData.top5_buckets).slice(0, 3).map((bucket: any, index: number) => (
+                        <div key={index} className="p-4 border rounded-lg">
+                          <div className="flex items-center justify-between mb-3">
+                            <h4 className="font-semibold">{bucket.bucketName}</h4>
+                            <Badge variant="default">{bucket.bucketScore}% Match</Badge>
                           </div>
-                        ))}
-                      </div>
+                          <div className="space-y-2">
+                            {bucket.topCareers.slice(0, 2).map((career: any, careerIndex: number) => (
+                              <div key={careerIndex} className="flex items-center justify-between text-sm">
+                                <span className="text-muted-foreground">{career.careerName}</span>
+                                <span className="font-medium">{career.matchScore}%</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-                
-                <div className="pt-4">
-                  <Button 
-                    variant="career" 
-                    onClick={() => navigate('/results')}
-                    className="w-full"
-                  >
-                    View Full Career Report
-                  </Button>
-                </div>
+
+                    <div className="pt-4">
+                      <Button
+                        variant="career"
+                        onClick={() => navigate('/results')}
+                        className="w-full"
+                      >
+                        View Full Career Report
+                      </Button>
+                    </div>
+                  </>
+                ) : (
+                  <div className="text-center py-8 text-muted-foreground">
+                    <Star className="w-10 h-10 mx-auto mb-3 opacity-40" />
+                    <p className="font-medium">No career recommendations yet</p>
+                    <p className="text-sm mt-1">Complete both assessments to get your personalised career matches</p>
+                    <Button
+                      variant="career"
+                      size="sm"
+                      className="mt-4"
+                      onClick={() => navigate(testsCompleted === 0 ? '/test/vibematch' : '/test/edustats')}
+                    >
+                      {testsCompleted === 0 ? 'Start Assessment' : 'Continue Assessment'}
+                    </Button>
+                  </div>
+                )}
               </CardContent>
             </Card>
 
@@ -427,27 +500,21 @@ const Profile = () => {
                   <label className="text-sm font-medium">Display Name</label>
                   <div className="text-sm text-muted-foreground">{userData.name}</div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Email</label>
                   <div className="text-sm text-muted-foreground">{userData.email}</div>
                 </div>
-                
+
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Education Level</label>
-                  <div className="text-sm text-muted-foreground">Grade {userData.grade}, {userData.board} Board</div>
+                  <div className="text-sm text-muted-foreground">
+                    {userData.grade ? `Grade ${userData.grade}` : 'Not set'}, {userData.board ? `${userData.board} Board` : 'Board not set'}
+                  </div>
                 </div>
-                
+
                 <div className="pt-4 space-y-2">
-                  <Button variant="outline" size="sm" className="w-full">
-                    Change Password
-                  </Button>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Update Profile Information
-                  </Button>
-                  <Button variant="destructive" size="sm" className="w-full">
-                    Delete Account
-                  </Button>
+                  <ProfileEditor />
                 </div>
               </CardContent>
             </Card>
