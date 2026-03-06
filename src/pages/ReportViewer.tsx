@@ -463,14 +463,12 @@ const ReportViewer = () => {
               labelShort: 'RIASEC',
               icon: TrendingUp
             },
-            ...(!isGradeBelow8 ? [
-              {
-                id: 'careers',
-                label: 'Top Career Recommendations',
-                labelShort: 'Top',
-                icon: Briefcase
-              }
-            ] : []),
+            {
+              id: 'careers',
+              label: 'Top Career Recommendations',
+              labelShort: 'Top',
+              icon: Briefcase
+            },
             ...(displayData.aiEnhanced ? [
               {
                 id: 'ai-skills',
@@ -484,20 +482,18 @@ const ReportViewer = () => {
                 labelShort: isGradeBelow8 ? 'Journey' : 'Trajectory',
                 icon: TrendingUp
               },
-              ...(!isGradeBelow8 ? [
-                {
-                  id: 'ai-insights-explanations',
-                  label: 'Detailed Career Explanations',
-                  labelShort: 'Detailed',
-                  icon: Star
-                },
-                {
-                  id: 'ai-insights-paths',
-                  label: 'Personalized Study Paths',
-                  labelShort: 'Paths',
-                  icon: BookOpen
-                }
-              ] : [])
+              {
+                id: 'ai-insights-explanations',
+                label: 'Detailed Career Explanations',
+                labelShort: 'Detailed',
+                icon: Star
+              },
+              {
+                id: 'ai-insights-paths',
+                label: 'Personalized Study Paths',
+                labelShort: 'Paths',
+                icon: BookOpen
+              }
             ] : []),
             {
               id: 'next-steps',
