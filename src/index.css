@@ -222,6 +222,7 @@ All colors MUST be HSL. Inspired by academic success and career growth.
 }
 
 @layer components {
+
   /* Gradient backgrounds for special elements */
   .gradient-primary {
     background: var(--gradient-primary);
@@ -288,9 +289,12 @@ All colors MUST be HSL. Inspired by academic success and career growth.
   }
 
   @keyframes gradient-shift {
-    0%, 100% {
+
+    0%,
+    100% {
       background-position: 0% 50%;
     }
+
     50% {
       background-position: 100% 50%;
     }
@@ -302,9 +306,12 @@ All colors MUST be HSL. Inspired by academic success and career growth.
   }
 
   @keyframes pulse-glow {
-    0%, 100% {
+
+    0%,
+    100% {
       box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
     }
+
     50% {
       box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
     }
@@ -316,9 +323,12 @@ All colors MUST be HSL. Inspired by academic success and career growth.
   }
 
   @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-10px);
     }
@@ -330,13 +340,14 @@ All colors MUST be HSL. Inspired by academic success and career growth.
   }
 
   @keyframes fade-in {
-    from { 
-      opacity: 0; 
-      transform: translateY(20px); 
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
@@ -354,21 +365,24 @@ All colors MUST be HSL. Inspired by academic success and career growth.
     .hover-scale:hover {
       transform: scale(1.02);
     }
-    
+
     /* Ensure text doesn't get too small on mobile */
     .text-gradient {
       -webkit-text-size-adjust: 100%;
     }
-    
+
     /* Adjust floating animation for mobile */
     .float {
       animation: float-mobile 4s ease-in-out infinite;
     }
-    
+
     @keyframes float-mobile {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0px);
       }
+
       50% {
         transform: translateY(-5px);
       }
@@ -401,7 +415,104 @@ All colors MUST be HSL. Inspired by academic success and career growth.
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Login page slide-up entrance animation */
+@keyframes loginSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Login page form fade-in from right */
+@keyframes loginFadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Login page — drifting gradient orbs */
+@keyframes loginOrbDrift {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  25% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+
+  50% {
+    transform: translate(-15px, 25px) scale(0.95);
+  }
+
+  75% {
+    transform: translate(20px, 10px) scale(1.02);
+  }
+}
+
+/* Login page — pulsing glow particles */
+@keyframes loginPulseGlow {
+
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(1);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.8);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
+  }
+}
+
+/* Login page — floating icons with subtle rotation */
+@keyframes loginIconFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(-2deg);
+  }
+
+  75% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+}
+
+/* Login page — slowly spinning decorative rings */
+@keyframes loginRingSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
