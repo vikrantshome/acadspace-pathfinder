@@ -634,7 +634,7 @@ const ReportViewer = () => {
         )}
 
         {/* Career Recommendations Tab - Only for grade >= 8 */}
-        {activeTab === 'careers' && !isGradeBelow8 && (
+        {activeTab === 'careers' && (
           <div className="space-y-6">
             <div className="text-center space-y-2">
               <h2 className="text-3xl font-bold">Top Career Recommendations</h2>
