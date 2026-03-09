@@ -120,12 +120,12 @@ const Login: React.FC<LoginProps> = ({ onSwitchMode }) => {
 
     /* ═══════════════════ Render ═══════════════════ */
     return (
-        <div className="w-full flex items-center justify-center p-6 h-full bg-background animate-fade-in">
-            <div className="w-full max-w-[420px] space-y-6">
+        <div className="w-full flex items-center justify-center px-4 py-5 sm:p-6 md:p-8 h-full bg-background animate-fade-in">
+            <div className="w-full max-w-[420px] space-y-4 sm:space-y-6">
 
                 {/* Heading */}
                 <div className="space-y-1">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-foreground tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
                         {profiles.length > 0 ? 'Select Your Profile' : 'Welcome Back'}
                     </h2>
                     <p className="text-muted-foreground text-sm sm:text-base">
@@ -212,7 +212,7 @@ const Login: React.FC<LoginProps> = ({ onSwitchMode }) => {
                                                     setErrors(prev => ({ ...prev, phone: validatePhone(value) }));
                                                 }
                                             }}
-                                            className={`pl-10 h-12 text-sm sm:text-base rounded-xl ${errors.phone ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                                            className={`pl-10 h-10 sm:h-12 text-sm sm:text-base rounded-xl ${errors.phone ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                                         />
                                     </div>
                                     {errors.phone && <p className="text-xs text-red-500">{errors.phone}</p>}
@@ -234,7 +234,7 @@ const Login: React.FC<LoginProps> = ({ onSwitchMode }) => {
                                                 setStudentId(value);
                                                 setErrors(prev => ({ ...prev, studentId: validateStudentId(value) }));
                                             }}
-                                            className={`pl-10 h-12 text-sm sm:text-base rounded-xl ${errors.studentId ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+                                            className={`pl-10 h-10 sm:h-12 text-sm sm:text-base rounded-xl ${errors.studentId ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
                                         />
                                     </div>
                                     {errors.studentId && <p className="text-xs text-red-500">{errors.studentId}</p>}
@@ -244,7 +244,7 @@ const Login: React.FC<LoginProps> = ({ onSwitchMode }) => {
                             <Button
                                 type="submit"
                                 disabled={loading}
-                                className="w-full h-12 rounded-xl text-sm sm:text-base font-semibold gap-2 gradient-primary hover:opacity-90 transition-opacity shadow-primary"
+                                className="w-full h-10 sm:h-12 rounded-xl text-sm sm:text-base font-semibold gap-2 gradient-primary hover:opacity-90 transition-opacity shadow-primary"
                             >
                                 {loading ? (
                                     <>

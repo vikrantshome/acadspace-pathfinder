@@ -137,7 +137,7 @@ const Auth = () => {
       </div>
 
       {/* ──── Content ──── */}
-      <div className="relative z-10 max-w-md mx-auto text-center px-6">
+      <div className="relative z-10 max-w-md mx-auto text-center px-4 sm:px-6 md:px-8 py-6 sm:py-4 md:py-8 lg:py-0">
         {/* Brand */}
         <div
           className="flex items-center gap-2.5 justify-center mb-6 lg:mb-10 opacity-0"
@@ -153,14 +153,14 @@ const Auth = () => {
 
         {/* Tagline */}
         <h1
-          className="text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-extrabold text-white leading-tight tracking-tight mb-4 opacity-0"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-[3.4rem] font-extrabold text-white leading-tight tracking-tight mb-4 opacity-0"
           style={{ animation: 'loginSlideUp 0.6s ease-out 0.3s forwards', fontFamily: "'Plus Jakarta Sans', sans-serif" }}
         >
           Navigate <br className="hidden sm:block" /> Your Future
         </h1>
 
         <p
-          className="text-white/80 text-sm sm:text-base lg:text-lg leading-relaxed max-w-sm mx-auto mb-8 lg:mb-10 opacity-0"
+          className="text-white/80 text-[10px] sm:text-sm md:text-base lg:text-lg leading-relaxed max-w-sm mx-auto mb-6 sm:mb-8 lg:mb-10 opacity-0"
           style={{ animation: 'loginSlideUp 0.6s ease-out 0.5s forwards' }}
         >
           AI-Powered Career Guidance for Students
@@ -240,12 +240,12 @@ const Auth = () => {
       {/* ────────── MOBILE LAYOUT ────────── */}
       <div className="flex lg:hidden flex-col min-h-screen w-full bg-background animate-fade-in relative z-0">
         {/* Mobile hero header (compact version) */}
-        <div className="shrink-0" style={{ minHeight: '28vh' }}>
+        <div className="shrink-0" style={{ minHeight: '22vh' }}>
           <HeroPanel showCta={false} />
         </div>
 
         {/* Form area below hero */}
-        <div className="flex-1 w-full bg-background relative -mt-4 rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-10 overflow-hidden">
+        <div className="flex-1 w-full bg-background relative rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-10 overflow-y-auto md:max-w-2xl md:mx-auto md:rounded-3xl md:shadow-2xl md:my-[-2rem]">
           <div className={`transition-all duration-300 ${isLoginMode ? 'block' : 'hidden'}`}>
             <Login onSwitchMode={toggleMode} />
           </div>

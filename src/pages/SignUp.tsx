@@ -336,18 +336,18 @@ const SignUp: React.FC<SignUpProps> = ({ onSwitchMode }) => {
 
   /* ═══════════ Render ═══════════ */
   return (
-    <div className="w-full h-full flex items-center justify-center p-6 bg-background overflow-y-auto animate-fade-in custom-scrollbar">
-      <div className="w-full max-w-[520px] space-y-5">
+    <div className="w-full h-full flex items-start justify-center px-4 py-4 sm:p-6 md:p-8 bg-background overflow-y-auto animate-fade-in custom-scrollbar">
+      <div className="w-full max-w-[520px] space-y-3 sm:space-y-5">
         
         {/* Heading */}
         <div className="space-y-1">
-          <h2 className="text-xl sm:text-2xl font-bold text-foreground tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-foreground tracking-tight" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
             Create Account
           </h2>
           <p className="text-sm text-muted-foreground">Fill in your details to get started</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           {/* Full Name & Parent Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1.5">
@@ -531,7 +531,7 @@ const SignUp: React.FC<SignUpProps> = ({ onSwitchMode }) => {
         </div>
 
         {/* Security badge */}
-        <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground pb-4">
+        <div className="flex items-center justify-center gap-1.5 text-xs text-muted-foreground pb-6 sm:pb-4">
           <Shield className="w-3.5 h-3.5" />
           <span>Your data is secure &amp; never shared with third parties</span>
         </div>
