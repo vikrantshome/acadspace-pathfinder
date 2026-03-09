@@ -46,6 +46,33 @@ interface TestSubmission {
   workStylePreference?: string;
 }
 
+/** Fallback school list used when /api/schools is unavailable (e.g. 401 during signup) */
+const FALLBACK_SCHOOLS: string[] = [
+  "Airson English School", "Angel Public School", "BASANT VALLY PUBLIC SCHOOL",
+  "Beena English Medium School", "Blooming buds zion academy", "Bodhi Taru International School",
+  "Bright Scholar Senior Secondary School", "Chanda Public School", "Daffodils foundation for learning",
+  "Delhi English Academy", "Devin Academy For Learning", "Dnyan Sagar English Medium School",
+  "Dr. Shivajirao S. Jondhle International School", "Endeavour's international School",
+  "Fortune High School", "GCC International School", "Greenwood High School", "GRENO PUBLIC SCHOOL",
+  "Gupta PU College", "Harsha International public school", "Indian Public School",
+  "Jnanasagara International Public School", "Kalka Public School",
+  "Lilavati Lalji Dayal High School", "Lilavati Lalji Dayal High School and College Of Commerce",
+  "Maria Niketan Insitution", "Maria Niketan School of institutions", "MORNING STAR PUBLIC SCHOOL",
+  "Mount Carmel Public School", "Muni International School", "Mysore West Lions Sevaniketan",
+  "Pict Model School", "Piet Sanskriti Senior Secondary School", "PNC Cognitio School",
+  "Police Modern School", "Priyadarshini High School", "Radcliff School",
+  "Raman Munjal Vidya Mandir", "Reena Mehta Junior College of Arts, Science & Commerce",
+  "ROYAL ACADEMY PUBLIC SCHOOL", "Rustomjee International School", "Sahaj International School",
+  "St. Mary's English Public School", "Saraswati vidya mandir", "Seshadripuram High School",
+  "Seventh Day Adventist Senior Secondary School", "Shivaji Shikshan Sanstha",
+  "SRSD Sr.Sec School Delhi", "St Alousious School", "St Annes PU College", "St Antony's School",
+  "St. MEERA'S Public School", "St. Ramanand English Medium High School",
+  "ST. ROCK'S GIRLS HIGH SCHOOL", "St.Antony's School khora GZB", "Suncity School",
+  "Vedas International School", "Vidya School", "VIDYA SPOORTHI SCHOOL",
+  "Vidyadeep Vidyalaya", "Vishwa Bharti Public", "Wisdom Era English Medium School",
+  "Wisdom Wings School",
+];
+
 class ApiService {
   private token: string | null = null;
 
@@ -455,6 +482,23 @@ class ApiService {
 
     const data = await this.handleResponse<AuthResponse>(response);
     return data.user;
+  }
+
+  // Schools — public endpoint (no auth required during signup)
+  async getSchools(): Promise<string[]> {
+    try {
+      const response = await fetch(`${API_BASE_URL}/schools`, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (response.ok) {
+        return this.handleResponse<string[]>(response);
+      }
+      // Non-OK (401, 404, etc.) → fall through to fallback
+    } catch {
+      // Network error → fall through to fallback
+    }
+    console.warn('Schools API not available, using fallback list');
+    return FALLBACK_SCHOOLS;
   }
 
   // Health check

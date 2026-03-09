@@ -8,8 +8,7 @@ import { AuthProvider } from "@/components/AuthProvider";
 import { ProtectedRoute } from "@/components/ProtectedRoute";
 import { AdminLayout } from "@/components/AdminLayout";
 import Index from "./pages/Index";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
+import Auth from "./pages/Auth";
 import NLP from "./pages/NLP";
 import Onboarding from "./pages/Onboarding";
 import TestPage from "./pages/TestPage";
@@ -40,10 +39,10 @@ const App = () => {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<Index />} />
-              {/* <Route path="/auth" element={<Auth />} /> */}
-              <Route path="/register" element={<SignUp />} />
-              <Route path="/auth" element={<Login />} />
-              <Route path="/login" element={<Login />} />
+              {/* Auth Routes mapped to unified sliding Auth container */}
+              <Route path="/register" element={<Auth />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/login" element={<Auth />} />
               <Route path="/nlp" element={<NLP />} />
               <Route path="/onboarding" element={<Onboarding />} />
               <Route path="/test/:testType" element={<TestPage />} />
