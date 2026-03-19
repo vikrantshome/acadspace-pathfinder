@@ -76,6 +76,10 @@ jwt:
 admin:
   secret: ${ADMIN_SECRET:}  # Optional admin secret for initial access
 
+# Branding Configuration
+app:
+  default-partner: ${DEFAULT_PARTNER:naviksha}
+
 # AI Service Configuration
 ai:
   service:
@@ -196,4 +200,3 @@ server:
   http2:
     enabled: true
     
-

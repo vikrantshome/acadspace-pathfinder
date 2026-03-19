@@ -14,8 +14,11 @@ public class ReportService {
 
     private final ReportRepository reportRepository;
     private final PdfGenerationService pdfGenerationService; // Injected new service
+    private final PartnerResolver partnerResolver;
 
     public Report saveReport(StudentReport reportData, String userId) {
+        reportData.setPartner(partnerResolver.resolveReportPartner(reportData.getPartner()));
+
         Report report = Report.builder()
                 .userId(userId)
                 .reportData(reportData)
@@ -56,20 +59,19 @@ public class ReportService {
             return null;
         }
 
-        // If partner is specified (e.g. "nlp"), ensure report data has it and force regeneration
+        StudentReport reportData = report.getReportData();
         boolean forceRegeneration = false;
-        if (partner != null && !partner.isEmpty()) {
-            if (report.getReportData() != null) {
-                // If partner tag is missing or different, update it and force regeneration
-                String currentPartner = report.getReportData().getPartner();
-                if (currentPartner == null || !currentPartner.equalsIgnoreCase(partner)) {
-                    report.getReportData().setPartner(partner);
-                    // We need to save this partner change to DB so future fetches have it? 
-                    // Or just use it for this generation? 
-                    // Let's save it to be safe and consistent.
-                    reportRepository.save(report);
-                    forceRegeneration = true;
-                }
+        if (reportData != null) {
+            String requestedPartner = partnerResolver.normalize(partner);
+            String currentPartner = partnerResolver.normalize(reportData.getPartner());
+            String resolvedPartner = requestedPartner != null
+                    ? requestedPartner
+                    : partnerResolver.resolveReportPartner(currentPartner);
+
+            if (currentPartner == null || !currentPartner.equals(resolvedPartner)) {
+                reportData.setPartner(resolvedPartner);
+                reportRepository.save(report);
+                forceRegeneration = true;
             }
         }
 

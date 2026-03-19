@@ -43,6 +43,9 @@ public class ScoringService {
     @Autowired
     private SubjectivityAnalysisService subjectivityService;
 
+    @Autowired
+    private PartnerResolver partnerResolver;
+
     // Scoring weights - adjust these to fine-tune matching algorithm
     private static final double RIASEC_WEIGHT = 0.40;
     private static final double SUBJECT_WEIGHT = 0.30;
@@ -89,11 +92,7 @@ public class ScoringService {
         // Group into buckets and get top 5
         List<CareerBucket> topBuckets = groupIntoBuckets(careerMatches);
         
-        // Extract partner from answers if present
-        String partner = null;
-        if (submission.getAnswers().containsKey("partner")) {
-            partner = String.valueOf(submission.getAnswers().get("partner"));
-        }
+        String partner = partnerResolver.resolveReportPartner(submission.getAnswers().get("partner"));
 
         // Build final report
         StudentReport report = StudentReport.builder()

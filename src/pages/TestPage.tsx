@@ -20,6 +20,7 @@ import { Question, TestAnswer } from '@/types';
 import { toast } from '@/hooks/use-toast';
 import { useAuth } from '@/components/AuthProvider';
 import { apiService } from '@/lib/api';
+import { PARTNER_CONFIG } from '@/lib/config';
 import uiMicrocopy from '@/data/ui_microcopy.json';
 
 const TestPage = () => {
@@ -308,6 +309,8 @@ const TestPage = () => {
         // Add partner tag if applicable (for PDF report logo)
         if (localStorage.getItem('login_source') === 'nlp') {
           combinedAnswers['partner'] = 'nlp';
+        } else {
+          combinedAnswers['partner'] = PARTNER_CONFIG.DEFAULT_PARTNER;
         }
 
         const submission = {

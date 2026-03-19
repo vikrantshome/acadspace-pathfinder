@@ -59,6 +59,7 @@ services:
       MONGO_URI: mongodb+srv://ainaviksha_db_user:gHV1FANEjzVAsMBP@naviksha.kwnahck.mongodb.net/naviksha?retryWrites=true&w=majority
       JWT_SECRET: ${JWT_SECRET:-naviksha-super-secret-key-change-in-production-this-is-a-very-long-secret-key-for-jwt-hs512-algorithm-requirement}
       ADMIN_SECRET: ${ADMIN_SECRET:-admin-secret-123}
+      DEFAULT_PARTNER: ${DEFAULT_PARTNER:-naviksha}
       PORT: 4000
       AI_SERVICE_URL: http://ai-report-service:8000
       # PDF_SERVICE_URL: http://pdf-service:5100
