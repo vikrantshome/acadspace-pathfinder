@@ -32,6 +32,7 @@ import { useAuth } from '@/components/AuthProvider';
 import { apiService } from '@/lib/api';
 import { AIFallbackNotice } from '@/components/AIFallbackNotice';
 import { generatePuppeteerPDF as generatePDFBlob } from '@/lib/puppeteer-pdf-generator';
+import { PARTNER_CONFIG } from '@/lib/config';
 
 const ReportViewer = () => {
   const navigate = useNavigate();
@@ -122,7 +123,10 @@ const ReportViewer = () => {
         return;
       }
       // Generate PDF using shared utility
-      const reportLink = await generatePDFBlob(reportId, isNlpSession ? 'nlp' : undefined);
+      const reportLink = await generatePDFBlob(
+        reportId,
+        isNlpSession ? 'nlp' : PARTNER_CONFIG.DEFAULT_PARTNER
+      );
 
       // Open the link in a new tab
       window.open(reportLink, '_blank');
@@ -141,7 +145,10 @@ const ReportViewer = () => {
         alert('Report ID not found. Cannot generate PDF.');
         return;
       }
-      const reportLink = await generatePDFBlob(reportId, isNlpSession ? 'nlp' : undefined);
+      const reportLink = await generatePDFBlob(
+        reportId,
+        isNlpSession ? 'nlp' : PARTNER_CONFIG.DEFAULT_PARTNER
+      );
 
       await navigator.clipboard.writeText(reportLink);
       window.open(reportLink, '_blank');

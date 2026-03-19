@@ -1,6 +1,11 @@
 // Environment Configuration
 // Centralizes all backend API configuration
 
+const normalizePartner = (rawPartner: string | undefined): "naviksha" | "allen" => {
+  const partner = rawPartner?.trim().toLowerCase();
+  return partner === "allen" ? "allen" : "naviksha";
+};
+
 // Backend API Configuration
 export const API_CONFIG = {
   BASE_URL: import.meta.env.VITE_BACKEND_URL 
@@ -21,6 +26,11 @@ export const FEATURES = {
   ENABLE_OFFLINE_MODE: false,
 };
 
+// Deployment Branding
+export const PARTNER_CONFIG = {
+  DEFAULT_PARTNER: normalizePartner(import.meta.env.VITE_PARTNER),
+};
+
 // Storage Keys
 export const STORAGE_KEYS = {
   AUTH_TOKEN: 'auth_token',
@@ -31,5 +41,6 @@ export const STORAGE_KEYS = {
 export default {
   API_CONFIG,
   FEATURES,
+  PARTNER_CONFIG,
   STORAGE_KEYS,
 };

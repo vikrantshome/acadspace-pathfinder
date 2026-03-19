@@ -37,7 +37,9 @@ services:
         value: ${JWT_SECRET}  # Set strong random secret in Render Dashboard (secret)
       - key: ADMIN_SECRET
         value: ${ADMIN_SECRET}  # Set admin secret in Render Dashboard (secret)
-      
+      - key: DEFAULT_PARTNER
+        value: ${DEFAULT_PARTNER}  # Supported values: naviksha, allen
+
       # External Service URLs (update after deploying AI and PDF services)
       - key: AI_SERVICE_URL
         value: ${AI_SERVICE_URL}  # Set to AI service URL after deployment (e.g., https://ai-report-service.onrender.com)
@@ -112,6 +114,8 @@ services:
     envVars:
       - key: PORT
         value: "5100"
+      - key: DEFAULT_PARTNER
+        value: ${DEFAULT_PARTNER}  # Supported values: naviksha, allen
 
   # Frontend - Vite React Static Site
   - type: web
@@ -141,4 +145,3 @@ services:
 #   6. Deploy frontend service
 # - For custom domains: Add them in each service's Settings → Custom Domains after deployment
 # - Render will automatically provision Let's Encrypt SSL certificates for custom domains
-
