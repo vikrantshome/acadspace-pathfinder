@@ -17,7 +17,6 @@ import ReportViewer from "./pages/ReportViewer";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import ExportQuestions from "./pages/ExportQuestions";
-import NcciAllenPage from "@/pages/NcciAllen/pages/Index";
 
 // Admin Pages
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -51,7 +50,6 @@ const App = () => {
               <Route path="/report" element={<ReportViewer />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/export-questions" element={<ExportQuestions />} />
-              <Route path="/allen-career-compass" element={<NcciAllenPage />} />
               
               {/* Public Admin Route */}
               <Route path="/admin/login" element={<AdminLogin />} />
