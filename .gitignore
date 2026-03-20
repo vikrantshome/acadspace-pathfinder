@@ -48,3 +48,4 @@ excel/output/
 excel/logs/
 __pycache__/
 puppeteer-ms/token.json
+.vercel
