@@ -202,10 +202,22 @@ const ReportViewer = () => {
     fullReportData: reportData
   });
 
+  const getFirstNonEmptyString = (...values: unknown[]): string | undefined =>
+    values.find((value): value is string => typeof value === 'string' && value.trim().length > 0);
+
   // Use dynamic data
   const displayData = {
     studentName: reportData?.studentName || user?.name || user?.email?.split('@')[0] || 'Student',
-    schoolName: 'Your School',
+    schoolName: getFirstNonEmptyString(
+      reportData?.schoolName,
+      reportData?.student?.schoolName,
+      reportData?.studentProfile?.schoolName,
+      reportData?.profile?.schoolName,
+      reportData?.profile?.school,
+      reportData?.user?.schoolName,
+      reportData?.reportData?.schoolName,
+      user?.schoolName,
+    ) || 'Your School',
     grade: reportData?.grade || 11,
     board: reportData?.board || 'CBSE',
     vibeScores: reportData?.vibeScores || reportData?.vibe_scores || {},
